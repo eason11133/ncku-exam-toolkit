@@ -62,12 +62,12 @@ export const commands: Command[] = [
 
 export type DocLink = { id: string; title: string; category: string; summary: string; url: string; version: string; topics: string[]; checkedAt: string }
 export const docs: DocLink[] = [
-  { id: 'docker-docs', title: 'Docker CLI Reference', category: 'Docker', summary: '容器與映像命令的官方參考。', url: 'https://docs.docker.com/reference/cli/docker/', version: 'Online', topics: ['docker exec', 'docker ps'], checkedAt: '2026-11-09' },
-  { id: 'git-docs', title: 'Git Reference', category: 'Git & GitLab', summary: 'Git 命令與選項參考。', url: 'https://git-scm.com/docs', version: 'Online', topics: ['git status', 'git diff'], checkedAt: '2026-11-09' },
-  { id: 'gcc-docs', title: 'GCC Manual', category: 'C Programming', summary: '編譯器選項與診斷文件。', url: 'https://gcc.gnu.org/onlinedocs/', version: 'Online', topics: ['gcc', 'warnings'], checkedAt: '2026-11-09' },
-  { id: 'pthread-docs', title: 'POSIX Threads', category: 'Concurrency', summary: 'POSIX 執行緒 API 規格入口。', url: 'https://pubs.opengroup.org/onlinepubs/9799919799/', version: 'Issue 8', topics: ['pthread', 'mutex'], checkedAt: '2026-11-09' },
-  { id: 'ros-docs', title: 'ROS 2 Documentation', category: 'ROS 2', summary: 'ROS 2 官方概念、教學與 API 入口。', url: 'https://docs.ros.org/', version: 'Online', topics: ['ROS 2'], checkedAt: '2026-11-09' },
-  { id: 'pico-docs', title: 'Raspberry Pi Documentation', category: 'RP2040 / RP2350', summary: 'Pico SDK 與晶片文件入口。', url: 'https://www.raspberrypi.com/documentation/microcontrollers/', version: 'Online', topics: ['RP2040', 'RP2350', 'PIO'], checkedAt: '2026-11-09' },
+  { id: 'docker-docs', title: 'Docker 指令參考', category: 'Docker', summary: '容器與映像命令的官方參考。', url: 'https://docs.docker.com/reference/cli/docker/', version: '線上文件', topics: ['docker exec', 'docker ps'], checkedAt: '2026-11-09' },
+  { id: 'git-docs', title: 'Git 指令參考', category: 'Git & GitLab', summary: 'Git 命令與選項參考。', url: 'https://git-scm.com/docs', version: '線上文件', topics: ['git status', 'git diff'], checkedAt: '2026-11-09' },
+  { id: 'gcc-docs', title: 'GCC 使用手冊', category: 'C Programming', summary: '編譯器選項與診斷文件。', url: 'https://gcc.gnu.org/onlinedocs/', version: '線上文件', topics: ['gcc', 'warnings'], checkedAt: '2026-11-09' },
+  { id: 'pthread-docs', title: 'POSIX 執行緒規格', category: 'Concurrency', summary: 'POSIX 執行緒 API 規格入口。', url: 'https://pubs.opengroup.org/onlinepubs/9799919799/', version: '第 8 版', topics: ['pthread', 'mutex'], checkedAt: '2026-11-09' },
+  { id: 'ros-docs', title: 'ROS 2 官方文件', category: 'ROS 2', summary: 'ROS 2 官方概念、教學與 API 入口。', url: 'https://docs.ros.org/', version: '線上文件', topics: ['ROS 2'], checkedAt: '2026-11-09' },
+  { id: 'pico-docs', title: 'Raspberry Pi 官方文件', category: 'RP2040 / RP2350', summary: 'Pico SDK 與晶片文件入口。', url: 'https://www.raspberrypi.com/documentation/microcontrollers/', version: '線上文件', topics: ['RP2040', 'RP2350', 'PIO'], checkedAt: '2026-11-09' },
 ]
 
 export const troubleshooting = [
