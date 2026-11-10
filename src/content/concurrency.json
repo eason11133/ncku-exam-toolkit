@@ -1,0 +1,16 @@
+{
+  "id": "mutex-overview",
+  "title": "Mutex 與臨界區：閱讀入口",
+  "category": "Concurrency",
+  "tags": ["pthread", "mutex", "critical section"],
+  "aliases": ["lock contention", "slow thread", "互斥鎖"],
+  "difficulty": "beginner",
+  "priority": "P1",
+  "source_type": "official",
+  "source_url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html",
+  "verified": true,
+  "updated_at": "2026-11-09",
+  "summary": "POSIX mutex API 的官方文件入口；詳細效能分析筆記待匯入。",
+  "related": [],
+  "body": "## 官方規格\n\n[pthread_mutex_lock](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html) 說明鎖定 mutex 的規範。\n\n## 待補內容\n\n臨界區設計、鎖競爭測量與案例將在內容查證後匯入。"
+}
