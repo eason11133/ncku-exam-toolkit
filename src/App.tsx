@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm'
 import { Search, Command as CommandIcon, BookOpen, Keyboard, Gauge, WandSparkles, Wrench, FileText, ExternalLink, Copy, Check, Sun, Moon, Menu, X, Download, Upload, Trash2, ChevronRight, PanelLeftClose } from 'lucide-react'
 import { articles, commands, docs, scenarios, troubleshooting, type Command } from './content'
 import { buildPrompt, compare, csvCell, download, parseTimes, promptTasks, stats, toMilliseconds, workflowSteps, type Trial } from './tools'
+import { optimizations } from './optimizations'
+import OptimizationLibrary from './OptimizationLibrary'
 import './theme.css'
 import './home.css'
 
@@ -16,12 +18,12 @@ const trialSchema = z.object({ version: z.string().min(1), times: z.array(z.numb
 const importSchema = z.object({ notes: z.array(noteSchema), trials: z.array(trialSchema).optional(), workflow: z.record(z.string(), z.string()).optional() })
 const nav: { id: View; label: string; icon: typeof Search; section: string }[] = [
   { id: 'home', label: '首頁', icon: BookOpen, section: 'WORKSPACE' },
+  { id: 'performance', label: '效能優化解法庫', icon: Gauge, section: 'WORKSPACE' },
   { id: 'knowledge', label: '技術知識庫', icon: FileText, section: 'REFERENCE' },
   { id: 'commands', label: '指令速查', icon: CommandIcon, section: 'REFERENCE' },
   { id: 'troubleshooting', label: '錯誤排查', icon: Wrench, section: 'REFERENCE' },
   { id: 'docs', label: '官方文件', icon: ExternalLink, section: 'REFERENCE' },
   { id: 'zhuyin', label: '注音輸入', icon: Keyboard, section: 'TOOLS' },
-  { id: 'performance', label: '效能分析', icon: Gauge, section: 'TOOLS' },
   { id: 'prompts', label: '提示詞產生器', icon: WandSparkles, section: 'TOOLS' },
   { id: 'notes', label: '個人筆記', icon: FileText, section: 'PERSONAL' },
   { id: 'scenarios', label: '練習情境', icon: BookOpen, section: 'PERSONAL' },
@@ -59,6 +61,7 @@ function App() {
   const [workflow, setWorkflow] = useStored<Record<string, string>>('workflow', {})
   const [mobileNav, setMobileNav] = useState(false)
   const [copied, setCopied] = useState('')
+  const [performanceTab, setPerformanceTab] = useState<'solutions' | 'benchmarks'>('solutions')
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => { document.documentElement.dataset.theme = theme }, [theme])
@@ -74,10 +77,12 @@ function App() {
     ...commands.map(item => ({ id: item.id, type: '指令', title: item.title, category: item.category, summary: item.summary, aliases: `${item.aliases?.join(' ') || ''} ${displayCategory(item.category)}`, body: `${item.syntax} ${item.example}`, target: 'commands' as View })),
     ...docs.map(item => ({ id: item.id, type: '官方文件', title: item.title, category: item.category, summary: item.summary, aliases: `${item.topics.join(' ')} ${displayCategory(item.category)}`, body: '', target: 'docs' as View })),
     ...troubleshooting.map(item => ({ id: item.id, type: '錯誤排查', title: item.symptom, category: item.category, summary: item.causes.join('、'), aliases: '', body: item.diagnostics.join(' '), target: 'troubleshooting' as View })),
+    ...optimizations.map(item => ({ id: item.id, type: '優化方法', title: item.name, category: item.category, summary: item.summary, aliases: `${item.aliases.join(' ')} ${item.problems.join(' ')} ${item.bottlenecks.join(' ')}`, body: item.options.map(option => `${option.title} ${option.aliases.join(' ')} ${option.summary}`).join(' '), target: 'performance' as View })),
+    ...optimizations.flatMap(item => item.options.map(option => ({ id: `${item.id}::${option.id}`, type: '優化方案', title: `${item.name} → ${option.title}`, category: item.category, summary: option.summary, aliases: `${item.aliases.join(' ')} ${item.problems.join(' ')} ${option.aliases.join(' ')}`, body: `${option.conditions.join(' ')} ${option.metrics.join(' ')}`, target: 'performance' as View }))),
   ], [])
   const fuse = useMemo(() => new Fuse(index, { includeScore: true, threshold: 0.42, ignoreLocation: true, keys: [{ name: 'title', weight: 4 }, { name: 'aliases', weight: 3 }, { name: 'summary', weight: 2 }, 'category', 'body'] }), [index])
   const results = query.trim() ? fuse.search(query.trim()).slice(0, 12).map(result => result.item) : []
-  const navigate = (next: View, id: string | null = null) => { setView(next); setSelected(id); setSearchOpen(false); setMobileNav(false); window.scrollTo(0, 0) }
+  const navigate = (next: View, id: string | null = null) => { setView(next); setSelected(id); if (next === 'performance') setPerformanceTab('solutions'); setSearchOpen(false); setMobileNav(false); window.scrollTo(0, 0) }
   async function copy(value: string, id: string) { try { await navigator.clipboard.writeText(value); setCopied(id); setTimeout(() => setCopied(''), 1800) } catch { setCopied('error') } }
   const selectedArticle = articles.find(item => item.id === selected)
   const selectedCommand = commands.find(item => item.id === selected)
@@ -104,12 +109,12 @@ function App() {
         {view === 'home' && <div className="home-page">
           <span className="eyebrow">成大程式工具箱</span>
           <h1>今天要查什麼？</h1>
-          <p className="home-intro">搜尋技術筆記、常用指令、錯誤處理與官方文件；需要輸入、產生提示詞或比較效能時，也可以直接開啟工具。</p>
+          <p className="home-intro">搜尋目前使用的方法或遇到的效能問題，快速比較優化方向；技術筆記、指令與注音輸入也都可以直接開啟。</p>
           <button className="home-search" onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 0) }}><Search size={20}/><span>搜尋技術資料、指令或錯誤…</span><kbd>Ctrl K</kbd></button>
           <div className="home-columns"><section><div className="home-section-title"><h2>常用工具</h2><span>點選後直接使用</span></div><div className="home-links">
+            <button onClick={() => navigate('performance')}><Gauge size={18}/><span><strong>效能優化解法庫</strong><small>搜尋方法或瓶頸，直接比較可嘗試的方案</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('zhuyin')}><Keyboard size={18}/><span><strong>注音輸入</strong><small>直接在瀏覽器輸入繁體中文</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('commands')}><CommandIcon size={18}/><span><strong>指令速查</strong><small>查看語法、範例與官方來源</small></span><ChevronRight size={16}/></button>
-            <button onClick={() => navigate('performance')}><Gauge size={18}/><span><strong>效能分析</strong><small>紀錄測試並比較不同版本</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('prompts')}><WandSparkles size={18}/><span><strong>提示詞產生器</strong><small>組合可複製的英文提示詞</small></span><ChevronRight size={16}/></button>
           </div></section><section><div className="home-section-title"><h2>技術資料</h2><button onClick={() => navigate('knowledge')}>查看全部 <ChevronRight size={15}/></button></div><div className="home-links">
             {articles.slice(0, 4).map(item => <button key={item.id} onClick={() => navigate('knowledge', item.id)}><FileText size={18}/><span><strong>{item.title}</strong><small>{item.summary}</small></span><ChevronRight size={16}/></button>)}
@@ -119,7 +124,7 @@ function App() {
         {view === 'commands' && <><PageHeader eyebrow="資料查找 / 指令速查" title={selectedCommand?.title || '指令速查'} subtitle={selectedCommand?.summary || '常用指令、選項與範例。點選卡片查看注意事項與官方來源。'} onBack={selectedCommand ? () => setSelected(null) : undefined}/>{selectedCommand ? <CommandDetail item={selectedCommand} onCopy={copy} copied={copied} onRelated={id => setSelected(id)}/> : <div className="command-grid">{commands.map(item => <button className="command-card" key={item.id} onClick={() => setSelected(item.id)}><span className="pill">{displayCategory(item.category)}</span><code>{item.title}</code><p>{item.summary}</p><span className="card-link">查看指令 <ChevronRight size={14}/></span></button>)}</div>}</>}
         {view === 'zhuyin' && <><PageHeader eyebrow="實用工具 / 輸入法" title="注音輸入" subtitle="使用小麥注音的完整網頁輸入法。以台灣標準注音鍵盤輸入，文字在瀏覽器本機處理。"/><div className="notice"><span className="status-dot"/> 點選輸入區並切換為英文鍵盤；打出注音後按空白鍵開啟候選字，可按 1–9 或直接點選，最後按 Enter 送入文字框。</div><iframe className="ime-frame" src="/ime/index.html" title="McBopomofoWeb 注音輸入法"/></>}
         {view === 'prompts' && <PromptBuilder onCopy={copy} copied={copied}/>}
-        {view === 'performance' && <Performance trials={trials} setTrials={setTrials} workflow={workflow} setWorkflow={setWorkflow}/>}
+        {view === 'performance' && <><div className="opt-tabs" role="tablist" aria-label="效能工具"><button role="tab" aria-selected={performanceTab === 'solutions'} onClick={() => setPerformanceTab('solutions')}>優化解法庫</button><button role="tab" aria-selected={performanceTab === 'benchmarks'} onClick={() => setPerformanceTab('benchmarks')}>測試結果比較</button></div>{performanceTab === 'solutions' ? <OptimizationLibrary key={selected || "library"} selectedId={selected} onNavigate={navigate} onCopy={copy} copied={copied}/> : <Performance trials={trials} setTrials={setTrials} workflow={workflow} setWorkflow={setWorkflow}/>}</>}
         {view === 'troubleshooting' && <><PageHeader eyebrow="資料查找 / 錯誤排查" title="錯誤排查" subtitle="依症狀搜尋、檢查原因，並以官方文件驗證修復方式。"/><div className="reference-list">{troubleshooting.map(item => <div className="trouble-card" key={item.id}><span className="pill">{displayCategory(item.category)}</span><h3>{item.symptom}</h3><div className="trouble-grid"><div><strong>可能原因</strong>{item.causes.map(x => <p key={x}>· {x}</p>)}</div><div><strong>診斷指令</strong>{item.diagnostics.map(x => <code key={x}>{x} <button aria-label={`複製 ${x}`} onClick={() => copy(x, x)}><Copy size={13}/></button></code>)}</div><div><strong>建議檢查</strong>{item.checks.map(x => <p key={x}>· {x}</p>)}</div><div><strong>驗證方式</strong>{item.verification.map(x => <code key={x}>{x}</code>)}</div></div><a href={item.source} target="_blank" rel="noreferrer">官方參考資料 <ExternalLink size={14}/></a></div>)}</div></>}
         {view === 'docs' && <><PageHeader eyebrow="資料查找 / 官方文件" title={selectedDoc?.title || '官方文件'} subtitle={selectedDoc?.summary || '直接前往原始文件。版本與查證日期依資料記錄。'} onBack={selectedDoc ? () => setSelected(null) : undefined}/>{selectedDoc ? <div className="detail-card"><div className="meta-row"><span className="pill">{displayCategory(selectedDoc.category)}</span><span>{selectedDoc.version}</span><span>查證日期 {selectedDoc.checkedAt}</span></div><p>{selectedDoc.summary}</p><p>相關主題： {selectedDoc.topics.join(', ')}</p><a className="primary-button inline" href={selectedDoc.url} target="_blank" rel="noreferrer">開啟官方文件 <ExternalLink size={16}/></a></div> : <div className="command-grid">{docs.map(item => <button className="command-card" key={item.id} onClick={() => setSelected(item.id)}><span className="pill">{displayCategory(item.category)}</span><strong>{item.title}</strong><p>{item.summary}</p><span className="card-link">查看詳情 <ChevronRight size={14}/></span></button>)}</div>}</>}
         {view === 'scenarios' && <><PageHeader eyebrow="個人資料 / 練習情境" title="練習情境" subtitle="官方示範、合理延伸與推測情境會明確標記；不會宣稱模擬題是真正考題。"/>{scenarios.length ? scenarios.map(item => <div key={item.id}>{item.title}</div>) : <Empty title="練習情境待加入" text="題目與練習專案會在資料查證後加入。內容結構已預留來源分級。"/>}</>}

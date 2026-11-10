@@ -1,88 +1,73 @@
-# NCKU Exam Toolkit
+# 成大程式工具箱
 
-A static engineering reference and browser-local toolkit built with React, TypeScript and Vite. No account, database, backend, or external AI API is required. User notes, benchmark records and workflow entries stay in the browser's LocalStorage until exported or cleared.
+供個人準備成大資工上機考使用的技術查找網站。使用 React、TypeScript、Vite；網站為靜態頁面，不需帳號或外部 AI API。正式站點：[ncku-exam-toolkit-ebon.vercel.app](https://ncku-exam-toolkit-ebon.vercel.app)。
 
-## Current features
+## 主要操作
 
-- Global client-side search with aliases and fuzzy matching (`Ctrl/Cmd+K`). Results cover articles, commands, troubleshooting and official documentation.
-- Nested topic navigation, validated Markdown/JSON content, related links, table of contents and code copying.
-- Command library with examples, options, precautions, official sources and one-click copy.
-- McBopomofoWeb 2.1.0 integrated as a locally hosted browser IME. Standard Zhuyin keyboard, composition, candidate selection, mixed text and copy are supplied by the upstream engine. Original MIT license is in `public/ime/LICENSE.txt`.
-- Prompt builder that assembles text locally without calling an AI API.
-- Performance workbench with repeated trials, unit normalization, average, median, min/max, population standard deviation, speedup, improvement and throughput. It saves experiment details and an editable optimization workflow, and exports CSV/JSON.
-- Personal notes with JSON import/export and a clear-local-data action.
-- Troubleshooting and official documentation structures. Practice scenarios are reserved for supplied, source-graded material.
-- Responsive desktop/mobile layout and dark/light mode.
+1. 打開「效能優化解法庫」，輸入目前方法（例如 `Mutex`、`BFS`）或效能症狀（例如「鎖競爭」）。
+2. 搜尋結果先比較可能的優化方向、觀察指標與簡短說明。
+3. 展開一個方案，檢查原理、適用條件、代價、行為差異、程式範例與來源。
+4. 按「複製技術背景」或「複製給 LLM」，帶到考場提供的 LLM 中直接評估並嘗試修改程式。
+5. 用「測試結果比較」記錄修改前後的實測結果；沒有方案保證一定較快。
 
-## Project layout
+目前只收錄 `Mutex`、`BFS`、`Memory Copy` 三筆**示範資料**，並標為「示範・待查證」。它們用來展示結構和操作，不代表已完成正式內容審查。正式資料應逐筆核對來源、平台條件與語意。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。
 
-```text
-src/
-  App.tsx           UI and interactions
-  content.ts        schemas, topic tree, sample commands/docs
-  content/          Markdown and JSON articles; add files here
-  tools.ts          benchmark and prompt calculations
-  base.css          global styles
-  theme.css         component styles and responsive layout
-public/ime/         self-hosted McBopomofoWeb example build and MIT license
-vercel.json         Vercel static build configuration
-```
-
-## Local development
+## 本機開發與部署
 
 ```sh
 npm install
 npm run dev
 npm run build
-npm run preview
+npm test
 ```
 
-`npm run build` includes TypeScript checking and writes the static site to `dist/`. Vercel builds the same way after a push to the production branch.
+`npm run build` 會執行 TypeScript 檢查並產生 `dist/`。GitHub `main` 已連接 Vercel 正式部署。
 
-Run the focused calculation checks with `npm test`. To publish future changes after GitHub and Vercel are connected, commit and push to `main`; Vercel then rebuilds the static output.
+## 新增優化解法內容
 
-Production site: [ncku-exam-toolkit-ebon.vercel.app](https://ncku-exam-toolkit-ebon.vercel.app). Source repository: [eason11133/ncku-exam-toolkit](https://github.com/eason11133/ncku-exam-toolkit). The Vercel project is connected to `main` for automatic redeployment.
+在 `src/optimizations/` 新增一個 `.json` 檔即可；Vite 會自動載入，不需修改 React 元件。每個檔案代表一個**目前使用的方法**，其 `options` 可包含多個優化方案。搜尋會索引方法名稱、別名、問題、瓶頸、方案名稱、方案別名與條件。請把中英文名稱及常見縮寫放入 `aliases`，把使用者實際可能輸入的症狀放入 `problems`。
 
-## Existing project review
+可直接複製 [src/optimizations/mutex.json](src/optimizations/mutex.json) 作為完整範例，或從下列精簡範例開始。替換 ID、內容與來源後再放入 `src/optimizations/`：
 
-Before implementation, the accessible repositories included Eason One, LTA, English Output Trainer, SignalForge and Eason Trading. [LTA's design specification](https://github.com/easonlsystems/LTA/blob/main/DESIGN.md) emphasizes restrained dark surfaces, clear state and direct actions. [EOT's historical visual contract](https://github.com/eason11133/english-output-trainer/blob/main/EOT_LEARNER_EXPERIENCE_VISUAL_CONTRACT_V1.md) emphasizes one dominant action, Chinese-first text and meaningful progress. [Eason One](https://github.com/eason11133/eason-one) and [Eason Trading](https://github.com/eason11133/eason-trading) separate authoritative state from presentations and explicitly describe verification. This toolkit carries forward restrained presentation, short paths to useful actions, modular data and visible sources. It uses a simpler static architecture because no shared state or backend is required.
-
-## Add content
-
-Place a `.md` or `.json` file in `src/content/`. Vite's glob import automatically includes it; no React component edit is needed. A Markdown example is `src/content/docker-exec.md`; a JSON example is `src/content/concurrency.json`.
-
-Markdown starts with simple YAML front matter. List fields use comma-separated values:
-
-```yaml
----
-id: unique-id
-title: Article title
-category: Docker
-tags: docker, cli
-aliases: container command
-difficulty: beginner
-priority: P1
-source_type: official
-source_url: https://docs.example.org/page
-verified: true
-updated_at: 2026-11-09
-summary: One sentence.
-related: other-article-id
----
-
-## First heading
-
-Verified body text.
+```json
+{
+  "id": "unique-method-id",
+  "name": "方法名稱",
+  "aliases": ["English name", "中文別名", "縮寫"],
+  "category": "技術分類",
+  "summary": "一句話說明目前方法。",
+  "problems": ["使用者會搜尋的效能症狀"],
+  "bottlenecks": ["此方法在特定情況下可能遇到的瓶頸"],
+  "verified": false,
+  "updatedAt": "2026-11-10",
+  "sources": [{"title": "來源名稱", "url": "https://example.org/reference"}],
+  "relatedMethodIds": [],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "unique-option-id",
+      "title": "優化方案名稱",
+      "aliases": ["方案別名"],
+      "summary": "搜尋結果中的一句話摘要。",
+      "principle": "此方案如何運作。",
+      "conditions": ["何時適用；必須檢查的前提"],
+      "tradeoffs": ["可能增加的成本或退化情況"],
+      "behavior": "是否改變正確性、順序、可見性或輸入輸出語意。",
+      "metrics": ["延遲", "CPU 使用率"],
+      "code": {"language": "cpp", "snippet": "// 可選：最小且完整標註前提的範例"},
+      "sources": [{"title": "此方案的來源", "url": "https://example.org/option"}],
+      "verified": false
+    }
+  ]
+}
 ```
 
-The runtime validates each record with Zod on import. Invalid records fail the build or page load visibly instead of silently appearing in search. The source type is `official`, `community`, `personal` or `speculative`. Keep `verified: false` until claims have been checked. Use official links for documentation entries. Cross-links can use normal Markdown URLs; `related` IDs appear below an article.
+`code` 可省略。`sources` 請填真正可查的文件，勿保留範例網址。確認內容與來源、平台、版本、適用條件後，才把對應的 `verified` 設為 `true`。`relatedMethodIds` 連到其他解法檔的 `id`；`articleIds`、`commandIds`、`docIds` 分別連到既有文章、指令及官方文件 ID。資料以 Zod 驗證，格式錯誤會在載入時明確報錯；同一方法內的方案 ID 必須唯一。
 
-## McBopomofoWeb provenance
+原有知識庫文章仍放在 `src/content/`，支援帶 YAML front matter 的 Markdown 或 JSON。新增解法資料可用 `articleIds` 與既有文章連結。`src/optimization-core.ts` 提供搜尋與複製文字組合；`src/OptimizationLibrary.tsx` 是呈現頁面，新增內容通常不必更動它。
 
-The IME is the [OpenVanilla McBopomofoWeb](https://github.com/openvanilla/McBopomofoWeb) 2.1.0 browser example, built from upstream source with `npm install && npm run build`. This repository stores its generated `bundle.js`, example UI scripts/styles, and the complete MIT license under `public/ime/`. The original demo's analytics, remote CSS/scripts and unrelated conversion panes were removed or hidden for this embedded input surface. The app loads the IME only when the Zhuyin page is opened.
+## 注音輸入來源
 
-To update the IME, review the upstream version/license and repeat the build, copy the browser example assets into `public/ime/`, then reapply the local `toolkit.css` and privacy/asset changes in `index.html`. Run keyboard, candidate and copy tests before deployment.
-
-## Privacy and limitations
-
-The site does not send entered code, notes, prompts or benchmark data to an API. Clicking an official documentation link navigates to that external site. LocalStorage is per browser profile and can be erased by the browser; export data regularly. The imported example content is intentionally small, and exam scenarios and detailed prompt templates await reviewed source material. The full upstream IME bundle is about 5 MB and loads on demand.
+注音輸入使用 [OpenVanilla McBopomofoWeb](https://github.com/openvanilla/McBopomofoWeb) 2.1.0 的瀏覽器版本，檔案與 MIT 授權保留在 `public/ime/`。本站另加候選字點選與複製文字的操作。原專案授權請見 [public/ime/LICENSE.txt](public/ime/LICENSE.txt)。

@@ -1,0 +1,45 @@
+{
+  "id": "bfs",
+  "name": "BFS（廣度優先搜尋）",
+  "aliases": ["breadth-first search", "廣度優先", "圖搜尋", "最短路徑"],
+  "category": "圖演算法",
+  "summary": "在無權重圖上逐層探索節點；常見成本來自重複入隊、佇列操作或重複掃描。",
+  "problems": ["重複計算", "重複走訪", "佇列過慢", "記憶體用量高", "圖搜尋太慢"],
+  "bottlenecks": ["同一節點重複入隊", "大量從陣列前端移除元素", "多次搜尋時反覆清空大型 visited 陣列"],
+  "verified": false,
+  "updatedAt": "2026-11-10",
+  "sources": [{"title": "CP-Algorithms BFS", "url": "https://cp-algorithms.com/graph/breadth-first-search.html"}],
+  "relatedMethodIds": [],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "mark-before-enqueue",
+      "title": "入隊前標記 visited",
+      "aliases": ["visited before enqueue", "避免重複入隊", "重複計算"],
+      "summary": "在發現鄰居且準備入隊時就標記，避免其他路徑重複加入同一節點。",
+      "principle": "讓每個節點最多入隊一次，避免無意義的重複工作。",
+      "conditions": ["一般無權重 BFS，且每個節點第一次被發現時即可確定其層數"],
+      "tradeoffs": ["若演算法需要保留多條到達同一狀態的路徑，不能直接去重"],
+      "behavior": "確認題目是否需要列舉所有路徑；若需要，visited 的語意需另行設計。",
+      "metrics": ["執行時間", "記憶體用量"],
+      "code": {"language": "python", "snippet": "from collections import deque\nqueue = deque([start])\nvisited = {start}\nwhile queue:\n    node = queue.popleft()\n    for nxt in graph[node]:\n        if nxt not in visited:\n            visited.add(nxt)  # 入隊前標記\n            queue.append(nxt)"},
+      "sources": [{"title": "CP-Algorithms BFS", "url": "https://cp-algorithms.com/graph/breadth-first-search.html"}],
+      "verified": false
+    },
+    {
+      "id": "deque-queue",
+      "title": "改用適合的佇列結構",
+      "aliases": ["deque", "ring buffer", "循環佇列", "queue"],
+      "summary": "若目前從動態陣列前端反覆刪除元素，改用 deque、循環佇列或索引指標。",
+      "principle": "避免每次移除首項都移動剩餘元素。",
+      "conditions": ["已確認目前佇列實作的前端移除確實有額外搬移成本"],
+      "tradeoffs": ["需要調整資料結構與容量策略", "若原本已使用高效佇列，替換可能沒有收益"],
+      "behavior": "保持 FIFO 順序；若改用固定容量循環佇列，需處理容量不足。",
+      "metrics": ["執行時間", "記憶體用量"],
+      "sources": [{"title": "Python collections.deque", "url": "https://docs.python.org/3/library/collections.html#collections.deque"}],
+      "verified": false
+    }
+  ]
+}
