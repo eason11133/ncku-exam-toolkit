@@ -41,6 +41,8 @@ npm run preview
 
 Run the focused calculation checks with `npm test`. To publish future changes after GitHub and Vercel are connected, commit and push to `main`; Vercel then rebuilds the static output.
 
+Production site: [ncku-exam-toolkit-ebon.vercel.app](https://ncku-exam-toolkit-ebon.vercel.app). Source repository: [eason11133/ncku-exam-toolkit](https://github.com/eason11133/ncku-exam-toolkit). The Vercel project is connected to `main` for automatic redeployment.
+
 ## Existing project review
 
 Before implementation, the accessible repositories included Eason One, LTA, English Output Trainer, SignalForge and Eason Trading. [LTA's design specification](https://github.com/easonlsystems/LTA/blob/main/DESIGN.md) emphasizes restrained dark surfaces, clear state and direct actions. [EOT's historical visual contract](https://github.com/eason11133/english-output-trainer/blob/main/EOT_LEARNER_EXPERIENCE_VISUAL_CONTRACT_V1.md) emphasizes one dominant action, Chinese-first text and meaningful progress. [Eason One](https://github.com/eason11133/eason-one) and [Eason Trading](https://github.com/eason11133/eason-trading) separate authoritative state from presentations and explicitly describe verification. This toolkit carries forward restrained presentation, short paths to useful actions, modular data and visible sources. It uses a simpler static architecture because no shared state or backend is required.
