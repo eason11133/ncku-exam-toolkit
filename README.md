@@ -20,7 +20,7 @@
 
 ## LLM 分層教材導航
 
-從首頁、側邊欄或技術知識庫的「我不知道該選哪篇」進入。可以貼題目摘要，或勾選題目已提供給考場 LLM。每層複製 Prompt，依 LLM 回覆的分類 ID 自行點選；中途可直接查看目前分類所有教材。候選頁列出真實觀念、文章、優化方法與方案，並提供最後一層的閱讀順序 Prompt。網站不呼叫 LLM API，也不自動解析它的回覆。
+從首頁、側邊欄或技術知識庫的「我不知道該選哪篇」進入。先把題目提供給考場 LLM，再在網站逐層複製 Prompt，依 LLM 回覆的分類 ID 自行點選；中途可直接查看目前分類所有教材。候選頁列出真實觀念、文章、優化方法與方案，並提供最後一層的閱讀順序 Prompt。網站不另設題目輸入框、不呼叫 LLM API，也不自動解析它的回覆。
 
 分類樹與三種 Prompt 模板分別放在 `src/navigation/taxonomy.json`、`src/navigation/prompt_templates.json`。觀念、文章、方法的主要與跨分類路徑分別放在 `concept_routes.json`、`article_routes.json`、`optimization_routes.json`；這些檔案只存 ID，頁面標題與摘要取自原本的內容資料。新增教材時加上對應 route；新增分類時修改樹與 route，不必改導覽元件。`node checks/validate_navigation.mjs` 會檢查所有現有內容均有有效分類，`npm run build` 也會先執行此檢查。
 

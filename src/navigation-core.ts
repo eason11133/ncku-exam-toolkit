@@ -64,14 +64,12 @@ export function navigationCount(node: TaxonomyNode) {
 
 const optionLine = (node: TaxonomyNode) => `- ${node.id}｜${node.label}：${node.question}（${node.hint}）`
 const templateText = (template: string) => template.replaceAll('\\n', '\n')
-const questionText = (question: string, givenToLlm: boolean) => question.trim() || (givenToLlm ? '題目與程式碼已提供給 LLM，請沿用前文。' : '尚未提供題目；請先要求我貼上相關程式或現象。')
-const appendQuestion = (prompt: string, question: string) => question.trim() ? `${prompt}\n\n【題目／遇到的狀況】\n${question.trim()}` : prompt
 
-export function navigationPrompt(path: TaxonomyNode[], question: string, givenToLlm: boolean, showCandidates: boolean): string {
+export function navigationPrompt(path: TaxonomyNode[], showCandidates: boolean): string {
   const current = path.at(-1)
   if (!current) return templateText(promptData.root.template)
     .replace('{root_options}', taxonomy.map(optionLine).join('\n'))
-    .replace('{question_placeholder}', questionText(question, givenToLlm))
+    .replace('{question_placeholder}', '請沿用這段對話中已提供的題目與程式碼；若尚未收到，請我先貼上。')
 
   const pathLabels = path.map(node => node.label).join(' → ')
   const pathContext = `【目前分類路徑】\n${path.map(node => `- ${node.id}｜${node.label}：${node.question}（${node.hint}）`).join('\n')}\n\n`
@@ -90,7 +88,7 @@ export function navigationPrompt(path: TaxonomyNode[], question: string, givenTo
       '【再看技術文章】', ...articleLines,
       '【再看優化方法／選項】', ...methodLines,
     ].join('\n')
-    return appendQuestion(pathContext + templateText(promptData.articles.template).replace('{path_labels}', pathLabels).replace('{available_items}', availableItems), question)
+    return pathContext + templateText(promptData.articles.template).replace('{path_labels}', pathLabels).replace('{available_items}', availableItems)
   }
-  return appendQuestion(pathContext + templateText(promptData.branch.template).replace('{path_labels}', pathLabels).replace('{child_options}', current.children.map(optionLine).join('\n')), question)
+  return pathContext + templateText(promptData.branch.template).replace('{path_labels}', pathLabels).replace('{child_options}', current.children.map(optionLine).join('\n'))
 }
