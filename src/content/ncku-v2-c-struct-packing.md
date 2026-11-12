@@ -26,15 +26,41 @@ difficulty: intermediate
 
 ## 具體修改／排查示例
 
+以下是 **完整 C11 程式**。線上格式固定為 5 bytes：第 0 byte 是 `kind`，第 1～4 byte 是 big-endian `value`。函式先檢查指標與長度，再逐 byte 解析；成功才寫入輸出參數。
+
 ```c
+#include <assert.h>
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
-// 不把此 struct 直接當線上封包
+
 struct Packet { uint8_t kind; uint32_t value; };
-// 線上格式另定長度並逐 byte 解析，例如 value 是 big endian
-uint32_t value = ((uint32_t)p[1]<<24) | ((uint32_t)p[2]<<16)
-               | ((uint32_t)p[3]<<8) | (uint32_t)p[4];
-// 讀取前必須先確認封包長度 >= 5
+
+bool parse_packet(const uint8_t *data, size_t length, struct Packet *out) {
+    if (data == NULL || out == NULL || length < 5) return false;
+
+    struct Packet parsed;
+    parsed.kind = data[0];
+    parsed.value = ((uint32_t)data[1] << 24)
+                 | ((uint32_t)data[2] << 16)
+                 | ((uint32_t)data[3] << 8)
+                 |  (uint32_t)data[4];
+    *out = parsed;
+    return true;
+}
+
+int main(void) {
+    const uint8_t valid[5] = {0x7a, 0x12, 0x34, 0x56, 0x78};
+    struct Packet result = {0};
+    assert(parse_packet(valid, sizeof valid, &result));
+    assert(result.kind == 0x7a && result.value == UINT32_C(0x12345678));
+    assert(!parse_packet(valid, 4, &result));
+    assert(!parse_packet(NULL, 5, &result));
+    return 0;
+}
 ```
+
+`struct Packet` 是解析後供程式內部使用的表示，**不是**可直接寫上線的 5-byte 格式；它的 `sizeof` 與欄位偏移仍由平台 ABI 決定。如果協定要求長度恰好 5 bytes，而不能有尾隨資料，應把 `length < 5` 改成 `length != 5`。
 
 ## 可以嘗試的方案
 
@@ -79,3 +105,4 @@ uint32_t value = ((uint32_t)p[1]<<24) | ((uint32_t)p[2]<<16)
 ## 參考與查證狀態
 
 - 參考：[C struct byte alignment](https://en.cppreference.com/w/c/language/object)
+- [WG14 C11 草案 N1570 §6.7.2.1：struct 對齊與 padding](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)

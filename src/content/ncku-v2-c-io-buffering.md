@@ -26,13 +26,27 @@ difficulty: intermediate
 
 ## 具體修改／排查示例
 
+以下是 **完整 C11 程式**。在第一次對 `stdout` 輸出之前設定全緩衝；靜態陣列會一直有效到程式結束，不會在函式返回時失效。
+
 ```c
 #include <stdio.h>
-// 在正常 I/O 發生前選擇適當 buffering；用途依 stdout/stderr 而定
-char output_buffer[8192];
-setvbuf(stdout, output_buffer, _IOFBF, sizeof output_buffer);
-// buffer 必須活到 stdout 結束使用；不能用短命區域陣列
+
+static char output_buffer[8192];
+
+int main(void) {
+    if (setvbuf(stdout, output_buffer, _IOFBF, sizeof output_buffer) != 0) {
+        return 1;
+    }
+
+    for (int i = 0; i < 1000; ++i) {
+        if (printf("record=%d\n", i) < 0) return 1;
+    }
+    if (fflush(stdout) == EOF) return 1;
+    return 0;
+}
 ```
+
+`output_buffer` 不能改成會先於 `stdout` 關閉而失效的區域陣列。這個範例只示範緩衝區生命週期；它仍逐筆呼叫 `printf`，若格式化本身是瓶頸，應另外比較減少輸出次數或改成彙總輸出。輸出到終端機時，全緩衝會推遲可見時間，需即時顯示的訊息不適合直接套用。
 
 ## 可以嘗試的方案
 
@@ -76,4 +90,5 @@ stderr 通常不同緩衝策略；即時控制／安全事件不可因緩衝而�
 
 ## 參考與查證狀態
 
-- 參考：[C stdio buffering](https://en.cppreference.com/w/c/io/setvbuf)
+- 參考：[C `setvbuf()` 與緩衝區生命週期](https://en.cppreference.com/w/c/io/setvbuf)
+- [WG14 C11 草案 N1570 §7.21.5.6：`setvbuf` 的呼叫時機與 buffer 生命週期](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)

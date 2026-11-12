@@ -19,7 +19,7 @@
   "bottlenecks": [
     "count 與 bytes 搞混",
     "src/dst increment 錯誤",
-    "未完成就修改或讀取 buffer"
+    "搬運期間改寫或釋放來源，或在目的地寫入完成前就讀取完整結果"
   ],
   "verified": false,
   "updatedAt": "2026-11-12",
@@ -70,7 +70,7 @@
       "verified": false,
       "code": {
         "language": "c",
-        "snippet": "job.count = 4096;\njob.size = XFER_32;  // 4 bytes per transfer"
+        "snippet": "// Demo 的 engine_job_t 欄位片段；先確認 src/dst 各至少 16384 bytes\njob.count = 4096;  // 傳輸筆數，不填 4096 * 4\njob.size = XFER_32;  // 每筆 4 bytes，總量 16384 bytes"
       },
       "articleId": "lesson-transfer-engine-configuration-count-unit"
     },
@@ -114,7 +114,7 @@
       "principle": "先 configure/start，做無關工作，再 wait、讀結果。",
       "conditions": [
         "有安全可重疊的 CPU 工作",
-        "完成之前不碰被搬運的資料"
+        "來源傳輸期間保持有效且不改寫；目的地完成後才作為完整結果讀取"
       ],
       "tradeoffs": [
         "軟體模擬引擎本身占 CPU",

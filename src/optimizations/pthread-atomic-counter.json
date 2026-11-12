@@ -26,8 +26,8 @@
   "updatedAt": "2026-11-12",
   "sources": [
     {
-      "title": "C++ atomics",
-      "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+      "title": "C11 atomic_fetch_add_explicit",
+      "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
     }
   ],
   "relatedMethodIds": [],
@@ -56,8 +56,8 @@
       ],
       "sources": [
         {
-          "title": "C++ atomics",
-          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+          "title": "C11 atomic_fetch_add_explicit",
+          "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
       "verified": false
@@ -81,8 +81,8 @@
       ],
       "sources": [
         {
-          "title": "C++ atomics",
-          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+          "title": "C11 atomic_fetch_add_explicit",
+          "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
       "verified": false
@@ -106,8 +106,8 @@
       ],
       "sources": [
         {
-          "title": "C++ atomics",
-          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+          "title": "C11 atomic_fetch_add_explicit",
+          "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
       "verified": false
