@@ -35,17 +35,20 @@ def callback(self, msg):
 
 ```python
 # 示意架構：callback 快速交給有上限的工作佇列
-from queue import Queue
+from queue import Queue, Full
 work = Queue(maxsize=32)
 
 def callback(self, msg):
-    work.put_nowait(copy_needed_fields(msg))
+    try:
+        work.put_nowait(copy_needed_fields(msg))
+    except Full:
+        record_drop(msg)  # 只適用於允許丟棄的資料；否則必須改背壓策略
 # 另一 worker 消費 work，重計算後安全回傳結果
 ```
 
 ## 逐步理解，為什麼這樣改
 
-分段後 callback 返回更早，但排隊、資料複製、輸出順序及 worker 與 ROS node 的互動都要另外設計。`put_nowait` 在滿載會丟 Full 例外，正式程式必須處理，不能照貼。
+分段後 callback 返回更早，但排隊、資料複製、輸出順序及 worker 與 ROS node 的互動都要另外設計。`put_nowait` 在滿載會丟 `Full` 例外。上方選擇記錄並丟棄，只有任務允許丟失時才成立；若每筆都必須保留，就需讓上游等待或採用其他背壓策略，並量測新增等待。`copy_needed_fields`、`record_drop` 與 worker 是待整合的應用函式，這不是完整 ROS 2 節點。
 
 ## 什麼情況才適合
 
@@ -67,7 +70,8 @@ def callback(self, msg):
 
 ## 考場快速判斷
 
-看到 **ROS 2 找不到資料** 或 **topic 名稱不一致** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Topic 正常收到資料，但 Subscriber Callback 同步處理太久、後續工作彼此獨立時，才評估有上限 Queue 與非同步階段，並處理 Queue Full、完成順序及關閉。
 
 ## 參考文件與驗證狀態
 

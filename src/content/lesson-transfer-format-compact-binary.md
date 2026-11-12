@@ -7,7 +7,7 @@ aliases: compact-binary, transfer-format
 difficulty: intermediate
 priority: P0
 source_type: personal
-source_url: https://en.cppreference.com/w/c/language/operator_arithmetic.html
+source_url: https://docs.python.org/3/library/struct.html
 verified: false
 updated_at: 2026-11-12
 summary: 在雙方都能改動協定的情境，比較 binary 與 text。
@@ -36,7 +36,8 @@ packet = f"{sensor_id},{reading}".encode("ascii")
 import struct
 # 1 byte ID + 2 bytes unsigned value, network byte order
 packet = struct.pack(">BH", sensor_id, reading)
-# Receiver: sensor_id, reading = struct.unpack(">BH", packet)
+assert len(packet) == 3
+assert struct.unpack(">BH", packet) == (sensor_id, reading)
 ```
 
 ## 逐步理解，為什麼這樣改
@@ -63,8 +64,9 @@ packet = struct.pack(">BH", sensor_id, reading)
 
 ## 考場快速判斷
 
-看到 **payload too large** 或 **不必要的大欄位** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+每筆資料的文字編碼／傳輸體積成為瓶頸，且收發兩端都能升級協定時，評估固定長度二進位欄位；先確認數值範圍、端序與版本。
 
 ## 參考文件與驗證狀態
 
-- [C bitwise operators](https://en.cppreference.com/w/c/language/operator_arithmetic.html)
+- [Python `struct`：格式字串與位元組順序](https://docs.python.org/3/library/struct.html)

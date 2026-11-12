@@ -81,6 +81,7 @@
       "summary": "Copy 來源與目的都遞增；Fill 可固定來源並遞增目的。",
       "principle": "同一引擎透過不同位址更新策略執行兩種操作。",
       "conditions": [
+        "先核對 src_increment 與 dst_increment 是否符合複製或固定值填充需求",
         "目的 buffer 可容納 count * size",
         "來源具有足夠資料或為一個固定值"
       ],
@@ -113,6 +114,7 @@
       "summary": "非同步 DMA 可能讓 CPU 不必親自做搬運，但需考慮完成等待。",
       "principle": "先 configure/start，做無關工作，再 wait、讀結果。",
       "conditions": [
+        "傳輸 API 可非同步完成，且 CPU 有與傳輸資料無相依的工作",
         "有安全可重疊的 CPU 工作",
         "來源傳輸期間保持有效且不改寫；目的地完成後才作為完整結果讀取"
       ],

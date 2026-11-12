@@ -62,7 +62,8 @@ sub = self.create_subscription(Msg, "/state", cb, 1)
 
 ## 考場快速判斷
 
-看到 **QoS mismatch** 或 **Publisher 與 Subscriber QoS 不相容** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Topic 已連通但 Subscriber 落後、正在處理過時狀態，而且允許捨棄舊狀態時，才評估 Keep Last depth。不能用改 depth 修復 Reliability／Durability 不相容。
 
 ## 參考文件與驗證狀態
 

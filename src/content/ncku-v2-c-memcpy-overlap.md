@@ -28,11 +28,15 @@ memcpy 的來源與目的記憶體區段不可以重疊；memmove 則支援重�
 
 ```c
 #include <string.h>
-char buf[] = "abcdef";
-// 將 buf[2..5] 向左搬兩格：來源與目的重疊
-memmove(buf, buf + 2, 4);
-buf[4] = '\0';
-// buf 現在是 "cdef"
+
+int main(void) {
+    char buf[] = "abcdef";
+    /* 來源 buf[2..5] 與目的 buf[0..3] 重疊。 */
+    memmove(buf, buf + 2, 4);
+    buf[4] = '\0';
+    if (strcmp(buf, "cdef") != 0) return 1;
+    return 0;
+}
 ```
 
 ## 可以嘗試的方案

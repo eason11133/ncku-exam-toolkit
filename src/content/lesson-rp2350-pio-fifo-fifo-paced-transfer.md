@@ -28,6 +28,10 @@ CPU 把 word 寫入 **TX FIFO**，PIO 狀態機從 FIFO 取走後才執行後續
 
 FIFO 滿只表示生產者比目前消費者快，**不能單憑這個現象判定錯誤或保證有更高吞吐**。如果 PIO 時脈或外部協定是上限，DMA 也不會提高該上限。
 
+## 考場快速判斷
+
+先分辨 CPU 是卡在 `pio_sm_put_blocking()` 等待已滿的 TX FIFO、PIO 因空 FIFO 等不到資料，還是 CPU 在大量逐筆搬運上花太多時間。前者應先找 PIO 或外部協定的消耗上限；只有確認 CPU 逐筆餵資料是瓶頸且 PIO 有足夠消耗能力，才評估 DMA。手動輪詢 FIFO 不會自動提高吞吐。
+
 ## 用真實 Pico SDK API 看原本流程
 
 以下是可放進已初始化 PIO 專案的 **函式片段**；呼叫端仍須載入 PIO 程式、配置並啟動 state machine、提供有效陣列，且確定程式會消耗 TX FIFO。此函式只保證每個 word 已寫入 FIFO，**不保證最後一個 word 已在 pin 上送完**。

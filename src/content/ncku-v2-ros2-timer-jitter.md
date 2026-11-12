@@ -32,7 +32,7 @@ from time import perf_counter_ns
 now = perf_counter_ns()
 if self.prev is not None:
     dt_ms = (now - self.prev) / 1e6
-    self.intervals_ms.append(dt_ms)
+    self.intervals_ms.append(dt_ms)  # 實際開始間隔
 self.prev = now
 # 真正工作另記 callback start/end 時間
 ```
@@ -71,7 +71,7 @@ self.prev = now
 
 ## 具體驗證流程
 
-在低負載與壓力負載各收集至少幾百次間隔，報告平均、P95、最大值與漏執行次數。再記 callback 本身耗時，分開「開始排程晚」和「執行完得晚」。每輪須使用相同負載與 timer 週期。
+在低負載與壓力負載各收集至少幾百次**實際 callback 開始間隔**，報告平均、P95、最大值與漏執行次數。再記 callback 本身耗時。若要量相對預定時刻的排程延遲，必須取得同一時鐘基準下的預定時刻並計算 `actual_start - scheduled_start`；只用相鄰開始間隔無法得出該值。每輪須使用相同負載與 timer 週期。
 
 ## 什麼情況不該用
 

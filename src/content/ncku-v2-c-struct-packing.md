@@ -29,7 +29,6 @@ difficulty: intermediate
 以下是 **完整 C11 程式**。線上格式固定為 5 bytes：第 0 byte 是 `kind`，第 1～4 byte 是 big-endian `value`。函式先檢查指標與長度，再逐 byte 解析；成功才寫入輸出參數。
 
 ```c
-#include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -52,10 +51,14 @@ bool parse_packet(const uint8_t *data, size_t length, struct Packet *out) {
 int main(void) {
     const uint8_t valid[5] = {0x7a, 0x12, 0x34, 0x56, 0x78};
     struct Packet result = {0};
-    assert(parse_packet(valid, sizeof valid, &result));
-    assert(result.kind == 0x7a && result.value == UINT32_C(0x12345678));
-    assert(!parse_packet(valid, 4, &result));
-    assert(!parse_packet(NULL, 5, &result));
+    if (!parse_packet(valid, sizeof valid, &result)) return 1;
+    if (result.kind != 0x7a || result.value != UINT32_C(0x12345678)) return 2;
+    if (parse_packet(valid, 4, &result)) return 3;
+    if (parse_packet(NULL, 5, &result)) return 4;
+    if (parse_packet(valid, 5, NULL)) return 5;
+    const uint8_t reversed[5] = {0x7a, 0x78, 0x56, 0x34, 0x12};
+    if (!parse_packet(reversed, sizeof reversed, &result)) return 6;
+    if (result.value != UINT32_C(0x78563412)) return 7;
     return 0;
 }
 ```

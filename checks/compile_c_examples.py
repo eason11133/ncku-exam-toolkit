@@ -36,19 +36,26 @@ def main() -> int:
             full = FULL_LABEL in preface
             fences.append((article, number, match.group(1), full))
 
-    full_examples = [entry for entry in fences if entry[3]]
+    full_examples = [entry for entry in fences if entry[3] or "int main(" in entry[2]]
     if len(full_examples) < 2:
         raise RuntimeError("Expected the two corrected complete C examples")
 
     with tempfile.TemporaryDirectory(prefix="ncku-c-examples-") as directory:
         temp = Path(directory)
-        for article, number, source, _ in full_examples:
+        for article, number, source, labeled in full_examples:
             c_file = temp / f"{article.stem}-{number}.c"
             executable = temp / f"{article.stem}-{number}.exe"
             c_file.write_text(source + "\n", encoding="utf-8")
             run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(c_file), "-o", str(executable)])
             run([str(executable)], quiet=True)
-            print(f"PASS: {article.relative_to(ROOT)} C block {number} compiled and ran")
+            grade = "labeled complete" if labeled else "standalone main"
+            print(f"PASS ({grade}): {article.relative_to(ROOT)} C block {number} compiled and ran")
+
+        for example in sorted((ROOT / "examples").glob("*.c")):
+            executable = temp / f"external-{example.stem}.exe"
+            run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(example), "-o", str(executable)])
+            run([str(executable)], quiet=True)
+            print(f"PASS (linked complete file): {example.relative_to(ROOT)} compiled and ran")
 
         atomic_article = CONTENT / "ncku-v2-pthread-atomic-counter.md"
         atomic = next((entry for entry in fences if entry[0] == atomic_article), None)
@@ -59,7 +66,7 @@ def main() -> int:
         run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", "-fsyntax-only", str(c_file)])
         print("PASS: C11 atomic function snippet passed GCC syntax check")
 
-    print(f"Audited {len(fences)} C blocks: {len(full_examples)} labeled complete; {len(fences) - len(full_examples)} context-dependent snippets.")
+    print(f"Audited {len(fences)} C blocks: {len(full_examples)} standalone complete programs compiled and ran; {len(fences) - len(full_examples)} context-dependent snippets not compiled as standalone programs.")
     return 0
 
 

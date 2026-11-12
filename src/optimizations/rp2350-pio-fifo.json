@@ -107,6 +107,7 @@
       "summary": "避免 CPU 持續忙於搬資料，但不保證總延遲更低。",
       "principle": "DMA 可依 DREQ 與 FIFO 速率協調記憶體和周邊的傳輸。",
       "conditions": [
+        "已量測 CPU 逐筆餵資料的成本；若 PIO 或外部協定是上限，DMA 不會提高該上限",
         "有實體 DMA 與 PIO 支援",
         "確認來源緩衝區容量與生命週期、資料寬度、PIO TX/RX DREQ 和完成訊號"
       ],

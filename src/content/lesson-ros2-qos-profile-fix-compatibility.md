@@ -63,7 +63,8 @@ ROS 2 QoS 可能造成端點不配對。先確認型別和 topic 完整名稱，
 
 ## 考場快速判斷
 
-看到 **QoS mismatch** 或 **Publisher 與 Subscriber QoS 不相容** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Publisher/Subscriber topic 名稱與型別已相同，卻無法通訊，且 `ros2 topic info -v` 顯示 Reliability／Durability 等 Request/Offered 不相容時，先修相容性，不要只調 depth。
 
 ## 參考文件與驗證狀態
 

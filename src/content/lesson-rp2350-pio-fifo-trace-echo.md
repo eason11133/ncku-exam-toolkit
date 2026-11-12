@@ -64,7 +64,8 @@ PIO 有 TX FIFO、OSR、ISR、RX FIFO 等分工；同一個值回不來可能是
 
 ## 考場快速判斷
 
-看到 **PIO FIFO full** 或 **FIFO 沒有生產者或消費者** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+PIO Echo 發送與接收的 word 值、順序或數量不一致時，逐步核對 TX FIFO → OSR → X → ISR → RX FIFO、pull/push 條件及移位方向。
 
 ## 參考文件與驗證狀態
 

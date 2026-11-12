@@ -59,7 +59,7 @@ pthread_mutex_unlock(&q.mu);
 
 Ring Buffer 用固定長度陣列、`head`（下次讀位置）、`tail`（下次寫位置）、`count`（目前筆數）。更新這三個欄位時，都必須有同步保護。
 
-目前專案未附原文所稱的 `examples/pthread_bounded_queue.c`，因此這裡只說明設計條件，不宣稱已有可編譯的完整示範或特定執行結果。上面的 pthread 程式碼是等待條件的片段；完整實作仍需補齊共享狀態、Producer／Consumer 函式、有界佇列容量、`not_empty`／`not_full` 的訊號與安全關閉流程。這也不是成大 2-3 Transfer Engine 的同步範本。
+完整的有界佇列範例見 `examples/pthread_bounded_queue.c`，需另行編譯執行；頁內程式碼仍只是片段。上面的 pthread 程式碼是等待條件的片段；完整實作仍需補齊共享狀態、Producer／Consumer 函式、有界佇列容量、`not_empty`／`not_full` 的訊號與安全關閉流程。這也不是成大 2-3 Transfer Engine 的同步範本。
 
 ## 方案 C：有很多細小任務時，評估批次取出
 

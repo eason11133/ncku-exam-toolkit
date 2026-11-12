@@ -39,7 +39,7 @@ int xs[1000], ys[1000], zs[1000];
 
 若主要工作是連續掃描 `x`，SoA **可能**減少不必要的資料搬入，並方便向量化；但如果每次都要一起讀 `x,y,z`，AoS 也可能比較合適。
 
-目前專案未附原文所稱的 `examples/memory_layout.c`。上面的 AoS／SoA 宣告只是布局片段，尚未包含初始化、相同資料的總和核對或效能量測，因此不能宣稱已比較出哪個布局更快。
+完整的資料布局與總和核對範例見 `examples/memory_layout.c`。上面的 AoS／SoA 宣告只是布局片段，尚未包含初始化、相同資料的總和核對或效能量測，因此不能宣稱已比較出哪個布局更快。
 
 ## 方案 B：減少不必要的指標跳躍
 
@@ -60,6 +60,6 @@ int xs[1000], ys[1000], zs[1000];
 3. Linux 若有權限，可查 `perf stat`、`perf list` 等，觀察 Cache 相關事件；可用事件依硬體和權限不同。
 4. 設計包含少量資料與大量資料的對照。對很小的資料，資料布局差異可能根本不明顯。
 
-**查證狀態**：原理為通用 CPU 記憶體工程概念；附範例可用 C 編譯，未在指定 CPU／考場專案做效能實測。
+**查證狀態**：原理為通用 CPU 記憶體工程概念；`examples/memory_layout.c` 已編譯並執行核對總和，未在指定 CPU／考場專案做效能實測。
 
 來源：[C struct](https://en.cppreference.com/w/c/language/struct.html)、[Linux perf stat](https://man7.org/linux/man-pages/man1/perf-stat.1.html)。

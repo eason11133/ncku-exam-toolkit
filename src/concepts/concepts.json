@@ -723,13 +723,9 @@
     "whenToUse": "訊息有收到卻沒印出或處理太慢時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-cli-workflow"
+      "articleId": "ncku-ros2-executor"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-topic-pipeline",
-      "optionId": "check-cli"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "executor",
       "callback-group",
@@ -752,13 +748,9 @@
     "whenToUse": "想知道每次多久送一筆、為何不準時時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-cli-workflow"
+      "articleId": "ncku-v2-ros2-timer-jitter"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-topic-pipeline",
-      "optionId": "check-cli"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-1/README.md"
   },
@@ -802,13 +794,9 @@
     "whenToUse": "topic list 有東西，但兩個 node 沒接上時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-cli-workflow"
+      "articleId": "ncku-v2-ros2-remap-diagnostics"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-topic-pipeline",
-      "optionId": "check-cli"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-1/README.md"
   },
@@ -1052,13 +1040,9 @@
     "whenToUse": "看到 client、server、call_async 時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-cli-workflow"
+      "articleId": "ncku-v2-ros2-service-client-deadlock"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-service-client-deadlock",
-      "optionId": "option-1-call-async"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-1/README.md"
   },
@@ -1119,13 +1103,9 @@
     "whenToUse": "node list 空白，但程式明明在跑時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-cli-workflow"
+      "articleId": "ncku-v2-ros2-remap-diagnostics"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-topic-pipeline",
-      "optionId": "check-cli"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-1/README.md"
   },
@@ -1760,13 +1740,9 @@
     "whenToUse": "閱讀 PIO 規格與晶片差異時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-embedded-riscv-io"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -1785,13 +1761,9 @@
     "whenToUse": "比較桌機 CPU 與嵌入式控制器時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-embedded-riscv-io"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -1843,13 +1815,9 @@
     "whenToUse": "PIO 程式卡住、不知道資料停在哪一段時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-fifo-stall"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "fifo-paced-transfer"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "pio",
       "fifo",
@@ -1938,11 +1906,7 @@
       "kind": "article",
       "articleId": "ncku-pio-dataflow"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "pio-state-machine-limits",
-      "optionId": "option-2-pio-program"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -1963,11 +1927,7 @@
       "kind": "article",
       "articleId": "ncku-pio-dataflow"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -1988,11 +1948,7 @@
       "kind": "article",
       "articleId": "ncku-pio-dataflow"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2062,13 +2018,9 @@
     "whenToUse": "PIO 沒資料可 pull，或 CPU 寫入時一直卡住。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-fifo-stall"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "fifo-paced-transfer"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2088,13 +2040,9 @@
     "whenToUse": "PIO 有跑卻收不到資料、push 卡住時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-fifo-stall"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "fifo-paced-transfer"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2113,13 +2061,9 @@
     "whenToUse": "讀 PIO 原始碼中的 out 指令時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-shift-order"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2138,13 +2082,9 @@
     "whenToUse": "讀 PIO 原始碼中的 in 指令時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-shift-order"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2213,13 +2153,9 @@
     "whenToUse": "要確認 PIO 能連續處理多個 word 時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-shift-order"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2238,13 +2174,9 @@
     "whenToUse": "設計 PIO 接收資料的程式時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-shift-order"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2266,11 +2198,7 @@
       "kind": "article",
       "articleId": "ncku-pio-dataflow"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "trace-echo"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2340,13 +2268,9 @@
     "whenToUse": "echo 數據每個 byte 或 bit 排序怪怪的時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-pio-shift-order"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "pio-shift-order",
-      "optionId": "option-1-osr-isr-shift-direction"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-2/demo_pio.pio"
   },
@@ -2609,11 +2533,7 @@
       "kind": "article",
       "articleId": "ncku-pthread-critical-section"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "spinlock-critical-section",
-      "optionId": "move-work-outside"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "mutex",
       "critical-section",
@@ -2764,11 +2684,7 @@
       "kind": "article",
       "articleId": "ncku-pthread-critical-section"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "pthread-atomic-counter",
-      "optionId": "option-1-atomic"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-3/README.md"
   },
@@ -3329,11 +3245,7 @@
       "kind": "article",
       "articleId": "ncku-c-memory"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "memory-buffer-copy",
-      "optionId": "choose-memmove"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-3/README.md"
   },
@@ -3404,11 +3316,7 @@
       "kind": "article",
       "articleId": "ncku-c-language-bridge"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "count-unit"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "demo/section2-3/README.md"
   },
@@ -3534,13 +3442,9 @@
     "whenToUse": "要把 Demo 概念改寫成 Pico SDK 實際程式時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -3560,13 +3464,9 @@
     "whenToUse": "CPU 不斷執行 pio_sm_put_blocking 的傳輸迴圈時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "dma",
       "pio",
@@ -3592,13 +3492,9 @@
     "whenToUse": "DMA 已啟動但資料速率要跟 PIO 配合時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "dma",
       "pio-dma",
@@ -3621,13 +3517,9 @@
     "whenToUse": "設定 channel_config_set_dreq 時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -3646,12 +3538,12 @@
     "whenToUse": "要解釋為何資料正常但 CPU 無法做其他工作時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer"
     },
     "exampleSolution": {
       "kind": "optimization",
       "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
+      "optionId": "fifo-paced-transfer"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3672,13 +3564,9 @@
     "whenToUse": "程式停住但 CPU 也許正在等外部裝置時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-transfer-interrupt-or-poll"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "fifo-paced-transfer"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -3697,13 +3585,9 @@
     "whenToUse": "要避免 CPU 一直等周邊傳輸時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-transfer-interrupt-or-poll"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "rp2350-pio-fifo",
-      "optionId": "pio-with-dma"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -3723,12 +3607,12 @@
     "whenToUse": "要把 CPU 逐筆送資料的程式改成 DMA 時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "count-unit"
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3748,12 +3632,12 @@
     "whenToUse": "DMA 反覆讀到同一個數值時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "copy-vs-fill"
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3773,12 +3657,12 @@
     "whenToUse": "改 DMA 時發現寫入位址不應是陣列時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "copy-vs-fill"
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3799,12 +3683,12 @@
     "whenToUse": "結果位元錯位、搬錯筆數時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "count-unit"
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3825,13 +3709,9 @@
     "whenToUse": "傳出去的資料偶爾變亂、buffer 被提早覆寫時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "transfer-engine-configuration",
-      "optionId": "overlap-cpu"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -3851,13 +3731,9 @@
     "whenToUse": "DMA 傳輸內容像是舊資料，但原始 buffer 已更新時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-dma-cache-coherency"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "dma-cache-coherency",
-      "optionId": "option-1-method"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [
       "dma",
       "cache",
@@ -3881,12 +3757,12 @@
     "whenToUse": "傳輸與計算可以重疊時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-v2-transfer-double-buffer"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "resource-queues",
-      "optionId": "double-buffer"
+      "methodId": "transfer-double-buffer",
+      "optionId": "option-1-buffer"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3907,12 +3783,12 @@
     "whenToUse": "連續接收感測器資料或串流封包時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-pthread-condvar-queue"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "resource-queues",
-      "optionId": "bounded-queue"
+      "methodId": "pthread-condition-queue",
+      "optionId": "bounded-ring-buffer"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3932,12 +3808,12 @@
     "whenToUse": "資料來源比處理速度快時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-pthread-condvar-queue"
     },
     "exampleSolution": {
       "kind": "optimization",
-      "methodId": "resource-queues",
-      "optionId": "bounded-queue"
+      "methodId": "pthread-condition-queue",
+      "optionId": "bounded-ring-buffer"
     },
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
@@ -3958,13 +3834,9 @@
     "whenToUse": "比較 CPU 迴圈與 DMA 的總傳輸能力時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-pio-dataflow"
+      "articleId": "ncku-performance-benchmark"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "benchmark-correctness",
-      "optionId": "compare-tradeoff"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
   },
@@ -4674,13 +4546,9 @@
     "whenToUse": "Service 有送出卻一直等不到回覆時。",
     "relatedArticle": {
       "kind": "article",
-      "articleId": "ncku-ros2-executor"
+      "articleId": "ncku-v2-ros2-service-client-deadlock"
     },
-    "exampleSolution": {
-      "kind": "optimization",
-      "methodId": "ros2-service-client-deadlock",
-      "optionId": "option-2-callback-groups"
-    },
+    "exampleSolution": null,
     "relatedConceptIds": [],
     "source": "ROS 2 Jazzy official documentation"
   },
