@@ -21,8 +21,10 @@ export function readNavigationData() {
       if (id !== name.slice(0, -3)) articleIds.push(`MISMATCHED_FILENAME:${name}`)
     } else if (name.endsWith('.json')) articleIds.push(read(`src/content/${name}`).id)
   }
-  const methodIds = files('src/optimizations').map(name => read(`src/optimizations/${name}`).id)
-  return { taxonomy, conceptIds: concepts.map(item => item.id), articleIds, methodIds, conceptRoutes, articleRoutes, methodRoutes }
+  const methods = files('src/optimizations').map(name => read(`src/optimizations/${name}`))
+  const methodIds = methods.map(method => method.id)
+  const optionArticleIds = methods.flatMap(method => method.options.map(option => option.articleId).filter(Boolean))
+  return { taxonomy, conceptIds: concepts.map(item => item.id), articleIds, methodIds, optionArticleIds, conceptRoutes, articleRoutes, methodRoutes }
 }
 
 export function validateNavigation(data) {
@@ -62,6 +64,12 @@ export function validateNavigation(data) {
   }
   for (const leaf of leaves) {
     if (![...data.conceptRoutes, ...data.articleRoutes, ...data.methodRoutes].some(route => route.primaryLeafId === leaf)) errors.push(`空分類：${leaf}`)
+  }
+  const realArticles = new Set(data.articleIds)
+  const routedArticles = new Set(data.articleRoutes.map(route => route.articleId))
+  for (const id of data.optionArticleIds || []) {
+    if (!realArticles.has(id)) errors.push(`解法教材文章不存在：${id}`)
+    else if (!routedArticles.has(id)) errors.push(`解法教材文章未分類：${id}`)
   }
   return { errors, roots: data.taxonomy.roots.length, leaves: leaves.size, concepts: data.conceptIds.length, articles: data.articleIds.length, methods: data.methodIds.length }
 }

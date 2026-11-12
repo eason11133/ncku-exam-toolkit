@@ -9,6 +9,10 @@
   },
   "articles": {
     "title": "選閱讀順序",
-    "template": "根據目前題目，從下列教材選 1～5 個，依閱讀順序回覆 ID、標題和各一句理由。先選需要理解的觀念，再選文章或解法；沒有合適項目就回 NO_MATCH。不得選清單外的 ID。\n\n{available_items}"
+    "template": "根據目前題目，從下列真正存在的教材文章選 1～5 篇，依閱讀順序回覆文章 ID、標題和各一句理由；若都需要，可回覆 ALL。沒有合適文章就回 NO_MATCH，不得編造標題或 ID。\n\n{available_items}"
+  },
+  "emptyArticles": {
+    "title": "改選相關分類",
+    "template": "這個分類目前沒有可讀的教材文章。請根據題目，從下列相關分類選 1 個 ID；若都不符合，回 NO_MATCH。不要把觀念詞條當成文章，也不要編造教材。\n\n{related_options}"
   }
 }

@@ -16,11 +16,14 @@ export type NavigationCandidates = {
   articles: Routed<Article>[]
   methods: Routed<OptimizationMethod>[]
 }
+export type ReadingArticle = Routed<Article> & { solutionLesson: boolean }
 
 export const taxonomy = taxonomyData.roots as TaxonomyNode[]
 const conceptRoutes = new Map(conceptRoutesData.map(route => [route.conceptId, route]))
 const articleRoutes = new Map(articleRoutesData.map(route => [route.articleId, route]))
 const methodRoutes = new Map(optimizationRoutesData.map(route => [route.methodId, route]))
+const articleById = new Map(articles.map(article => [article.id, article]))
+const solutionArticleIds = new Set(optimizations.flatMap(method => method.options.map(option => option.articleId).filter((id): id is string => Boolean(id))))
 
 export function findNavigationNode(path: string[]): TaxonomyNode | undefined {
   let nodes = taxonomy
@@ -58,8 +61,29 @@ export function navigationCandidates(node: TaxonomyNode): NavigationCandidates {
 }
 
 export function navigationCount(node: TaxonomyNode) {
+  return navigationReading(node).length
+}
+
+export function navigationReading(node: TaxonomyNode): ReadingArticle[] {
   const candidates = navigationCandidates(node)
-  return candidates.concepts.length + candidates.articles.length + candidates.methods.length
+  const leaves = leafIds(node)
+  const found = new Map<string, ReadingArticle>()
+  for (const { item, related } of candidates.articles) found.set(item.id, { item, related, solutionLesson: solutionArticleIds.has(item.id) })
+  for (const { item: method } of candidates.methods) {
+    for (const option of method.options) {
+      if (!option.articleId || found.has(option.articleId)) continue
+      const article = articleById.get(option.articleId)
+      if (article) found.set(article.id, { item: article, related: relation(articleRoutes.get(article.id), leaves) !== 'primary', solutionLesson: true })
+    }
+  }
+  return [...found.values()].sort((a, b) => Number(a.related) - Number(b.related) || a.item.title.localeCompare(b.item.title, 'zh-Hant'))
+}
+
+export function relatedNavigationNodes(path: TaxonomyNode[]): TaxonomyNode[] {
+  const current = path.at(-1)
+  if (!current) return []
+  const siblings = path.at(-2)?.children || taxonomy
+  return siblings.filter(node => node.id !== current.id && navigationCount(node) > 0)
 }
 
 const optionLine = (node: TaxonomyNode) => `- ${node.id}｜${node.label}：${node.question}（${node.hint}）`
@@ -70,19 +94,18 @@ export function navigationPrompt(path: TaxonomyNode[], showCandidates: boolean):
 
   const pathContext = `【目前分類路徑】\n${path.map(node => `- ${node.id}｜${node.label}：${node.question}（${node.hint}）`).join('\n')}\n\n`
   if (showCandidates || current.children.length === 0) {
-    const candidates = navigationCandidates(current)
-    const conceptLines = (coverage: 'demo' | 'extension') => candidates.concepts.filter(({ item }) => item.coverage === coverage)
-      .map(({ item, related }) => `- ${item.id}｜${item.title}：${item.explanation}${related ? '【跨分類相關】' : ''}`)
-    const articleLines = candidates.articles.map(({ item, related }) => `- ${item.id}｜${item.title}：${item.summary}${related ? '【跨分類相關】' : ''}`)
-    const methodLines = candidates.methods.flatMap(({ item, related }) => [
-      `- ${item.id}｜${item.name}：${item.summary}${related ? '【跨分類相關】' : ''}`,
-      ...item.options.map(option => `  - ${item.id}::${option.id}｜${item.name} → ${option.title}：${option.summary}${related ? '【跨分類相關】' : ''}`),
-    ])
+    const reading = navigationReading(current)
+    if (!reading.length) {
+      const relatedOptions = relatedNavigationNodes(path).map(optionLine).join('\n') || '沒有相鄰分類可選；請返回上一層或改用搜尋。'
+      return pathContext + promptData.emptyArticles.template.replace('{related_options}', relatedOptions)
+    }
+    const direct = reading.filter(entry => !entry.related)
+    const related = reading.filter(entry => entry.related)
+    const line = ({ item, solutionLesson }: ReadingArticle) => `- ${item.id}｜${item.title}：${item.summary}${solutionLesson ? '【解法教材】' : '【技術文章】'}`
     const availableItems = [
-      '【先看觀念｜Demo 相關】', ...conceptLines('demo'),
-      '【先看觀念｜延伸】', ...conceptLines('extension'),
-      '【再看技術文章】', ...articleLines,
-      '【再看優化方法／選項】', ...methodLines,
+      direct.length ? '【此分類的教材文章】' : '【此分類沒有直接對應文章】',
+      ...direct.map(line),
+      ...(related.length ? ['【跨分類相關教材】', ...related.map(line)] : []),
     ].join('\n')
     return pathContext + promptData.articles.template.replace('{available_items}', availableItems)
   }
