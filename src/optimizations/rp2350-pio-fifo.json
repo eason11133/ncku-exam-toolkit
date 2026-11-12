@@ -1,0 +1,135 @@
+{
+  "id": "rp2350-pio-fifo",
+  "name": "RP2350 PIO／TX RX FIFO",
+  "aliases": [
+    "PIO",
+    "Programmable I/O",
+    "OSR ISR"
+  ],
+  "category": "PIO",
+  "summary": "PIO 狀態機依指令移動資料、控制時序，FIFO 連接 CPU 與 PIO。",
+  "problems": [
+    "PIO FIFO full",
+    "PIO push stuck",
+    "PIO pull stuck",
+    "PIO output wrong",
+    "PIO throughput"
+  ],
+  "bottlenecks": [
+    "FIFO 沒有生產者或消費者",
+    "OSR／ISR 的 shift 配置錯",
+    "時鐘設定／PIO 程式限制"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK Hardware APIs",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    },
+    {
+      "title": "Pico SDK DMA Header",
+      "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+    }
+  ],
+  "relatedMethodIds": [
+    "transfer-engine-configuration"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "trace-echo",
+      "title": "逐步追出 PIO Echo 資料路徑",
+      "aliases": [],
+      "summary": "從 TX FIFO → OSR → X → ISR → RX FIFO 找出資料停在哪。",
+      "principle": "`out x,32; in x,32; push` 可在正確 autopull 設定下送回一個 word。",
+      "conditions": [
+        "CPU 已寫入 TX FIFO",
+        "state machine 與 autopull 設定已核對"
+      ],
+      "tradeoffs": [
+        "未適當配置可能停在 pull/push",
+        "這只是閱讀範例，非已測實體硬體"
+      ],
+      "behavior": "輸入與輸出每個 32-bit word 應相同、數量與順序正確。",
+      "metrics": [
+        "資料一致性",
+        "FIFO 溢出/阻塞"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK Hardware APIs",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "asm",
+        "snippet": "out x, 32\nin x, 32\npush"
+      }
+    },
+    {
+      "id": "fifo-paced-transfer",
+      "title": "按 FIFO 節奏供應或消耗資料",
+      "aliases": [],
+      "summary": "避免 CPU／DMA 不適當的進出速率造成欠載與阻塞。",
+      "principle": "確認 TX/RX FIFO、PIO state machine 的執行速率與資料消費速率。",
+      "conditions": [
+        "能讀取或推導 FIFO 狀態",
+        "有實際目標硬體與 PIO 設定"
+      ],
+      "tradeoffs": [
+        "增加緩衝會占資源",
+        "錯誤的 FIFO 方向或時序會造成資料遺失"
+      ],
+      "behavior": "不改變協定輸出與時序的正確性。",
+      "metrics": [
+        "有效吞吐",
+        "丟失率",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK Hardware APIs",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "pio-with-dma",
+      "title": "若硬體支援，評估 PIO FIFO + DMA",
+      "aliases": [],
+      "summary": "避免 CPU 持續忙於搬資料，但不保證總延遲更低。",
+      "principle": "DMA 可依 DREQ 與 FIFO 速率協調記憶體和周邊的傳輸。",
+      "conditions": [
+        "有實體 DMA 與 PIO 支援",
+        "確認地址、資料寬度、DREQ、完成通知"
+      ],
+      "tradeoffs": [
+        "需要通道及匯流排頻寬",
+        "小資料量或同步成本可能更慢"
+      ],
+      "behavior": "DMA 未完成不能讀 buffer，也要檢查 cache 與一致性。",
+      "metrics": [
+        "CPU",
+        "吞吐量",
+        "延遲",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK Hardware APIs",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        },
+        {
+          "title": "Pico SDK DMA Header",
+          "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "id": "ros2-topic-pipeline",
+  "name": "ROS 2 Topic／Publisher／Subscriber",
+  "aliases": [
+    "ros2 topic",
+    "Publisher/Subscriber",
+    "資料流"
+  ],
+  "category": "ROS 2",
+  "summary": "訊息從 Publisher 經 Topic 到 Subscriber，Callback 處理後可能再發布；先定位收不到資料的那一段。",
+  "problems": [
+    "ROS 2 找不到資料",
+    "topic 沒訊息",
+    "subscriber 沒收到",
+    "publisher frequency too low"
+  ],
+  "bottlenecks": [
+    "topic 名稱不一致",
+    "message type 或 QoS 不相容",
+    "publisher 沒送出或 subscriber callback 卡住"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy Topic CLI",
+      "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+    },
+    {
+      "title": "ROS 2 Jazzy Executors",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "single-threaded-executor",
+    "ros2-qos-profile"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "check-cli",
+      "title": "用 ROS 2 CLI 定位傳輸問題",
+      "aliases": [
+        "ros2 node info",
+        "ros2 topic echo"
+      ],
+      "summary": "先找出資料是在哪一段消失，再修改程式。",
+      "principle": "用 node info 對照發布／訂閱，再用 topic echo 驗證原始資料與處理結果。",
+      "conditions": [
+        "ROS 2 Jazzy 環境已啟動",
+        "知道預期 Topic 名稱與訊息型別"
+      ],
+      "tradeoffs": [
+        "CLI 只能觀察，還需要進一步定位程式碼",
+        "echo/hz 的輸出也有額外成本"
+      ],
+      "behavior": "保持 Topic 名稱、message type、處理後結果的正確性；除非需求允許，不能藉由跳過訊息改善速度。",
+      "metrics": [
+        "通訊成功",
+        "資料正確性",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Topic CLI",
+          "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "bash",
+        "snippet": "ros2 node list\nros2 node info /processor\nros2 topic list -t\nros2 topic info /number -v\nros2 topic echo /number"
+      }
+    },
+    {
+      "id": "reduce-work",
+      "title": "減少 Subscriber Callback 內的多餘工作",
+      "aliases": [],
+      "summary": "找到重複解析、同步 I/O 或昂貴計算，先量測後縮短。",
+      "principle": "Callback 在忙時可能接收排隊，縮短工作量能增加可處理的頻率。",
+      "conditions": [
+        "已量測到 Callback 自身耗時",
+        "不改變訊息格式與輸出規則"
+      ],
+      "tradeoffs": [
+        "重複工作若改成快取，要處理更新與失效",
+        "過度省略可能丟必要驗證"
+      ],
+      "behavior": "輸入輸出資料值、順序、數量必須符合原規格。",
+      "metrics": [
+        "callback 耗時",
+        "輸出筆數",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Topic CLI",
+          "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+        },
+        {
+          "title": "ROS 2 Jazzy Executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "parallel-stages",
+      "title": "確認是否適合拆成處理階段",
+      "aliases": [],
+      "summary": "若處理可彼此獨立，評估分階段與非同步處理。",
+      "principle": "把 I/O 等待與計算隔離，可能降低互相阻塞；但需要額外的佇列和完成順序設計。",
+      "conditions": [
+        "各階段可獨立處理",
+        "可以定義緩衝上限及溢出策略"
+      ],
+      "tradeoffs": [
+        "增加佇列記憶體與排程成本",
+        "順序和丟失策略可能改變"
+      ],
+      "behavior": "先檢查必要順序、背壓與資料是否會被重複處理。",
+      "metrics": [
+        "端到端延遲",
+        "throughput",
+        "記憶體",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        },
+        {
+          "title": "ROS 2 Jazzy Callback Groups",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

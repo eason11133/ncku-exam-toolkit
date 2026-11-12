@@ -11,6 +11,7 @@ export type OptimizationOption = {
   tradeoffs: string[]
   behavior: string
   metrics: string[]
+  articleId?: string
   code?: { language: string; snippet: string }
   sources: OptimizationSource[]
   verified: boolean

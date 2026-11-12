@@ -10,7 +10,7 @@
 4. 按「複製技術背景」或「複製給 LLM」，帶到考場提供的 LLM 中直接評估並嘗試修改程式。
 5. 用「測試結果比較」記錄修改前後的實測結果；沒有方案保證一定較快。
 
-目前只收錄 `Mutex`、`BFS`、`Memory Copy` 三筆**示範資料**，並標為「示範・待查證」。它們用來展示結構和操作，不代表已完成正式內容審查。正式資料應逐筆核對來源、平台條件與語意。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。
+目前收錄原有 `Mutex`、`BFS`、`Memory Copy` 三筆示範資料，以及 2026-11-12 匯入的 14 筆方法、42 個方案和 20 篇教學文章。新內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善沒有因此被視為已實測。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
 
 ## 本機開發與部署
 
@@ -19,6 +19,7 @@ npm install
 npm run dev
 npm run build
 npm test
+python checks/validate_content.py
 ```
 
 `npm run build` 會執行 TypeScript 檢查並產生 `dist/`。GitHub `main` 已連接 Vercel 正式部署。
@@ -65,6 +66,8 @@ npm test
 ```
 
 `code` 可省略。`sources` 請填真正可查的文件，勿保留範例網址。確認內容與來源、平台、版本、適用條件後，才把對應的 `verified` 設為 `true`。`relatedMethodIds` 連到其他解法檔的 `id`；`articleIds`、`commandIds`、`docIds` 分別連到既有文章、指令及官方文件 ID。資料以 Zod 驗證，格式錯誤會在載入時明確報錯；同一方法內的方案 ID 必須唯一。
+
+若某個方案有完整教學，可在該方案加上 `"articleId": "文章-id"`，指向 `src/content/` 的 Markdown 文章；展開方案時會在原頁面直接顯示全文。沒有此欄位的方案仍顯示原有 JSON 詳情。範例見 `src/optimizations/single-threaded-executor.json` 與三篇 `src/content/ros2-ste-*.md`。
 
 原有知識庫文章仍放在 `src/content/`，支援帶 YAML front matter 的 Markdown 或 JSON。新增解法資料可用 `articleIds` 與既有文章連結。`src/optimization-core.ts` 提供搜尋與複製文字組合；`src/OptimizationLibrary.tsx` 是呈現頁面，新增內容通常不必更動它。
 

@@ -1,0 +1,131 @@
+{
+  "id": "c-bitfield-operations",
+  "name": "C Bitwise／Bit Mask／Shift",
+  "aliases": [
+    "AND",
+    "OR",
+    "XOR",
+    "uint32_t",
+    "位元遮罩",
+    "位元運算"
+  ],
+  "category": "C Programming",
+  "summary": "位元操作可用來取出資料欄位、設定旗標及重新組合傳輸 word。",
+  "problems": [
+    "bitmask wrong",
+    "位元解析錯",
+    "封包格式",
+    "bit flag",
+    "shift overflow"
+  ],
+  "bottlenecks": [
+    "signed shift 或位寬越界",
+    "忘了遮罩高位",
+    "封包端序與欄位順序不一致"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C bitwise operators",
+      "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "mask-and-shift",
+      "title": "Shift + Mask 取欄位",
+      "aliases": [],
+      "summary": "先右移再用 AND 保留指定的低位寬。",
+      "principle": "例如 bit7..4：`(x >> 4) & 0xFu`；移位量不得達到型別位數。",
+      "conditions": [
+        "使用 unsigned 固定寬度型別",
+        "欄位範圍和位元順序明確"
+      ],
+      "tradeoffs": [
+        "原始資料若是 signed 需先轉換",
+        "超出範圍會被截斷"
+      ],
+      "behavior": "確認各測試向量的 bit pattern 完全一致。",
+      "metrics": [
+        "正確解碼",
+        "CPU",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "C bitwise operators",
+          "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "uint32_t v = (word >> 4) & 0xFu;"
+      }
+    },
+    {
+      "id": "set-clear",
+      "title": "設定位元、清除位元",
+      "aliases": [],
+      "summary": "用 OR 設 1，AND 搭配 NOT 清成 0。",
+      "principle": "`x | (1u << b)` 設定，`x & ~(1u << b)` 清除。",
+      "conditions": [
+        "b < 32 且為 unsigned",
+        "該欄位不影響保留位元"
+      ],
+      "tradeoffs": [
+        "不做檢查會位移越界",
+        "並發讀寫暫存器可能需要特定硬體原子 API"
+      ],
+      "behavior": "確認非目標 bit 仍保持原值。",
+      "metrics": [
+        "bit 正確性",
+        "執行時間"
+      ],
+      "sources": [
+        {
+          "title": "C bitwise operators",
+          "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "x |= (UINT32_C(1) << 1);\nx &= ~(UINT32_C(1) << 0);"
+      }
+    },
+    {
+      "id": "pack-unpack",
+      "title": "打包欄位減少資料表示成本",
+      "aliases": [],
+      "summary": "在協定允許時用整數欄位表示多個 flag。",
+      "principle": "多個小的欄位組成固定寬度 word，可能減少部分資料表示成本。",
+      "conditions": [
+        "傳輸雙方格式一致",
+        "範圍、端序、對齊已確認"
+      ],
+      "tradeoffs": [
+        "改格式有相容性成本",
+        "若需要額外解碼反而可能變慢"
+      ],
+      "behavior": "先比對逐欄位與原始 bytes，再比較耗時與 bytes。",
+      "metrics": [
+        "bytes per message",
+        "編解碼時間",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "C bitwise operators",
+          "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

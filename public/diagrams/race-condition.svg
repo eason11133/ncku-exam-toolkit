@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="170" viewBox="0 0 620 170" role="img" aria-labelledby="title desc">
+<title id="title">兩個執行緒的 lost update 示意</title>
+<desc id="desc">A 和 B 都讀到 counter 等於 5，分別計算 6 並寫回，最後 counter 是 6 而非預期的 7。</desc>
+<rect width="620" height="170" fill="#fff" rx="10"/>
+<g font-family="Noto Sans CJK TC, Microsoft JhengHei, Arial, sans-serif" font-size="15" fill="#334155">
+<text x="20" y="40">初始 counter = 5</text>
+<rect x="20" y="66" width="270" height="52" rx="6" fill="#e0eef4"/><rect x="330" y="66" width="270" height="52" rx="6" fill="#fff0d8"/>
+<text x="39" y="88">執行緒 A：讀 5 → 算 6 → 寫 6</text><text x="349" y="88">執行緒 B：讀 5 → 算 6 → 寫 6</text>
+<text x="310" y="146" font-size="17" text-anchor="middle" font-weight="600">最後 counter = 6（預期應是 7）</text>
+</g></svg>

@@ -1,0 +1,129 @@
+{
+  "id": "transfer-format",
+  "name": "資料表示／傳輸格式選擇",
+  "aliases": [
+    "serialization",
+    "payload",
+    "packet packing"
+  ],
+  "category": "Performance Engineering",
+  "summary": "要優化整體系統，除了演算法，也要留意資料格式、序列化與接收處理成本。",
+  "problems": [
+    "payload too large",
+    "serialization slow",
+    "傳輸資料太多",
+    "encode decode",
+    "ROS 2 message size"
+  ],
+  "bottlenecks": [
+    "不必要的大欄位",
+    "反覆字串解析",
+    "每階段格式轉換和複製"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy Topic CLI",
+      "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+    },
+    {
+      "title": "C bitwise operators",
+      "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "c-bitfield-operations"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "remove-unneeded-data",
+      "title": "先刪除明確不需要傳輸的資料",
+      "aliases": [],
+      "summary": "縮小 payload 可降低序列化與搬運成本，但不能刪必要資料。",
+      "principle": "降低每筆輸出資料量可能影響整條傳輸鏈的瓶頸。",
+      "conditions": [
+        "接收端確定不需要刪除欄位",
+        "通訊格式允許改動且雙方同步"
+      ],
+      "tradeoffs": [
+        "協定不相容",
+        "重新編碼本身有成本"
+      ],
+      "behavior": "比較 payload bytes、接收端正確性及總延遲。",
+      "metrics": [
+        "bytes/message",
+        "latency",
+        "correctness"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Topic CLI",
+          "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "compact-binary",
+      "title": "評估固定寬度欄位或二進位格式",
+      "aliases": [],
+      "summary": "在雙方都能改動協定的情境，比較 binary 與 text。",
+      "principle": "二進位可能減少部分字串序列化與解碼，但會增加端序與版本管理。",
+      "conditions": [
+        "兩端皆可修改",
+        "有清楚 endian、width、range"
+      ],
+      "tradeoffs": [
+        "可能失去可讀性",
+        "不同版本相容性較難"
+      ],
+      "behavior": "測欄位逐一相同、byte order 和總處理時間。",
+      "metrics": [
+        "bytes",
+        "encode time",
+        "decode time",
+        "correctness"
+      ],
+      "sources": [
+        {
+          "title": "C bitwise operators",
+          "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "batch",
+      "title": "在允許延遲條件下批次處理",
+      "aliases": [],
+      "summary": "多筆合成一次傳輸可攤薄固定成本，但等待批次會增加延遲。",
+      "principle": "固定傳輸開銷可由多筆共同分擔。",
+      "conditions": [
+        "資料可分批",
+        "可接受額外等待與部分訊息延後"
+      ],
+      "tradeoffs": [
+        "延遲可能變差",
+        "出錯時重送／回復更複雜"
+      ],
+      "behavior": "依相同負載量測 throughput 及 p95 延遲，不能只看吞吐量。",
+      "metrics": [
+        "throughput",
+        "p95",
+        "CPU",
+        "bytes"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Topic CLI",
+          "url": "https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

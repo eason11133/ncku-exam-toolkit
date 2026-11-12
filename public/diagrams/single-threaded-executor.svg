@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="224" viewBox="0 0 660 224" role="img" aria-labelledby="title desc">
+<title id="title">SingleThreadedExecutor 執行時間示意</title>
+<desc id="desc">A 從 0 毫秒執行到 300 毫秒，B 在 50 毫秒準備好，但等待 A 完成才開始執行。</desc>
+<rect width="660" height="224" rx="10" fill="#fff"/>
+<g font-family="Noto Sans CJK TC, Microsoft JhengHei, Arial, sans-serif" fill="#344054">
+<text x="24" y="65" font-size="21">A</text><text x="24" y="143" font-size="21">B</text>
+<g stroke="#d9e0e6" stroke-dasharray="4 6" stroke-width="1">
+<path d="M80 24V181 M160 24V181 M240 24V181 M320 24V181 M400 24V181 M480 24V181 M560 24V181"/>
+</g>
+<rect x="80" y="44" width="480" height="36" rx="5" fill="#4C8A9F"/>
+<text x="320" y="68" font-size="18" text-anchor="middle" fill="#fff">A 執行中（300 ms）</text>
+<rect x="160" y="122" width="400" height="36" rx="5" fill="#ecd7b4"/>
+<text x="360" y="146" font-size="17" text-anchor="middle">B 等待 A 結束</text>
+<rect x="560" y="122" width="58" height="36" rx="5" fill="#d7a24d"/>
+<g fill="#64748b" font-size="13" text-anchor="middle"><text x="80" y="201">0</text><text x="160" y="201">50</text><text x="240" y="201">100</text><text x="320" y="201">150</text><text x="400" y="201">200</text><text x="480" y="201">250</text><text x="560" y="201">300</text></g>
+<text x="632" y="202" font-size="11" fill="#64748b">ms</text>
+</g></svg>
