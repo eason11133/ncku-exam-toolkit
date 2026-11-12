@@ -32,8 +32,6 @@ result = compute(result)
 write_output(result)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -53,8 +51,6 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 
 先量出熱點再決定優化位置。若 90% 時間在 `compute`，只優化 `write_output` 通常不會有大幅成果。埋點有成本，短流程要多次累積量測。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 可安插計時且知道預期輸出
@@ -65,7 +61,7 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 - 測量也有 overhead
 - 不同測試負載瓶頸可能不同
 
-**正確性界線：**分段加總與端到端用不同指標檢查。
+**正確性界線：** 分段加總與端到端用不同指標檢查。
 
 ## 怎麼做測試
 
@@ -80,5 +76,3 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 ## 參考文件與驗證狀態
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

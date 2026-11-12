@@ -31,8 +31,6 @@ related: ncku-performance-benchmark
 print("avg", sum(times) / len(times))
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -47,8 +45,6 @@ print("peak_ram_mb", measured_peak_ram_mb)  # 需另行實測
 
 除了平均，還要看尾端延遲、吞吐、CPU、記憶體及輸出正確性。此處 p95 採 nearest-rank 定義，其他工具可能用插值所以數字略有差異；`measured_peak_ram_mb` 要由系統量測取得。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 明確評分／功能條件
@@ -59,7 +55,7 @@ print("peak_ram_mb", measured_peak_ram_mb)  # 需另行實測
 - 需要多次測試
 - 有時需要用更多記憶體換時間
 
-**正確性界線：**測試資料量、誤差及未測條件要寫清楚。
+**正確性界線：** 測試資料量、誤差及未測條件要寫清楚。
 
 ## 怎麼做測試
 
@@ -74,5 +70,3 @@ print("peak_ram_mb", measured_peak_ram_mb)  # 需另行實測
 ## 參考文件與驗證狀態
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

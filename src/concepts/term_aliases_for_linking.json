@@ -1,0 +1,3490 @@
+[
+  {
+    "text": "MutuallyExclusiveCallbackGroup",
+    "conceptId": "mutex-callback-group"
+  },
+  {
+    "text": "General Purpose Input/Output",
+    "conceptId": "gpio"
+  },
+  {
+    "text": "Windows Subsystem for Linux",
+    "conceptId": "wsl"
+  },
+  {
+    "text": "DMA channel configuration",
+    "conceptId": "dma-config"
+  },
+  {
+    "text": "Robot Operating System 2",
+    "conceptId": "ros2"
+  },
+  {
+    "text": "single threaded executor",
+    "conceptId": "single-executor"
+  },
+  {
+    "text": "Global Interpreter Lock",
+    "conceptId": "gil"
+  },
+  {
+    "text": "GNU Compiler Collection",
+    "conceptId": "gcc"
+  },
+  {
+    "text": "multi threaded executor",
+    "conceptId": "multi-executor"
+  },
+  {
+    "text": "ROS 2 callback deadlock",
+    "conceptId": "ros2-deadlock"
+  },
+  {
+    "text": "Unsigned integer suffix",
+    "conceptId": "unsigned-suffix"
+  },
+  {
+    "text": "Command-Line Interface",
+    "conceptId": "cli"
+  },
+  {
+    "text": "ReentrantCallbackGroup",
+    "conceptId": "reentrant-callback-group"
+  },
+  {
+    "text": "Short critical section",
+    "conceptId": "short-lock"
+  },
+  {
+    "text": "SingleThreadedExecutor",
+    "conceptId": "single-executor"
+  },
+  {
+    "text": "Bit field composition",
+    "conceptId": "combine-fields"
+  },
+  {
+    "text": "cache line contention",
+    "conceptId": "false-sharing"
+  },
+  {
+    "text": "DMA thread comparison",
+    "conceptId": "dma-vs-thread"
+  },
+  {
+    "text": "Long critical section",
+    "conceptId": "long-lock"
+  },
+  {
+    "text": "message serialization",
+    "conceptId": "serialization"
+  },
+  {
+    "text": "MultiThreadedExecutor",
+    "conceptId": "multi-executor"
+  },
+  {
+    "text": "Output Shift Register",
+    "conceptId": "osr"
+  },
+  {
+    "text": "pio_sm_put_blocking()",
+    "conceptId": "pio-put-blocking"
+  },
+  {
+    "text": "state machine stalled",
+    "conceptId": "pio-stall"
+  },
+  {
+    "text": "Bit field extraction",
+    "conceptId": "extract-field"
+  },
+  {
+    "text": "Direct Memory Access",
+    "conceptId": "dma"
+  },
+  {
+    "text": "Input Shift Register",
+    "conceptId": "isr"
+  },
+  {
+    "text": "ROS 2 Service client",
+    "conceptId": "service-client"
+  },
+  {
+    "text": "ROS 2 Service server",
+    "conceptId": "service-server"
+  },
+  {
+    "text": "#include <stdint.h>",
+    "conceptId": "stdint"
+  },
+  {
+    "text": "Destination address",
+    "conceptId": "transfer-dst"
+  },
+  {
+    "text": "DMA cache coherency",
+    "conceptId": "dma-cache"
+  },
+  {
+    "text": "DMA write increment",
+    "conceptId": "dma-write-increment"
+  },
+  {
+    "text": "First In, First Out",
+    "conceptId": "fifo"
+  },
+  {
+    "text": "Mutex 與 Spinlock 比較",
+    "conceptId": "mutex-vs-spin"
+  },
+  {
+    "text": "PIO shift direction",
+    "conceptId": "shift-direction"
+  },
+  {
+    "text": "pio_sm_put_blocking",
+    "conceptId": "pio-put-blocking"
+  },
+  {
+    "text": "ProcessPoolExecutor",
+    "conceptId": "process-pool"
+  },
+  {
+    "text": "pthread_spin_unlock",
+    "conceptId": "spin-unlock"
+  },
+  {
+    "text": "ros2 interface show",
+    "conceptId": "ros2-interface-show"
+  },
+  {
+    "text": "#include <stdio.h>",
+    "conceptId": "stdio"
+  },
+  {
+    "text": "Bitwise operations",
+    "conceptId": "bitwise"
+  },
+  {
+    "text": "Condition variable",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "DMA read increment",
+    "conceptId": "dma-read-increment"
+  },
+  {
+    "text": "DMA transfer width",
+    "conceptId": "dma-transfer-width"
+  },
+  {
+    "text": "End-to-end latency",
+    "conceptId": "end-to-end-latency"
+  },
+  {
+    "text": "no synchronization",
+    "conceptId": "no-lock"
+  },
+  {
+    "text": "pthread_spinlock_t",
+    "conceptId": "spinlock"
+  },
+  {
+    "text": "Quality of Service",
+    "conceptId": "qos"
+  },
+  {
+    "text": "Reliability policy",
+    "conceptId": "qos-reliability"
+  },
+  {
+    "text": "Undefined behavior",
+    "conceptId": "undefined-behavior"
+  },
+  {
+    "text": "Address increment",
+    "conceptId": "transfer-increment"
+  },
+  {
+    "text": "callback deadlock",
+    "conceptId": "ros2-deadlock"
+  },
+  {
+    "text": "callback function",
+    "conceptId": "callback"
+  },
+  {
+    "text": "Copy vs zero-copy",
+    "conceptId": "copy-vs-zero-copy"
+  },
+  {
+    "text": "Interrupt Request",
+    "conceptId": "irq"
+  },
+  {
+    "text": "Memory-Mapped I/O",
+    "conceptId": "mmio"
+  },
+  {
+    "text": "Mutex vs Spinlock",
+    "conceptId": "mutex-vs-spin"
+  },
+  {
+    "text": "PIO clock divider",
+    "conceptId": "clock-divider"
+  },
+  {
+    "text": "producer consumer",
+    "conceptId": "producer-consumer"
+  },
+  {
+    "text": "Producer–consumer",
+    "conceptId": "producer-consumer"
+  },
+  {
+    "text": "pthread_spin_lock",
+    "conceptId": "spin-lock"
+  },
+  {
+    "text": "QoS History depth",
+    "conceptId": "qos-depth"
+  },
+  {
+    "text": "sched_getaffinity",
+    "conceptId": "cpu-affinity"
+  },
+  {
+    "text": "Thread scheduling",
+    "conceptId": "thread-schedule"
+  },
+  {
+    "text": "transfer complete",
+    "conceptId": "dma-completion"
+  },
+  {
+    "text": "Windows Linux 子系統",
+    "conceptId": "wsl"
+  },
+  {
+    "text": "Working directory",
+    "conceptId": "working-dir"
+  },
+  {
+    "text": "互斥 Callback Group",
+    "conceptId": "mutex-callback-group"
+  },
+  {
+    "text": "AddressSanitizer",
+    "conceptId": "sanitizer"
+  },
+  {
+    "text": "Atomic operation",
+    "conceptId": "atomic"
+  },
+  {
+    "text": "bitwise operator",
+    "conceptId": "bitwise"
+  },
+  {
+    "text": "Critical section",
+    "conceptId": "critical-section"
+  },
+  {
+    "text": "docker container",
+    "conceptId": "container"
+  },
+  {
+    "text": "Double buffering",
+    "conceptId": "double-buffer"
+  },
+  {
+    "text": "engine_configure",
+    "conceptId": "transfer-configure"
+  },
+  {
+    "text": "field extraction",
+    "conceptId": "extract-field"
+  },
+  {
+    "text": "Memory alignment",
+    "conceptId": "alignment"
+  },
+  {
+    "text": "ping pong buffer",
+    "conceptId": "double-buffer"
+  },
+  {
+    "text": "Programmable I/O",
+    "conceptId": "pio"
+  },
+  {
+    "text": "PULL instruction",
+    "conceptId": "pio-pull"
+  },
+  {
+    "text": "PUSH instruction",
+    "conceptId": "pio-push"
+  },
+  {
+    "text": "Python ROS 2 函式庫",
+    "conceptId": "rclpy"
+  },
+  {
+    "text": "request response",
+    "conceptId": "ros2-service"
+  },
+  {
+    "text": "service deadlock",
+    "conceptId": "ros2-deadlock"
+  },
+  {
+    "text": "Space complexity",
+    "conceptId": "space-complexity"
+  },
+  {
+    "text": "Transfer channel",
+    "conceptId": "transfer-channel"
+  },
+  {
+    "text": "95th percentile",
+    "conceptId": "p95"
+  },
+  {
+    "text": "cache coherency",
+    "conceptId": "dma-cache"
+  },
+  {
+    "text": "circular buffer",
+    "conceptId": "ring-buffer"
+  },
+  {
+    "text": "CLOCK_MONOTONIC",
+    "conceptId": "clock-monotonic"
+  },
+  {
+    "text": "Memory locality",
+    "conceptId": "memory-locality"
+  },
+  {
+    "text": "Message backlog",
+    "conceptId": "message-backlog"
+  },
+  {
+    "text": "Microcontroller",
+    "conceptId": "mcu"
+  },
+  {
+    "text": "OUT instruction",
+    "conceptId": "pio-out"
+  },
+  {
+    "text": "pthread_mutex_t",
+    "conceptId": "mutex"
+  },
+  {
+    "text": "release channel",
+    "conceptId": "transfer-release"
+  },
+  {
+    "text": "ROS 2 Discovery",
+    "conceptId": "ros2-discovery"
+  },
+  {
+    "text": "ROS 2 Parameter",
+    "conceptId": "ros-parameter"
+  },
+  {
+    "text": "ROS 2 remapping",
+    "conceptId": "ros2-remap"
+  },
+  {
+    "text": "ros2 topic echo",
+    "conceptId": "ros2-topic-echo"
+  },
+  {
+    "text": "ros2 topic info",
+    "conceptId": "ros2-topic-info"
+  },
+  {
+    "text": "ros2 topic list",
+    "conceptId": "ros2-topic-list"
+  },
+  {
+    "text": "service request",
+    "conceptId": "service-client"
+  },
+  {
+    "text": "Shared variable",
+    "conceptId": "shared-variable"
+  },
+  {
+    "text": "Shift direction",
+    "conceptId": "shift-direction"
+  },
+  {
+    "text": "sizeof operator",
+    "conceptId": "sizeof"
+  },
+  {
+    "text": "Standard output",
+    "conceptId": "stdout"
+  },
+  {
+    "text": "Thread shutdown",
+    "conceptId": "thread-shutdown"
+  },
+  {
+    "text": "Time complexity",
+    "conceptId": "complexity"
+  },
+  {
+    "text": "Transfer engine",
+    "conceptId": "transfer-engine"
+  },
+  {
+    "text": "unsigned 32-bit",
+    "conceptId": "uint32"
+  },
+  {
+    "text": "wait completion",
+    "conceptId": "transfer-wait"
+  },
+  {
+    "text": "worker shutdown",
+    "conceptId": "thread-shutdown"
+  },
+  {
+    "text": "write_increment",
+    "conceptId": "dma-write-increment"
+  },
+  {
+    "text": "Callback Group",
+    "conceptId": "callback-group"
+  },
+  {
+    "text": "channel_config",
+    "conceptId": "dma-config"
+  },
+  {
+    "text": "Copy operation",
+    "conceptId": "transfer-copy"
+  },
+  {
+    "text": "DMA completion",
+    "conceptId": "dma-completion"
+  },
+  {
+    "text": "DMA controller",
+    "conceptId": "dma-controller"
+  },
+  {
+    "text": "engine_release",
+    "conceptId": "transfer-release"
+  },
+  {
+    "text": "Fill operation",
+    "conceptId": "transfer-fill"
+  },
+  {
+    "text": "GNU C compiler",
+    "conceptId": "gcc"
+  },
+  {
+    "text": "IN instruction",
+    "conceptId": "pio-in"
+  },
+  {
+    "text": "interface show",
+    "conceptId": "ros2-interface-show"
+  },
+  {
+    "text": "interface type",
+    "conceptId": "ros2-message-type"
+  },
+  {
+    "text": "lock hierarchy",
+    "conceptId": "lock-order"
+  },
+  {
+    "text": "memory compare",
+    "conceptId": "memcmp"
+  },
+  {
+    "text": "PIO X register",
+    "conceptId": "pio-x"
+  },
+  {
+    "text": "PIO Y register",
+    "conceptId": "pio-y"
+  },
+  {
+    "text": "pio_get_dreq()",
+    "conceptId": "pio-get-dreq"
+  },
+  {
+    "text": "pthread_cond_t",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "pthread_create",
+    "conceptId": "pthread-create"
+  },
+  {
+    "text": "race condition",
+    "conceptId": "data-race"
+  },
+  {
+    "text": "read_increment",
+    "conceptId": "dma-read-increment"
+  },
+  {
+    "text": "ROS 2 Executor",
+    "conceptId": "executor"
+  },
+  {
+    "text": "ROS 2 Jazzy 版本",
+    "conceptId": "ros2-jazzy"
+  },
+  {
+    "text": "ROS Python API",
+    "conceptId": "rclpy"
+  },
+  {
+    "text": "ros2 node info",
+    "conceptId": "ros2-node-info"
+  },
+  {
+    "text": "ros2 node list",
+    "conceptId": "ros2-node-list"
+  },
+  {
+    "text": "ros2 topic pub",
+    "conceptId": "ros2-topic-pub"
+  },
+  {
+    "text": "Source address",
+    "conceptId": "transfer-src"
+  },
+  {
+    "text": "spinlock mutex",
+    "conceptId": "mutex-vs-spin"
+  },
+  {
+    "text": "start transfer",
+    "conceptId": "transfer-start"
+  },
+  {
+    "text": "Transfer count",
+    "conceptId": "transfer-count"
+  },
+  {
+    "text": "transfer width",
+    "conceptId": "dma-transfer-width"
+  },
+  {
+    "text": "async service",
+    "conceptId": "call-async"
+  },
+  {
+    "text": "binary number",
+    "conceptId": "binary"
+  },
+  {
+    "text": "blocking call",
+    "conceptId": "blocking"
+  },
+  {
+    "text": "claim channel",
+    "conceptId": "transfer-claim"
+  },
+  {
+    "text": "Clock divider",
+    "conceptId": "clock-divider"
+  },
+  {
+    "text": "clock_gettime",
+    "conceptId": "clock-monotonic"
+  },
+  {
+    "text": "create thread",
+    "conceptId": "pthread-create"
+  },
+  {
+    "text": "DMA vs thread",
+    "conceptId": "dma-vs-thread"
+  },
+  {
+    "text": "double buffer",
+    "conceptId": "double-buffer"
+  },
+  {
+    "text": "dst_increment",
+    "conceptId": "transfer-increment"
+  },
+  {
+    "text": "False sharing",
+    "conceptId": "false-sharing"
+  },
+  {
+    "text": "future result",
+    "conceptId": "future"
+  },
+  {
+    "text": "little endian",
+    "conceptId": "byte-order"
+  },
+  {
+    "text": "Lock ordering",
+    "conceptId": "lock-order"
+  },
+  {
+    "text": "Message field",
+    "conceptId": "ros2-field"
+  },
+  {
+    "text": "PIO assembler",
+    "conceptId": "pio-program"
+  },
+  {
+    "text": "POSIX Threads",
+    "conceptId": "pthread"
+  },
+  {
+    "text": "Python 全域直譯器鎖",
+    "conceptId": "gil"
+  },
+  {
+    "text": "ROS 2 Message",
+    "conceptId": "ros2-message"
+  },
+  {
+    "text": "ROS 2 Service",
+    "conceptId": "ros2-service"
+  },
+  {
+    "text": "ROS namespace",
+    "conceptId": "ros-namespace"
+  },
+  {
+    "text": "ros2 topic hz",
+    "conceptId": "ros2-topic-hz"
+  },
+  {
+    "text": "ROS_DOMAIN_ID",
+    "conceptId": "ros-domain-id"
+  },
+  {
+    "text": "run container",
+    "conceptId": "docker-run"
+  },
+  {
+    "text": "Serialization",
+    "conceptId": "serialization"
+  },
+  {
+    "text": "src_increment",
+    "conceptId": "transfer-increment"
+  },
+  {
+    "text": "State machine",
+    "conceptId": "state-machine"
+  },
+  {
+    "text": "topic backlog",
+    "conceptId": "message-backlog"
+  },
+  {
+    "text": "Transfer size",
+    "conceptId": "transfer-size"
+  },
+  {
+    "text": "Transmit FIFO",
+    "conceptId": "tx-fifo"
+  },
+  {
+    "text": "write address",
+    "conceptId": "transfer-dst"
+  },
+  {
+    "text": "單執行緒 Executor",
+    "conceptId": "single-executor"
+  },
+  {
+    "text": "多執行緒 Executor",
+    "conceptId": "multi-executor"
+  },
+  {
+    "text": ".wrap_target",
+    "conceptId": "pio-wrap"
+  },
+  {
+    "text": "Backpressure",
+    "conceptId": "backpressure"
+  },
+  {
+    "text": "CPU affinity",
+    "conceptId": "cpu-affinity"
+  },
+  {
+    "text": "demo_pio.pio",
+    "conceptId": "pio-echo"
+  },
+  {
+    "text": "docker build",
+    "conceptId": "docker-build"
+  },
+  {
+    "text": "Docker image",
+    "conceptId": "image"
+  },
+  {
+    "text": "engine_claim",
+    "conceptId": "transfer-claim"
+  },
+  {
+    "text": "engine_job_t",
+    "conceptId": "transfer-job"
+  },
+  {
+    "text": "engine_start",
+    "conceptId": "transfer-start"
+  },
+  {
+    "text": "exclusive OR",
+    "conceptId": "bit-xor"
+  },
+  {
+    "text": "lost updates",
+    "conceptId": "lost-update"
+  },
+  {
+    "text": "make mistake",
+    "conceptId": "make-target"
+  },
+  {
+    "text": "message rate",
+    "conceptId": "publisher-rate"
+  },
+  {
+    "text": "Message type",
+    "conceptId": "ros2-message-type"
+  },
+  {
+    "text": "Non-blocking",
+    "conceptId": "nonblocking"
+  },
+  {
+    "text": "PIO FIFO DMA",
+    "conceptId": "pio-dma"
+  },
+  {
+    "text": "PIO with DMA",
+    "conceptId": "pio-dma"
+  },
+  {
+    "text": "pio_get_dreq",
+    "conceptId": "pio-get-dreq"
+  },
+  {
+    "text": "POSIX thread",
+    "conceptId": "pthread"
+  },
+  {
+    "text": "Process pool",
+    "conceptId": "process-pool"
+  },
+  {
+    "text": "pthread_join",
+    "conceptId": "pthread-join"
+  },
+  {
+    "text": "Publish rate",
+    "conceptId": "publisher-rate"
+  },
+  {
+    "text": "read address",
+    "conceptId": "transfer-src"
+  },
+  {
+    "text": "Receive FIFO",
+    "conceptId": "rx-fifo"
+  },
+  {
+    "text": "ROS 2 Action",
+    "conceptId": "ros2-action"
+  },
+  {
+    "text": "shared state",
+    "conceptId": "shared-variable"
+  },
+  {
+    "text": "subscription",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "transfer job",
+    "conceptId": "transfer-job"
+  },
+  {
+    "text": "volatile 限定詞",
+    "conceptId": "volatile"
+  },
+  {
+    "text": "32-bit word",
+    "conceptId": "word"
+  },
+  {
+    "text": "Best Effort",
+    "conceptId": "qos-reliability"
+  },
+  {
+    "text": "Bitwise AND",
+    "conceptId": "bit-and"
+  },
+  {
+    "text": "Bitwise NOT",
+    "conceptId": "bit-not"
+  },
+  {
+    "text": "Bitwise XOR",
+    "conceptId": "bit-xor"
+  },
+  {
+    "text": "build image",
+    "conceptId": "docker-build"
+  },
+  {
+    "text": "cache flush",
+    "conceptId": "dma-cache"
+  },
+  {
+    "text": "close queue",
+    "conceptId": "thread-shutdown"
+  },
+  {
+    "text": "DMA channel",
+    "conceptId": "transfer-channel"
+  },
+  {
+    "text": "DMA Request",
+    "conceptId": "dreq"
+  },
+  {
+    "text": "DMA_SIZE_32",
+    "conceptId": "dma-transfer-width"
+  },
+  {
+    "text": "docker exec",
+    "conceptId": "docker-exec"
+  },
+  {
+    "text": "E2E latency",
+    "conceptId": "end-to-end-latency"
+  },
+  {
+    "text": "engine_busy",
+    "conceptId": "transfer-busy"
+  },
+  {
+    "text": "engine_wait",
+    "conceptId": "transfer-wait"
+  },
+  {
+    "text": "enumeration",
+    "conceptId": "enum"
+  },
+  {
+    "text": "Hexadecimal",
+    "conceptId": "hex"
+  },
+  {
+    "text": "Lost update",
+    "conceptId": "lost-update"
+  },
+  {
+    "text": "Make target",
+    "conceptId": "make-target"
+  },
+  {
+    "text": "memory copy",
+    "conceptId": "memcpy"
+  },
+  {
+    "text": "nonblocking",
+    "conceptId": "nonblocking"
+  },
+  {
+    "text": "PIO program",
+    "conceptId": "pio-program"
+  },
+  {
+    "text": "PIO PULL 指令",
+    "conceptId": "pio-pull"
+  },
+  {
+    "text": "PIO PUSH 指令",
+    "conceptId": "pio-push"
+  },
+  {
+    "text": "QoS profile",
+    "conceptId": "qos"
+  },
+  {
+    "text": "Right shift",
+    "conceptId": "shift-right"
+  },
+  {
+    "text": "Ring buffer",
+    "conceptId": "ring-buffer"
+  },
+  {
+    "text": "ROS 2 Jazzy",
+    "conceptId": "ros2-jazzy"
+  },
+  {
+    "text": "ROS 2 Timer",
+    "conceptId": "ros2-timer"
+  },
+  {
+    "text": "ROS 2 Topic",
+    "conceptId": "ros2-topic"
+  },
+  {
+    "text": "RP2350 微控制器",
+    "conceptId": "rp2350"
+  },
+  {
+    "text": "Source code",
+    "conceptId": "source-code"
+  },
+  {
+    "text": "spin_unlock",
+    "conceptId": "spin-unlock"
+  },
+  {
+    "text": "thread join",
+    "conceptId": "pthread-join"
+  },
+  {
+    "text": "Thread pool",
+    "conceptId": "thread-pool"
+  },
+  {
+    "text": "topic remap",
+    "conceptId": "ros2-remap"
+  },
+  {
+    "text": "worker pool",
+    "conceptId": "thread-pool"
+  },
+  {
+    "text": "xfer_size_t",
+    "conceptId": "transfer-size"
+  },
+  {
+    "text": "可存指標數值的無號整數",
+    "conceptId": "uintptr"
+  },
+  {
+    "text": "查詢 PIO DREQ",
+    "conceptId": "pio-get-dreq"
+  },
+  {
+    "text": "big endian",
+    "conceptId": "byte-order"
+  },
+  {
+    "text": "Bitwise OR",
+    "conceptId": "bit-or"
+  },
+  {
+    "text": "Byte order",
+    "conceptId": "byte-order"
+  },
+  {
+    "text": "Cache miss",
+    "conceptId": "cache-miss"
+  },
+  {
+    "text": "call_async",
+    "conceptId": "call-async"
+  },
+  {
+    "text": "data field",
+    "conceptId": "ros2-field"
+  },
+  {
+    "text": "dma config",
+    "conceptId": "dma-config"
+  },
+  {
+    "text": "DMA pacing",
+    "conceptId": "dreq"
+  },
+  {
+    "text": "DMA 寫入位址遞增",
+    "conceptId": "dma-write-increment"
+  },
+  {
+    "text": "DMA 與執行緒差異",
+    "conceptId": "dma-vs-thread"
+  },
+  {
+    "text": "DMA 與快取一致性",
+    "conceptId": "dma-cache"
+  },
+  {
+    "text": "DMA 讀取位址遞增",
+    "conceptId": "dma-read-increment"
+  },
+  {
+    "text": "docker run",
+    "conceptId": "docker-run"
+  },
+  {
+    "text": "Dockerfile",
+    "conceptId": "dockerfile"
+  },
+  {
+    "text": "Endianness",
+    "conceptId": "endianness"
+  },
+  {
+    "text": "Left shift",
+    "conceptId": "shift-left"
+  },
+  {
+    "text": "make clean",
+    "conceptId": "make-target"
+  },
+  {
+    "text": "node graph",
+    "conceptId": "ros2-graph"
+  },
+  {
+    "text": "Peripheral",
+    "conceptId": "peripheral"
+  },
+  {
+    "text": "PIO OUT 指令",
+    "conceptId": "pio-out"
+  },
+  {
+    "text": "PIO 搭配 DMA",
+    "conceptId": "pio-dma"
+  },
+  {
+    "text": "Python GIL",
+    "conceptId": "gil"
+  },
+  {
+    "text": "rclpy.init",
+    "conceptId": "ros2-init"
+  },
+  {
+    "text": "rclpy.spin",
+    "conceptId": "ros2-spin"
+  },
+  {
+    "text": "ROS 2 Node",
+    "conceptId": "ros2-node"
+  },
+  {
+    "text": "ROS 2 回呼死鎖",
+    "conceptId": "ros2-deadlock"
+  },
+  {
+    "text": "ROS domain",
+    "conceptId": "ros-domain-id"
+  },
+  {
+    "text": "RP2350 MCU",
+    "conceptId": "rp2350"
+  },
+  {
+    "text": "short hold",
+    "conceptId": "short-lock"
+  },
+  {
+    "text": "Subscriber",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "Throughput",
+    "conceptId": "throughput"
+  },
+  {
+    "text": "topic echo",
+    "conceptId": "ros2-topic-echo"
+  },
+  {
+    "text": "topic info",
+    "conceptId": "ros2-topic-info"
+  },
+  {
+    "text": "topic list",
+    "conceptId": "ros2-topic-list"
+  },
+  {
+    "text": "Topic name",
+    "conceptId": "ros2-topic-name"
+  },
+  {
+    "text": "topic path",
+    "conceptId": "ros2-topic-name"
+  },
+  {
+    "text": "true false",
+    "conceptId": "bool"
+  },
+  {
+    "text": "volatile C",
+    "conceptId": "volatile"
+  },
+  {
+    "text": "X register",
+    "conceptId": "pio-x"
+  },
+  {
+    "text": "Y register",
+    "conceptId": "pio-y"
+  },
+  {
+    "text": "共享 counter",
+    "conceptId": "counter"
+  },
+  {
+    "text": "第 95 百分位延遲",
+    "conceptId": "p95"
+  },
+  {
+    "text": "32 位元無號整數",
+    "conceptId": "uint32"
+  },
+  {
+    "text": "alignment",
+    "conceptId": "alignment"
+  },
+  {
+    "text": "auto pull",
+    "conceptId": "autopull"
+  },
+  {
+    "text": "auto push",
+    "conceptId": "autopush"
+  },
+  {
+    "text": "Benchmark",
+    "conceptId": "benchmark"
+  },
+  {
+    "text": "bit clear",
+    "conceptId": "clear-bit"
+  },
+  {
+    "text": "Bit index",
+    "conceptId": "bit-position"
+  },
+  {
+    "text": "Bit width",
+    "conceptId": "bit-width"
+  },
+  {
+    "text": "Clear bit",
+    "conceptId": "clear-bit"
+  },
+  {
+    "text": "configure",
+    "conceptId": "transfer-configure"
+  },
+  {
+    "text": "Container",
+    "conceptId": "container"
+  },
+  {
+    "text": "CPU Cache",
+    "conceptId": "cache"
+  },
+  {
+    "text": "Data race",
+    "conceptId": "data-race"
+  },
+  {
+    "text": "Discovery",
+    "conceptId": "ros2-discovery"
+  },
+  {
+    "text": "Docker 平台",
+    "conceptId": "docker"
+  },
+  {
+    "text": "domain id",
+    "conceptId": "ros-domain-id"
+  },
+  {
+    "text": "interrupt",
+    "conceptId": "irq"
+  },
+  {
+    "text": "Keep Last",
+    "conceptId": "qos-depth"
+  },
+  {
+    "text": "long hold",
+    "conceptId": "long-lock"
+  },
+  {
+    "text": "Make 建置工具",
+    "conceptId": "make"
+  },
+  {
+    "text": "namespace",
+    "conceptId": "ros-namespace"
+  },
+  {
+    "text": "node info",
+    "conceptId": "ros2-node-info"
+  },
+  {
+    "text": "node list",
+    "conceptId": "ros2-node-list"
+  },
+  {
+    "text": "Node name",
+    "conceptId": "ros2-name"
+  },
+  {
+    "text": "out x, 32",
+    "conceptId": "pio-out"
+  },
+  {
+    "text": "parameter",
+    "conceptId": "ros-parameter"
+  },
+  {
+    "text": "PIO IN 指令",
+    "conceptId": "pio-in"
+  },
+  {
+    "text": "PIO stall",
+    "conceptId": "pio-stall"
+  },
+  {
+    "text": "PIO X 暫存器",
+    "conceptId": "pio-x"
+  },
+  {
+    "text": "PIO Y 暫存器",
+    "conceptId": "pio-y"
+  },
+  {
+    "text": "POSIX 執行緒",
+    "conceptId": "pthread"
+  },
+  {
+    "text": "Profiling",
+    "conceptId": "profiling"
+  },
+  {
+    "text": "Publisher",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "Reentrant",
+    "conceptId": "reentrant-callback-group"
+  },
+  {
+    "text": "ROS 2 通訊圖",
+    "conceptId": "ros2-graph"
+  },
+  {
+    "text": "ROS graph",
+    "conceptId": "ros2-graph"
+  },
+  {
+    "text": "ROS Jazzy",
+    "conceptId": "ros2-jazzy"
+  },
+  {
+    "text": "Sanitizer",
+    "conceptId": "sanitizer"
+  },
+  {
+    "text": "scheduler",
+    "conceptId": "thread-schedule"
+  },
+  {
+    "text": "spin lock",
+    "conceptId": "spinlock"
+  },
+  {
+    "text": "spin_lock",
+    "conceptId": "spin-lock"
+  },
+  {
+    "text": "subscribe",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "topic pub",
+    "conceptId": "ros2-topic-pub"
+  },
+  {
+    "text": "uintptr_t",
+    "conceptId": "uintptr"
+  },
+  {
+    "text": "undefined",
+    "conceptId": "undefined-behavior"
+  },
+  {
+    "text": "zero copy",
+    "conceptId": "copy-vs-zero-copy"
+  },
+  {
+    "text": "初始化 ROS 2",
+    "conceptId": "ros2-init"
+  },
+  {
+    "text": "建立 worker",
+    "conceptId": "pthread-create"
+  },
+  {
+    "text": "生產者-消費者模型",
+    "conceptId": "producer-consumer"
+  },
+  {
+    "text": "第二個 shell",
+    "conceptId": "docker-exec"
+  },
+  {
+    "text": "記憶體對映 I/O",
+    "conceptId": "mmio"
+  },
+  {
+    "text": "逐 byte 比對",
+    "conceptId": "memcmp"
+  },
+  {
+    "text": "阻塞寫入 FIFO",
+    "conceptId": "pio-put-blocking"
+  },
+  {
+    "text": "阻塞式送入 PIO",
+    "conceptId": "pio-put-blocking"
+  },
+  {
+    "text": "Autopull",
+    "conceptId": "autopull"
+  },
+  {
+    "text": "Autopush",
+    "conceptId": "autopush"
+  },
+  {
+    "text": "Baseline",
+    "conceptId": "baseline"
+  },
+  {
+    "text": "Bit mask",
+    "conceptId": "bit-mask"
+  },
+  {
+    "text": "bit test",
+    "conceptId": "test-bit"
+  },
+  {
+    "text": "Blocking",
+    "conceptId": "blocking"
+  },
+  {
+    "text": "C struct",
+    "conceptId": "struct"
+  },
+  {
+    "text": "Callback",
+    "conceptId": "callback"
+  },
+  {
+    "text": "Compiler",
+    "conceptId": "compiler"
+  },
+  {
+    "text": "Deadlock",
+    "conceptId": "deadlock"
+  },
+  {
+    "text": "DMA 傳輸寬度",
+    "conceptId": "dma-transfer-width"
+  },
+  {
+    "text": "DMA 完成通知",
+    "conceptId": "dma-completion"
+  },
+  {
+    "text": "DMA 請求訊號",
+    "conceptId": "dreq"
+  },
+  {
+    "text": "DMA 通道設定",
+    "conceptId": "dma-config"
+  },
+  {
+    "text": "Executor",
+    "conceptId": "executor"
+  },
+  {
+    "text": "in x, 32",
+    "conceptId": "pio-in"
+  },
+  {
+    "text": "locality",
+    "conceptId": "memory-locality"
+  },
+  {
+    "text": "Makefile",
+    "conceptId": "make"
+  },
+  {
+    "text": "PIO Echo",
+    "conceptId": "pio-echo"
+  },
+  {
+    "text": "PIO FIFO",
+    "conceptId": "pio-fifo"
+  },
+  {
+    "text": "PIO wrap",
+    "conceptId": "pio-wrap"
+  },
+  {
+    "text": "PIO 回送範例",
+    "conceptId": "pio-echo"
+  },
+  {
+    "text": "PIO 資料佇列",
+    "conceptId": "pio-fifo"
+  },
+  {
+    "text": "PIO 迴繞標記",
+    "conceptId": "pio-wrap"
+  },
+  {
+    "text": "profiler",
+    "conceptId": "profiling"
+  },
+  {
+    "text": "pthreads",
+    "conceptId": "pthread"
+  },
+  {
+    "text": "Register",
+    "conceptId": "register"
+  },
+  {
+    "text": "Reliable",
+    "conceptId": "qos-reliability"
+  },
+  {
+    "text": "ROS init",
+    "conceptId": "ros2-init"
+  },
+  {
+    "text": "ROS spin",
+    "conceptId": "ros2-spin"
+  },
+  {
+    "text": "ROS 命名空間",
+    "conceptId": "ros-namespace"
+  },
+  {
+    "text": "ROS 網域識別",
+    "conceptId": "ros-domain-id"
+  },
+  {
+    "text": "Spinlock",
+    "conceptId": "spinlock"
+  },
+  {
+    "text": "stdint.h",
+    "conceptId": "stdint"
+  },
+  {
+    "text": "Terminal",
+    "conceptId": "terminal"
+  },
+  {
+    "text": "Test bit",
+    "conceptId": "test-bit"
+  },
+  {
+    "text": "topic hz",
+    "conceptId": "ros2-topic-hz"
+  },
+  {
+    "text": "Topic 名稱",
+    "conceptId": "ros2-topic-name"
+  },
+  {
+    "text": "U suffix",
+    "conceptId": "unsigned-suffix"
+  },
+  {
+    "text": "uint32_t",
+    "conceptId": "uint32"
+  },
+  {
+    "text": "volatile",
+    "conceptId": "volatile"
+  },
+  {
+    "text": "可用 CPU 數",
+    "conceptId": "cpu-affinity"
+  },
+  {
+    "text": "可程式化輸入輸出",
+    "conceptId": "pio"
+  },
+  {
+    "text": "固定寬度整數標頭",
+    "conceptId": "stdint"
+  },
+  {
+    "text": "建置 image",
+    "conceptId": "docker-build"
+  },
+  {
+    "text": "標準輸入輸出標頭",
+    "conceptId": "stdio"
+  },
+  {
+    "text": "機器人作業系統2",
+    "conceptId": "ros2"
+  },
+  {
+    "text": "記憶體映射 IO",
+    "conceptId": "mmio"
+  },
+  {
+    "text": "記憶體錯誤檢查器",
+    "conceptId": "sanitizer"
+  },
+  {
+    "text": "通用輸入輸出腳位",
+    "conceptId": "gpio"
+  },
+  {
+    "text": "雙 buffer",
+    "conceptId": "double-buffer"
+  },
+  {
+    "text": "_Atomic",
+    "conceptId": "atomic"
+  },
+  {
+    "text": "bit set",
+    "conceptId": "set-bit"
+  },
+  {
+    "text": "channel",
+    "conceptId": "transfer-channel"
+  },
+  {
+    "text": "combine",
+    "conceptId": "combine-fields"
+  },
+  {
+    "text": "condvar",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "Counter",
+    "conceptId": "counter"
+  },
+  {
+    "text": "CPU 親和性",
+    "conceptId": "cpu-affinity"
+  },
+  {
+    "text": "DMA 控制器",
+    "conceptId": "dma-controller"
+  },
+  {
+    "text": "DMA來源遞增",
+    "conceptId": "dma-read-increment"
+  },
+  {
+    "text": "DMA目的遞增",
+    "conceptId": "dma-write-increment"
+  },
+  {
+    "text": "GCC 編譯器",
+    "conceptId": "gcc"
+  },
+  {
+    "text": "is busy",
+    "conceptId": "transfer-busy"
+  },
+  {
+    "text": "Latency",
+    "conceptId": "latency"
+  },
+  {
+    "text": "locking",
+    "conceptId": "lock"
+  },
+  {
+    "text": "message",
+    "conceptId": "ros2-message"
+  },
+  {
+    "text": "No lock",
+    "conceptId": "no-lock"
+  },
+  {
+    "text": "PIO DMA",
+    "conceptId": "pio-dma"
+  },
+  {
+    "text": "PIO out",
+    "conceptId": "pio-out"
+  },
+  {
+    "text": "PIO+DMA",
+    "conceptId": "pio-dma"
+  },
+  {
+    "text": "Polling",
+    "conceptId": "polling"
+  },
+  {
+    "text": "Process",
+    "conceptId": "process"
+  },
+  {
+    "text": "pthread",
+    "conceptId": "pthread"
+  },
+  {
+    "text": "publish",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "RX FIFO",
+    "conceptId": "rx-fifo"
+  },
+  {
+    "text": "Set bit",
+    "conceptId": "set-bit"
+  },
+  {
+    "text": "stdio.h",
+    "conceptId": "stdio"
+  },
+  {
+    "text": "TX FIFO",
+    "conceptId": "tx-fifo"
+  },
+  {
+    "text": "uintptr",
+    "conceptId": "uintptr"
+  },
+  {
+    "text": "互斥鎖與自旋鎖",
+    "conceptId": "mutex-vs-spin"
+  },
+  {
+    "text": "傳送 FIFO",
+    "conceptId": "tx-fifo"
+  },
+  {
+    "text": "取得 DREQ",
+    "conceptId": "pio-get-dreq"
+  },
+  {
+    "text": "可程式 I/O",
+    "conceptId": "pio"
+  },
+  {
+    "text": "可重入回呼群組",
+    "conceptId": "reentrant-callback-group"
+  },
+  {
+    "text": "單執行緒執行器",
+    "conceptId": "single-executor"
+  },
+  {
+    "text": "固定工作執行緒",
+    "conceptId": "thread-pool"
+  },
+  {
+    "text": "執行緒安全關閉",
+    "conceptId": "thread-shutdown"
+  },
+  {
+    "text": "多執行緒執行器",
+    "conceptId": "multi-executor"
+  },
+  {
+    "text": "接收 FIFO",
+    "conceptId": "rx-fifo"
+  },
+  {
+    "text": "發送 FIFO",
+    "conceptId": "tx-fifo"
+  },
+  {
+    "text": "直接存取記憶體",
+    "conceptId": "dma"
+  },
+  {
+    "text": "直接記憶體存取",
+    "conceptId": "dma"
+  },
+  {
+    "text": "硬體與軟體搬運",
+    "conceptId": "dma-vs-thread"
+  },
+  {
+    "text": "等待執行緒結束",
+    "conceptId": "pthread-join"
+  },
+  {
+    "text": "記憶體比較函式",
+    "conceptId": "memcmp"
+  },
+  {
+    "text": "記憶體複製函式",
+    "conceptId": "memcpy"
+  },
+  {
+    "text": "資料結構結構體",
+    "conceptId": "struct"
+  },
+  {
+    "text": "輸入位移暫存器",
+    "conceptId": "isr"
+  },
+  {
+    "text": "輸入移位暫存器",
+    "conceptId": "isr"
+  },
+  {
+    "text": "輸出位移暫存器",
+    "conceptId": "osr"
+  },
+  {
+    "text": "輸出移位暫存器",
+    "conceptId": "osr"
+  },
+  {
+    "text": "進入已運作容器",
+    "conceptId": "docker-exec"
+  },
+  {
+    "text": "非同步服務呼叫",
+    "conceptId": "call-async"
+  },
+  {
+    "text": "action",
+    "conceptId": "ros2-action"
+  },
+  {
+    "text": "atomic",
+    "conceptId": "atomic"
+  },
+  {
+    "text": "Binary",
+    "conceptId": "binary"
+  },
+  {
+    "text": "Buffer",
+    "conceptId": "buffer"
+  },
+  {
+    "text": "client",
+    "conceptId": "service-client"
+  },
+  {
+    "text": "clkdiv",
+    "conceptId": "clock-divider"
+  },
+  {
+    "text": "DMA 完成",
+    "conceptId": "dma-completion"
+  },
+  {
+    "text": "DMA 引擎",
+    "conceptId": "dma-controller"
+  },
+  {
+    "text": "DMA 硬體",
+    "conceptId": "dma-controller"
+  },
+  {
+    "text": "DMA 配置",
+    "conceptId": "dma-config"
+  },
+  {
+    "text": "Docker",
+    "conceptId": "docker"
+  },
+  {
+    "text": "Future",
+    "conceptId": "future"
+  },
+  {
+    "text": "IO pin",
+    "conceptId": "gpio"
+  },
+  {
+    "text": "memcmp",
+    "conceptId": "memcmp"
+  },
+  {
+    "text": "memcpy",
+    "conceptId": "memcpy"
+  },
+  {
+    "text": "Packet",
+    "conceptId": "packet"
+  },
+  {
+    "text": "Pico 2",
+    "conceptId": "rp2350"
+  },
+  {
+    "text": "PIO in",
+    "conceptId": "pio-in"
+  },
+  {
+    "text": "PIO 停滯",
+    "conceptId": "pio-stall"
+  },
+  {
+    "text": "PIO 取值",
+    "conceptId": "pio-pull"
+  },
+  {
+    "text": "PIO 推送",
+    "conceptId": "pio-push"
+  },
+  {
+    "text": "PIO 程式",
+    "conceptId": "pio-program"
+  },
+  {
+    "text": "PIO 緩衝",
+    "conceptId": "pio-fifo"
+  },
+  {
+    "text": "printf",
+    "conceptId": "stdio"
+  },
+  {
+    "text": "ROS 參數",
+    "conceptId": "ros-parameter"
+  },
+  {
+    "text": "ROS 節點",
+    "conceptId": "ros2-node"
+  },
+  {
+    "text": "RP2350",
+    "conceptId": "rp2350"
+  },
+  {
+    "text": "server",
+    "conceptId": "service-server"
+  },
+  {
+    "text": "sizeof",
+    "conceptId": "sizeof"
+  },
+  {
+    "text": "source",
+    "conceptId": "source-code"
+  },
+  {
+    "text": "stdout",
+    "conceptId": "stdout"
+  },
+  {
+    "text": "struct",
+    "conceptId": "struct"
+  },
+  {
+    "text": "target",
+    "conceptId": "make-target"
+  },
+  {
+    "text": "Thread",
+    "conceptId": "thread"
+  },
+  {
+    "text": "uint32",
+    "conceptId": "uint32"
+  },
+  {
+    "text": "主題資訊指令",
+    "conceptId": "ros2-topic-info"
+  },
+  {
+    "text": "互斥回呼群組",
+    "conceptId": "mutex-callback-group"
+  },
+  {
+    "text": "位元 AND",
+    "conceptId": "bit-and"
+  },
+  {
+    "text": "位元 NOT",
+    "conceptId": "bit-not"
+  },
+  {
+    "text": "位元 XOR",
+    "conceptId": "bit-xor"
+  },
+  {
+    "text": "傳輸工作描述",
+    "conceptId": "transfer-job"
+  },
+  {
+    "text": "傳輸忙碌狀態",
+    "conceptId": "transfer-busy"
+  },
+  {
+    "text": "傳輸服務品質",
+    "conceptId": "qos"
+  },
+  {
+    "text": "先進先出佇列",
+    "conceptId": "fifo"
+  },
+  {
+    "text": "把位元清成0",
+    "conceptId": "clear-bit"
+  },
+  {
+    "text": "把位元設成1",
+    "conceptId": "set-bit"
+  },
+  {
+    "text": "持續處理事件",
+    "conceptId": "ros2-spin"
+  },
+  {
+    "text": "指令發送訊息",
+    "conceptId": "ros2-topic-pub"
+  },
+  {
+    "text": "排隊資料結構",
+    "conceptId": "queue"
+  },
+  {
+    "text": "擷取位元欄位",
+    "conceptId": "extract-field"
+  },
+  {
+    "text": "服務品質設定",
+    "conceptId": "qos"
+  },
+  {
+    "text": "未來結果物件",
+    "conceptId": "future"
+  },
+  {
+    "text": "查看訊息結構",
+    "conceptId": "ros2-interface-show"
+  },
+  {
+    "text": "每秒發送次數",
+    "conceptId": "publisher-rate"
+  },
+  {
+    "text": "每筆傳輸大小",
+    "conceptId": "transfer-size"
+  },
+  {
+    "text": "無號常數後綴",
+    "conceptId": "unsigned-suffix"
+  },
+  {
+    "text": "生產者消費者",
+    "conceptId": "producer-consumer"
+  },
+  {
+    "text": "直接內存訪問",
+    "conceptId": "dma"
+  },
+  {
+    "text": "等待傳輸完成",
+    "conceptId": "transfer-wait"
+  },
+  {
+    "text": "節點互相發現",
+    "conceptId": "ros2-discovery"
+  },
+  {
+    "text": "節點資訊指令",
+    "conceptId": "ros2-node-info"
+  },
+  {
+    "text": "組合位元欄位",
+    "conceptId": "combine-fields"
+  },
+  {
+    "text": "結束自動移除",
+    "conceptId": "docker-rm"
+  },
+  {
+    "text": "自動送回資料",
+    "conceptId": "autopush"
+  },
+  {
+    "text": "複製與零拷貝",
+    "conceptId": "copy-vs-zero-copy"
+  },
+  {
+    "text": "觀察主題訊息",
+    "conceptId": "ros2-topic-echo"
+  },
+  {
+    "text": "訊息佇列深度",
+    "conceptId": "qos-depth"
+  },
+  {
+    "text": "記憶體局部性",
+    "conceptId": "memory-locality"
+  },
+  {
+    "text": "記憶體複雜度",
+    "conceptId": "space-complexity"
+  },
+  {
+    "text": "資料傳輸引擎",
+    "conceptId": "transfer-engine"
+  },
+  {
+    "text": "資料搬運引擎",
+    "conceptId": "transfer-engine"
+  },
+  {
+    "text": ".wrap",
+    "conceptId": "pio-wrap"
+  },
+  {
+    "text": "Big O",
+    "conceptId": "complexity"
+  },
+  {
+    "text": "cache",
+    "conceptId": "cache"
+  },
+  {
+    "text": "clang",
+    "conceptId": "compiler"
+  },
+  {
+    "text": "count",
+    "conceptId": "transfer-count"
+  },
+  {
+    "text": "depth",
+    "conceptId": "qos-depth"
+  },
+  {
+    "text": "image",
+    "conceptId": "image"
+  },
+  {
+    "text": "Jazzy",
+    "conceptId": "ros2-jazzy"
+  },
+  {
+    "text": "Mutex",
+    "conceptId": "mutex"
+  },
+  {
+    "text": "PIO佇列",
+    "conceptId": "pio-fifo"
+  },
+  {
+    "text": "PIO卡住",
+    "conceptId": "pio-stall"
+  },
+  {
+    "text": "Queue",
+    "conceptId": "queue"
+  },
+  {
+    "text": "rclpy",
+    "conceptId": "rclpy"
+  },
+  {
+    "text": "remap",
+    "conceptId": "ros2-remap"
+  },
+  {
+    "text": "ROS 2",
+    "conceptId": "ros2"
+  },
+  {
+    "text": "RX 佇列",
+    "conceptId": "rx-fifo"
+  },
+  {
+    "text": "Shell",
+    "conceptId": "shell"
+  },
+  {
+    "text": "stall",
+    "conceptId": "pio-stall"
+  },
+  {
+    "text": "timer",
+    "conceptId": "ros2-timer"
+  },
+  {
+    "text": "topic",
+    "conceptId": "ros2-topic"
+  },
+  {
+    "text": "TX 佇列",
+    "conceptId": "tx-fifo"
+  },
+  {
+    "text": "UBSan",
+    "conceptId": "sanitizer"
+  },
+  {
+    "text": "width",
+    "conceptId": "bit-width"
+  },
+  {
+    "text": "X 暫存器",
+    "conceptId": "pio-x"
+  },
+  {
+    "text": "Y 暫存器",
+    "conceptId": "pio-y"
+  },
+  {
+    "text": "事件執行器",
+    "conceptId": "executor"
+  },
+  {
+    "text": "二進位位元",
+    "conceptId": "bit"
+  },
+  {
+    "text": "位元 OR",
+    "conceptId": "bit-or"
+  },
+  {
+    "text": "位元互斥或",
+    "conceptId": "bit-xor"
+  },
+  {
+    "text": "位元組排列",
+    "conceptId": "byte-order"
+  },
+  {
+    "text": "位元組順序",
+    "conceptId": "byte-order"
+  },
+  {
+    "text": "來源記憶體",
+    "conceptId": "transfer-src"
+  },
+  {
+    "text": "傳輸可靠性",
+    "conceptId": "qos-reliability"
+  },
+  {
+    "text": "取得自旋鎖",
+    "conceptId": "spin-lock"
+  },
+  {
+    "text": "可編程IO",
+    "conceptId": "pio"
+  },
+  {
+    "text": "可重入群組",
+    "conceptId": "reentrant-callback-group"
+  },
+  {
+    "text": "可靠性政策",
+    "conceptId": "qos-reliability"
+  },
+  {
+    "text": "名稱重映射",
+    "conceptId": "ros2-remap"
+  },
+  {
+    "text": "命令列介面",
+    "conceptId": "cli"
+  },
+  {
+    "text": "命令列視窗",
+    "conceptId": "terminal"
+  },
+  {
+    "text": "命令解譯器",
+    "conceptId": "shell"
+  },
+  {
+    "text": "固定鎖順序",
+    "conceptId": "lock-order"
+  },
+  {
+    "text": "執行緒排程",
+    "conceptId": "thread-schedule"
+  },
+  {
+    "text": "大小運算子",
+    "conceptId": "sizeof"
+  },
+  {
+    "text": "容器建置檔",
+    "conceptId": "dockerfile"
+  },
+  {
+    "text": "建立執行緒",
+    "conceptId": "pthread-create"
+  },
+  {
+    "text": "快取一致性",
+    "conceptId": "dma-cache"
+  },
+  {
+    "text": "快取不命中",
+    "conceptId": "cache-miss"
+  },
+  {
+    "text": "快取未命中",
+    "conceptId": "cache-miss"
+  },
+  {
+    "text": "快取記憶體",
+    "conceptId": "cache"
+  },
+  {
+    "text": "時間複雜度",
+    "conceptId": "complexity"
+  },
+  {
+    "text": "有限狀態機",
+    "conceptId": "state-machine"
+  },
+  {
+    "text": "服務客戶端",
+    "conceptId": "service-client"
+  },
+  {
+    "text": "服務提供者",
+    "conceptId": "service-server"
+  },
+  {
+    "text": "服務請求方",
+    "conceptId": "service-client"
+  },
+  {
+    "text": "未定義行為",
+    "conceptId": "undefined-behavior"
+  },
+  {
+    "text": "環形緩衝區",
+    "conceptId": "ring-buffer"
+  },
+  {
+    "text": "目的記憶體",
+    "conceptId": "transfer-dst"
+  },
+  {
+    "text": "短時間持鎖",
+    "conceptId": "short-lock"
+  },
+  {
+    "text": "硬體暫存器",
+    "conceptId": "register"
+  },
+  {
+    "text": "空間複雜度",
+    "conceptId": "space-complexity"
+  },
+  {
+    "text": "端到端延遲",
+    "conceptId": "end-to-end-latency"
+  },
+  {
+    "text": "網域 ID",
+    "conceptId": "ros-domain-id"
+  },
+  {
+    "text": "緩存記憶體",
+    "conceptId": "cache"
+  },
+  {
+    "text": "自動取資料",
+    "conceptId": "autopull"
+  },
+  {
+    "text": "記憶體大小",
+    "conceptId": "sizeof"
+  },
+  {
+    "text": "記憶體對齊",
+    "conceptId": "alignment"
+  },
+  {
+    "text": "資料局部性",
+    "conceptId": "memory-locality"
+  },
+  {
+    "text": "資料序列化",
+    "conceptId": "serialization"
+  },
+  {
+    "text": "週期觸發器",
+    "conceptId": "ros2-timer"
+  },
+  {
+    "text": "釋放自旋鎖",
+    "conceptId": "spin-unlock"
+  },
+  {
+    "text": "鎖取得順序",
+    "conceptId": "lock-order"
+  },
+  {
+    "text": "長時間持鎖",
+    "conceptId": "long-lock"
+  },
+  {
+    "text": "非同步結果",
+    "conceptId": "future"
+  },
+  {
+    "text": "非同步請求",
+    "conceptId": "call-async"
+  },
+  {
+    "text": "--rm",
+    "conceptId": "docker-rm"
+  },
+  {
+    "text": ".pio",
+    "conceptId": "pio-program"
+  },
+  {
+    "text": "ASan",
+    "conceptId": "sanitizer"
+  },
+  {
+    "text": "bash",
+    "conceptId": "shell"
+  },
+  {
+    "text": "bool",
+    "conceptId": "bool"
+  },
+  {
+    "text": "busy",
+    "conceptId": "transfer-busy"
+  },
+  {
+    "text": "Byte",
+    "conceptId": "byte"
+  },
+  {
+    "text": "copy",
+    "conceptId": "transfer-copy"
+  },
+  {
+    "text": "DREQ",
+    "conceptId": "dreq"
+  },
+  {
+    "text": "echo",
+    "conceptId": "pio-echo"
+  },
+  {
+    "text": "enum",
+    "conceptId": "enum"
+  },
+  {
+    "text": "exec",
+    "conceptId": "docker-exec"
+  },
+  {
+    "text": "FIFO",
+    "conceptId": "fifo"
+  },
+  {
+    "text": "fill",
+    "conceptId": "transfer-fill"
+  },
+  {
+    "text": "GPIO",
+    "conceptId": "gpio"
+  },
+  {
+    "text": "init",
+    "conceptId": "ros2-init"
+  },
+  {
+    "text": "join",
+    "conceptId": "pthread-join"
+  },
+  {
+    "text": "Lock",
+    "conceptId": "lock"
+  },
+  {
+    "text": "make",
+    "conceptId": "make"
+  },
+  {
+    "text": "mask",
+    "conceptId": "bit-mask"
+  },
+  {
+    "text": "MMIO",
+    "conceptId": "mmio"
+  },
+  {
+    "text": "node",
+    "conceptId": "ros2-node"
+  },
+  {
+    "text": "O(n)",
+    "conceptId": "complexity"
+  },
+  {
+    "text": "poll",
+    "conceptId": "polling"
+  },
+  {
+    "text": "pull",
+    "conceptId": "pio-pull"
+  },
+  {
+    "text": "push",
+    "conceptId": "pio-push"
+  },
+  {
+    "text": "ROS2",
+    "conceptId": "ros2"
+  },
+  {
+    "text": "size",
+    "conceptId": "transfer-size"
+  },
+  {
+    "text": "spin",
+    "conceptId": "ros2-spin"
+  },
+  {
+    "text": "u 後綴",
+    "conceptId": "unsigned-suffix"
+  },
+  {
+    "text": "Word",
+    "conceptId": "word"
+  },
+  {
+    "text": "WSL2",
+    "conceptId": "wsl"
+  },
+  {
+    "text": "中斷請求",
+    "conceptId": "irq"
+  },
+  {
+    "text": "中斷通知",
+    "conceptId": "dma-completion"
+  },
+  {
+    "text": "主題名稱",
+    "conceptId": "ros2-topic-name"
+  },
+  {
+    "text": "主題詳情",
+    "conceptId": "ros2-topic-info"
+  },
+  {
+    "text": "主題通道",
+    "conceptId": "ros2-topic"
+  },
+  {
+    "text": "主題頻率",
+    "conceptId": "ros2-topic-hz"
+  },
+  {
+    "text": "位元位置",
+    "conceptId": "bit-position"
+  },
+  {
+    "text": "位元反相",
+    "conceptId": "bit-not"
+  },
+  {
+    "text": "位元右移",
+    "conceptId": "shift-right"
+  },
+  {
+    "text": "位元寬度",
+    "conceptId": "bit-width"
+  },
+  {
+    "text": "位元左移",
+    "conceptId": "shift-left"
+  },
+  {
+    "text": "位元索引",
+    "conceptId": "bit-position"
+  },
+  {
+    "text": "位元組序",
+    "conceptId": "endianness"
+  },
+  {
+    "text": "位元運算",
+    "conceptId": "bitwise"
+  },
+  {
+    "text": "位元遮罩",
+    "conceptId": "bit-mask"
+  },
+  {
+    "text": "位址遞增",
+    "conceptId": "transfer-increment"
+  },
+  {
+    "text": "來源位址",
+    "conceptId": "transfer-src"
+  },
+  {
+    "text": "傳輸數量",
+    "conceptId": "transfer-count"
+  },
+  {
+    "text": "傳輸筆數",
+    "conceptId": "transfer-count"
+  },
+  {
+    "text": "傳輸通道",
+    "conceptId": "transfer-channel"
+  },
+  {
+    "text": "元素大小",
+    "conceptId": "transfer-size"
+  },
+  {
+    "text": "先入先出",
+    "conceptId": "fifo"
+  },
+  {
+    "text": "先進先出",
+    "conceptId": "fifo"
+  },
+  {
+    "text": "全程延遲",
+    "conceptId": "end-to-end-latency"
+  },
+  {
+    "text": "共享狀態",
+    "conceptId": "shared-variable"
+  },
+  {
+    "text": "共享變數",
+    "conceptId": "shared-variable"
+  },
+  {
+    "text": "列出主題",
+    "conceptId": "ros2-topic-list"
+  },
+  {
+    "text": "列出節點",
+    "conceptId": "ros2-node-list"
+  },
+  {
+    "text": "列舉型別",
+    "conceptId": "enum"
+  },
+  {
+    "text": "十六進位",
+    "conceptId": "hex"
+  },
+  {
+    "text": "十六進制",
+    "conceptId": "hex"
+  },
+  {
+    "text": "原始效能",
+    "conceptId": "baseline"
+  },
+  {
+    "text": "原子操作",
+    "conceptId": "atomic"
+  },
+  {
+    "text": "原子變數",
+    "conceptId": "atomic"
+  },
+  {
+    "text": "參數設定",
+    "conceptId": "ros-parameter"
+  },
+  {
+    "text": "反應時間",
+    "conceptId": "latency"
+  },
+  {
+    "text": "取得通道",
+    "conceptId": "transfer-claim"
+  },
+  {
+    "text": "取高四位",
+    "conceptId": "extract-field"
+  },
+  {
+    "text": "合併欄位",
+    "conceptId": "combine-fields"
+  },
+  {
+    "text": "同步卡住",
+    "conceptId": "blocking"
+  },
+  {
+    "text": "周邊裝置",
+    "conceptId": "peripheral"
+  },
+  {
+    "text": "命令殼層",
+    "conceptId": "shell"
+  },
+  {
+    "text": "命名空間",
+    "conceptId": "ros-namespace"
+  },
+  {
+    "text": "啟動容器",
+    "conceptId": "docker-run"
+  },
+  {
+    "text": "啟動搬運",
+    "conceptId": "transfer-start"
+  },
+  {
+    "text": "單筆延遲",
+    "conceptId": "latency"
+  },
+  {
+    "text": "單調時鐘",
+    "conceptId": "clock-monotonic"
+  },
+  {
+    "text": "單調時間",
+    "conceptId": "clock-monotonic"
+  },
+  {
+    "text": "回呼函式",
+    "conceptId": "callback"
+  },
+  {
+    "text": "回呼群組",
+    "conceptId": "callback-group"
+  },
+  {
+    "text": "回調函式",
+    "conceptId": "callback"
+  },
+  {
+    "text": "地址對齊",
+    "conceptId": "alignment"
+  },
+  {
+    "text": "執行容器",
+    "conceptId": "docker-run"
+  },
+  {
+    "text": "執行緒池",
+    "conceptId": "thread-pool"
+  },
+  {
+    "text": "基準測試",
+    "conceptId": "benchmark"
+  },
+  {
+    "text": "基準版本",
+    "conceptId": "baseline"
+  },
+  {
+    "text": "填充資料",
+    "conceptId": "transfer-fill"
+  },
+  {
+    "text": "外圍裝置",
+    "conceptId": "peripheral"
+  },
+  {
+    "text": "多程序池",
+    "conceptId": "process-pool"
+  },
+  {
+    "text": "大小端序",
+    "conceptId": "endianness"
+  },
+  {
+    "text": "完成等待",
+    "conceptId": "transfer-wait"
+  },
+  {
+    "text": "容器實例",
+    "conceptId": "container"
+  },
+  {
+    "text": "容器工具",
+    "conceptId": "docker"
+  },
+  {
+    "text": "容器清除",
+    "conceptId": "docker-rm"
+  },
+  {
+    "text": "尾端延遲",
+    "conceptId": "p95"
+  },
+  {
+    "text": "工作目錄",
+    "conceptId": "working-dir"
+  },
+  {
+    "text": "布林型別",
+    "conceptId": "bool"
+  },
+  {
+    "text": "建置指令",
+    "conceptId": "make"
+  },
+  {
+    "text": "建置映像",
+    "conceptId": "docker-build"
+  },
+  {
+    "text": "建置目標",
+    "conceptId": "make-target"
+  },
+  {
+    "text": "循環緩衝",
+    "conceptId": "ring-buffer"
+  },
+  {
+    "text": "微控制器",
+    "conceptId": "mcu"
+  },
+  {
+    "text": "手動發布",
+    "conceptId": "ros2-topic-pub"
+  },
+  {
+    "text": "指令介面",
+    "conceptId": "cli"
+  },
+  {
+    "text": "指標整數",
+    "conceptId": "uintptr"
+  },
+  {
+    "text": "排隊訊息",
+    "conceptId": "message-backlog"
+  },
+  {
+    "text": "接收緩衝",
+    "conceptId": "rx-fifo"
+  },
+  {
+    "text": "接收頻率",
+    "conceptId": "ros2-topic-hz"
+  },
+  {
+    "text": "搬移資料",
+    "conceptId": "transfer-copy"
+  },
+  {
+    "text": "搬運寬度",
+    "conceptId": "dma-transfer-width"
+  },
+  {
+    "text": "搬運引擎",
+    "conceptId": "transfer-engine"
+  },
+  {
+    "text": "搬運描述",
+    "conceptId": "transfer-job"
+  },
+  {
+    "text": "搬運通道",
+    "conceptId": "transfer-channel"
+  },
+  {
+    "text": "效能分析",
+    "conceptId": "profiling"
+  },
+  {
+    "text": "效能剖析",
+    "conceptId": "profiling"
+  },
+  {
+    "text": "效能測試",
+    "conceptId": "benchmark"
+  },
+  {
+    "text": "效能量測",
+    "conceptId": "benchmark"
+  },
+  {
+    "text": "整數標頭",
+    "conceptId": "stdint"
+  },
+  {
+    "text": "映像檔案",
+    "conceptId": "image"
+  },
+  {
+    "text": "時脈除頻",
+    "conceptId": "clock-divider"
+  },
+  {
+    "text": "時鐘分頻",
+    "conceptId": "clock-divider"
+  },
+  {
+    "text": "時間成本",
+    "conceptId": "complexity"
+  },
+  {
+    "text": "更新遺失",
+    "conceptId": "lost-update"
+  },
+  {
+    "text": "有效吞吐",
+    "conceptId": "throughput"
+  },
+  {
+    "text": "服務呼叫",
+    "conceptId": "ros2-service"
+  },
+  {
+    "text": "服務死鎖",
+    "conceptId": "ros2-deadlock"
+  },
+  {
+    "text": "查看主題",
+    "conceptId": "ros2-topic-list"
+  },
+  {
+    "text": "查看節點",
+    "conceptId": "ros2-node-list"
+  },
+  {
+    "text": "查看訊息",
+    "conceptId": "ros2-topic-echo"
+  },
+  {
+    "text": "條件變數",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "條件通知",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "標準輸出",
+    "conceptId": "stdout"
+  },
+  {
+    "text": "檢查位元",
+    "conceptId": "test-bit"
+  },
+  {
+    "text": "欄位檢查",
+    "conceptId": "ros2-interface-show"
+  },
+  {
+    "text": "歷史深度",
+    "conceptId": "qos-depth"
+  },
+  {
+    "text": "歸還通道",
+    "conceptId": "transfer-release"
+  },
+  {
+    "text": "每秒筆數",
+    "conceptId": "throughput"
+  },
+  {
+    "text": "流量回壓",
+    "conceptId": "backpressure"
+  },
+  {
+    "text": "清除位元",
+    "conceptId": "clear-bit"
+  },
+  {
+    "text": "減少複製",
+    "conceptId": "copy-vs-zero-copy"
+  },
+  {
+    "text": "測試位元",
+    "conceptId": "test-bit"
+  },
+  {
+    "text": "無號整數",
+    "conceptId": "uint32"
+  },
+  {
+    "text": "無鎖保護",
+    "conceptId": "no-lock"
+  },
+  {
+    "text": "熱點分析",
+    "conceptId": "profiling"
+  },
+  {
+    "text": "環狀佇列",
+    "conceptId": "ring-buffer"
+  },
+  {
+    "text": "申請通道",
+    "conceptId": "transfer-claim"
+  },
+  {
+    "text": "當前目錄",
+    "conceptId": "working-dir"
+  },
+  {
+    "text": "發布頻率",
+    "conceptId": "publisher-rate"
+  },
+  {
+    "text": "目的位址",
+    "conceptId": "transfer-dst"
+  },
+  {
+    "text": "短臨界區",
+    "conceptId": "short-lock"
+  },
+  {
+    "text": "移位方向",
+    "conceptId": "shift-direction"
+  },
+  {
+    "text": "移位順序",
+    "conceptId": "shift-direction"
+  },
+  {
+    "text": "節點名稱",
+    "conceptId": "ros2-name"
+  },
+  {
+    "text": "節點發現",
+    "conceptId": "ros2-discovery"
+  },
+  {
+    "text": "節點詳情",
+    "conceptId": "ros2-node-info"
+  },
+  {
+    "text": "背壓控制",
+    "conceptId": "backpressure"
+  },
+  {
+    "text": "臨界區段",
+    "conceptId": "critical-section"
+  },
+  {
+    "text": "自動拉取",
+    "conceptId": "autopull"
+  },
+  {
+    "text": "自動推送",
+    "conceptId": "autopush"
+  },
+  {
+    "text": "處理落後",
+    "conceptId": "message-backlog"
+  },
+  {
+    "text": "計數變少",
+    "conceptId": "lost-update"
+  },
+  {
+    "text": "訊息型別",
+    "conceptId": "ros2-message-type"
+  },
+  {
+    "text": "訊息堆積",
+    "conceptId": "message-backlog"
+  },
+  {
+    "text": "訊息格式",
+    "conceptId": "ros2-message-type"
+  },
+  {
+    "text": "訊息欄位",
+    "conceptId": "ros2-field"
+  },
+  {
+    "text": "訊息資料",
+    "conceptId": "ros2-message"
+  },
+  {
+    "text": "設定位元",
+    "conceptId": "set-bit"
+  },
+  {
+    "text": "設定傳輸",
+    "conceptId": "transfer-configure"
+  },
+  {
+    "text": "請求訊號",
+    "conceptId": "dreq"
+  },
+  {
+    "text": "資料主題",
+    "conceptId": "ros2-topic"
+  },
+  {
+    "text": "資料吞吐",
+    "conceptId": "throughput"
+  },
+  {
+    "text": "資料填值",
+    "conceptId": "transfer-fill"
+  },
+  {
+    "text": "資料封包",
+    "conceptId": "packet"
+  },
+  {
+    "text": "資料欄位",
+    "conceptId": "ros2-field"
+  },
+  {
+    "text": "資料競態",
+    "conceptId": "data-race"
+  },
+  {
+    "text": "資料競爭",
+    "conceptId": "data-race"
+  },
+  {
+    "text": "資料緩衝",
+    "conceptId": "buffer"
+  },
+  {
+    "text": "資料複製",
+    "conceptId": "transfer-copy"
+  },
+  {
+    "text": "輪詢檢查",
+    "conceptId": "polling"
+  },
+  {
+    "text": "輸出結果",
+    "conceptId": "stdout"
+  },
+  {
+    "text": "迴圈起點",
+    "conceptId": "pio-wrap"
+  },
+  {
+    "text": "遞增旗標",
+    "conceptId": "transfer-increment"
+  },
+  {
+    "text": "配置工作",
+    "conceptId": "transfer-configure"
+  },
+  {
+    "text": "釋放通道",
+    "conceptId": "transfer-release"
+  },
+  {
+    "text": "重新映射",
+    "conceptId": "ros2-remap"
+  },
+  {
+    "text": "長臨界區",
+    "conceptId": "long-lock"
+  },
+  {
+    "text": "開始傳輸",
+    "conceptId": "transfer-start"
+  },
+  {
+    "text": "關鍵區段",
+    "conceptId": "critical-section"
+  },
+  {
+    "text": "關閉旗標",
+    "conceptId": "thread-shutdown"
+  },
+  {
+    "text": "阻塞等待",
+    "conceptId": "blocking"
+  },
+  {
+    "text": "非阻塞式",
+    "conceptId": "nonblocking"
+  },
+  {
+    "text": "額外空間",
+    "conceptId": "space-complexity"
+  },
+  {
+    "text": "AND",
+    "conceptId": "bit-and"
+  },
+  {
+    "text": "Bit",
+    "conceptId": "bit"
+  },
+  {
+    "text": "CLI",
+    "conceptId": "cli"
+  },
+  {
+    "text": "cwd",
+    "conceptId": "working-dir"
+  },
+  {
+    "text": "DMA",
+    "conceptId": "dma"
+  },
+  {
+    "text": "dst",
+    "conceptId": "transfer-dst"
+  },
+  {
+    "text": "gcc",
+    "conceptId": "gcc"
+  },
+  {
+    "text": "GIL",
+    "conceptId": "gil"
+  },
+  {
+    "text": "hex",
+    "conceptId": "hex"
+  },
+  {
+    "text": "IRQ",
+    "conceptId": "irq"
+  },
+  {
+    "text": "ISR",
+    "conceptId": "isr"
+  },
+  {
+    "text": "job",
+    "conceptId": "transfer-job"
+  },
+  {
+    "text": "MCU",
+    "conceptId": "mcu"
+  },
+  {
+    "text": "msg",
+    "conceptId": "ros2-message"
+  },
+  {
+    "text": "NOT",
+    "conceptId": "bit-not"
+  },
+  {
+    "text": "OSR",
+    "conceptId": "osr"
+  },
+  {
+    "text": "p95",
+    "conceptId": "p95"
+  },
+  {
+    "text": "PIO",
+    "conceptId": "pio"
+  },
+  {
+    "text": "QoS",
+    "conceptId": "qos"
+  },
+  {
+    "text": "src",
+    "conceptId": "transfer-src"
+  },
+  {
+    "text": "WSL",
+    "conceptId": "wsl"
+  },
+  {
+    "text": "XOR",
+    "conceptId": "bit-xor"
+  },
+  {
+    "text": "二進位",
+    "conceptId": "binary"
+  },
+  {
+    "text": "二進制",
+    "conceptId": "binary"
+  },
+  {
+    "text": "互斥量",
+    "conceptId": "mutex"
+  },
+  {
+    "text": "互斥鎖",
+    "conceptId": "mutex"
+  },
+  {
+    "text": "位元且",
+    "conceptId": "bit-and"
+  },
+  {
+    "text": "位元或",
+    "conceptId": "bit-or"
+  },
+  {
+    "text": "位元組",
+    "conceptId": "byte"
+  },
+  {
+    "text": "位運算",
+    "conceptId": "bitwise"
+  },
+  {
+    "text": "假共享",
+    "conceptId": "false-sharing"
+  },
+  {
+    "text": "偽共享",
+    "conceptId": "false-sharing"
+  },
+  {
+    "text": "出版者",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "原始碼",
+    "conceptId": "source-code"
+  },
+  {
+    "text": "原版本",
+    "conceptId": "baseline"
+  },
+  {
+    "text": "取得鎖",
+    "conceptId": "spin-lock"
+  },
+  {
+    "text": "取欄位",
+    "conceptId": "extract-field"
+  },
+  {
+    "text": "同步鎖",
+    "conceptId": "lock"
+  },
+  {
+    "text": "吞吐量",
+    "conceptId": "throughput"
+  },
+  {
+    "text": "單晶片",
+    "conceptId": "mcu"
+  },
+  {
+    "text": "回調組",
+    "conceptId": "callback-group"
+  },
+  {
+    "text": "執行器",
+    "conceptId": "executor"
+  },
+  {
+    "text": "執行緒",
+    "conceptId": "thread"
+  },
+  {
+    "text": "定時器",
+    "conceptId": "ros2-timer"
+  },
+  {
+    "text": "寄存器",
+    "conceptId": "register"
+  },
+  {
+    "text": "工作者",
+    "conceptId": "thread"
+  },
+  {
+    "text": "布林值",
+    "conceptId": "bool"
+  },
+  {
+    "text": "序列化",
+    "conceptId": "serialization"
+  },
+  {
+    "text": "忙等鎖",
+    "conceptId": "spinlock"
+  },
+  {
+    "text": "排程器",
+    "conceptId": "thread-schedule"
+  },
+  {
+    "text": "揮發性",
+    "conceptId": "volatile"
+  },
+  {
+    "text": "搬幾筆",
+    "conceptId": "transfer-count"
+  },
+  {
+    "text": "映像檔",
+    "conceptId": "image"
+  },
+  {
+    "text": "暫存器",
+    "conceptId": "register"
+  },
+  {
+    "text": "服務端",
+    "conceptId": "service-server"
+  },
+  {
+    "text": "未加鎖",
+    "conceptId": "no-lock"
+  },
+  {
+    "text": "未定義",
+    "conceptId": "undefined-behavior"
+  },
+  {
+    "text": "漏更新",
+    "conceptId": "lost-update"
+  },
+  {
+    "text": "狀態機",
+    "conceptId": "state-machine"
+  },
+  {
+    "text": "發佈者",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "發布者",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "發送端",
+    "conceptId": "ros2-publisher"
+  },
+  {
+    "text": "程序池",
+    "conceptId": "process-pool"
+  },
+  {
+    "text": "程式碼",
+    "conceptId": "source-code"
+  },
+  {
+    "text": "第幾位",
+    "conceptId": "bit-position"
+  },
+  {
+    "text": "節點名",
+    "conceptId": "ros2-name"
+  },
+  {
+    "text": "終端機",
+    "conceptId": "terminal"
+  },
+  {
+    "text": "結構體",
+    "conceptId": "struct"
+  },
+  {
+    "text": "編譯器",
+    "conceptId": "compiler"
+  },
+  {
+    "text": "緩衝區",
+    "conceptId": "buffer"
+  },
+  {
+    "text": "臨界區",
+    "conceptId": "critical-section"
+  },
+  {
+    "text": "自旋鎖",
+    "conceptId": "spinlock"
+  },
+  {
+    "text": "訂閱器",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "訂閱端",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "訂閱者",
+    "conceptId": "ros2-subscriber"
+  },
+  {
+    "text": "計數器",
+    "conceptId": "counter"
+  },
+  {
+    "text": "計次器",
+    "conceptId": "counter"
+  },
+  {
+    "text": "資料字",
+    "conceptId": "word"
+  },
+  {
+    "text": "長工作",
+    "conceptId": "ros2-action"
+  },
+  {
+    "text": "雙緩衝",
+    "conceptId": "double-buffer"
+  },
+  {
+    "text": "非阻塞",
+    "conceptId": "nonblocking"
+  },
+  {
+    "text": "0x",
+    "conceptId": "hex"
+  },
+  {
+    "text": "1u",
+    "conceptId": "unsigned-suffix"
+  },
+  {
+    "text": "<<",
+    "conceptId": "shift-left"
+  },
+  {
+    "text": ">>",
+    "conceptId": "shift-right"
+  }
+]

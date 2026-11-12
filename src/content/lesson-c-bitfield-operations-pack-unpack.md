@@ -31,8 +31,6 @@ related: ncku-bitwise-c
 uint8_t packet[2] = {type, value};
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -46,8 +44,6 @@ uint8_t decoded_value = packed & 0x1fu;
 
 高 3 bit 給 type，低 5 bit 給 value。打包節省空間但雙方必須同意欄位佈局；未檢查範圍會導致值被截斷或污染其他欄位。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 傳輸雙方格式一致
@@ -58,7 +54,7 @@ uint8_t decoded_value = packed & 0x1fu;
 - 改格式有相容性成本
 - 若需要額外解碼反而可能變慢
 
-**正確性界線：**先比對逐欄位與原始 bytes，再比較耗時與 bytes。
+**正確性界線：** 先比對逐欄位與原始 bytes，再比較耗時與 bytes。
 
 ## 怎麼做測試
 
@@ -73,5 +69,3 @@ uint8_t decoded_value = packed & 0x1fu;
 ## 參考文件與驗證狀態
 
 - [C bitwise operators](https://en.cppreference.com/w/c/language/operator_arithmetic.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -31,8 +31,6 @@ related: ncku-transfer-engine
 // 適合逐元素 Copy，不適合固定值 Fill
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```text
@@ -46,8 +44,6 @@ related: ncku-transfer-engine
 
 Copy 與 Fill 的差異在來源指標是否前進。這裡沿用官方 Transfer Engine 模擬概念，不宣稱是特定 DMA 控制器可直接使用的設定語法；硬體還需檢查地址、寬度與對齊。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 目的 buffer 可容納 count * size
@@ -58,7 +54,7 @@ Copy 與 Fill 的差異在來源指標是否前進。這裡沿用官方 Transfer
 - 重疊 buffer 需特別處理
 - 不可在搬運尚未完成時釋放或改寫來源
 
-**正確性界線：**比較目的 bytes 內容及數量。
+**正確性界線：** 比較目的 bytes 內容及數量。
 
 ## 怎麼做測試
 
@@ -73,5 +69,3 @@ Copy 與 Fill 的差異在來源指標是否前進。這裡沿用官方 Transfer
 ## 參考文件與驗證狀態
 
 - [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

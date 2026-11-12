@@ -31,8 +31,6 @@ for sample in samples:
     send([sample])
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -50,8 +48,6 @@ if batch:
 
 批次會減少呼叫次數，但最早進入批次的資料必須等到滿 32 筆才送出。即時系統還要另外設定最大等待期限，不能只靠大小門檻。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 資料可分批
@@ -62,7 +58,7 @@ if batch:
 - 延遲可能變差
 - 出錯時重送／回復更複雜
 
-**正確性界線：**依相同負載量測 throughput 及 p95 延遲，不能只看吞吐量。
+**正確性界線：** 依相同負載量測 throughput 及 p95 延遲，不能只看吞吐量。
 
 ## 怎麼做測試
 
@@ -77,5 +73,3 @@ if batch:
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy Topic CLI](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

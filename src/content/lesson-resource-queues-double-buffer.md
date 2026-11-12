@@ -31,8 +31,6 @@ related: ncku-systems-foundations
 lock(); shared.append(new_value); unlock()
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```text
@@ -48,8 +46,6 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 
 交換兩塊 buffer 的角色，讓昂貴處理離開臨界區。最關鍵的是所有權：Consumer 還在使用的 buffer，Producer 不能重新拿去寫。兩塊不足時需要等待、回壓或更多 buffer。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 消費者不會仍在讀舊 buffer
@@ -60,7 +56,7 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 - 占兩份 buffer 記憶體
 - 若處理速率不均仍需更深 queue
 
-**正確性界線：**不可在 Consumer 讀取時覆寫緩衝區，需確認釋放條件。
+**正確性界線：** 不可在 Consumer 讀取時覆寫緩衝區，需確認釋放條件。
 
 ## 怎麼做測試
 
@@ -75,5 +71,3 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 ## 參考文件與驗證狀態
 
 - [C memory model](https://en.cppreference.com/w/c/language/memory_model.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

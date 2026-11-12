@@ -32,8 +32,6 @@ shared_count++;
 pthread_spin_unlock(&lock);
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -46,8 +44,6 @@ pthread_mutex_unlock(&mutex);
 
 Spinlock 會反覆嘗試，Mutex 通常可讓等待者阻塞。選擇不是誰一定更快，而是考慮持鎖時間、競爭程度和執行環境。兩種鎖的初始化、銷毀及所有使用位置必須一起更換。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 執行緒之間需要互斥
@@ -58,7 +54,7 @@ Spinlock 會反覆嘗試，Mutex 通常可讓等待者阻塞。選擇不是誰�
 - 短鎖低爭用時未必更快
 - 仍然可能死鎖或鎖競爭
 
-**正確性界線：**確認完整同步語意並測 CPU、總時間與正確性。
+**正確性界線：** 確認完整同步語意並測 CPU、總時間與正確性。
 
 ## 怎麼做測試
 
@@ -74,5 +70,3 @@ Spinlock 會反覆嘗試，Mutex 通常可讓等待者阻塞。選擇不是誰�
 
 - [POSIX pthread_mutex_lock](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html)
 - [POSIX pthread_spin_lock](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_spin_lock.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

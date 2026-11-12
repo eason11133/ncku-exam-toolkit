@@ -32,8 +32,6 @@ for word in words:
     pio_write_tx(word)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```text
@@ -49,8 +47,6 @@ for word in words:
 
 DMA 可能減少 CPU 搬運負擔，但需正確的 DREQ pacing、資料寬度、位址、緩衝區生命週期及平台支援；不能把官方以 thread 模擬的 Transfer Engine 直接當成真硬體 DMA。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 有實體 DMA 與 PIO 支援
@@ -61,7 +57,7 @@ DMA 可能減少 CPU 搬運負擔，但需正確的 DREQ pacing、資料寬度�
 - 需要通道及匯流排頻寬
 - 小資料量或同步成本可能更慢
 
-**正確性界線：**DMA 未完成不能讀 buffer，也要檢查 cache 與一致性。
+**正確性界線：** DMA 未完成不能讀 buffer，也要檢查 cache 與一致性。
 
 ## 怎麼做測試
 
@@ -77,5 +73,3 @@ DMA 可能減少 CPU 搬運負擔，但需正確的 DREQ pacing、資料寬度�
 
 - [Raspberry Pi Pico SDK Hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
 - [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

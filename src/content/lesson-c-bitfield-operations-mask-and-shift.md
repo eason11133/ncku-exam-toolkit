@@ -31,8 +31,6 @@ related: ncku-bitwise-c
 unsigned mode = status;
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -45,8 +43,6 @@ unsigned mode = (status >> 2) & 0x7u;  // 得到 3-bit 欄位
 
 先右移兩格把最低欄移到 bit 0，再用 `0x7` (二進位 111) 清除其他位。`status` 使用無號型別，避免 signed right shift 的語意問題。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 使用 unsigned 固定寬度型別
@@ -57,7 +53,7 @@ unsigned mode = (status >> 2) & 0x7u;  // 得到 3-bit 欄位
 - 原始資料若是 signed 需先轉換
 - 超出範圍會被截斷
 
-**正確性界線：**確認各測試向量的 bit pattern 完全一致。
+**正確性界線：** 確認各測試向量的 bit pattern 完全一致。
 
 ## 怎麼做測試
 
@@ -72,5 +68,3 @@ unsigned mode = (status >> 2) & 0x7u;  // 得到 3-bit 欄位
 ## 參考文件與驗證狀態
 
 - [C bitwise operators](https://en.cppreference.com/w/c/language/operator_arithmetic.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -41,8 +41,6 @@ for (size_t i = 0; i < chunks; ++i) {
 // 結束時每個傳輸都已 wait；實作須管理 buffer 生命週期
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 雙 Buffer 與非同步傳輸
@@ -79,8 +77,6 @@ for (size_t i = 0; i < chunks; ++i) {
 
 固定相同資料長度和 chunk size，比較逐塊 wait/compute 與 double buffer 總耗時；每塊加序號與 checksum 驗證無覆寫。用額外記憶體量換得的效益也必須記錄。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 官方 Demo 的 transfer engine 是 pthread 模擬，不是硬體 DMA；在電腦上測得「搬運占用核心」不等於 MCU DMA 的 CPU 行為。
@@ -88,5 +84,3 @@ for (size_t i = 0; i < chunks; ++i) {
 ## 參考與查證狀態
 
 - 參考：[Raspberry Pi Pico SDK DMA](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

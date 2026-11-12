@@ -30,8 +30,6 @@ related: ncku-ros2-executor
 results = [heavy_calculation(chunk) for chunk in chunks]
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -46,8 +44,6 @@ if __name__ == "__main__":
 
 多個 Process 有各自的 interpreter，可讓 CPU-heavy 工作分散到多核心，但會增加啟動、序列化和跨程序傳輸成本。ROS 2 node 及 publisher 不要直接傳入子程序。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 計算函式可 pickle
@@ -59,7 +55,7 @@ if __name__ == "__main__":
 - 建立 Process、pickle、IPC 成本
 - ROS 2 Node 物件不能隨意跨程序
 
-**正確性界線：**不應在 Executor Callback 立即 blocking wait；結果需配對來源。
+**正確性界線：** 不應在 Executor Callback 立即 blocking wait；結果需配對來源。
 
 ## 怎麼做測試
 
@@ -74,5 +70,3 @@ if __name__ == "__main__":
 ## 參考文件與驗證狀態
 
 - [Python concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

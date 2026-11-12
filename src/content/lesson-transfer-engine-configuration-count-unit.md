@@ -31,8 +31,6 @@ size_t count = 100;
 size_t bytes = count;           // 若每元素 4 bytes，搬不滿
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -46,8 +44,6 @@ size_t bytes = count * element_size;
 
 先看規格中 `count` 的單位。如果 count 是元素數，總 byte 數才是 `count * element_size`。若 API 已經使用 byte count，就不可再乘一次；乘法前要防整數溢位。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 已確認 buffer 容量
@@ -59,7 +55,7 @@ size_t bytes = count * element_size;
 - count 填成 byte 數可能越界
 - 不同 API 計數單位未必一致
 
-**正確性界線：**先用小陣列測正確性，再測大筆數。
+**正確性界線：** 先用小陣列測正確性，再測大筆數。
 
 ## 怎麼做測試
 
@@ -74,5 +70,3 @@ size_t bytes = count * element_size;
 ## 參考文件與驗證狀態
 
 - [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -36,8 +36,6 @@ if (pthread_create(&th, NULL, worker, arg) != 0) {
 // 長期任務可使用固定數量 worker + queue
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 改固定大小 Worker Pool
@@ -74,8 +72,6 @@ if (pthread_create(&th, NULL, worker, arg) != 0) {
 
 用 100、1000、10000 筆短任務比較「每筆新建 Thread」與「固定 worker + queue」，量耗時、最大 thread 數和記憶體。固定工人同時數，確保工作正確完成。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 固定 worker pool 引入 queue、停止訊號、喚醒等複雜度，若只有一次大工作可能不值得。
@@ -83,5 +79,3 @@ if (pthread_create(&th, NULL, worker, arg) != 0) {
 ## 參考與查證狀態
 
 - 參考：[POSIX pthread_create](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

@@ -34,8 +34,6 @@ atomic_fetch_add_explicit(&total, 1UL, memory_order_relaxed);
 // 此處只用來統計，不拿來通知其他共享資料已準備好
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 只用 Atomic 保護單一計數器
@@ -72,8 +70,6 @@ atomic_fetch_add_explicit(&total, 1UL, memory_order_relaxed);
 
 用相同數量工作者、相同增量次數對照 mutex 和 atomic；每次必須得到 N * ROUNDS。再量 CPU 和吞吐，特別測高競爭情況。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 memory_order_relaxed 只適合不要求透過計數器同步其他資料的案例。非原子共享讀寫有 data race，屬於錯誤而非只是偶爾少一筆。
@@ -81,5 +77,3 @@ memory_order_relaxed 只適合不要求透過計數器同步其他資料的案�
 ## 參考與查證狀態
 
 - 參考：[C++ atomics](https://en.cppreference.com/w/cpp/atomic/atomic)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

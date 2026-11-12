@@ -30,8 +30,6 @@ related: ncku-pio-dataflow
 # 只猜 echo 壞掉，直接改 PIO 指令
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```text
@@ -46,8 +44,6 @@ related: ncku-pio-dataflow
 
 PIO 有 TX FIFO、OSR、ISR、RX FIFO 等分工；同一個值回不來可能是 FIFO 空、狀態機沒啟動、搬移方向錯，或 CPU 沒有讀取 RX。先描資料路徑再談效能。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - CPU 已寫入 TX FIFO
@@ -58,7 +54,7 @@ PIO 有 TX FIFO、OSR、ISR、RX FIFO 等分工；同一個值回不來可能是
 - 未適當配置可能停在 pull/push
 - 這只是閱讀範例，非已測實體硬體
 
-**正確性界線：**輸入與輸出每個 32-bit word 應相同、數量與順序正確。
+**正確性界線：** 輸入與輸出每個 32-bit word 應相同、數量與順序正確。
 
 ## 怎麼做測試
 
@@ -73,5 +69,3 @@ PIO 有 TX FIFO、OSR、ISR、RX FIFO 等分工；同一個值回不來可能是
 ## 參考文件與驗證狀態
 
 - [Raspberry Pi Pico SDK Hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

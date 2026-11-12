@@ -31,8 +31,6 @@ related: ncku-c-memory
 memcpy(buf + 2, buf, 8); // 重疊時未定義行為
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -44,8 +42,6 @@ memmove(buf + 2, buf, 8); // 可處理來源與目標重疊
 
 `memcpy` 要求來源與目標不重疊；`memmove` 定義了重疊搬移的語意。它不幫你擴充容量，也不保證長度正確；仍要檢查 `2+8 <= sizeof buf`。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 已證實 ranges overlap
@@ -56,7 +52,7 @@ memmove(buf + 2, buf, 8); // 可處理來源與目標重疊
 - 有可能比 memcpy 多成本
 - 不是效能優化優先選擇，而是正確性修正
 
-**正確性界線：**測重疊前移與後移的內容相同。
+**正確性界線：** 測重疊前移與後移的內容相同。
 
 ## 怎麼做測試
 
@@ -72,5 +68,3 @@ memmove(buf + 2, buf, 8); // 可處理來源與目標重疊
 
 - [C memcpy](https://en.cppreference.com/w/c/string/byte/memcpy.html)
 - [C memmove](https://en.cppreference.com/w/c/string/byte/memmove.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

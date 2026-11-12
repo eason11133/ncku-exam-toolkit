@@ -30,8 +30,6 @@ related: ncku-pthread-critical-section
 size_t thread_count = item_count; // 每件工作一條 thread
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -44,8 +42,6 @@ if (thread_count == 0) return;
 
 thread 建立與 context switch 有成本，超過 CPU 核心數也不一定會快。這段僅示範設上限；實務上要依工作負載、CPU 核心數和同步成本測最佳值。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 先測單執行緒 baseline
@@ -56,7 +52,7 @@ thread 建立與 context switch 有成本，超過 CPU 核心數也不一定會�
 - 結果受環境限制
 - I/O 和 CPU 任務不宜用同一假設
 
-**正確性界線：**記錄不同 worker 數的效能曲線，保留最正確且穩定的版本。
+**正確性界線：** 記錄不同 worker 數的效能曲線，保留最正確且穩定的版本。
 
 ## 怎麼做測試
 
@@ -71,5 +67,3 @@ thread 建立與 context switch 有成本，超過 CPU 核心數也不一定會�
 ## 參考文件與驗證狀態
 
 - [C memory model](https://en.cppreference.com/w/c/language/memory_model.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

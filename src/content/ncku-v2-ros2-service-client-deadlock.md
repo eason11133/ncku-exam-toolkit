@@ -36,8 +36,6 @@ if self.client.service_is_ready() and self.pending is None:
 # 原本的 self.client.call(request) 可能把 callback 卡住
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 改用 call_async + 完成回呼
@@ -74,8 +72,6 @@ if self.client.service_is_ready() and self.pending is None:
 
 先執行 ros2 service list / ros2 service type，核對名稱與型別；保留一筆正常回應和一筆逾時情境。修改前後計數 callback 進入與完成次數，確認取消／重試不造成重複指令；測單執行緒及多執行緒兩種設定。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 非同步不代表服務端一定有回應；future 的失敗、timeout、重送與資源回收都要處理。把回呼改成 reentrant 前，先檢查共享狀態是否可重入。
@@ -83,5 +79,3 @@ if self.client.service_is_ready() and self.pending is None:
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy callback groups](https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

@@ -32,8 +32,6 @@ wait_until_done(desc);
 process_unrelated_job();
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -47,8 +45,6 @@ consume_transferred_buffer();
 
 只有當搬運是非同步、且其他工作互不依賴、buffer 所有權安全時才會重疊。若官方 Demo 的 Transfer Engine 是 thread 模擬，也必須遵守該實作的同步與狀態規則。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 有安全可重疊的 CPU 工作
@@ -59,7 +55,7 @@ consume_transferred_buffer();
 - 軟體模擬引擎本身占 CPU
 - 硬體 DMA 仍占匯流排
 
-**正確性界線：**保持緩衝區生命週期與完成順序，測的是整體完成時間。
+**正確性界線：** 保持緩衝區生命週期與完成順序，測的是整體完成時間。
 
 ## 怎麼做測試
 
@@ -75,5 +71,3 @@ consume_transferred_buffer();
 
 - [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
 - [Raspberry Pi Pico SDK Hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

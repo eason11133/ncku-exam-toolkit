@@ -12,6 +12,12 @@
 
 目前收錄 47 筆方法、141 個方案和 92 篇教學文章。其中第一版 42 個方案有 42 篇各自連結的長文：原有 3 篇 SingleThreadedExecutor 長文，加上這次補入的 39 篇。第二版新增 33 筆方法、99 個方向與 33 篇方法主題教材；**這 99 個方向尚未各自配有獨立完整教學**，不能把方案摘要算成完整教材。內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善尚未實測。網站保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。初版手動填入的指令、文件清單、錯誤案例與 Docker 文章已移除，相關頁面會顯示空狀態，待正式內容整理後加入。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。第一版內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
 
+## 技術觀念庫
+
+「技術觀念庫」從附件匯入 217 個詞條（139 個 Demo 相關、78 個延伸），與「技術知識庫」文章分開。全站搜尋會先顯示相符觀念，再分組顯示文章與解法。文章與解法教材的正文可點選術語，進入白話定義、例子、使用情境及相關內容；返回時會回到原文附近。Demo 相關只是教材分類，不代表詞彙已完整覆蓋或經硬體實測。
+
+詞條原文放在 `src/concepts/concepts.json`，辨識別名放在 `src/concepts/term_aliases_for_linking.json`；同目錄另保留來源清單、涵蓋說明與人類可閱讀版。新增詞條時使用唯一 `id`，填寫 `title`、`english`、`aliases`、`category`、`coverage`、`explanation`、`example`、`whenToUse`、`source`。`relatedArticle.articleId` 指向現有 Markdown 文章；`exampleSolution.methodId` 與 `optionId` 指向現有優化方法及方案；`relatedConceptIds` 指向其他詞條。沒有真實目標時使用 `null` 或空陣列，勿建立假連結。增加需要在正文辨識的寫法時，同步更新別名 JSON，避免大小寫不敏感的重複別名指向不同詞條。執行 `npm test` 會檢查資料連結、別名衝突及 Markdown 顯示。
+
 ## 本機開發與部署
 
 ```sh

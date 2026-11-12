@@ -33,8 +33,6 @@ def callback(self, msg):
     self.publisher.publish(output)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -57,8 +55,6 @@ def callback(self, msg):
 
 `perf_counter` 適合量經過時間；相鄰兩個時間點的差，才能定位某段工作。Log 本身也有成本，量正式效能時要降低頻率或記錄到緩衝區。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 不改動輸入輸出
@@ -69,7 +65,7 @@ def callback(self, msg):
 - 紀錄本身也有 overhead
 - 計時位置不等於端到端延遲
 
-**正確性界線：**先測正確性與分布，不根據單次數字做結論。
+**正確性界線：** 先測正確性與分布，不根據單次數字做結論。
 
 ## 怎麼做測試
 
@@ -85,5 +81,3 @@ def callback(self, msg):
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
 - [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

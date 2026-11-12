@@ -27,12 +27,10 @@ related: ncku-pio-dataflow
 ## 修改前：先看哪裡有問題
 
 ```text
-# 概念錯誤：不檢查 FIFO 是否可寫就連續寫
+# 示意流程（非 SDK API）：不檢查 FIFO 是否可寫就連續寫
 for word in data:
     write_tx(word)
 ```
-
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
 
 ## 修改後：對照實作
 
@@ -48,8 +46,6 @@ for word in data:
 
 FIFO 滿時要決定等待或非同步回報；RX FIFO 空時也不能當作資料已經到。`tx_fifo_full`、`write_tx` 是示意 API，不是可直接執行的 SDK。長時間忙等會吃 CPU，可依環境改通知式處理。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 能讀取或推導 FIFO 狀態
@@ -60,7 +56,7 @@ FIFO 滿時要決定等待或非同步回報；RX FIFO 空時也不能當作資�
 - 增加緩衝會占資源
 - 錯誤的 FIFO 方向或時序會造成資料遺失
 
-**正確性界線：**不改變協定輸出與時序的正確性。
+**正確性界線：** 不改變協定輸出與時序的正確性。
 
 ## 怎麼做測試
 
@@ -75,5 +71,3 @@ FIFO 滿時要決定等待或非同步回報；RX FIFO 空時也不能當作資�
 ## 參考文件與驗證狀態
 
 - [Raspberry Pi Pico SDK Hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -30,8 +30,6 @@ related: ncku-binary-packet-parsing
 packet = f"{sensor_id},{reading}".encode("ascii")
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -45,8 +43,6 @@ packet = struct.pack(">BH", sensor_id, reading)
 
 `>BH` 固定使用 big-endian：`B` 佔 1 byte，`H` 佔 2 bytes。讀寫雙方要同意長度、欄位順序、版本、無號範圍；這個例子只有當 `sensor_id` 在 0–255 且 `reading` 在 0–65535 才成立。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 兩端皆可修改
@@ -57,7 +53,7 @@ packet = struct.pack(">BH", sensor_id, reading)
 - 可能失去可讀性
 - 不同版本相容性較難
 
-**正確性界線：**測欄位逐一相同、byte order 和總處理時間。
+**正確性界線：** 測欄位逐一相同、byte order 和總處理時間。
 
 ## 怎麼做測試
 
@@ -72,5 +68,3 @@ packet = struct.pack(">BH", sensor_id, reading)
 ## 參考文件與驗證狀態
 
 - [C bitwise operators](https://en.cppreference.com/w/c/language/operator_arithmetic.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

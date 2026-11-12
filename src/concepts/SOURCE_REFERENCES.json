@@ -1,0 +1,6 @@
+{
+  "demo": "使用者提供的 demo.zip：demo/README.md、demo/section2-1、demo/section2-2、demo/section2-3",
+  "ros2": "https://docs.ros.org/en/jazzy/",
+  "pio_dma": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+  "pthread": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_spin_lock.html"
+}

@@ -36,8 +36,6 @@ n = self.get_parameter('batch_size').value
 # ros2 param set /my_node batch_size 32
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 參數化批次與頻率
@@ -74,8 +72,6 @@ n = self.get_parameter('batch_size').value
 
 用固定測試資料對照 8、16、32 三種 batch_size，記錄所有設定、程式 commit、每次的延遲及資料正確性。不要只拿最好的一次當結論。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 參數能設成功不代表程式會重新讀取；需測動態修改是否真正生效。參數越多，誤設的風險越大。
@@ -83,5 +79,3 @@ n = self.get_parameter('batch_size').value
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy parameters](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

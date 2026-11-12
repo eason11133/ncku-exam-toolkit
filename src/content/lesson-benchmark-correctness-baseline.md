@@ -30,8 +30,6 @@ related: ncku-performance-benchmark
 # 只有一次人工感覺：「這版好像比較快」
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -48,8 +46,6 @@ print("median(ms)=", statistics.median(samples))
 
 Baseline 要固定輸入、平台、編譯選項、負載條件；多次重跑。`run_same_input` 是使用者需要替換的被測函式，且正式測試還要先暖機、檢查輸出。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 相同硬體與負載
@@ -60,7 +56,7 @@ Baseline 要固定輸入、平台、編譯選項、負載條件；多次重跑�
 - 背景負載造成偏差
 - 小樣本 p95 不穩定
 
-**正確性界線：**先通過正確性再比效率；必要時可還原 baseline。
+**正確性界線：** 先通過正確性再比效率；必要時可還原 baseline。
 
 ## 怎麼做測試
 
@@ -76,5 +72,3 @@ Baseline 要固定輸入、平台、編譯選項、負載條件；多次重跑�
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
 - [Git Documentation](https://git-scm.com/docs)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

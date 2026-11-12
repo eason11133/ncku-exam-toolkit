@@ -31,8 +31,6 @@ def callback(self, msg):
     heavy_compute(msg)   # 同步阻塞 executor
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -49,8 +47,6 @@ def callback(self, msg):
 
 分段後 callback 返回更早，但排隊、資料複製、輸出順序及 worker 與 ROS node 的互動都要另外設計。`put_nowait` 在滿載會丟 Full 例外，正式程式必須處理，不能照貼。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 各階段可獨立處理
@@ -61,7 +57,7 @@ def callback(self, msg):
 - 增加佇列記憶體與排程成本
 - 順序和丟失策略可能改變
 
-**正確性界線：**先檢查必要順序、背壓與資料是否會被重複處理。
+**正確性界線：** 先檢查必要順序、背壓與資料是否會被重複處理。
 
 ## 怎麼做測試
 
@@ -77,5 +73,3 @@ def callback(self, msg):
 
 - [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
 - [ROS 2 Jazzy Callback Groups](https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

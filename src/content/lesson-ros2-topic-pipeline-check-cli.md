@@ -30,8 +30,6 @@ related: ncku-ros2-cli-workflow
 # 只一直修改 Python callback，沒有先看 topic 是否存在
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```bash
@@ -46,8 +44,6 @@ ros2 topic hz /sensor
 
 先用 CLI 確認 node 名稱、topic 完整路徑、型別、Publisher/Subscriber 數量、QoS 是否相容。`echo` 看資料，`hz` 看頻率；沒有收到可能是名稱或 QoS 問題，不代表 callback 慢。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - ROS 2 Jazzy 環境已啟動
@@ -58,7 +54,7 @@ ros2 topic hz /sensor
 - CLI 只能觀察，還需要進一步定位程式碼
 - echo/hz 的輸出也有額外成本
 
-**正確性界線：**保持 Topic 名稱、message type、處理後結果的正確性；除非需求允許，不能藉由跳過訊息改善速度。
+**正確性界線：** 保持 Topic 名稱、message type、處理後結果的正確性；除非需求允許，不能藉由跳過訊息改善速度。
 
 ## 怎麼做測試
 
@@ -73,5 +69,3 @@ ros2 topic hz /sensor
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy Topic CLI](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

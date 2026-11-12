@@ -1,0 +1,5502 @@
+[
+  {
+    "id": "docker",
+    "title": "Docker",
+    "english": "Docker",
+    "aliases": [
+      "容器工具",
+      "Docker 平台"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "把程式和需要的軟體包在一個隔離環境裡，讓不同電腦比較容易跑出相同的結果。Docker 自己不是作業系統，它仍使用主機的核心。",
+    "example": "考前 Demo 把 ROS 2、gcc、make 放在同一個 Docker 環境。",
+    "whenToUse": "你的電腦缺少 ROS 2 或版本不合時，先使用指定容器。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "image",
+    "title": "映像檔",
+    "english": "Docker image",
+    "aliases": [
+      "image",
+      "映像",
+      "映像檔案"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "可以拿來建立容器的環境範本，內含程式、套件和設定。它不是正在執行的程式。",
+    "example": "先 docker build 產生 image，再由 image 啟動 container。",
+    "whenToUse": "需要複製同樣的練習環境時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "container",
+    "title": "容器",
+    "english": "Container",
+    "aliases": [
+      "docker container",
+      "容器實例"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "用映像檔啟動後的實際執行環境。裡面的檔案或程式可以跟主機有所區隔。",
+    "example": "執行 docker run 後進入一個容器，另開終端機可 docker exec 進同一個。",
+    "whenToUse": "確認不同視窗是否真的在同一環境裡。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "dockerfile",
+    "title": "Dockerfile",
+    "english": "Dockerfile",
+    "aliases": [
+      "容器建置檔"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "告訴 Docker 要從哪個基礎映像開始、安裝什麼、放哪些檔案的指令清單。",
+    "example": "Demo 用 Dockerfile 建立已安裝 ROS 2 的 image。",
+    "whenToUse": "要重建環境或查看裡面有哪些套件時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "docker-build",
+    "title": "建置映像",
+    "english": "docker build",
+    "aliases": [
+      "建置 image",
+      "build image"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "讀 Dockerfile 並產生新的映像檔。建置時可能會下載套件，所以第一次通常需要網路。",
+    "example": "docker build -t srecruit-demo demo/。",
+    "whenToUse": "練習環境尚未建立，或 Dockerfile 更新後。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "docker-run",
+    "title": "啟動容器",
+    "english": "docker run",
+    "aliases": [
+      "run container",
+      "執行容器"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "用指定 image 建立並啟動一個容器。常見選項會控制互動、名稱及結束後是否移除。",
+    "example": "docker run --rm -it --name srecruit-demo srecruit-demo。",
+    "whenToUse": "要開始執行 Demo 裡的程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "docker-exec",
+    "title": "進入已運作容器",
+    "english": "docker exec",
+    "aliases": [
+      "exec",
+      "第二個 shell"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "在同一個正在執行的容器內再開一個程式或 shell，不是建立另一個獨立環境。",
+    "example": "docker exec -it srecruit-demo bash。",
+    "whenToUse": "ROS 2 需要同時開 publisher、processor 和 CLI。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "docker-rm",
+    "title": "結束自動移除",
+    "english": "--rm",
+    "aliases": [
+      "rm",
+      "容器清除"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "docker run 的 --rm 表示容器停止時自動刪掉容器本體，不等於刪除 image。沒有另外保存的容器內修改可能跟著消失。",
+    "example": "想保留修改過的檔案，可以改用 bind mount。",
+    "whenToUse": "擔心練習成果在容器結束後不見時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "terminal",
+    "title": "終端機",
+    "english": "Terminal",
+    "aliases": [
+      "命令列視窗",
+      "終端"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "讓你輸入指令、看到程式輸出的介面。程式佔住一個終端機時，可以開第二個來觀察它。",
+    "example": "終端機 A 跑 publisher，B 跑 processor，C 執行 ros2 topic echo。",
+    "whenToUse": "要同時操作多個長時間執行的程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "shell",
+    "title": "命令殼層",
+    "english": "Shell",
+    "aliases": [
+      "bash",
+      "命令解譯器"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "接收你輸入的指令，並呼叫程式執行的環境。Bash 是常見的一種 shell。",
+    "example": "在 shell 輸入 cd section2-1 進入指定資料夾。",
+    "whenToUse": "複製指令後不知道應該貼在哪裡時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "cli",
+    "title": "命令列介面",
+    "english": "Command-Line Interface",
+    "aliases": [
+      "CLI",
+      "指令介面"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "不透過圖形按鈕，而是用文字指令操作程式的方式。",
+    "example": "ros2 node list 是 ROS 2 CLI 指令。",
+    "whenToUse": "考場需要觀察執行狀態或快速重現測試時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "working-dir",
+    "title": "工作目錄",
+    "english": "Working directory",
+    "aliases": [
+      "當前目錄",
+      "cwd"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "你目前所在的資料夾，會影響相對路徑指向哪裡。",
+    "example": "cd section2-1 後才執行 python3 publisher.py。",
+    "whenToUse": "遇到檔案找不到、make 找不到目標時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "wsl",
+    "title": "Windows Linux 子系統",
+    "english": "Windows Subsystem for Linux",
+    "aliases": [
+      "WSL",
+      "WSL2"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "讓 Windows 上能使用 Linux 使用者空間與工具的功能；Docker Desktop 的 Windows 練習常搭配它。",
+    "example": "Windows 使用者可在 WSL 終端機操作 Docker。",
+    "whenToUse": "需要 Linux 指令或 POSIX 編譯環境時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "compiler",
+    "title": "編譯器",
+    "english": "Compiler",
+    "aliases": [
+      "clang",
+      "cc",
+      "編譯"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "把 C 等原始碼翻譯成可以執行的機器程式；程式碼不符合語法會出錯。",
+    "example": "cc demo_asm.c -o demo_asm。",
+    "whenToUse": "拿到 C 原始碼，要先編譯再執行時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "gcc",
+    "title": "GCC 編譯器",
+    "english": "GNU Compiler Collection",
+    "aliases": [
+      "gcc",
+      "GNU C compiler"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "常見的 C/C++ 編譯器工具集。官方 Demo 的 pthread 程式可以用 gcc 編譯。",
+    "example": "gcc -pthread main.c -o main。",
+    "whenToUse": "遇到編譯旗標或 pthread 連結問題時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "make",
+    "title": "Make 建置工具",
+    "english": "make",
+    "aliases": [
+      "Makefile",
+      "建置指令"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "依 Makefile 中定義的規則執行編譯或其他命令，省去每次手打長指令。",
+    "example": "make run 會依 Demo 的規則編譯並執行範例。",
+    "whenToUse": "需要重現指定的測試步驟時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "make-target",
+    "title": "建置目標",
+    "english": "Make target",
+    "aliases": [
+      "target",
+      "make clean",
+      "make mistake"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "Makefile 中一個有名字的工作，可能是編譯、測試、清除檔案，不一定會建立實體檔。",
+    "example": "make mistake 執行傳輸數量設定錯誤的示範。",
+    "whenToUse": "要分別跑 critical section 或 transfer engine 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "source-code",
+    "title": "原始碼",
+    "english": "Source code",
+    "aliases": [
+      "source",
+      "程式碼"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "人寫的文字程式，通常要先由 Python 直譯器執行，或由 C 編譯器產生可執行檔。",
+    "example": "publisher.py 是 Python 原始碼；demo_asm.c 是 C 原始碼。",
+    "whenToUse": "辨別要用 python3、cc 還是 make 執行時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "process",
+    "title": "行程",
+    "english": "Process",
+    "aliases": [
+      "程序",
+      "進程"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "一個正在執行的程式實例，有自己的位址空間與作業系統資源。跟同程式內的多條執行緒不同。",
+    "example": "publisher.py 和 processor.py 分別啟動後是不同 process。",
+    "whenToUse": "判斷錯誤是否發生在不同程式之間時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "stdout",
+    "title": "標準輸出",
+    "english": "Standard output",
+    "aliases": [
+      "stdout",
+      "輸出結果"
+    ],
+    "category": "環境與工具",
+    "coverage": "demo",
+    "explanation": "程式平常印出文字的管道，終端機通常會顯示它。",
+    "example": "printf 或 print 的內容出現在執行視窗。",
+    "whenToUse": "要看實際訊息、測試輸出與排查結果時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-docker-debug"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/README.md"
+  },
+  {
+    "id": "ros2",
+    "title": "ROS 2",
+    "english": "Robot Operating System 2",
+    "aliases": [
+      "機器人作業系統2",
+      "ROS2"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "讓多個程式彼此交換資料、協作的機器人軟體框架。雖然名字有 Operating System，它不是取代 Linux 的作業系統。",
+    "example": "一個 node 產生數字，另一個 node 收到後處理。",
+    "whenToUse": "看到 ros2、rclpy、node、topic 等程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [
+      "ros2-node",
+      "ros2-topic",
+      "ros2-publisher",
+      "ros2-subscriber"
+    ],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-node",
+    "title": "節點",
+    "english": "ROS 2 Node",
+    "aliases": [
+      "node",
+      "ROS 節點"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "ROS 2 裡執行一部分功能並參與通訊的單位。多個 node 可以分開啟動，也可以放在同一 process。",
+    "example": "publisher node 負責產生數字，processor node 負責加工。",
+    "whenToUse": "用 ros2 node list 確認程式是否啟動。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic",
+    "title": "主題通道",
+    "english": "ROS 2 Topic",
+    "aliases": [
+      "topic",
+      "話題",
+      "資料主題"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "給有相同主題名稱和相容型別的節點傳遞訊息的通道。可以想成廣播頻道，不需要每位接收者都直接呼叫發送者。",
+    "example": "publisher 對 /number 發布，processor 訂閱 /number。",
+    "whenToUse": "發布者正常但訂閱端沒有資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [
+      "ros2-message",
+      "ros2-publisher",
+      "ros2-subscriber",
+      "qos"
+    ],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-publisher",
+    "title": "發布者",
+    "english": "Publisher",
+    "aliases": [
+      "發佈者",
+      "發送端",
+      "publish",
+      "出版者"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "負責把訊息送到某個 topic 的物件或節點角色。它不負責等待每位訂閱者逐一答覆。",
+    "example": "publisher.py 定時發布數字。",
+    "whenToUse": "查 ros2 node info 的 Publishers 或用 ros2 topic pub 測試時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-subscriber",
+    "title": "訂閱者",
+    "english": "Subscriber",
+    "aliases": [
+      "訂閱端",
+      "訂閱器",
+      "subscription",
+      "subscribe"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "訂閱 topic 的接收者，資料到達後可交給 callback 處理。",
+    "example": "processor 讀 /number 的資料。",
+    "whenToUse": "訂閱者沒反應，需檢查型別和 topic 名稱時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-message",
+    "title": "訊息",
+    "english": "ROS 2 Message",
+    "aliases": [
+      "message",
+      "msg",
+      "訊息資料"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "一筆在 topic 上傳的資料，會有指定的訊息型別和欄位。它不是任意文字，而是按介面定義的結構。",
+    "example": "std_msgs/msg/Int32 包含名為 data 的整數欄位。",
+    "whenToUse": "CLI 發送資料格式不對或 callback 讀錯欄位時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-message-type",
+    "title": "訊息型別",
+    "english": "Message type",
+    "aliases": [
+      "interface type",
+      "訊息格式"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "描述訊息有哪些欄位、每個欄位用什麼型別。發布與訂閱雙方需要相容。",
+    "example": "std_msgs/msg/Int32 不是 std_msgs/msg/String。",
+    "whenToUse": "用 ros2 topic info 查 type 後無法接收時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-field",
+    "title": "訊息欄位",
+    "english": "Message field",
+    "aliases": [
+      "data field",
+      "資料欄位"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "一筆訊息內某個有名字的資料位置，型別由 message type 決定。",
+    "example": "Int32 訊息的 data 是整數。",
+    "whenToUse": "用 ros2 interface show 確認要填什麼值時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "rclpy",
+    "title": "Python ROS 2 函式庫",
+    "english": "rclpy",
+    "aliases": [
+      "ROS Python API"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "Python 程式裡建立 ROS 2 node、publisher、subscriber、timer 所用的函式庫。",
+    "example": "publisher.py 呼叫 rclpy.init() 與 Node 方法。",
+    "whenToUse": "看到 import rclpy 或 class Xxx(Node) 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-init",
+    "title": "初始化 ROS 2",
+    "english": "rclpy.init",
+    "aliases": [
+      "init",
+      "ROS init"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "使用 ROS 2 API 前進行初始化，通常與程式結束時的 shutdown 配對。",
+    "example": "rclpy.init() 後建立 Node。",
+    "whenToUse": "程式還沒開始通訊就報初始化相關錯誤時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-spin",
+    "title": "持續處理事件",
+    "english": "rclpy.spin",
+    "aliases": [
+      "spin",
+      "ROS spin"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "讓 ROS 2 持續等待並處理事件，例如收到 topic 訊息或 timer 到期。沒進入 spin 時，一些 callback 可能根本不會被執行。",
+    "example": "rclpy.spin(node) 讓 node 留在事件迴圈。",
+    "whenToUse": "Node 啟動了卻沒有執行 callback 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "callback",
+    "title": "回呼函式",
+    "english": "Callback",
+    "aliases": [
+      "callback function",
+      "回調函式",
+      "回調"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "當指定事件發生，框架幫你呼叫的函式。你不是每次都手動寫 callback()。",
+    "example": "訂閱到訊息後 ROS 自動執行 processor 的 callback。",
+    "whenToUse": "訊息有收到卻沒印出或處理太慢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [
+      "executor",
+      "callback-group",
+      "ros2-timer"
+    ],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-timer",
+    "title": "定時器",
+    "english": "ROS 2 Timer",
+    "aliases": [
+      "timer",
+      "週期觸發器"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "按照設定的週期讓 executor 有機會執行 callback；如果系統忙，實際執行可能晚於預期。",
+    "example": "每秒發布一次數字的 publisher 用 timer 觸發。",
+    "whenToUse": "想知道每次多久送一筆、為何不準時時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-name",
+    "title": "節點名稱",
+    "english": "Node name",
+    "aliases": [
+      "node name",
+      "節點名"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "ROS 2 中用來辨識節點的名稱，不等於 process 的檔名。",
+    "example": "程式叫 publisher.py，node 名稱可能是 /publisher。",
+    "whenToUse": "ros2 node list 裡的名字跟檔名不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-name",
+    "title": "Topic 名稱",
+    "english": "Topic name",
+    "aliases": [
+      "主題名稱",
+      "topic path"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "訊息通道的名稱；名稱不一致，就可能像收音機轉到不同頻道而收不到。",
+    "example": "/number 與 /numbers 是兩個不同名稱。",
+    "whenToUse": "topic list 有東西，但兩個 node 沒接上時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-graph",
+    "title": "ROS 2 通訊圖",
+    "english": "ROS graph",
+    "aliases": [
+      "node graph",
+      "拓撲"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "系統中目前有哪些 node、topic，以及彼此的連線關係。CLI 能觀察這張圖，不一定要先看原始碼。",
+    "example": "ros2 node info 與 ros2 topic info 幫你拼出誰在發誰在收。",
+    "whenToUse": "第一次接觸不熟悉的 ROS 2 專案時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-node-list",
+    "title": "列出節點",
+    "english": "ros2 node list",
+    "aliases": [
+      "node list",
+      "查看節點"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "列出目前 ROS 2 發現的節點名稱。它只能說節點被發現，不代表資料一定正常傳輸。",
+    "example": "ros2 node list。",
+    "whenToUse": "確認 publisher 或 processor 是否啟動時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-node-info",
+    "title": "節點資訊指令",
+    "english": "ros2 node info",
+    "aliases": [
+      "node info",
+      "節點詳情"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "查看某節點發布和訂閱哪些 topic，以及其他可發現的通訊端點。",
+    "example": "ros2 node info /publisher。",
+    "whenToUse": "不知道某個節點到底傳送什麼時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-list",
+    "title": "列出主題",
+    "english": "ros2 topic list",
+    "aliases": [
+      "topic list",
+      "查看主題"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "列出目前可發現的 topic 名稱，用來辨別通道是否存在。",
+    "example": "ros2 topic list。",
+    "whenToUse": "懷疑 topic 拼錯、namespace 不對時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-info",
+    "title": "主題資訊指令",
+    "english": "ros2 topic info",
+    "aliases": [
+      "topic info",
+      "主題詳情"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "查看某個 topic 的訊息型別，以及發送與接收端的數量等。",
+    "example": "ros2 topic info /number。",
+    "whenToUse": "topic 存在卻收不到資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-interface-show",
+    "title": "查看訊息結構",
+    "english": "ros2 interface show",
+    "aliases": [
+      "interface show",
+      "欄位檢查"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "查看某個 ROS 2 型別有哪些欄位，對照 CLI 資料格式是否正確。",
+    "example": "ros2 interface show std_msgs/msg/Int32。",
+    "whenToUse": "用 CLI 發測試訊息不確定 data 應怎麼填時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-echo",
+    "title": "觀察主題訊息",
+    "english": "ros2 topic echo",
+    "aliases": [
+      "topic echo",
+      "查看訊息"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "持續訂閱並印出指定 topic 收到的內容，常用於確認整條資料路徑是否通。",
+    "example": "ros2 topic echo /number。",
+    "whenToUse": "確認 publisher 是否真的發出可見資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-hz",
+    "title": "主題頻率",
+    "english": "ros2 topic hz",
+    "aliases": [
+      "topic hz",
+      "接收頻率"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "根據收到的訊息估計頻率，單位 Hz 表示每秒收到多少次。這是觀測值，不能直接當成發送端的精確時鐘。",
+    "example": "每秒收到 10 筆，大約是 10 Hz。",
+    "whenToUse": "比較修改前後資料傳送速度時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-topic-pub",
+    "title": "指令發送訊息",
+    "english": "ros2 topic pub",
+    "aliases": [
+      "topic pub",
+      "手動發布"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "不用改 Python 程式，從 CLI 向指定 topic 發出測試訊息。必須填對 topic 名、型別和資料格式。",
+    "example": "ros2 topic pub /number std_msgs/msg/Int32 '{data: 3}'。",
+    "whenToUse": "想隔離問題：到底是 publisher 壞了，還是 subscriber 壞了。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-service",
+    "title": "服務",
+    "english": "ROS 2 Service",
+    "aliases": [
+      "request response",
+      "服務呼叫"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "一方向另一方提出請求，對方回覆結果的通訊方式。跟持續廣播的 topic 不同。",
+    "example": "詢問某個設定目前的值，收到一次回應。",
+    "whenToUse": "看到 client、server、call_async 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-1-call-async"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-action",
+    "title": "動作",
+    "english": "ROS 2 Action",
+    "aliases": [
+      "action",
+      "長工作"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "適合持續一段時間且可能回報進度、接受取消的工作介面。",
+    "example": "要求機器人走到指定位置，途中回報進度。",
+    "whenToUse": "需要長時間任務，而不只是一次查詢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-jazzy",
+    "title": "ROS 2 Jazzy 版本",
+    "english": "ROS 2 Jazzy",
+    "aliases": [
+      "Jazzy",
+      "ROS Jazzy"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "ROS 2 的一個發行版名稱。不同發行版可用的 API 與套件版本可能不同。",
+    "example": "官方 Demo 的 Docker image 內安裝 Jazzy。",
+    "whenToUse": "查官方文件時先確認版本一致。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "ros2-discovery",
+    "title": "節點發現",
+    "english": "ROS 2 Discovery",
+    "aliases": [
+      "Discovery",
+      "節點互相發現"
+    ],
+    "category": "ROS 2 通訊",
+    "coverage": "demo",
+    "explanation": "讓節點知道同一 ROS 2 網路裡有哪些通訊端點。看到節點和實際收到訊息是兩回事。",
+    "example": "兩個終端機在不同環境、ROS_DOMAIN_ID 不同時可能互相看不到。",
+    "whenToUse": "node list 空白，但程式明明在跑時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-cli-workflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-1/README.md"
+  },
+  {
+    "id": "bit",
+    "title": "位元",
+    "english": "Bit",
+    "aliases": [
+      "bit",
+      "二進位位元"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "資料最小的二進位單位，只能是 0 或 1。處理硬體狀態與封包時，常用一個位元代表一個開關。",
+    "example": "0b1010 有四個位元。",
+    "whenToUse": "看 C 位元運算、PIO shift 或暫存器欄位時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "byte",
+    "title": "位元組",
+    "english": "Byte",
+    "aliases": [
+      "byte",
+      "字節"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "由一組位元組成的儲存單位，常見平台上是 8 bits。sizeof 計算的是 byte 數，不是 bit 數。",
+    "example": "uint32_t 佔 4 個 8-bit bytes。",
+    "whenToUse": "傳輸引擎設定 size 和 count 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "word",
+    "title": "資料字",
+    "english": "Word",
+    "aliases": [
+      "word",
+      "32-bit word",
+      "字組"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "處理器或裝置一次常處理的固定寬度資料，在 PIO 範例中特別指 32 位元資料。不同環境的 word 寬度不一定相同。",
+    "example": "PIO Echo 每次送回一個 32-bit word。",
+    "whenToUse": "判斷 FIFO 一次送多少位元時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "binary",
+    "title": "二進位",
+    "english": "Binary",
+    "aliases": [
+      "二進制",
+      "binary number"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "用 0 和 1 表示數字的方式。每往左一位，其代表的數值通常乘以 2。",
+    "example": "0b1010 等於十進位 10。",
+    "whenToUse": "讀懂 mask、shift 和暫存器時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "hex",
+    "title": "十六進位",
+    "english": "Hexadecimal",
+    "aliases": [
+      "hex",
+      "0x",
+      "十六進制"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "用 0–9 和 A–F 表示數字，四個 bit 剛好對應一個十六進位數字，讀硬體資料很方便。",
+    "example": "0xA5 等於二進位 10100101。",
+    "whenToUse": "C 程式出現 0xFF、0x0F 等常數時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "uint32",
+    "title": "32 位元無號整數",
+    "english": "uint32_t",
+    "aliases": [
+      "uint32",
+      "unsigned 32-bit",
+      "無號整數"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "固定寬度的 32-bit 非負整數型別，常拿來表示硬體暫存器或 PIO 的一個 word。",
+    "example": "uint32_t x = 0xA5;。",
+    "whenToUse": "需要明確的位數，避免不同平台 int 寬度不一致時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "stdint",
+    "title": "固定寬度整數標頭",
+    "english": "stdint.h",
+    "aliases": [
+      "#include <stdint.h>",
+      "整數標頭"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "C 標準標頭，提供 uint8_t、uint16_t、uint32_t 等名稱，讓整數位寬更清楚。",
+    "example": "#include <stdint.h> 之後才能使用 uint32_t。",
+    "whenToUse": "看到 uint32_t 卻不清楚從哪裡定義時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "stdio",
+    "title": "標準輸入輸出標頭",
+    "english": "stdio.h",
+    "aliases": [
+      "#include <stdio.h>",
+      "printf"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "C 中宣告 printf 等基本輸入輸出介面的標頭。單純位元計算不需要印出，但 Demo 會用它顯示結果。",
+    "example": "printf(\"%X\", x) 印十六進位值。",
+    "whenToUse": "編譯器抱怨 printf 未宣告時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bitwise",
+    "title": "位元運算",
+    "english": "Bitwise operations",
+    "aliases": [
+      "位運算",
+      "bitwise operator"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "直接對整數中的每一個 bit 操作，而不是把整個數字當成布林值。AND、OR、XOR、NOT、左移、右移都屬於這類。",
+    "example": "用 x & 0x0F 只留下低四位。",
+    "whenToUse": "要設旗標、檢查旗標或取封包欄位時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-and",
+    "title": "位元 AND",
+    "english": "Bitwise AND",
+    "aliases": [
+      "位元且",
+      "&",
+      "AND"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "兩個位置都為 1，結果那一位才是 1，常用來把不想要的位元清成 0。",
+    "example": "0xA5 & 0x0F 得 0x05。",
+    "whenToUse": "想保留某幾個位元，其餘清零時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-or",
+    "title": "位元 OR",
+    "english": "Bitwise OR",
+    "aliases": [
+      "位元或",
+      "OR"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "任一位置是 1，結果那一位就是 1，常用來打開指定旗標而不動其他位元。",
+    "example": "0xA5 或上 0x0F 後是 0xAF。",
+    "whenToUse": "想把某個 bit 設成 1 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "set-clear"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-xor",
+    "title": "位元 XOR",
+    "english": "Bitwise XOR",
+    "aliases": [
+      "位元互斥或",
+      "XOR",
+      "exclusive OR"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "兩邊不同時結果為 1，相同時為 0。拿指定遮罩 XOR 可以翻轉那些位元。",
+    "example": "0xA5 ^ 0xFF 得 0x5A。",
+    "whenToUse": "要切換某些旗標，或比較位元差異時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "set-clear"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-not",
+    "title": "位元 NOT",
+    "english": "Bitwise NOT",
+    "aliases": [
+      "位元反相",
+      "NOT",
+      "~"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "把整數中每個位元反轉。要特別注意 C 整數提升及型別寬度，結果不只限於你肉眼看到的 8 位元。",
+    "example": "~x & 0xFF 才會只取低 8 位結果。",
+    "whenToUse": "要製造「除了某個 bit 都為 1」的遮罩時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "set-clear"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "shift-left",
+    "title": "左移",
+    "english": "Left shift",
+    "aliases": [
+      "<<",
+      "位元左移"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "把二進位位元往左移幾格，右邊補零；無號整數的合法位移常對應乘上 2 的次方。",
+    "example": "0xA5 << 4 變成 0xA50。",
+    "whenToUse": "想把欄位放到較高位元位置時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "shift-right",
+    "title": "右移",
+    "english": "Right shift",
+    "aliases": [
+      ">>",
+      "位元右移"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "把位元往右移，對無號整數左邊補零。注意有號負數的右移行為不要直接假定等同。",
+    "example": "0xA5 >> 4 得 0xA。",
+    "whenToUse": "取出高位欄位前先移到右邊時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-mask",
+    "title": "位元遮罩",
+    "english": "Bit mask",
+    "aliases": [
+      "mask",
+      "遮罩",
+      "掩碼"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "一個用 0/1 標記「哪些位元要處理」的數。配合 AND 取出、OR 設定、AND+NOT 清除。",
+    "example": "0x0F 遮罩只關心最低四個 bit。",
+    "whenToUse": "硬體狀態寄存器有多個旗標時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [
+      "bit",
+      "bit-and",
+      "set-bit",
+      "clear-bit",
+      "extract-field"
+    ],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "set-bit",
+    "title": "設定位元",
+    "english": "Set bit",
+    "aliases": [
+      "bit set",
+      "把位元設成1"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "把某個位元設成 1，不改動其他位元。",
+    "example": "x |= (1u << 1)，把第 1 位設成 1。",
+    "whenToUse": "啟用暫存器的一個功能位元時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "set-clear"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "clear-bit",
+    "title": "清除位元",
+    "english": "Clear bit",
+    "aliases": [
+      "bit clear",
+      "把位元清成0"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "把某個位元設成 0，不影響其餘位元。",
+    "example": "x &= ~(1u << 0) 清除第 0 位。",
+    "whenToUse": "關閉暫存器的一個功能位元時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "set-clear"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "test-bit",
+    "title": "測試位元",
+    "english": "Test bit",
+    "aliases": [
+      "bit test",
+      "檢查位元"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "判斷指定 bit 目前是 0 或 1。",
+    "example": "((x >> 7) & 1u) 能讀出第 7 位。",
+    "whenToUse": "確認某個狀態旗標是否開啟時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "extract-field",
+    "title": "擷取位元欄位",
+    "english": "Bit field extraction",
+    "aliases": [
+      "field extraction",
+      "取欄位",
+      "取高四位"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "將多個相鄰位元移到低位後用遮罩取出，可解析封包或暫存器裡的欄位。",
+    "example": "取 bits 7..4 用 (x >> 4) & 0xF。",
+    "whenToUse": "欄位只占 3 或 5 個 bit 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "combine-fields",
+    "title": "組合位元欄位",
+    "english": "Bit field composition",
+    "aliases": [
+      "combine",
+      "合併欄位"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "先把不同欄位移到指定位置，再用 OR 組成一個整數。拼接前確認各欄位都沒超出自己的位數。",
+    "example": "0x12 左移 8 位後與 0x34 作 OR，得到 0x1234。",
+    "whenToUse": "把多個小數值包成一個硬體指令字時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "pack-unpack"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "unsigned-suffix",
+    "title": "無號常數後綴",
+    "english": "Unsigned integer suffix",
+    "aliases": [
+      "1u",
+      "U suffix",
+      "u 後綴"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "C 整數常數後面的 u/U 表示使用無號整數型別，位移與遮罩時常用它避開部分有號型別問題。",
+    "example": "1u << 7。",
+    "whenToUse": "想用 1 當位元遮罩的起點時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-position",
+    "title": "位元位置",
+    "english": "Bit index",
+    "aliases": [
+      "bit index",
+      "位元索引",
+      "第幾位"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "一般把最右邊最低有效位元當 bit 0，往左依序 bit 1、bit 2。",
+    "example": "0x80 的 bit 7 為 1。",
+    "whenToUse": "寫 1u << index 時避免數錯位置。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "bit-width",
+    "title": "位元寬度",
+    "english": "Bit width",
+    "aliases": [
+      "width",
+      "位寬"
+    ],
+    "category": "C 位元與型別",
+    "coverage": "demo",
+    "explanation": "型別或欄位實際能容納幾個位元。位移量不可超出左運算元提升後的位寬，且要考慮溢位。",
+    "example": "32-bit 無號整數不應做 x << 32。",
+    "whenToUse": "位元移位結果跟預期不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-bitwise-c"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-bitfield-operations",
+      "optionId": "mask-and-shift"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_asm.c"
+  },
+  {
+    "id": "rp2350",
+    "title": "RP2350 微控制器",
+    "english": "RP2350",
+    "aliases": [
+      "Pico 2",
+      "RP2350 MCU"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "Raspberry Pi 的微控制器晶片，包含 CPU、GPIO、PIO 等周邊。微控制器不是一台完整的 Linux 電腦。",
+    "example": "Demo 的 PIO 範例用 RP2350 當背景。",
+    "whenToUse": "閱讀 PIO 規格與晶片差異時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "mcu",
+    "title": "微控制器",
+    "english": "Microcontroller",
+    "aliases": [
+      "MCU",
+      "單晶片"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "把 CPU、記憶體與周邊控制器放進一顆晶片，常做小型即時控制。",
+    "example": "RP2350 就是 MCU。",
+    "whenToUse": "比較桌機 CPU 與嵌入式控制器時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio",
+    "title": "可程式化輸入輸出",
+    "english": "Programmable I/O",
+    "aliases": [
+      "PIO",
+      "可程式 I/O",
+      "可編程IO"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "晶片裡專門負責腳位和資料時序的小型硬體模組。它執行短短的專用指令，讓 CPU 不必自己精準控制每次腳位變化。",
+    "example": "用 PIO 重複輸出固定節奏的訊號。",
+    "whenToUse": "CPU 要處理其他工作，但 GPIO 時序又很嚴格時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [
+      "pio-fifo",
+      "state-machine",
+      "osr",
+      "isr",
+      "gpio"
+    ],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-fifo",
+    "title": "PIO 資料佇列",
+    "english": "PIO FIFO",
+    "aliases": [
+      "PIO FIFO",
+      "PIO佇列",
+      "PIO 緩衝"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO 狀態機和 CPU/DMA 之間的資料通道。送進去通常走 TX FIFO，收回資料通常走 RX FIFO；兩邊都要有生產者與消費者。",
+    "example": "CPU 寫 TX FIFO，PIO 從中取資料，再把結果推進 RX FIFO。",
+    "whenToUse": "PIO 程式卡住、不知道資料停在哪一段時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "fifo-paced-transfer"
+    },
+    "relatedConceptIds": [
+      "pio",
+      "fifo",
+      "tx-fifo",
+      "rx-fifo",
+      "pio-dma"
+    ],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "fifo",
+    "title": "先進先出佇列",
+    "english": "First In, First Out",
+    "aliases": [
+      "FIFO",
+      "先進先出",
+      "先入先出"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "像排隊結帳：先放進來的資料通常先取出去。FIFO 會有容量上限，滿了不能隨意多塞、空了不能憑空取值。",
+    "example": "寫入 A、B、C，依序讀出 A、B、C。",
+    "whenToUse": "遇到 TX FIFO full 或 RX FIFO empty 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "fifo-paced-transfer"
+    },
+    "relatedConceptIds": [
+      "pio-fifo",
+      "tx-fifo",
+      "rx-fifo",
+      "backpressure"
+    ],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "state-machine",
+    "title": "狀態機",
+    "english": "State machine",
+    "aliases": [
+      "SM",
+      "有限狀態機",
+      "state machine"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "按照目前狀態與指令一步步執行的機制。PIO state machine 會自己執行短小的 PIO 程式，不是一般 CPU thread。",
+    "example": "一個 SM 重複執行 out、in、push。",
+    "whenToUse": "查看 PIO 指令如何依順序推進時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [
+      "pio",
+      "pio-program",
+      "osr",
+      "isr"
+    ],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-program",
+    "title": "PIO 程式",
+    "english": "PIO program",
+    "aliases": [
+      ".pio",
+      "PIO assembler"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "寫給 PIO 狀態機執行的專用指令序列，跟 C 函式不同。通常由 pioasm 等工具協助編譯進專案。",
+    "example": ".program echo 配上 out x, 32 等指令。",
+    "whenToUse": "讀到 demo_pio.pio 不知道它是不是 C 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pio-state-machine-limits",
+      "optionId": "option-2-pio-program"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-x",
+    "title": "PIO X 暫存器",
+    "english": "PIO X register",
+    "aliases": [
+      "X register",
+      "X 暫存器"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO state machine 裡可暫存資料的 32-bit scratch register。能當作資料中繼站或迴圈計數器。",
+    "example": "out x, 32 把 OSR 的 32 bit 放到 X。",
+    "whenToUse": "追資料從 OSR 轉到 ISR 的過程時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-y",
+    "title": "PIO Y 暫存器",
+    "english": "PIO Y register",
+    "aliases": [
+      "Y register",
+      "Y 暫存器"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "和 X 類似，是 PIO 狀態機可使用的另一個 scratch register，不是 CPU 的一般暫存器。",
+    "example": "PIO 程式可用 Y 存計數值。",
+    "whenToUse": "看到 PIO 的 mov y、jmp y-- 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "osr",
+    "title": "輸出移位暫存器",
+    "english": "Output Shift Register",
+    "aliases": [
+      "OSR",
+      "輸出位移暫存器"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO 要往外送資料時使用的移位暫存器。通常從 TX FIFO 取得 word，再由 out 指令分批取出 bit。",
+    "example": "CPU → TX FIFO → OSR → out x, 32。",
+    "whenToUse": "out 指令拿不到預期資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "isr",
+    "title": "輸入移位暫存器",
+    "english": "Input Shift Register",
+    "aliases": [
+      "ISR",
+      "輸入位移暫存器"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO 的 in 指令把 bit 放進這個暫存器，之後可用 push 送進 RX FIFO。不是 CPU 中斷處理常見的 ISR（Interrupt Service Routine）。",
+    "example": "in x, 32 把 X 的資料寫入 ISR。",
+    "whenToUse": "CPU 收到的 PIO 結果不對時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "tx-fifo",
+    "title": "傳送 FIFO",
+    "english": "TX FIFO",
+    "aliases": [
+      "Transmit FIFO",
+      "TX 佇列",
+      "發送 FIFO"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "CPU 或 DMA 提供給 PIO 狀態機的待處理資料佇列。滿了之後，阻塞式寫入會等待有空位。",
+    "example": "pio_sm_put_blocking 把一個 word 送進 TX FIFO。",
+    "whenToUse": "PIO 沒資料可 pull，或 CPU 寫入時一直卡住。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "fifo-paced-transfer"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "rx-fifo",
+    "title": "接收 FIFO",
+    "english": "RX FIFO",
+    "aliases": [
+      "Receive FIFO",
+      "RX 佇列",
+      "接收緩衝"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO 狀態機把處理結果放給 CPU 或 DMA 讀取的佇列。若滿了還要 push，可能會停住。",
+    "example": "push 把 ISR 的資料送進 RX FIFO。",
+    "whenToUse": "PIO 有跑卻收不到資料、push 卡住時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "fifo-paced-transfer"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-out",
+    "title": "PIO OUT 指令",
+    "english": "OUT instruction",
+    "aliases": [
+      "out x, 32",
+      "PIO out"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "把 OSR 中指定數量的位元移出，交給 X/Y 或腳位等目的地。移位方向受狀態機設定影響。",
+    "example": "out x, 32 將 32 bit 移入 X。",
+    "whenToUse": "讀 PIO 原始碼中的 out 指令時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-in",
+    "title": "PIO IN 指令",
+    "english": "IN instruction",
+    "aliases": [
+      "in x, 32",
+      "PIO in"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "把指定來源的位元移進 ISR；之後是否自動推送還要看 autopush 設定。",
+    "example": "in x, 32 把 X 的 32 bit 寫進 ISR。",
+    "whenToUse": "讀 PIO 原始碼中的 in 指令時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-push",
+    "title": "PIO PUSH 指令",
+    "english": "PUSH instruction",
+    "aliases": [
+      "push",
+      "PIO 推送"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "將 ISR 裡的資料送進 RX FIFO。若使用阻塞模式且 FIFO 沒位置，狀態機可能停在這裡。",
+    "example": "echo 範例最後 push 才讓 CPU 能接到結果。",
+    "whenToUse": "資料已進 ISR，但 RX FIFO 沒看到資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-pull",
+    "title": "PIO PULL 指令",
+    "english": "PULL instruction",
+    "aliases": [
+      "pull",
+      "PIO 取值"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "從 TX FIFO 取資料放進 OSR；阻塞模式下沒資料就會等。也可能由 autopull 機制自動完成。",
+    "example": "pull block 在 TX FIFO 空時等待。",
+    "whenToUse": "PIO out 指令停住、不知道是否缺料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "autopull",
+    "title": "自動取資料",
+    "english": "Autopull",
+    "aliases": [
+      "auto pull",
+      "自動拉取"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "當 OSR 的移出位元累積到設定門檻時，PIO 可以自動從 TX FIFO 取下一個 word，不用每回都手寫 pull。",
+    "example": "Demo 假設 autopull 正確設定，連續 out x, 32。",
+    "whenToUse": "要確認 PIO 能連續處理多個 word 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "autopush",
+    "title": "自動送回資料",
+    "english": "Autopush",
+    "aliases": [
+      "auto push",
+      "自動推送"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "當 ISR 累積的資料達到指定門檻時，PIO 可自動推到 RX FIFO，可能省掉明確的 push。",
+    "example": "有些接收程式不需要每筆資料都寫 push。",
+    "whenToUse": "設計 PIO 接收資料的程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-wrap",
+    "title": "PIO 迴繞標記",
+    "english": "PIO wrap",
+    "aliases": [
+      ".wrap",
+      ".wrap_target",
+      "迴圈起點"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "告訴 PIO 一輪指令執行完後回到哪個位置，方便不停重複短小的程式。",
+    "example": ".wrap 之後回到 .wrap_target。",
+    "whenToUse": "看到 PIO 程式沒有 while 卻一直重複時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "pio-echo",
+    "title": "PIO 回送範例",
+    "english": "PIO Echo",
+    "aliases": [
+      "echo",
+      "demo_pio.pio"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "把送到 PIO 的一個 word 原樣送回來，用來理解 TX FIFO、OSR、X、ISR、RX FIFO 的資料路徑。",
+    "example": "CPU 送 0x1234，正確設定下應收到相同 word。",
+    "whenToUse": "官方 Demo 2-2 的 PIO 閱讀練習。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "trace-echo"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "gpio",
+    "title": "通用輸入輸出腳位",
+    "english": "General Purpose Input/Output",
+    "aliases": [
+      "GPIO",
+      "腳位",
+      "IO pin"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "晶片上可供程式讀取電位或控制輸出訊號的腳位。PIO 可以依特定規則操作 GPIO。",
+    "example": "用腳位輸出時脈或接收外部訊號。",
+    "whenToUse": "PIO 開始真正控制硬體接口時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pio-state-machine-limits",
+      "optionId": "option-3-sm-gpio"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "shift-direction",
+    "title": "移位方向",
+    "english": "Shift direction",
+    "aliases": [
+      "PIO shift direction",
+      "移位順序"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "PIO 的 OSR、ISR 可以設定往左或往右移，方向不同會影響先取出哪個 bit。",
+    "example": "送出的 word 一樣，但方向設錯，接收到的位元順序可能不對。",
+    "whenToUse": "echo 數據每個 byte 或 bit 排序怪怪的時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pio-shift-order",
+      "optionId": "option-1-osr-isr-shift-direction"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-2/demo_pio.pio"
+  },
+  {
+    "id": "thread",
+    "title": "執行緒",
+    "english": "Thread",
+    "aliases": [
+      "thread",
+      "線程",
+      "執行緒",
+      "工作者"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "同一個 process 裡能並行或交錯執行的工作流程，通常共享記憶體。因為共享，所以寫同一份資料必須小心。",
+    "example": "兩個 worker 同時做 counter 加一。",
+    "whenToUse": "看到 pthread_create 或同一變數被多個工作者修改時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [
+      "pthread",
+      "critical-section",
+      "data-race",
+      "mutex"
+    ],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "pthread",
+    "title": "POSIX 執行緒",
+    "english": "POSIX Threads",
+    "aliases": [
+      "pthread",
+      "pthreads",
+      "POSIX thread"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "Linux 等 POSIX 系統常用的 C 執行緒 API，能建立、等待執行緒並提供鎖與條件變數。",
+    "example": "Demo 使用 pthread_create、pthread_join 和 pthread_spin_lock。",
+    "whenToUse": "編譯 pthread 程式或理解多執行緒 C 程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "pthread-create",
+    "title": "建立執行緒",
+    "english": "pthread_create",
+    "aliases": [
+      "create thread",
+      "建立 worker"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "建立一條新的執行緒，讓它從指定的工作函式開始執行。建立不代表工作已經完成。",
+    "example": "pthread_create(&th, NULL, worker, NULL)。",
+    "whenToUse": "要讓兩個工作函式同時跑時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "pthread-join",
+    "title": "等待執行緒結束",
+    "english": "pthread_join",
+    "aliases": [
+      "join",
+      "thread join"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "呼叫端等指定執行緒執行完畢，並完成 joinable 執行緒的必要回收。",
+    "example": "main 先建立兩個 worker，再 join 它們，最後讀 counter。",
+    "whenToUse": "輸出結果有時還沒算完，主程式就結束時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "shared-variable",
+    "title": "共享變數",
+    "english": "Shared variable",
+    "aliases": [
+      "shared state",
+      "共享狀態"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "多條執行緒都可以讀寫的同一份資料。沒同步時，一條執行緒可能在另一條更新到一半讀取。",
+    "example": "counter 是兩個 worker 共用的數字。",
+    "whenToUse": "同一個 counter、list 或 buffer 被多條執行緒操作時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "per-thread-count"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "counter",
+    "title": "計數器",
+    "english": "Counter",
+    "aliases": [
+      "共享 counter",
+      "計次器"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "用來累計次數的變數。看起來只是加一，但在多執行緒下可能遺失更新。",
+    "example": "兩個 worker 各加 20000 次，預期 counter=40000。",
+    "whenToUse": "檢查處理筆數、事件次數不正確時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "per-thread-count"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "lost-update",
+    "title": "更新遺失",
+    "english": "Lost update",
+    "aliases": [
+      "lost updates",
+      "漏更新",
+      "計數變少"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "兩條執行緒都讀到同一舊值，分別加一再寫回，最後只留下其中一次更新。",
+    "example": "兩人都讀到 7，寫回 8，正確應該是 9。",
+    "whenToUse": "counter 明明加了很多次，結果卻偏小時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "per-thread-count"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "critical-section",
+    "title": "臨界區",
+    "english": "Critical section",
+    "aliases": [
+      "Critical Section",
+      "關鍵區段",
+      "臨界區段"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "一次只允許適當同步的工作流程進入的共享資料操作區域。區域內放太多其他工作，等待的人就會變多。",
+    "example": "只把 counter++ 放在 lock 與 unlock 之間。",
+    "whenToUse": "有共用計數器或共用 buffer 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [
+      "thread",
+      "lock",
+      "spinlock",
+      "mutex",
+      "lost-update"
+    ],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "lock",
+    "title": "鎖",
+    "english": "Lock",
+    "aliases": [
+      "locking",
+      "同步鎖"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "避免多個執行緒同時做某段不該重疊操作的同步機制。鎖不是免費的：拿鎖、等待、釋放都可能耗時。",
+    "example": "worker 先取得鎖、更新 counter、再解鎖。",
+    "whenToUse": "要保護共享資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "spinlock",
+    "title": "自旋鎖",
+    "english": "Spinlock",
+    "aliases": [
+      "spin lock",
+      "pthread_spinlock_t",
+      "忙等鎖"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "等待者會反覆嘗試拿到鎖，而不是直接休眠。持鎖極短時可能合適，等待很久則容易浪費 CPU。",
+    "example": "pthread_spin_lock(&lock) 與 pthread_spin_unlock(&lock)。",
+    "whenToUse": "Demo 比較短持鎖與長持鎖的時間時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [
+      "mutex",
+      "critical-section",
+      "short-lock",
+      "long-lock"
+    ],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "spin-lock",
+    "title": "取得自旋鎖",
+    "english": "pthread_spin_lock",
+    "aliases": [
+      "spin_lock",
+      "取得鎖"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "如果鎖沒被其他人持有就取得；已被持有時通常會持續嘗試直到成功。",
+    "example": "pthread_spin_lock(&lock); counter++; pthread_spin_unlock(&lock);。",
+    "whenToUse": "修改 C 程式中的共享計數器時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "spin-unlock",
+    "title": "釋放自旋鎖",
+    "english": "pthread_spin_unlock",
+    "aliases": [
+      "spin_unlock",
+      "解鎖"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "完成臨界區後把自旋鎖釋放，讓其他執行緒可繼續。漏掉可能讓其他工作永遠卡住。",
+    "example": "counter++ 完就 pthread_spin_unlock(&lock)。",
+    "whenToUse": "檢查所有 return 或錯誤路徑有沒有漏解鎖時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "no-lock",
+    "title": "未加鎖",
+    "english": "No lock",
+    "aliases": [
+      "無鎖保護",
+      "no synchronization"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "程式沒有用鎖或其他正確同步方式保護共享操作。沒有看到錯誤，不代表它一定安全。",
+    "example": "Demo 的 no lock 有機會算出 39734，而不是 40000。",
+    "whenToUse": "解釋為什麼相同程式每次輸出不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "per-thread-count"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "short-lock",
+    "title": "短時間持鎖",
+    "english": "Short critical section",
+    "aliases": [
+      "short hold",
+      "短臨界區"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "把真正必須共享存取的幾行放進鎖裡，其他耗時工作放在鎖外，讓其他人比較快取得鎖。",
+    "example": "先算 work(i)，只鎖住 counter++。",
+    "whenToUse": "多執行緒版本正確但效能很差時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "long-lock",
+    "title": "長時間持鎖",
+    "english": "Long critical section",
+    "aliases": [
+      "long hold",
+      "長臨界區"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "把不需要保護的計算也放進鎖裡，造成其他執行緒不必要的等待。",
+    "example": "把 work(i) 放到 pthread_spin_lock 和 unlock 之間。",
+    "whenToUse": "明明有多執行緒卻沒有加速時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "move-work-outside"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "volatile",
+    "title": "volatile 限定詞",
+    "english": "volatile",
+    "aliases": [
+      "volatile C",
+      "揮發性"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "告訴編譯器某些讀寫具有需要保留的可觀察性，例如特定硬體位置。它不能代替 mutex 或 atomic，也不保證多執行緒資料競爭安全。",
+    "example": "Demo 用 volatile 展示讀、加、寫的分離；未加鎖仍可能錯。",
+    "whenToUse": "程式把共享 counter 寫成 volatile 卻以為安全時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-atomic-counter",
+      "optionId": "option-1-atomic"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "thread-schedule",
+    "title": "執行緒排程",
+    "english": "Thread scheduling",
+    "aliases": [
+      "scheduler",
+      "排程器"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "作業系統決定哪個執行緒在哪顆 CPU、什麼時候執行。順序與時間不應被當成固定不變。",
+    "example": "兩個 worker 可能在 counter++ 的不同步驟交錯。",
+    "whenToUse": "多次執行同一程式結果不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "cpu-affinity",
+    "title": "CPU 親和性",
+    "english": "CPU affinity",
+    "aliases": [
+      "sched_getaffinity",
+      "可用 CPU 數"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "作業系統限制某個 process 可以在哪些 CPU 核心執行，不一定等於整台電腦的核心總數。",
+    "example": "容器只允許一顆 CPU 時，兩執行緒不一定同時跑。",
+    "whenToUse": "測試多執行緒時發現並行程度很低。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "clock-monotonic",
+    "title": "單調時鐘",
+    "english": "CLOCK_MONOTONIC",
+    "aliases": [
+      "clock_gettime",
+      "單調時間"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "適合測一段經過時間的時鐘來源，不會因手動改牆上時間而直接跳回去。",
+    "example": "程式執行前後用 clock_gettime 記時。",
+    "whenToUse": "想比較短持鎖和長持鎖耗時時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-engine",
+    "title": "資料搬運引擎",
+    "english": "Transfer engine",
+    "aliases": [
+      "搬運引擎",
+      "transfer engine",
+      "資料傳輸引擎"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "拿到一份工作描述後幫忙把資料從來源搬到目的地的元件。Demo 是用 pthread 模擬介面，不是真正硬體 DMA。",
+    "example": "設定 4096 筆、每筆 4 bytes，啟動後等待完成。",
+    "whenToUse": "要理解 DMA 前先看 configure、start、wait 這套操作節奏。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [
+      "dma",
+      "transfer-job",
+      "transfer-channel",
+      "transfer-count"
+    ],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-job",
+    "title": "傳輸工作描述",
+    "english": "engine_job_t",
+    "aliases": [
+      "job",
+      "transfer job",
+      "搬運描述"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "把來源、目的地、筆數、每筆大小及位址是否遞增打包成設定的資料結構。",
+    "example": "engine_job_t 裡有 src、dst、count、size、src_increment、dst_increment。",
+    "whenToUse": "看引擎 main.c 不知道每個欄位的功能時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-channel",
+    "title": "傳輸通道",
+    "english": "Transfer channel",
+    "aliases": [
+      "channel",
+      "搬運通道",
+      "DMA channel"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "引擎中負責處理某項搬運工作的資源。數量有限，取得之後通常還要釋放供別人使用。",
+    "example": "Demo 只有 4 個 channel，engine_claim() 取得編號。",
+    "whenToUse": "出現沒有可用通道，或忘記 release 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-channel-scheduling",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-claim",
+    "title": "取得通道",
+    "english": "engine_claim",
+    "aliases": [
+      "claim channel",
+      "申請通道"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "向搬運引擎借一個空閒的通道；沒有可用通道時通常傳回失敗值。",
+    "example": "int ch = engine_claim();，失敗可能是 -1。",
+    "whenToUse": "引擎配置前要先確認是否有空位時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-channel-scheduling",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-configure",
+    "title": "設定傳輸",
+    "english": "engine_configure",
+    "aliases": [
+      "configure",
+      "配置工作"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "把搬運工作內容交給指定通道。只是設定參數，尚未代表開始搬資料。",
+    "example": "engine_configure(ch, &copy)。",
+    "whenToUse": "分不清 configure 和 start 的時間順序時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-start",
+    "title": "開始傳輸",
+    "english": "engine_start",
+    "aliases": [
+      "start transfer",
+      "啟動搬運"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "告訴通道開始執行已設定的工作。非同步版本的 start 可能立即返回，工作仍在進行。",
+    "example": "engine_start(ch) 後主程式可以先做別的事。",
+    "whenToUse": "想把搬運與其他計算重疊時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "overlap-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-busy",
+    "title": "傳輸忙碌狀態",
+    "english": "engine_busy",
+    "aliases": [
+      "busy",
+      "is busy"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "查詢通道是否仍在搬運。查詢不是完成等待，若一直忙等會消耗 CPU。",
+    "example": "while (engine_busy(ch)) { ... }。",
+    "whenToUse": "需要知道資料現在能不能安全讀取時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "overlap-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-wait",
+    "title": "等待傳輸完成",
+    "english": "engine_wait",
+    "aliases": [
+      "wait completion",
+      "完成等待"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "等指定搬運工作真正結束。要等完成才可以用尚未就緒的目的資料。",
+    "example": "engine_wait(ch) 後用 memcmp 比對資料。",
+    "whenToUse": "驗證搬運正確性前。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "overlap-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-release",
+    "title": "釋放通道",
+    "english": "engine_release",
+    "aliases": [
+      "release channel",
+      "歸還通道"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "工作完成後把已借的通道交還，否則後續任務可能拿不到空位。",
+    "example": "engine_release(ch)。",
+    "whenToUse": "跑多次後發現通道耗盡時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-channel-scheduling",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-src",
+    "title": "來源位址",
+    "english": "Source address",
+    "aliases": [
+      "src",
+      "read address",
+      "來源記憶體"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "搬運時資料從哪裡讀出來。來源要有效、容量足夠，並在搬運期間保持必要的有效性。",
+    "example": "job.src = src。",
+    "whenToUse": "搬錯資料或資料來源過早消失時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-dst",
+    "title": "目的位址",
+    "english": "Destination address",
+    "aliases": [
+      "dst",
+      "write address",
+      "目的記憶體"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "搬運後資料要放在哪裡。目的地必須足夠大，不能因 count 填錯寫出界。",
+    "example": "job.dst = dst。",
+    "whenToUse": "資料搬完卻沒出現在預期位置時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-count",
+    "title": "傳輸筆數",
+    "english": "Transfer count",
+    "aliases": [
+      "count",
+      "傳輸數量",
+      "搬幾筆"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "描述要搬幾個「傳輸單位」，不是自動等於幾個 bytes。要搭配每筆大小才能算總 byte 數。",
+    "example": "4096 筆 × 4 bytes = 16384 bytes。",
+    "whenToUse": "make mistake 看到搬運過量時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-size",
+    "title": "每筆傳輸大小",
+    "english": "Transfer size",
+    "aliases": [
+      "size",
+      "xfer_size_t",
+      "元素大小"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "一次搬運讀寫多少 bytes；官方模擬引擎只接受 1、2、4 bytes。不同硬體或 API 限制需要看規格。",
+    "example": "XFER_32 代表每筆 4 bytes。",
+    "whenToUse": "count 正確卻搬出錯誤資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-increment",
+    "title": "位址遞增",
+    "english": "Address increment",
+    "aliases": [
+      "src_increment",
+      "dst_increment",
+      "遞增旗標"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "決定每搬一筆後來源或目的地位址要不要往前移。兩邊都走是複製；來源固定、目的地走是填值。",
+    "example": "src_increment=false，dst_increment=true 可以重複填相同數字。",
+    "whenToUse": "分不清 copy 和 fill 如何共用同一引擎時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "copy-vs-fill"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-copy",
+    "title": "資料複製",
+    "english": "Copy operation",
+    "aliases": [
+      "copy",
+      "搬移資料"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "來源和目的地位址都依照單位向前走，把一段資料複製到另一段。",
+    "example": "將 src[0..4095] 複製到 dst[0..4095]。",
+    "whenToUse": "想確保每個元素內容相同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "copy-vs-fill"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "transfer-fill",
+    "title": "資料填值",
+    "english": "Fill operation",
+    "aliases": [
+      "fill",
+      "填充資料"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "來源固定在一個數值、目的地持續往前，將同一數值寫進整段空間。",
+    "example": "把 4096 個 uint32_t 都填成 0xA5A5A5A5。",
+    "whenToUse": "初始化整個 buffer 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "copy-vs-fill"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "alignment",
+    "title": "記憶體對齊",
+    "english": "Memory alignment",
+    "aliases": [
+      "alignment",
+      "對齊",
+      "地址對齊"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "某些大小的資料或硬體傳輸要求位址落在特定倍數上，例如 4-byte 傳輸可能要求 4 的倍數。",
+    "example": "Demo 若 4-byte 傳輸地址沒對齊，會拒絕配置。",
+    "whenToUse": "設定來源/目的地址後引擎報錯時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-memory"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "memory-buffer-copy",
+      "optionId": "avoid-extra-copy"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "buffer",
+    "title": "緩衝區",
+    "english": "Buffer",
+    "aliases": [
+      "緩存",
+      "資料緩衝",
+      "緩衝"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "暫時放資料的一塊記憶體，不是某種特定函式。傳輸前要分配足夠容量，結束前不能過早釋放。",
+    "example": "src 和 dst 是兩個 uint32_t 陣列。",
+    "whenToUse": "要確認資料能不能在 DMA 完成前被修改時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "memory-buffer-copy",
+      "optionId": "reuse-buffer"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "memcpy",
+    "title": "記憶體複製函式",
+    "english": "memcpy",
+    "aliases": [
+      "memory copy",
+      "拷貝"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "C 標準函式，將指定數量的 bytes 從來源複製到目的地，前提包含記憶體區域不能有不允許的重疊。",
+    "example": "memcpy(dst, src, 4)。",
+    "whenToUse": "模擬引擎在一個個 transfer 裡搬資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-memory"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "memory-buffer-copy",
+      "optionId": "choose-memmove"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "memcmp",
+    "title": "記憶體比較函式",
+    "english": "memcmp",
+    "aliases": [
+      "memory compare",
+      "逐 byte 比對"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "C 標準函式，依 byte 比較兩塊記憶體的內容；等於 0 代表指定範圍的 bytes 相同。",
+    "example": "memcmp(src, dst, N * sizeof(uint32_t)) == 0。",
+    "whenToUse": "驗證資料搬完有沒有被改掉時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-memory"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "baseline"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "sizeof",
+    "title": "大小運算子",
+    "english": "sizeof",
+    "aliases": [
+      "sizeof operator",
+      "記憶體大小"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "回傳物件或型別佔用多少個 bytes，結果型別是 size_t。陣列在某些函式參數情況會退化為指標，不能誤用來取得長度。",
+    "example": "sizeof(uint32_t) 常為 4。",
+    "whenToUse": "計算 buffer 所需容量或 memcpy 長度時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-language-bridge"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "struct",
+    "title": "結構體",
+    "english": "struct",
+    "aliases": [
+      "C struct",
+      "資料結構結構體"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "把多個不同欄位裝進同一個 C 型別，讓相關設定可以一起傳給函式。",
+    "example": "engine_job_t 是包含 src、dst、count 等欄位的 struct。",
+    "whenToUse": "看到 job.src 或 .count 不懂點號時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-language-bridge"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "enum",
+    "title": "列舉型別",
+    "english": "enum",
+    "aliases": [
+      "enumeration",
+      "列舉"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "給一組有名字的整數常數，例如傳輸大小選項，閱讀程式時比直接寫魔術數字清楚。",
+    "example": "XFER_8、XFER_16、XFER_32。",
+    "whenToUse": "看到 xfer_size_t 或 enum 常數時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-c-language-bridge"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "bool",
+    "title": "布林值",
+    "english": "bool",
+    "aliases": [
+      "true false",
+      "布林型別"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "表示真或假的資料型別，C 可透過 stdbool.h 使用 bool。",
+    "example": "src_increment=true 表示來源位址往前走。",
+    "whenToUse": "解讀引擎的 increment 或 busy 欄位時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "uintptr",
+    "title": "可存指標數值的無號整數",
+    "english": "uintptr_t",
+    "aliases": [
+      "uintptr",
+      "指標整數"
+    ],
+    "category": "pthread 與資料搬運",
+    "coverage": "demo",
+    "explanation": "一種可容納指標轉換表示的無號整數型別（平台有提供時），常用來做位址對齊檢查。",
+    "example": "((uintptr_t)job->src % 4) == 0。",
+    "whenToUse": "閱讀 C 對齊檢查的轉型時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-critical-section"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "demo/section2-3/README.md"
+  },
+  {
+    "id": "dma",
+    "title": "直接記憶體存取",
+    "english": "Direct Memory Access",
+    "aliases": [
+      "DMA",
+      "直接存取記憶體",
+      "直接內存訪問"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "讓硬體搬運控制器按照設定從記憶體或周邊讀資料，再寫到另一處。CPU 只需設定工作、啟動並處理完成，不用自己逐筆複製。",
+    "example": "CPU 設好來源、目的地和筆數，DMA 把資料送進 PIO TX FIFO。",
+    "whenToUse": "CPU 長時間忙著把大量資料餵給周邊時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-transfer-engine"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [
+      "pio-dma",
+      "dreq",
+      "dma-config",
+      "dma-completion",
+      "dma-vs-thread"
+    ],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-controller",
+    "title": "DMA 控制器",
+    "english": "DMA controller",
+    "aliases": [
+      "DMA 硬體",
+      "DMA 引擎"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "真正負責執行 DMA 搬運的硬體元件，可包含多個通道。Demo 的 transfer engine 是執行緒模擬，並不是這個硬體控制器。",
+    "example": "RP2350 SDK 的 hardware_dma API 控制硬體 DMA。",
+    "whenToUse": "要把 Demo 概念改寫成 Pico SDK 實際程式時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "pio-dma",
+    "title": "PIO 搭配 DMA",
+    "english": "PIO with DMA",
+    "aliases": [
+      "PIO+DMA",
+      "PIO FIFO DMA",
+      "PIO DMA"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "由 DMA 根據 PIO FIFO 的需求送資料或取資料，減少 CPU 每筆呼叫 blocking API 的工作。仍然要設定資料寬度、來源和目的地位址以及結束條件。",
+    "example": "DMA 從 uint32_t 陣列送 1000 個 word 到 PIO TX FIFO。",
+    "whenToUse": "CPU 不斷執行 pio_sm_put_blocking 的傳輸迴圈時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [
+      "dma",
+      "pio",
+      "pio-fifo",
+      "dreq",
+      "dma-config"
+    ],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dreq",
+    "title": "DMA 請求訊號",
+    "english": "DMA Request",
+    "aliases": [
+      "DREQ",
+      "DMA pacing",
+      "請求訊號"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "周邊告訴 DMA 現在適合傳送下一筆資料的節奏訊號。它讓 DMA 不會無視 FIFO 空間而瘋狂寫入。",
+    "example": "用 pio_get_dreq(pio, sm, true) 取得對應 PIO TX FIFO 的 DREQ。",
+    "whenToUse": "DMA 已啟動但資料速率要跟 PIO 配合時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [
+      "dma",
+      "pio-dma",
+      "pio-get-dreq"
+    ],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "pio-get-dreq",
+    "title": "查詢 PIO DREQ",
+    "english": "pio_get_dreq",
+    "aliases": [
+      "pio_get_dreq()",
+      "取得 DREQ"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "Pico SDK 用來取得指定 PIO、state machine、TX/RX 方向的 DMA 節奏來源。第三個參數 true 表示 TX，false 表示 RX。",
+    "example": "pio_get_dreq(pio, sm, true)。",
+    "whenToUse": "設定 channel_config_set_dreq 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "pio-put-blocking",
+    "title": "阻塞式送入 PIO",
+    "english": "pio_sm_put_blocking",
+    "aliases": [
+      "pio_sm_put_blocking()",
+      "阻塞寫入 FIFO"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "把一個 32-bit word 寫進指定 state machine 的 TX FIFO。如果 FIFO 已滿，CPU 會等到可寫。",
+    "example": "for 迴圈裡一筆筆呼叫此函式，可能讓 CPU 花時間等待。",
+    "whenToUse": "要解釋為何資料正常但 CPU 無法做其他工作時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "blocking",
+    "title": "阻塞等待",
+    "english": "Blocking",
+    "aliases": [
+      "阻塞",
+      "同步卡住",
+      "blocking call"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "呼叫者必須等某個條件達成，才繼續執行後面的程式。阻塞不一定是錯誤，有時是正確地等資料。",
+    "example": "pio_sm_put_blocking 在 TX FIFO 滿時等待。",
+    "whenToUse": "程式停住但 CPU 也許正在等外部裝置時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "fifo-paced-transfer"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "nonblocking",
+    "title": "非阻塞",
+    "english": "Non-blocking",
+    "aliases": [
+      "nonblocking",
+      "非阻塞式"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "呼叫後不一定等工作完成才返回，通常需要另查狀態或處理回呼。不是不用檢查錯誤，也不表示一定較快。",
+    "example": "DMA 啟動後 main 先算別的事情，完成時再讀結果。",
+    "whenToUse": "要避免 CPU 一直等周邊傳輸時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-config",
+    "title": "DMA 通道設定",
+    "english": "DMA channel configuration",
+    "aliases": [
+      "channel_config",
+      "dma config",
+      "DMA 配置"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "指定一個 DMA 工作要怎麼搬資料，例如資料寬度、位址增量、DREQ 和完成方式。",
+    "example": "讀位址每筆加 4 bytes，寫位址維持在 PIO FIFO 暫存器。",
+    "whenToUse": "要把 CPU 逐筆送資料的程式改成 DMA 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-read-increment",
+    "title": "DMA 讀取位址遞增",
+    "english": "DMA read increment",
+    "aliases": [
+      "read_increment",
+      "DMA來源遞增"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "每搬完一筆，從來源的下一個元素讀資料。要串流送陣列時通常開啟。",
+    "example": "陣列 data[0]、data[1]、data[2] 依序送出。",
+    "whenToUse": "DMA 反覆讀到同一個數值時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "copy-vs-fill"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-write-increment",
+    "title": "DMA 寫入位址遞增",
+    "english": "DMA write increment",
+    "aliases": [
+      "write_increment",
+      "DMA目的遞增"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "每搬完一筆是否把寫入位址向後移。往 PIO TX FIFO 寫時，通常不遞增，因為每筆都寫同一個硬體寄存器位置。",
+    "example": "write_increment=false，目的地是 pio->txf[sm]。",
+    "whenToUse": "改 DMA 時發現寫入位址不應是陣列時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "copy-vs-fill"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-transfer-width",
+    "title": "DMA 傳輸寬度",
+    "english": "DMA transfer width",
+    "aliases": [
+      "DMA_SIZE_32",
+      "transfer width",
+      "搬運寬度"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "每次 DMA 讀寫多少 bit 或 byte，要與周邊寄存器寬度與 buffer 排列相符。",
+    "example": "32-bit word 常選 DMA_SIZE_32。",
+    "whenToUse": "結果位元錯位、搬錯筆數時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "count-unit"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-completion",
+    "title": "DMA 完成通知",
+    "english": "DMA completion",
+    "aliases": [
+      "transfer complete",
+      "DMA 完成",
+      "中斷通知"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "DMA 開始不等於資料可立刻用。需要用忙碌狀態、等待函式或中斷確認這筆搬運完成。",
+    "example": "啟動後先做其他事，DMA 完成才重用來源 buffer。",
+    "whenToUse": "傳出去的資料偶爾變亂、buffer 被提早覆寫時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "overlap-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "dma-cache",
+    "title": "DMA 與快取一致性",
+    "english": "DMA cache coherency",
+    "aliases": [
+      "cache coherency",
+      "cache flush",
+      "快取一致性"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "CPU 和 DMA 可能看到記憶體的不同暫存版本，某些平台需要清理或失效快取。要依硬體快取架構決定，不能對每個 MCU 都假定同樣問題。",
+    "example": "CPU 修改 buffer 後，先確認 DMA 會讀到最新內容。",
+    "whenToUse": "DMA 傳輸內容像是舊資料，但原始 buffer 已更新時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "dma-cache-coherency",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [
+      "dma",
+      "cache",
+      "dma-completion"
+    ],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "double-buffer",
+    "title": "雙緩衝",
+    "english": "Double buffering",
+    "aliases": [
+      "double buffer",
+      "ping pong buffer",
+      "雙 buffer"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "準備兩塊 buffer，這一塊被硬體傳輸時，CPU 處理另一塊。交換前必須確認每塊資料真的完成。",
+    "example": "DMA 送 A 時，CPU 填 B；下一輪互換。",
+    "whenToUse": "傳輸與計算可以重疊時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "resource-queues",
+      "optionId": "double-buffer"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "ring-buffer",
+    "title": "環形緩衝區",
+    "english": "Ring buffer",
+    "aliases": [
+      "circular buffer",
+      "環狀佇列",
+      "循環緩衝"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "固定大小陣列配合讀寫位置循環使用，避免資料一多就一直重新配置記憶體。容量滿時要有清楚處理策略。",
+    "example": "head 指向下次讀，tail 指向下次寫。",
+    "whenToUse": "連續接收感測器資料或串流封包時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "resource-queues",
+      "optionId": "bounded-queue"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "backpressure",
+    "title": "背壓",
+    "english": "Backpressure",
+    "aliases": [
+      "背壓控制",
+      "流量回壓"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "下游處理不過來時，讓上游減速或暫停，避免無限堆積。FIFO 滿或 queue 滿可能是背壓的一種表現。",
+    "example": "PIO TX FIFO 滿，CPU 不能再無限制寫入。",
+    "whenToUse": "資料來源比處理速度快時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "resource-queues",
+      "optionId": "bounded-queue"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "throughput",
+    "title": "吞吐量",
+    "english": "Throughput",
+    "aliases": [
+      "資料吞吐",
+      "有效吞吐",
+      "每秒筆數"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "一秒內真正處理或搬運完成的資料量；不等於單筆資料要等多久。",
+    "example": "一秒成功送出 10 萬個 word。",
+    "whenToUse": "比較 CPU 迴圈與 DMA 的總傳輸能力時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "compare-tradeoff"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "latency",
+    "title": "延遲",
+    "english": "Latency",
+    "aliases": [
+      "反應時間",
+      "單筆延遲"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "從開始要求到完成回應的一段時間。吞吐量變高，不表示每筆延遲一定下降。",
+    "example": "一次 DMA 啟動加等待，可能比送單一 word 還花時間。",
+    "whenToUse": "題目要改善反應速度時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "perf-tail-latency",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "clock-divider",
+    "title": "時脈除頻",
+    "english": "Clock divider",
+    "aliases": [
+      "clkdiv",
+      "PIO clock divider",
+      "時鐘分頻"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "讓 PIO state machine 的指令執行速度相對於系統時鐘變慢。速度越高也必須確保外部裝置能跟上。",
+    "example": "調整 PIO 的 clock divider 會改變訊號時間間隔。",
+    "whenToUse": "資料送出時序不正確時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pio-delay-clock",
+      "optionId": "option-2-state-machine-clock-divider"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "pio-stall",
+    "title": "PIO 停滯",
+    "english": "PIO stall",
+    "aliases": [
+      "stall",
+      "state machine stalled",
+      "PIO卡住"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "PIO 因等待資料、等待 FIFO 空間或其他條件而暫停推進。不是所有停滯都代表程式錯。",
+    "example": "pull block 遇到 TX FIFO 空，會等下一筆資料。",
+    "whenToUse": "PIO 動作突然停住時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pio-fifo-stall",
+      "optionId": "option-1-tx-fifo"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "irq",
+    "title": "中斷請求",
+    "english": "Interrupt Request",
+    "aliases": [
+      "IRQ",
+      "interrupt",
+      "中斷"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "硬體透過中斷通知 CPU 有事件需要處理，CPU 可以先做其他事，而不必每次都反覆詢問狀態。",
+    "example": "DMA 工作完成後觸發 IRQ。",
+    "whenToUse": "不想用 while 不停檢查 transfer_busy 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-interrupt-or-poll",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "polling",
+    "title": "輪詢",
+    "english": "Polling",
+    "aliases": [
+      "poll",
+      "輪詢檢查"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "CPU 主動一次又一次詢問硬體是否完成，簡單但如果空轉可能很耗 CPU。",
+    "example": "while (dma_channel_is_busy(ch)) 不停查。",
+    "whenToUse": "決定用 busy loop、sleep 還是中斷通知時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "peripheral",
+    "title": "周邊裝置",
+    "english": "Peripheral",
+    "aliases": [
+      "外設",
+      "外圍裝置"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "CPU 外部或晶片內部提供特定功能的硬體單元，例如 PIO、UART、SPI、ADC。周邊常有自己的寄存器與 FIFO。",
+    "example": "PIO 的 TX FIFO 是 DMA 寫入的周邊端。",
+    "whenToUse": "設定 DMA 來源或目的地時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "register",
+    "title": "暫存器",
+    "english": "Register",
+    "aliases": [
+      "硬體暫存器",
+      "寄存器"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "硬體裡用來保存狀態或設定的固定位置。CPU 暫存器與硬體周邊暫存器用途不同，要看上下文。",
+    "example": "PIO 的 TX FIFO 有對應的寫入介面與硬體位址。",
+    "whenToUse": "閱讀 pio->txf[sm] 或位元旗標時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "mmio",
+    "title": "記憶體對映 I/O",
+    "english": "Memory-Mapped I/O",
+    "aliases": [
+      "MMIO",
+      "記憶體映射 IO"
+    ],
+    "category": "DMA 與 PIO 延伸",
+    "coverage": "extension",
+    "explanation": "把周邊控制暫存器放在 CPU 可用位址操作的位置；同樣的 C 指標讀寫，在這裡可能是在操作硬體。",
+    "example": "對 PIO TX 寄存器地址寫入，資料送進 FIFO。",
+    "whenToUse": "不懂為什麼 DMA 目的地不是一般 RAM 陣列時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pio-dataflow"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "rp2350-pio-fifo",
+      "optionId": "pio-with-dma"
+    },
+    "relatedConceptIds": [],
+    "source": "Raspberry Pi Pico SDK /hardware_dma and /hardware_pio"
+  },
+  {
+    "id": "executor",
+    "title": "執行器",
+    "english": "ROS 2 Executor",
+    "aliases": [
+      "Executor",
+      "執行器",
+      "事件執行器"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "負責安排哪些已準備好的 ROS 2 callback 可以執行。它決定工作何時開始，不會自動讓每段 callback 變快。",
+    "example": "A callback 阻塞時，單執行緒 executor 的 B 可能要排隊。",
+    "whenToUse": "callback 明明準時收到事件卻晚開始時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "shorten-callback"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "single-executor",
+    "title": "單執行緒執行器",
+    "english": "SingleThreadedExecutor",
+    "aliases": [
+      "單執行緒 Executor",
+      "single threaded executor"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "同一時間由一條執行緒執行 callback。簡單但一個耗時 callback 可能拖延其他 callback。",
+    "example": "A 卡住 300ms，B 就可能得等 A 結束。",
+    "whenToUse": "ROS 2 timer 延遲且 callback 有耗時 I/O 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "shorten-callback"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "multi-executor",
+    "title": "多執行緒執行器",
+    "english": "MultiThreadedExecutor",
+    "aliases": [
+      "多執行緒 Executor",
+      "multi threaded executor"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "用多條工作執行緒安排可並行的 callback，但能否重疊執行還受 callback group 限制。",
+    "example": "分開群組的兩個 callback 可以在符合條件時重疊。",
+    "whenToUse": "兩個獨立 callback 互相等待時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ros2-ste-multithreaded-groups"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "multithreaded-callback-groups"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "callback-group",
+    "title": "回呼群組",
+    "english": "Callback Group",
+    "aliases": [
+      "Callback Group",
+      "回調組"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "ROS 2 用來決定同組 callback 能否重疊執行的設定。多執行緒 executor 不代表預設互斥群組會自動並行。",
+    "example": "A、B 分別放進不同互斥群組。",
+    "whenToUse": "改 MultiThreadedExecutor 後仍完全不並行時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ros2-ste-multithreaded-groups"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "multithreaded-callback-groups"
+    },
+    "relatedConceptIds": [
+      "executor",
+      "multi-executor",
+      "mutex-callback-group",
+      "reentrant-callback-group"
+    ],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "mutex-callback-group",
+    "title": "互斥回呼群組",
+    "english": "MutuallyExclusiveCallbackGroup",
+    "aliases": [
+      "互斥 Callback Group"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "同一群組內一次只讓一個 callback 執行，即使 executor 有多條 thread。兩個不同群組仍可能重疊。",
+    "example": "A、B 若共用同一群組，就不能同時跑。",
+    "whenToUse": "想避開共享狀態競爭時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "multithreaded-callback-groups"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "reentrant-callback-group",
+    "title": "可重入回呼群組",
+    "english": "ReentrantCallbackGroup",
+    "aliases": [
+      "Reentrant",
+      "可重入群組"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "允許同一群組的 callback 重疊，甚至同一個 callback 的多個呼叫可能重疊。必須確認程式真的能安全重入。",
+    "example": "處理 I/O 的兩次 callback 可以重疊，但 shared list 要同步。",
+    "whenToUse": "需要並行又已處理共享資料安全時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "single-threaded-executor",
+      "optionId": "multithreaded-callback-groups"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "qos",
+    "title": "服務品質設定",
+    "english": "Quality of Service",
+    "aliases": [
+      "QoS",
+      "QoS profile",
+      "傳輸服務品質"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "ROS 2 用來控制訊息保存、可靠性等行為的一組設定。發布端與訂閱端的 QoS 不相容時可能收不到資料。",
+    "example": "感測器採 Best Effort，訂閱者要求 Reliable 可能不相容。",
+    "whenToUse": "topic 名稱與型別正確卻仍無訊息時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-qos"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-qos-profile",
+      "optionId": "fix-compatibility"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "qos-reliability",
+    "title": "傳輸可靠性",
+    "english": "Reliability policy",
+    "aliases": [
+      "Reliable",
+      "Best Effort",
+      "可靠性政策"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "決定通訊偏向確保資料送達，還是容忍部分遺失以維持效率；具體行為還受 DDS 和網路影響。",
+    "example": "不要求每張影像都完整時可能使用 Best Effort。",
+    "whenToUse": "網路擁塞、影像與感測器串流時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-qos"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-qos-profile",
+      "optionId": "reliability-choice"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "qos-depth",
+    "title": "訊息佇列深度",
+    "english": "QoS History depth",
+    "aliases": [
+      "depth",
+      "Keep Last",
+      "歷史深度"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "指定最多保存多少筆尚待處理的訊息。深度大可能增加記憶體和資料變舊風險。",
+    "example": "每秒進 100 筆只處理 10 筆時，佇列很快堆滿。",
+    "whenToUse": "訂閱 callback 一直落後時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-qos"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-qos-profile",
+      "optionId": "keep-last-depth"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "ros2-remap",
+    "title": "名稱重映射",
+    "english": "ROS 2 remapping",
+    "aliases": [
+      "remap",
+      "topic remap",
+      "重新映射"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "啟動程式時把它使用的 topic 或 node 名稱改成另一個，不必直接修改程式原始碼。",
+    "example": "將 /input 映射成 /number，讓既有 node 接上資料。",
+    "whenToUse": "發送端和接收端 topic 名稱不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-remap-diagnostics",
+      "optionId": "option-2-remap"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "ros-domain-id",
+    "title": "ROS 網域識別",
+    "english": "ROS_DOMAIN_ID",
+    "aliases": [
+      "ROS domain",
+      "domain id",
+      "網域 ID"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "把同一網路上的 ROS 2 系統分群的一個設定。不同 domain 的 node 通常不會互相發現。",
+    "example": "兩個終端機 ROS_DOMAIN_ID 不同，node list 可能找不到對方。",
+    "whenToUse": "Docker 或不同終端機發現結果不同時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-remap-diagnostics",
+      "optionId": "option-1-topic"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "ros-namespace",
+    "title": "ROS 命名空間",
+    "english": "ROS namespace",
+    "aliases": [
+      "namespace",
+      "命名空間"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "讓同名 node 或 topic 在不同層級下分開管理，常用於多台機器人。",
+    "example": "/robot1/number 和 /robot2/number 是不同主題。",
+    "whenToUse": "topic 看起來一樣但前面多了一層路徑時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-remap-diagnostics",
+      "optionId": "option-1-topic"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "ros-parameter",
+    "title": "ROS 參數",
+    "english": "ROS 2 Parameter",
+    "aliases": [
+      "parameter",
+      "參數設定"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "讓 node 在執行時保存與讀取設定值。改變參數後是否會立即影響程式，取決於實作。",
+    "example": "把發布頻率或閾值放成 ROS parameter。",
+    "whenToUse": "避免把設定寫死在程式碼時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-parameters-config",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "serialization",
+    "title": "序列化",
+    "english": "Serialization",
+    "aliases": [
+      "message serialization",
+      "資料序列化"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "把程式裡的資料結構轉成可傳輸或儲存的位元組表示。需要跟接收端約定格式。",
+    "example": "將 ROS 2 訊息欄位編碼後跨程序傳送。",
+    "whenToUse": "大訊息傳輸耗時高時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-message-serialization",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "message-backlog",
+    "title": "訊息堆積",
+    "english": "Message backlog",
+    "aliases": [
+      "topic backlog",
+      "排隊訊息",
+      "處理落後"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "生產資料的速度高於消費速度，未處理訊息越積越多。只加大 queue 不會讓處理速度變快。",
+    "example": "每秒收到 1000 筆，callback 只處理 300 筆。",
+    "whenToUse": "看到延遲越跑越大時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-backlog",
+      "optionId": "option-1-depth"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "service-client",
+    "title": "服務客戶端",
+    "english": "ROS 2 Service client",
+    "aliases": [
+      "client",
+      "service request",
+      "服務請求方"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "主動向服務端送出一筆 request 並等待或非同步接收 response 的角色。",
+    "example": "client.call_async(request)。",
+    "whenToUse": "一次查詢或設定要求沒有回應時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-1-call-async"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "service-server",
+    "title": "服務端",
+    "english": "ROS 2 Service server",
+    "aliases": [
+      "server",
+      "服務提供者"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "接到 Service request 後執行工作並提供 response。跟一直廣播的 publisher 不同。",
+    "example": "服務端收到設定查詢後回傳值。",
+    "whenToUse": "client 沒回應，要確認 server 是否存在時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-1-call-async"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "call-async",
+    "title": "非同步服務呼叫",
+    "english": "call_async",
+    "aliases": [
+      "async service",
+      "非同步請求"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "發出請求先取得一個代表未來結果的物件，之後完成時再處理；不需在同一 callback 裡同步等結果。",
+    "example": "在 timer callback 呼叫 client.call_async。",
+    "whenToUse": "同步 call 在 callback 裡造成死鎖風險時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-1-call-async"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "future",
+    "title": "未來結果物件",
+    "english": "Future",
+    "aliases": [
+      "future result",
+      "非同步結果"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "代表稍後才會完成的工作結果，可能成功、失敗或取消。不是立即取得的普通值。",
+    "example": "future.add_done_callback 設定結果到達後要做什麼。",
+    "whenToUse": "要追蹤非同步服務請求是否完成時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-1-call-async"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "ros2-deadlock",
+    "title": "ROS 2 回呼死鎖",
+    "english": "ROS 2 callback deadlock",
+    "aliases": [
+      "service deadlock",
+      "callback deadlock",
+      "服務死鎖"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "某 callback 同步等待另一個也必須由 executor 執行的工作，但排程條件讓那個工作永遠無法開始。",
+    "example": "在同一個互斥群組中同步等待 Service response。",
+    "whenToUse": "Service 有送出卻一直等不到回覆時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-service-client-deadlock",
+      "optionId": "option-2-callback-groups"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "publisher-rate",
+    "title": "發布頻率",
+    "english": "Publish rate",
+    "aliases": [
+      "message rate",
+      "Hz",
+      "每秒發送次數"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "一秒發布幾筆訊息，跟 subscriber 真正收到的頻率不一定相同。",
+    "example": "timer 每 0.1 秒發一次，理論大約 10 Hz。",
+    "whenToUse": "想確認瓶頸在發送端還是接收端時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "ros2-topic-pipeline",
+      "optionId": "check-cli"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "end-to-end-latency",
+    "title": "端到端延遲",
+    "english": "End-to-end latency",
+    "aliases": [
+      "E2E latency",
+      "全程延遲"
+    ],
+    "category": "ROS 2 延伸",
+    "coverage": "extension",
+    "explanation": "從資料產生到最終處理結果可用的整段時間，可能包含排隊、傳輸、callback 和計算。",
+    "example": "接收端收到的時間減去發送端附帶的時間戳。",
+    "whenToUse": "改 executor 後要驗證整體是否真的變快時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "compare-tradeoff"
+    },
+    "relatedConceptIds": [],
+    "source": "ROS 2 Jazzy official documentation"
+  },
+  {
+    "id": "mutex",
+    "title": "互斥鎖",
+    "english": "Mutex",
+    "aliases": [
+      "mutex",
+      "pthread_mutex_t",
+      "互斥量"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "一次只讓一個執行緒進入臨界區的鎖。跟 spinlock 相比，等待時有機會阻塞休眠，適合情況取決於鎖時間和平台。",
+    "example": "pthread_mutex_lock、pthread_mutex_unlock。",
+    "whenToUse": "鎖等待時間偏長，CPU 一直忙等時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "use-mutex"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "atomic",
+    "title": "原子操作",
+    "english": "Atomic operation",
+    "aliases": [
+      "atomic",
+      "_Atomic",
+      "原子變數"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "對共享數值進行不可被其他執行緒看見「做一半」的操作；還需要依需求選擇適當記憶體順序。",
+    "example": "atomic_fetch_add 可安全累加計數器。",
+    "whenToUse": "只需安全更新單一計數器，鎖可能過重時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-atomic-counter",
+      "optionId": "option-1-atomic"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "data-race",
+    "title": "資料競爭",
+    "english": "Data race",
+    "aliases": [
+      "race condition",
+      "資料競態",
+      "資料競爭"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "多條執行緒未正確同步就同時存取同一資料，而且至少一個在寫。C 的資料競爭可能造成未定義行為。",
+    "example": "兩個 worker 都不加鎖修改 counter。",
+    "whenToUse": "結果偶爾錯、加了 volatile 也沒用時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "per-thread-count"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "condition-variable",
+    "title": "條件變數",
+    "english": "Condition variable",
+    "aliases": [
+      "pthread_cond_t",
+      "condvar",
+      "條件通知"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "當某個共享條件還不成立時，讓執行緒等候通知，避免一直空轉。真正的條件要配合 mutex 保護並用 while 重查。",
+    "example": "queue 空時等待 not_empty，有資料時 producer 通知。",
+    "whenToUse": "生產者消費者程式空佇列仍吃滿 CPU 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-condvar-queue"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-condition-queue",
+      "optionId": "condition-predicate-loop"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "producer-consumer",
+    "title": "生產者消費者",
+    "english": "Producer–consumer",
+    "aliases": [
+      "producer consumer",
+      "生產者-消費者模型"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "一方建立資料或工作，另一方負責處理。若兩邊速度不同，需要佇列與滿載策略。",
+    "example": "producer 持續加入資料，consumer 持續取出處理。",
+    "whenToUse": "串流資料、背景工作或多執行緒 queue 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-condition-queue",
+      "optionId": "bounded-ring-buffer"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "thread-pool",
+    "title": "執行緒池",
+    "english": "Thread pool",
+    "aliases": [
+      "worker pool",
+      "固定工作執行緒"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "事先建立少數執行緒，反覆從佇列取工作，而不是每筆任務都新建一條 thread。",
+    "example": "固定 4 個 worker 處理很多小任務。",
+    "whenToUse": "pthread_create 的建立成本開始影響效能時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-thread-lifecycle",
+      "optionId": "option-1-worker-pool"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "deadlock",
+    "title": "死鎖",
+    "english": "Deadlock",
+    "aliases": [
+      "死結",
+      "鎖死"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "兩條以上執行緒互相等對方釋放資源，導致都無法繼續。增加執行緒數通常不能解決鎖順序問題。",
+    "example": "A 先鎖 M1 等 M2，B 先鎖 M2 等 M1。",
+    "whenToUse": "程式沒有崩潰卻永遠不結束時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-deadlock-order",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "lock-order",
+    "title": "鎖取得順序",
+    "english": "Lock ordering",
+    "aliases": [
+      "lock hierarchy",
+      "固定鎖順序"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "多把鎖都統一按相同順序取得，避免不同執行緒形成循環等待。",
+    "example": "所有地方都先 lock A 再 lock B。",
+    "whenToUse": "程式需要同時持有兩把 mutex 時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-deadlock-order",
+      "optionId": "option-1-method"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "thread-shutdown",
+    "title": "執行緒安全關閉",
+    "english": "Thread shutdown",
+    "aliases": [
+      "worker shutdown",
+      "close queue",
+      "關閉旗標"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "停止 producer、通知等待者醒來、處理剩餘工作並 join，讓程式能正常結束。",
+    "example": "設定 closed=true，再 pthread_cond_broadcast 喚醒等待者。",
+    "whenToUse": "程式能執行工作，但關閉時卡住。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-timeout-shutdown",
+      "optionId": "option-1-broadcast"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "false-sharing",
+    "title": "偽共享",
+    "english": "False sharing",
+    "aliases": [
+      "cache line contention",
+      "假共享"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "兩條執行緒雖然更新不同變數，但變數剛好在同一 cache line，造成快取反覆爭用。",
+    "example": "兩個 per-thread counter 放得太靠近。",
+    "whenToUse": "沒有同一把鎖卻因共享 cache line 變慢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "cpu-memory-locality",
+      "optionId": "avoid-false-sharing"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "cache",
+    "title": "快取記憶體",
+    "english": "CPU Cache",
+    "aliases": [
+      "cache",
+      "快取",
+      "緩存記憶體"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "CPU 附近保存最近或常用資料的高速記憶體，常能讓重複或連續存取更快。它和程式自己寫的 map cache 是不同概念。",
+    "example": "走訪連續陣列常比到處追指標更友善。",
+    "whenToUse": "程式瓶頸是記憶體存取而不是計算時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "cpu-memory-locality",
+      "optionId": "contiguous-storage"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "cache-miss",
+    "title": "快取未命中",
+    "english": "Cache miss",
+    "aliases": [
+      "cache miss",
+      "快取不命中"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "CPU 想要的資料不在目前快取層級，需要到較慢的層級取回。",
+    "example": "對巨大 linked list 跳躍存取可能產生很多 miss。",
+    "whenToUse": "程式運算很簡單卻跑得比預期慢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "cpu-memory-locality",
+      "optionId": "contiguous-storage"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "memory-locality",
+    "title": "記憶體局部性",
+    "english": "Memory locality",
+    "aliases": [
+      "locality",
+      "資料局部性"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "彼此接近的資料或近期會再用的資料，通常比較容易被快取有效利用。",
+    "example": "把要逐一處理的數值放連續陣列。",
+    "whenToUse": "優化大量陣列或 struct 走訪時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "cpu-memory-locality",
+      "optionId": "contiguous-storage"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "endianness",
+    "title": "位元組序",
+    "english": "Endianness",
+    "aliases": [
+      "endianness",
+      "大小端序",
+      "端序"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "多個 byte 組成整數時，先存高位還是低位的規則。它跟 bit 在 PIO shift register 裡移動的方向不是同一件事。",
+    "example": "0x12345678 的 big-endian bytes 是 12 34 56 78。",
+    "whenToUse": "解析封包或 DMA 收到的資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-binary-packet-parsing"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "safe-binary-decoding",
+      "optionId": "shift-or-big-endian"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "byte-order",
+    "title": "位元組順序",
+    "english": "Byte order",
+    "aliases": [
+      "big endian",
+      "little endian",
+      "位元組排列"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "描述多 byte 數值在記憶體或傳輸格式中如何排列。必須照協定規格解析。",
+    "example": "同四個 bytes 以不同端序讀會得到不同數字。",
+    "whenToUse": "跨 CPU、網路或硬體搬資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-binary-packet-parsing"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "safe-binary-decoding",
+      "optionId": "shift-or-big-endian"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "packet",
+    "title": "封包",
+    "english": "Packet",
+    "aliases": [
+      "packet",
+      "資料封包"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "按照某種協定放在一起的一段 bytes，通常包含欄位、長度或其他檢查資料。不是所有 byte 都能直接轉成 C struct。",
+    "example": "收到 4 bytes，要按 endian 和長度檢查後解讀。",
+    "whenToUse": "從 UART、SPI 或網路接資料時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-binary-packet-parsing"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "safe-binary-decoding",
+      "optionId": "shift-or-big-endian"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "profiling",
+    "title": "效能剖析",
+    "english": "Profiling",
+    "aliases": [
+      "profiler",
+      "效能分析",
+      "熱點分析"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "蒐集程式花時間在哪些函式或段落的證據，避免只靠猜想改程式。",
+    "example": "先量 callback 解析、計算、發布各花多少時間。",
+    "whenToUse": "不知道慢在哪段時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "profile-hotspot"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "baseline",
+    "title": "基準版本",
+    "english": "Baseline",
+    "aliases": [
+      "基線",
+      "原始效能",
+      "原版本"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "改程式前先保存能重現的輸出、測試指令和耗時，當作對照。否則很難證明新方法有用。",
+    "example": "保存原版的 30 次測量中位數。",
+    "whenToUse": "要比較優化前後而不想靠感覺時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-performance-benchmark"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "baseline"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "benchmark",
+    "title": "效能測試",
+    "english": "Benchmark",
+    "aliases": [
+      "基準測試",
+      "效能量測"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "用固定輸入與環境反覆測一個程式或功能的速度和資源成本。正確性不能因為跑得快就忽略。",
+    "example": "同一筆輸入分別跑原版與 DMA 版本。",
+    "whenToUse": "老師要求證明加速效果時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-performance-benchmark"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "benchmark-correctness",
+      "optionId": "baseline"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "p95",
+    "title": "第 95 百分位延遲",
+    "english": "95th percentile",
+    "aliases": [
+      "p95",
+      "P95",
+      "尾端延遲"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "若有很多次延遲測量，p95 表示大約 95% 的樣本不超過的數值。它比平均值更能看出少數慢的情況。",
+    "example": "平均 10ms，但 p95 可能有 80ms。",
+    "whenToUse": "關注偶爾卡很久，而非只看平均時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-performance-benchmark"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "perf-tail-latency",
+      "optionId": "option-2-p95"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "complexity",
+    "title": "時間複雜度",
+    "english": "Time complexity",
+    "aliases": [
+      "O(n)",
+      "Big O",
+      "時間成本"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "描述輸入量變大時，運算量大致怎麼變。跟硬體上實際幾毫秒不同，要同時看兩者。",
+    "example": "單次掃描 O(n)，完整排序 O(n log n)。",
+    "whenToUse": "輸入變大後程式突然很慢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "algorithm-search-batching",
+      "optionId": "option-1-dict-set"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "space-complexity",
+    "title": "空間複雜度",
+    "english": "Space complexity",
+    "aliases": [
+      "額外空間",
+      "記憶體複雜度"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "描述演算法使用的額外記憶體隨輸入量成長的程度，不等於程式實際的全部 RAM。",
+    "example": "保留一份新陣列通常需要 O(n) 額外空間。",
+    "whenToUse": "改快取或雙緩衝後 RAM 不夠時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "cpu-memory-locality",
+      "optionId": "contiguous-storage"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "sanitizer",
+    "title": "記憶體錯誤檢查器",
+    "english": "Sanitizer",
+    "aliases": [
+      "ASan",
+      "UBSan",
+      "AddressSanitizer"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "編譯時加入的工具，可在執行測試時偵測一些越界、未定義行為等問題，不是所有 bug 都能檢出。",
+    "example": "gcc -fsanitize=address,undefined。",
+    "whenToUse": "C 位元運算、指標或 buffer 修改後怕越界時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "compiler-profile-guided",
+      "optionId": "sanitize-before-speed"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "undefined-behavior",
+    "title": "未定義行為",
+    "english": "Undefined behavior",
+    "aliases": [
+      "UB",
+      "undefined",
+      "未定義"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "C 語言規格沒有規定該程式情況必須產生什麼結果；編譯器可以作激進優化，所以「這次能跑」不能證明安全。",
+    "example": "讀陣列邊界外、非法位移或某些資料競爭。",
+    "whenToUse": "同樣 C 程式換編譯器就出怪問題時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "c-signed-overflow",
+      "optionId": "option-3-sanitizer"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "mutex-vs-spin",
+    "title": "Mutex 與 Spinlock 比較",
+    "english": "Mutex vs Spinlock",
+    "aliases": [
+      "互斥鎖與自旋鎖",
+      "spinlock mutex"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "Mutex 爭用時常有機會阻塞等待；Spinlock 會忙等。兩者都用於互斥，但等待方式和成本不同。",
+    "example": "很短的臨界區可先測 spinlock，長時間等待則比較 mutex。",
+    "whenToUse": "CPU 使用率高但工作進度很慢時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "spinlock-critical-section",
+      "optionId": "use-mutex"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "queue",
+    "title": "佇列",
+    "english": "Queue",
+    "aliases": [
+      "queue",
+      "排隊資料結構"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "一種儲存待處理工作或資料的結構，先入先出的 queue 很常見。它跟硬體 FIFO 相似，但程式 queue 可能有額外同步或容量規則。",
+    "example": "producer push 任務，consumer pop 任務。",
+    "whenToUse": "工作有時湧入、處理端跟不上資料速度時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-pthread-condvar-queue"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "pthread-condition-queue",
+      "optionId": "bounded-ring-buffer"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "gil",
+    "title": "Python 全域直譯器鎖",
+    "english": "Global Interpreter Lock",
+    "aliases": [
+      "GIL",
+      "Python GIL"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "常見 CPython 執行環境中，GIL 會限制同一個直譯器內多條 thread 同時執行 Python 位元碼的能力。I/O 等待可讓出執行機會。",
+    "example": "兩個 CPU 密集的純 Python 函式用 thread 未必多核心加速。",
+    "whenToUse": "把 ROS 2 的 CPU-heavy callback 改多執行緒卻沒更快時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-ros2-executor"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "python-cpu-process",
+      "optionId": "measure-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "process-pool",
+    "title": "程序池",
+    "english": "Process pool",
+    "aliases": [
+      "ProcessPoolExecutor",
+      "多程序池"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "建立多個獨立 process 分別運算，可繞開一般 GIL 對單一直譯器的限制，但需要資料序列化與跨程序傳輸。",
+    "example": "把可 pickle 的純計算函式交給 ProcessPoolExecutor。",
+    "whenToUse": "純 Python CPU 計算真的很重時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ros2-ste-process-pool"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "python-cpu-process",
+      "optionId": "process-pool"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "copy-vs-zero-copy",
+    "title": "複製與零拷貝",
+    "english": "Copy vs zero-copy",
+    "aliases": [
+      "zero copy",
+      "減少複製"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "少做記憶體複製有時能節省時間，但資料所有權、生命週期和對齊必須明確，不能只把指標直接指過去。",
+    "example": "大型 buffer 避免重複複製前先確認沒有並行修改。",
+    "whenToUse": "大量資料搬來搬去造成效能瓶頸時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "memory-buffer-copy",
+      "optionId": "avoid-extra-copy"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  },
+  {
+    "id": "dma-vs-thread",
+    "title": "DMA 與執行緒差異",
+    "english": "DMA vs thread",
+    "aliases": [
+      "DMA thread comparison",
+      "硬體與軟體搬運"
+    ],
+    "category": "並行與效能延伸",
+    "coverage": "extension",
+    "explanation": "Thread 是 CPU 執行的軟體工作；DMA 是獨立硬體發起記憶體或周邊傳輸。Demo 用 thread 模擬 DMA 介面，不能拿它的 CPU 占用當成真 DMA。",
+    "example": "模擬 engine 的複製 worker 仍占 CPU；真 DMA 不需要 CPU 逐筆執行。",
+    "whenToUse": "看完 Demo 2-3 想估計實際硬體效能時。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "ncku-concurrency-advanced"
+    },
+    "exampleSolution": {
+      "kind": "optimization",
+      "methodId": "transfer-engine-configuration",
+      "optionId": "overlap-cpu"
+    },
+    "relatedConceptIds": [],
+    "source": "C/POSIX/Python official documentation"
+  }
+]
