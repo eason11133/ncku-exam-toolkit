@@ -10,16 +10,17 @@ type Props = {
   onQuery: (query: string) => void
   onSelect: (id: string) => void
   onBack: () => void
+  backLabel: string
   onNavigate: (view: 'knowledge' | 'performance', id: string) => void
 }
 
-export default function ConceptLibrary({ selected, concepts, query, onQuery, onSelect, onBack, onNavigate }: Props) {
+export default function ConceptLibrary({ selected, concepts, query, onQuery, onSelect, onBack, backLabel, onNavigate }: Props) {
   if (selected) {
     const article = articles.find(item => item.id === selected.relatedArticle?.articleId)
     const method = optimizations.find(item => item.id === selected.exampleSolution?.methodId)
     const option = method?.options.find(item => item.id === selected.exampleSolution?.optionId)
     return <div className="concept-page">
-      <button className="back-button" onClick={onBack}><ArrowLeft size={15}/> 返回原文</button>
+      <button className="back-button" onClick={onBack}><ArrowLeft size={15}/> {backLabel}</button>
       <span className="eyebrow">技術觀念庫 / {selected.category}</span>
       <h1>{selected.title}</h1>
       {selected.english !== selected.title && <p className="concept-english">{selected.english}</p>}
