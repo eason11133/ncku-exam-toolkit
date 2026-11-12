@@ -71,7 +71,8 @@
       "code": {
         "language": "c",
         "snippet": "job.count = 4096;\njob.size = XFER_32;  // 4 bytes per transfer"
-      }
+      },
+      "articleId": "lesson-transfer-engine-configuration-count-unit"
     },
     {
       "id": "copy-vs-fill",
@@ -102,7 +103,8 @@
       "code": {
         "language": "c",
         "snippet": "job.src_increment = false;  // fill\njob.dst_increment = true;"
-      }
+      },
+      "articleId": "lesson-transfer-engine-configuration-copy-vs-fill"
     },
     {
       "id": "overlap-cpu",
@@ -135,7 +137,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-transfer-engine-configuration-overlap-cpu"
     }
   ]
 }

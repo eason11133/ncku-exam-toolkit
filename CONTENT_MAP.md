@@ -1,5 +1,7 @@
 # 內容地圖
 
+本表對照第一版教材與方法。第二版另新增 33 篇主題教材和 33 筆方法資料；第一版缺少的 39 篇方案長文及其連結記錄於 `FIRST_VERSION_ARTICLE_LINKS.json`。
+
 | 官方 Demo／用途 | 核心教學（Markdown） | 效能優化搜尋條目（JSON） |
 |---|---|---|
 | 2-1 ROS 2 Node／Topic／CLI | `ncku-ros2-cli-workflow.md`、`ncku-debug-decision-tree.md` | `ros2-topic-pipeline.json` |

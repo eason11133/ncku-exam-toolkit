@@ -1,0 +1,112 @@
+{
+  "id": "pthread-deadlock-order",
+  "name": "pthread 多把鎖的 Deadlock 與鎖順序",
+  "aliases": [
+    "deadlock",
+    "lock ordering",
+    "mutex",
+    "互鎖"
+  ],
+  "category": "pthread",
+  "summary": "兩個 Thread 都不動且 CPU 不高，可能是不同順序取得多把鎖。",
+  "problems": [
+    "兩個 Thread 都不動且 CPU 不高，可能是不同順序取得多把鎖。",
+    "pthread 多把鎖的 Deadlock 與鎖順序",
+    "deadlock",
+    "lock ordering",
+    "mutex",
+    "互鎖"
+  ],
+  "bottlenecks": [
+    "Thread A 先拿 lock1 再等 lock2；Thread B 先拿 lock2 再等 lock1，就可能永遠互等"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "POSIX pthread_mutex_lock",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pthread-deadlock-order"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "統一取得鎖的順序",
+      "aliases": [],
+      "summary": "所有路徑遵循相同 lock ordering",
+      "principle": "所有路徑遵循相同 lock ordering",
+      "conditions": [
+        "能列出每把鎖的順序"
+      ],
+      "tradeoffs": [
+        "仍需排查重入／其他等待"
+      ],
+      "behavior": "無互等",
+      "metrics": [
+        "超時率"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_mutex_lock",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "減少跨多把鎖的操作",
+      "aliases": [],
+      "summary": "降低循環等待依賴",
+      "principle": "降低循環等待依賴",
+      "conditions": [
+        "能重組共享資料"
+      ],
+      "tradeoffs": [
+        "可能增加狀態不一致風險"
+      ],
+      "behavior": "原子性仍正確",
+      "metrics": [
+        "鎖等待"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_mutex_lock",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-trylock",
+      "title": "trylock + 明確失敗策略",
+      "aliases": [],
+      "summary": "避免無期限阻塞",
+      "principle": "避免無期限阻塞",
+      "conditions": [
+        "失敗可重新排程"
+      ],
+      "tradeoffs": [
+        "忙等或飢餓風險"
+      ],
+      "behavior": "不丟失必要工作",
+      "metrics": [
+        "成功率",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_mutex_lock",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

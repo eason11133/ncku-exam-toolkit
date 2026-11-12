@@ -1,0 +1,81 @@
+---
+id: lesson-ros2-topic-pipeline-parallel-stages
+title: 確認是否適合拆成處理階段
+category: ROS 2
+tags: ros2 topic, ROS 2 Topic／Publisher／Subscriber, 效能優化
+aliases: parallel-stages, ros2-topic-pipeline
+difficulty: intermediate
+priority: P0
+source_type: personal
+source_url: https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html
+verified: false
+updated_at: 2026-11-12
+summary: 若處理可彼此獨立，評估分階段與非同步處理。
+related: ncku-ros2-cli-workflow
+---
+
+# 確認是否適合拆成處理階段
+
+## 先弄懂這個問題
+
+目前的方法是 **ROS 2 Topic／Publisher／Subscriber**。訊息從 Publisher 經 Topic 到 Subscriber，Callback 處理後可能再發布；先定位收不到資料的那一段。
+
+這個方案的目的是：把 I/O 等待與計算隔離，可能降低互相阻塞；但需要額外的佇列和完成順序設計。
+
+你可以先想像這個情境：感測器收到訊息後，要做耗時分析與發送。
+
+## 修改前：先看哪裡有問題
+
+```python
+def callback(self, msg):
+    heavy_compute(msg)   # 同步阻塞 executor
+```
+
+這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
+
+## 修改後：對照實作
+
+```python
+# 示意架構：callback 快速交給有上限的工作佇列
+from queue import Queue
+work = Queue(maxsize=32)
+
+def callback(self, msg):
+    work.put_nowait(copy_needed_fields(msg))
+# 另一 worker 消費 work，重計算後安全回傳結果
+```
+
+## 逐步理解，為什麼這樣改
+
+分段後 callback 返回更早，但排隊、資料複製、輸出順序及 worker 與 ROS node 的互動都要另外設計。`put_nowait` 在滿載會丟 Full 例外，正式程式必須處理，不能照貼。
+
+不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
+
+## 什麼情況才適合
+
+- 各階段可獨立處理
+- 可以定義緩衝上限及溢出策略
+
+## 常見錯誤與代價
+
+- 增加佇列記憶體與排程成本
+- 順序和丟失策略可能改變
+
+**正確性界線：**先檢查必要順序、背壓與資料是否會被重複處理。
+
+## 怎麼做測試
+
+固定訊息序號驗證沒有丟失/亂序（若任務要求），測輸入速率升高時的 queue backlog 和總延遲。
+
+優先觀察：端到端延遲、throughput、記憶體、正確性。每次都要保留舊版結果做對照。單次跑得快不能證明方案有效；輸出錯了更不能算優化成功。
+
+## 考場快速判斷
+
+看到 **ROS 2 找不到資料** 或 **topic 名稱不一致** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+## 參考文件與驗證狀態
+
+- [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
+- [ROS 2 Jazzy Callback Groups](https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html)
+
+這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

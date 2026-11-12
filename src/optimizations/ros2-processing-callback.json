@@ -71,7 +71,8 @@
       "code": {
         "language": "python",
         "snippet": "t0 = perf_counter()\nparsed = parse(msg)\nt1 = perf_counter()\nresult = calculate(parsed)\nt2 = perf_counter()"
-      }
+      },
+      "articleId": "lesson-ros2-processing-callback-instrument"
     },
     {
       "id": "algorithm",
@@ -103,7 +104,8 @@
       "code": {
         "language": "python",
         "snippet": "value = max(data)  # 非空；而不是 sorted(data)[-1]"
-      }
+      },
+      "articleId": "lesson-ros2-processing-callback-algorithm"
     },
     {
       "id": "cache",
@@ -131,7 +133,8 @@
           "url": "https://docs.python.org/3/library/time.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-ros2-processing-callback-cache"
     }
   ]
 }

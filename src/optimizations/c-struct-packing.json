@@ -1,0 +1,115 @@
+{
+  "id": "c-struct-packing",
+  "name": "C Struct Layout、Padding 與資料傳輸",
+  "aliases": [
+    "struct",
+    "padding",
+    "alignment",
+    "packet",
+    "封包"
+  ],
+  "category": "C Programming",
+  "summary": "把 struct 直接傳到網路或硬體後欄位錯位，要注意 padding 與 endian。",
+  "problems": [
+    "把 struct 直接傳到網路或硬體後欄位錯位，要注意 padding 與 endian。",
+    "C Struct Layout、Padding 與資料傳輸",
+    "struct",
+    "padding",
+    "alignment",
+    "packet",
+    "封包"
+  ],
+  "bottlenecks": [
+    "編譯器可能為了對齊在 struct 中加入空洞；sizeof(struct) 不一定等於所有欄位寬度總和"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C struct byte alignment",
+      "url": "https://en.cppreference.com/w/c/language/object"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-c-struct-packing"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "定義固定封包位元組格式",
+      "aliases": [],
+      "summary": "每個欄位依規格明確解析",
+      "principle": "每個欄位依規格明確解析",
+      "conditions": [
+        "跨平台或硬體通訊"
+      ],
+      "tradeoffs": [
+        "多寫解析程式"
+      ],
+      "behavior": "結果平台一致",
+      "metrics": [
+        "byte正確率"
+      ],
+      "sources": [
+        {
+          "title": "C struct byte alignment",
+          "url": "https://en.cppreference.com/w/c/language/object"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-struct",
+      "title": "調整 struct 欄位排序",
+      "aliases": [],
+      "summary": "可能減少 padding",
+      "principle": "可能減少 padding",
+      "conditions": [
+        "僅在程式內用 struct 且不固定 ABI"
+      ],
+      "tradeoffs": [
+        "欄位偏移可能改"
+      ],
+      "behavior": "不影響外部格式",
+      "metrics": [
+        "sizeof",
+        "cache"
+      ],
+      "sources": [
+        {
+          "title": "C struct byte alignment",
+          "url": "https://en.cppreference.com/w/c/language/object"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-alignment",
+      "title": "先查 alignment 再談效能",
+      "aliases": [],
+      "summary": "避免跨架構讀寫錯誤",
+      "principle": "避免跨架構讀寫錯誤",
+      "conditions": [
+        "存在指標轉型或 packed 資料"
+      ],
+      "tradeoffs": [
+        "改動可能較大"
+      ],
+      "behavior": "無未對齊問題",
+      "metrics": [
+        "正確性",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "C struct byte alignment",
+          "url": "https://en.cppreference.com/w/c/language/object"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

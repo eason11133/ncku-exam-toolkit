@@ -68,7 +68,8 @@
       "code": {
         "language": "asm",
         "snippet": "out x, 32\nin x, 32\npush"
-      }
+      },
+      "articleId": "lesson-rp2350-pio-fifo-trace-echo"
     },
     {
       "id": "fifo-paced-transfer",
@@ -96,7 +97,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer"
     },
     {
       "id": "pio-with-dma",
@@ -129,7 +131,8 @@
           "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-rp2350-pio-fifo-pio-with-dma"
     }
   ]
 }

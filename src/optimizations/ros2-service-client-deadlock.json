@@ -1,0 +1,116 @@
+{
+  "id": "ros2-service-client-deadlock",
+  "name": "ROS 2 Service 卡住與 Callback 死鎖",
+  "aliases": [
+    "service",
+    "client",
+    "call_async",
+    "deadlock",
+    "卡住"
+  ],
+  "category": "ROS 2",
+  "summary": "Service 有呼叫卻等不到回應，先檢查同步等待與 Callback Group。",
+  "problems": [
+    "Service 有呼叫卻等不到回應，先檢查同步等待與 Callback Group。",
+    "ROS 2 Service 卡住與 Callback 死鎖",
+    "service",
+    "client",
+    "call_async",
+    "deadlock",
+    "卡住"
+  ],
+  "bottlenecks": [
+    "rclpy 的同步 client.call() 可能卡在 callback 裡：回應的完成工作也需要 executor 執行，但目前 callback 正在阻塞"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy callback groups",
+      "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-service-client-deadlock"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-call-async",
+      "title": "改用 call_async + 完成回呼",
+      "aliases": [],
+      "summary": "不在 callback 中同步等 response",
+      "principle": "不在 callback 中同步等 response",
+      "conditions": [
+        "允許非同步處理與回應回呼"
+      ],
+      "tradeoffs": [
+        "需要追蹤 pending、timeout 與錯誤"
+      ],
+      "behavior": "同一請求不得重複操作",
+      "metrics": [
+        "完成比例",
+        "最長等待"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy callback groups",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-callback-groups",
+      "title": "分開 Callback Groups",
+      "aliases": [],
+      "summary": "讓 Client 與呼叫方具備可排程條件",
+      "principle": "讓 Client 與呼叫方具備可排程條件",
+      "conditions": [
+        "有 MultiThreadedExecutor 且共享狀態安全"
+      ],
+      "tradeoffs": [
+        "程式同步關係更複雜"
+      ],
+      "behavior": "必須維持原回覆語意",
+      "metrics": [
+        "死鎖率",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy callback groups",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "服務流程拆成狀態機",
+      "aliases": [],
+      "summary": "Callback 發出請求即返回，後續由狀態處理結果",
+      "principle": "Callback 發出請求即返回，後續由狀態處理結果",
+      "conditions": [
+        "請求可能跨多個事件且可維護狀態"
+      ],
+      "tradeoffs": [
+        "要管理重試、重入與中斷"
+      ],
+      "behavior": "異常情況也能恢復",
+      "metrics": [
+        "正確性",
+        "timeout"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy callback groups",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

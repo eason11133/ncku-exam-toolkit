@@ -66,7 +66,8 @@
       "code": {
         "language": "c",
         "snippet": "uint32_t v = (word >> 4) & 0xFu;"
-      }
+      },
+      "articleId": "lesson-c-bitfield-operations-mask-and-shift"
     },
     {
       "id": "set-clear",
@@ -97,7 +98,8 @@
       "code": {
         "language": "c",
         "snippet": "x |= (UINT32_C(1) << 1);\nx &= ~(UINT32_C(1) << 0);"
-      }
+      },
+      "articleId": "lesson-c-bitfield-operations-set-clear"
     },
     {
       "id": "pack-unpack",
@@ -125,7 +127,8 @@
           "url": "https://en.cppreference.com/w/c/language/operator_arithmetic.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-c-bitfield-operations-pack-unpack"
     }
   ]
 }

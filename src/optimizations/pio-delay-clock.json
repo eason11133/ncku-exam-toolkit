@@ -1,0 +1,115 @@
+{
+  "id": "pio-delay-clock",
+  "name": "PIO Delay Slots 與狀態機時序",
+  "aliases": [
+    "pio",
+    "delay",
+    "side-set",
+    "clkdiv",
+    "clock",
+    "時序"
+  ],
+  "category": "PIO",
+  "summary": "PIO 產生的波形時間不對，先從指令周期與 delay slots 下手。",
+  "problems": [
+    "PIO 產生的波形時間不對，先從指令周期與 delay slots 下手。",
+    "PIO Delay Slots 與狀態機時序",
+    "pio",
+    "delay",
+    "side-set",
+    "clkdiv",
+    "clock",
+    "時序"
+  ],
+  "bottlenecks": [
+    "PIO 指令與延遲欄位決定輸出時序，但 pull/push 的 stall 會讓指令花不只固定周期"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "RP2350 datasheet",
+      "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pio-delay-clock"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "先算每輪指令周期",
+      "aliases": [],
+      "summary": "用指令與延遲計算理想頻率",
+      "principle": "用指令與延遲計算理想頻率",
+      "conditions": [
+        "沒有 FIFO stall 或其他阻塞"
+      ],
+      "tradeoffs": [
+        "理論值未必等於實際波形"
+      ],
+      "behavior": "邊界周期正確",
+      "metrics": [
+        "周期誤差"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-state-machine-clock-divider",
+      "title": "調整 state machine clock divider",
+      "aliases": [],
+      "summary": "透過 PIO clock 而非 CPU 時間控制",
+      "principle": "透過 PIO clock 而非 CPU 時間控制",
+      "conditions": [
+        "時脈來源與 divider 已確認"
+      ],
+      "tradeoffs": [
+        "精度與頻率需取捨"
+      ],
+      "behavior": "不可超出硬體規格",
+      "metrics": [
+        "頻率"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "移除不必要指令",
+      "aliases": [],
+      "summary": "簡化循環執行路徑",
+      "principle": "簡化循環執行路徑",
+      "conditions": [
+        "改後輸出語意相同"
+      ],
+      "tradeoffs": [
+        "可能改變相位或時序"
+      ],
+      "behavior": "bit 及相位匹配",
+      "metrics": [
+        "cycles/bit"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "c-memcpy-overlap",
+  "name": "memcpy 與 memmove 的重疊記憶體問題",
+  "aliases": [
+    "memcpy",
+    "memmove",
+    "overlap",
+    "buffer",
+    "搬移"
+  ],
+  "category": "Memory Management",
+  "summary": "移動 Buffer 後資料偶爾壞掉，要確認來源和目的區段是否重疊。",
+  "problems": [
+    "移動 Buffer 後資料偶爾壞掉，要確認來源和目的區段是否重疊。",
+    "memcpy 與 memmove 的重疊記憶體問題",
+    "memcpy",
+    "memmove",
+    "overlap",
+    "buffer",
+    "搬移"
+  ],
+  "bottlenecks": [
+    "memcpy 的來源與目的記憶體區段不可以重疊；memmove 則支援重疊搬移"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C memory functions",
+      "url": "https://en.cppreference.com/w/c/string/byte/memmove"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-c-memcpy-overlap"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-memmove",
+      "title": "重疊區段改用 memmove",
+      "aliases": [],
+      "summary": "保持拷貝結果的語意",
+      "principle": "保持拷貝結果的語意",
+      "conditions": [
+        "來源與目標區段可能重疊"
+      ],
+      "tradeoffs": [
+        "可能多一點保守處理成本"
+      ],
+      "behavior": "每 byte 正確",
+      "metrics": [
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "C memory functions",
+          "url": "https://en.cppreference.com/w/c/string/byte/memmove"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "避免不必要的搬移",
+      "aliases": [],
+      "summary": "改索引或 circular buffer",
+      "principle": "改索引或 circular buffer",
+      "conditions": [
+        "操作可用索引表示"
+      ],
+      "tradeoffs": [
+        "結構與邊界管理較複雜"
+      ],
+      "behavior": "順序不變",
+      "metrics": [
+        "CPU",
+        "copy bytes"
+      ],
+      "sources": [
+        {
+          "title": "C memory functions",
+          "url": "https://en.cppreference.com/w/c/string/byte/memmove"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "查清長度與容量",
+      "aliases": [],
+      "summary": "先確定 memcpy 長度的單位",
+      "principle": "先確定 memcpy 長度的單位",
+      "conditions": [
+        "有已知元素大小與上界"
+      ],
+      "tradeoffs": [
+        "需額外邊界檢查"
+      ],
+      "behavior": "不越界",
+      "metrics": [
+        "sanitizer結果"
+      ],
+      "sources": [
+        {
+          "title": "C memory functions",
+          "url": "https://en.cppreference.com/w/c/string/byte/memmove"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

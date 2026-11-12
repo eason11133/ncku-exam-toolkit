@@ -1,0 +1,115 @@
+{
+  "id": "perf-batch-vs-realtime",
+  "name": "Batch Size、吞吐量與即時延遲取捨",
+  "aliases": [
+    "batch",
+    "throughput",
+    "latency",
+    "flush",
+    "批次"
+  ],
+  "category": "Performance Engineering",
+  "summary": "Batch 越大不一定越好，要考慮等待湊批次的時間。",
+  "problems": [
+    "Batch 越大不一定越好，要考慮等待湊批次的時間。",
+    "Batch Size、吞吐量與即時延遲取捨",
+    "batch",
+    "throughput",
+    "latency",
+    "flush",
+    "批次"
+  ],
+  "bottlenecks": [
+    "一筆一筆處理會多付每次呼叫成本；合批能攤低固定成本，但最早進來的資料可能得等待整批到齊"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Linux perf tools",
+      "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-perf-batch-vs-realtime"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "固定批次改善吞吐",
+      "aliases": [],
+      "summary": "攤平每筆 setup 成本",
+      "principle": "攤平每筆 setup 成本",
+      "conditions": [
+        "可接受合批延遲"
+      ],
+      "tradeoffs": [
+        "前面資料需等待"
+      ],
+      "behavior": "不漏不重",
+      "metrics": [
+        "吞吐",
+        "p95"
+      ],
+      "sources": [
+        {
+          "title": "Linux perf tools",
+          "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "加最大等待期限",
+      "aliases": [],
+      "summary": "稀疏流量時也能完成",
+      "principle": "稀疏流量時也能完成",
+      "conditions": [
+        "有定時器／flush 機制"
+      ],
+      "tradeoffs": [
+        "timer 本身有成本"
+      ],
+      "behavior": "最後一批不留在 queue",
+      "metrics": [
+        "最長延遲"
+      ],
+      "sources": [
+        {
+          "title": "Linux perf tools",
+          "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "自適應批次但保守上限",
+      "aliases": [],
+      "summary": "高低負載時調整大小",
+      "principle": "高低負載時調整大小",
+      "conditions": [
+        "能量測並設定邊界"
+      ],
+      "tradeoffs": [
+        "邏輯更複雜"
+      ],
+      "behavior": "輸出正確性不變",
+      "metrics": [
+        "p95",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "Linux perf tools",
+          "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

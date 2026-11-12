@@ -1,0 +1,116 @@
+{
+  "id": "transfer-double-buffer",
+  "name": "Transfer Engine 雙緩衝區 Pipeline",
+  "aliases": [
+    "double buffer",
+    "ping pong",
+    "pipeline",
+    "DMA",
+    "資料搬運"
+  ],
+  "category": "DMA",
+  "summary": "資料搬運與計算能並行時，可以評估 Ping-Pong Buffer。",
+  "problems": [
+    "資料搬運與計算能並行時，可以評估 Ping-Pong Buffer。",
+    "Transfer Engine 雙緩衝區 Pipeline",
+    "double buffer",
+    "ping pong",
+    "pipeline",
+    "DMA",
+    "資料搬運"
+  ],
+  "bottlenecks": [
+    "單 Buffer 的流程是等待搬完再處理，若搬運與計算可以獨立，兩塊 Buffer 能讓一塊在傳輸、另一塊在計算"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK DMA",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-transfer-double-buffer"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-buffer",
+      "title": "雙 Buffer 與非同步傳輸",
+      "aliases": [],
+      "summary": "傳輸與計算分別使用不同 Buffer",
+      "principle": "傳輸與計算分別使用不同 Buffer",
+      "conditions": [
+        "處理與搬運彼此獨立"
+      ],
+      "tradeoffs": [
+        "額外占用一塊 Buffer"
+      ],
+      "behavior": "禁止讀寫未完成資料",
+      "metrics": [
+        "總耗時",
+        "峰值記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-chunk",
+      "title": "調整每塊 chunk 大小",
+      "aliases": [],
+      "summary": "平衡啟動成本與等待時間",
+      "principle": "平衡啟動成本與等待時間",
+      "conditions": [
+        "可以分塊且每塊可驗證"
+      ],
+      "tradeoffs": [
+        "太小有大量 setup overhead"
+      ],
+      "behavior": "資料順序完整",
+      "metrics": [
+        "吞吐",
+        "p95"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-buffer",
+      "title": "保留單 Buffer 回退路徑",
+      "aliases": [],
+      "summary": "高負載錯誤時可用簡單流程",
+      "principle": "高負載錯誤時可用簡單流程",
+      "conditions": [
+        "正確性優先於峰值效能"
+      ],
+      "tradeoffs": [
+        "可能犧牲吞吐"
+      ],
+      "behavior": "與基準輸出完全相同",
+      "metrics": [
+        "錯誤率",
+        "時間"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

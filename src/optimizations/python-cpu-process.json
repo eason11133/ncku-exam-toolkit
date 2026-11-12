@@ -67,7 +67,8 @@
           "url": "https://docs.python.org/3/library/concurrent.futures.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-python-cpu-process-measure-cpu"
     },
     {
       "id": "process-pool",
@@ -101,7 +102,8 @@
       "code": {
         "language": "python",
         "snippet": "with ProcessPoolExecutor(max_workers=2) as pool:\n    answers = list(pool.map(pure_calculation, chunks))"
-      }
+      },
+      "articleId": "lesson-python-cpu-process-process-pool"
     },
     {
       "id": "native-library",
@@ -130,7 +132,8 @@
           "url": "https://docs.python.org/3/library/threading.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-python-cpu-process-native-library"
     }
   ]
 }

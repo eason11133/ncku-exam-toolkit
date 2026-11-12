@@ -1,0 +1,113 @@
+{
+  "id": "perf-tail-latency",
+  "name": "平均延遲、P95 與負載尖峰",
+  "aliases": [
+    "p95",
+    "percentile",
+    "tail latency",
+    "benchmark"
+  ],
+  "category": "Performance Engineering",
+  "summary": "平均時間變快不代表最慢的那一批也變快，考場要同時看尾端延遲。",
+  "problems": [
+    "平均時間變快不代表最慢的那一批也變快，考場要同時看尾端延遲。",
+    "平均延遲、P95 與負載尖峰",
+    "p95",
+    "percentile",
+    "tail latency",
+    "benchmark"
+  ],
+  "bottlenecks": [
+    "平均值容易被少數極快樣本拉低；P95 表示按大小排序後大約 95% 樣本不超過該值"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python statistics",
+      "url": "https://docs.python.org/3/library/statistics.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-perf-tail-latency"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "加入分位數與最大值",
+      "aliases": [],
+      "summary": "避免平均值掩蓋偶發很慢的情況",
+      "principle": "避免平均值掩蓋偶發很慢的情況",
+      "conditions": [
+        "有足量時間樣本"
+      ],
+      "tradeoffs": [
+        "更多統計也要解釋"
+      ],
+      "behavior": "時間單位一致",
+      "metrics": [
+        "p95",
+        "max"
+      ],
+      "sources": [
+        {
+          "title": "Python statistics",
+          "url": "https://docs.python.org/3/library/statistics.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-p95",
+      "title": "針對 P95 大值追蹤事件",
+      "aliases": [],
+      "summary": "把尾端時間和 queue/GC/鎖事件對齊",
+      "principle": "把尾端時間和 queue/GC/鎖事件對齊",
+      "conditions": [
+        "能記下時間戳與工作 ID"
+      ],
+      "tradeoffs": [
+        "增加少量 log 開銷"
+      ],
+      "behavior": "找得到可重現原因",
+      "metrics": [
+        "超時率"
+      ],
+      "sources": [
+        {
+          "title": "Python statistics",
+          "url": "https://docs.python.org/3/library/statistics.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-a-b",
+      "title": "維持相同環境做 A/B",
+      "aliases": [],
+      "summary": "排除 CPU 負載和暖機干擾",
+      "principle": "排除 CPU 負載和暖機干擾",
+      "conditions": [
+        "測試負載可重播"
+      ],
+      "tradeoffs": [
+        "耗時增加"
+      ],
+      "behavior": "可比較性高",
+      "metrics": [
+        "p95",
+        "吞吐"
+      ],
+      "sources": [
+        {
+          "title": "Python statistics",
+          "url": "https://docs.python.org/3/library/statistics.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

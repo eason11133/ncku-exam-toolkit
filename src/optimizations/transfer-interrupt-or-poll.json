@@ -1,0 +1,118 @@
+{
+  "id": "transfer-interrupt-or-poll",
+  "name": "Transfer Engine Busy Polling 與通知方式",
+  "aliases": [
+    "engine",
+    "busy polling",
+    "poll",
+    "interrupt",
+    "IRQ",
+    "wait"
+  ],
+  "category": "DMA",
+  "summary": "等待搬運完成時 CPU 忙轉，應看是否能阻塞等待或用完成通知。",
+  "problems": [
+    "等待搬運完成時 CPU 忙轉，應看是否能阻塞等待或用完成通知。",
+    "Transfer Engine Busy Polling 與通知方式",
+    "engine",
+    "busy polling",
+    "poll",
+    "interrupt",
+    "IRQ",
+    "wait"
+  ],
+  "bottlenecks": [
+    "忙等 busy loop 會一直使用 CPU，但可能有很低的喚醒延遲"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK DMA",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-transfer-interrupt-or-poll"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "改阻塞等待完成",
+      "aliases": [],
+      "summary": "避免等待期間空轉",
+      "principle": "避免等待期間空轉",
+      "conditions": [
+        "允許目前執行緒等待"
+      ],
+      "tradeoffs": [
+        "喚醒成本可能較高"
+      ],
+      "behavior": "完成前不能讀 dst",
+      "metrics": [
+        "CPU使用率",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "用完成中斷／事件通知",
+      "aliases": [],
+      "summary": "搬完時通知消費端",
+      "principle": "搬完時通知消費端",
+      "conditions": [
+        "硬體及驅動支援通知"
+      ],
+      "tradeoffs": [
+        "ISR 必須短且安全"
+      ],
+      "behavior": "不能漏處理完成事件",
+      "metrics": [
+        "CPU",
+        "完成延遲"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "短等待才評估適度輪詢",
+      "aliases": [],
+      "summary": "把忙等限定在很短的區段",
+      "principle": "把忙等限定在很短的區段",
+      "conditions": [
+        "等待時間極短且 CPU 夠用"
+      ],
+      "tradeoffs": [
+        "競爭或省電情況可能差"
+      ],
+      "behavior": "不破壞資料同步",
+      "metrics": [
+        "p95",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

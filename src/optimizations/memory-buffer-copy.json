@@ -65,7 +65,8 @@
           "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-memory-buffer-copy-avoid-extra-copy"
     },
     {
       "id": "choose-memmove",
@@ -100,7 +101,8 @@
       "code": {
         "language": "c",
         "snippet": "memmove(buffer + 1, buffer, n * sizeof(buffer[0]));"
-      }
+      },
+      "articleId": "lesson-memory-buffer-copy-choose-memmove"
     },
     {
       "id": "reuse-buffer",
@@ -128,7 +130,8 @@
           "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-memory-buffer-copy-reuse-buffer"
     }
   ]
 }
