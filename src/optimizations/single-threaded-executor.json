@@ -54,12 +54,8 @@
     "python-cpu-process"
   ],
   "articleIds": [],
-  "commandIds": [
-    "ros2-topic-list"
-  ],
-  "docIds": [
-    "ros-docs"
-  ],
+  "commandIds": [],
+  "docIds": [],
   "options": [
     {
       "id": "shorten-callback",
