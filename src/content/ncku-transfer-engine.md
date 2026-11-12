@@ -17,7 +17,6 @@ related: ncku-pthread-critical-section, ncku-pio-dataflow
 
 官方 2-3 Transfer Engine 是用**軟體執行緒模擬**的搬運引擎，不是真正的硬體 DMA。因此 `engine_start()` 之後主程式仍能做事，可以示範非同步流程，但不能說引擎不佔 CPU。
 
-![資料搬運四步驟](/diagrams/transfer-engine-flow.svg)
 
 ## `engine_job_t` 主要欄位
 

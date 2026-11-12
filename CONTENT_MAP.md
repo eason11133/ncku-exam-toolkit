@@ -13,12 +13,11 @@
 | 效能驗證 | `ncku-performance-benchmark.md` | `benchmark-correctness.json` |
 | 開發工具 | `ncku-docker-debug.md`、`ncku-gitlab-workflow.md`、`ncku-local-llm-prompts.md` | 現有網站的指令速查／個人筆記可配合使用 |
 
-四張 SVG：
+目前收錄的圖解：
 
 - `single-threaded-executor.svg`：A 執行時 B 等待；採精簡時間軸，不加裝飾。
-- `pio-echo-flow.svg`：CPU → TX FIFO → OSR → X → ISR → RX FIFO → CPU。
-- `race-condition.svg`：A、B 都讀到 5，最後寫回 6，少一次更新。
-- `transfer-engine-flow.svg`：設定 → 啟動 → 等待 → 讀結果／釋放。
+
+PIO、pthread 與 Transfer Engine 的圖解待修訂後再加入；上述文章的文字內容已收錄。
 
 ## 先後查找順序
 

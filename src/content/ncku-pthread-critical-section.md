@@ -17,7 +17,6 @@ related: ncku-performance-benchmark, ncku-transfer-engine
 
 官方 2-3 有兩個 worker，各加 `counter` 20000 次，理想結果是 40000。第一版沒鎖，第二版短鎖，第三版長鎖。這裡最重要的是弄清楚**正確性和效能是兩個不同的判斷**。
 
-![無鎖競爭示意](/diagrams/race-condition.svg)
 
 ## 為什麼 `counter++` 會出錯
 

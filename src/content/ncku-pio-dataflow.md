@@ -17,7 +17,6 @@ related: ncku-bitwise-c, ncku-transfer-engine
 
 RP2350 有專用的 PIO 硬體，每個 PIO block 裡有 state machine（狀態機），可執行短小指令來操控資料及 GPIO 時序。PIO 不是一般 C/Python 執行緒，也不是把所有工作都搬到硬體就會變快。
 
-![PIO Echo 資料流](/diagrams/pio-echo-flow.svg)
 
 ## 官方最小範例
 
