@@ -1,0 +1,116 @@
+{
+  "id": "pthread-atomic-counter",
+  "name": "Atomic Counter 與 Mutex 的使用界線",
+  "aliases": [
+    "atomic",
+    "relaxed",
+    "counter",
+    "memory_order",
+    "互斥鎖"
+  ],
+  "category": "pthread",
+  "summary": "共享計數器搶同一把鎖，先判斷是不是可以使用原子操作。",
+  "problems": [
+    "共享計數器搶同一把鎖，先判斷是不是可以使用原子操作。",
+    "Atomic Counter 與 Mutex 的使用界線",
+    "atomic",
+    "relaxed",
+    "counter",
+    "memory_order",
+    "互斥鎖"
+  ],
+  "bottlenecks": [
+    "單一數字的累加可由 atomic fetch_add 完成；但「檢查 A 再改 B」不是只把 A 宣告 atomic 就能安全"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C++ atomics",
+      "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pthread-atomic-counter"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-atomic",
+      "title": "只用 Atomic 保護單一計數器",
+      "aliases": [],
+      "summary": "減少取鎖／放鎖成本",
+      "principle": "減少取鎖／放鎖成本",
+      "conditions": [
+        "更新可用 atomic 定義"
+      ],
+      "tradeoffs": [
+        "高競爭仍可能慢"
+      ],
+      "behavior": "每次增量不遺失",
+      "metrics": [
+        "吞吐",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "C++ atomics",
+          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-thread",
+      "title": "每 Thread 局部加總後合併",
+      "aliases": [],
+      "summary": "降低共享更新頻率",
+      "principle": "降低共享更新頻率",
+      "conditions": [
+        "允許最後合併或定期合併"
+      ],
+      "tradeoffs": [
+        "即時統計可能落後"
+      ],
+      "behavior": "總和一致",
+      "metrics": [
+        "鎖次數",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "C++ atomics",
+          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-mutex",
+      "title": "保留 Mutex 保護跨欄位不變條件",
+      "aliases": [],
+      "summary": "多欄位必須一併更新時不亂換",
+      "principle": "多欄位必須一併更新時不亂換",
+      "conditions": [
+        "狀態一致性比速度更重要"
+      ],
+      "tradeoffs": [
+        "鎖競爭成本存在"
+      ],
+      "behavior": "整組狀態一致",
+      "metrics": [
+        "正確性",
+        "等待"
+      ],
+      "sources": [
+        {
+          "title": "C++ atomics",
+          "url": "https://en.cppreference.com/w/cpp/atomic/atomic"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -66,7 +66,8 @@
       "code": {
         "language": "bash",
         "snippet": "ros2 topic info /number -v"
-      }
+      },
+      "articleId": "lesson-ros2-qos-profile-fix-compatibility"
     },
     {
       "id": "keep-last-depth",
@@ -94,7 +95,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-ros2-qos-profile-keep-last-depth"
     },
     {
       "id": "reliability-choice",
@@ -122,7 +124,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-ros2-qos-profile-reliability-choice"
     }
   ]
 }

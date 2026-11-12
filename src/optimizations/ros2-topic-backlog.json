@@ -1,0 +1,116 @@
+{
+  "id": "ros2-topic-backlog",
+  "name": "ROS 2 Topic 堆積與舊訊息",
+  "aliases": [
+    "backlog",
+    "消息堆積",
+    "stale message",
+    "queue",
+    "depth"
+  ],
+  "category": "ROS 2",
+  "summary": "訂閱資料越跑越舊，可能不是接收不到，而是消費速度追不上發布。",
+  "problems": [
+    "訂閱資料越跑越舊，可能不是接收不到，而是消費速度追不上發布。",
+    "ROS 2 Topic 堆積與舊訊息",
+    "backlog",
+    "消息堆積",
+    "stale message",
+    "queue",
+    "depth"
+  ],
+  "bottlenecks": [
+    "先分別量發布頻率、訂閱端完成頻率與訊息年齡"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy QoS overview",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-topic-backlog"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-depth",
+      "title": "需要最新狀態時減小 depth",
+      "aliases": [],
+      "summary": "降低舊資料排隊時間",
+      "principle": "降低舊資料排隊時間",
+      "conditions": [
+        "允許漏掉中間更新"
+      ],
+      "tradeoffs": [
+        "可能失去每筆事件"
+      ],
+      "behavior": "最後狀態仍正確",
+      "metrics": [
+        "消息年齡",
+        "p95"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS overview",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "加快消費端處理",
+      "aliases": [],
+      "summary": "處理根因而非只調 queue",
+      "principle": "處理根因而非只調 queue",
+      "conditions": [
+        "callback 耗時是瓶頸"
+      ],
+      "tradeoffs": [
+        "可能增加 CPU 負載"
+      ],
+      "behavior": "不更改原始消息序列",
+      "metrics": [
+        "完成率",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS overview",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "批次處理或流控",
+      "aliases": [],
+      "summary": "避免生產速度無限制超過消費",
+      "principle": "避免生產速度無限制超過消費",
+      "conditions": [
+        "上下游可調整節奏"
+      ],
+      "tradeoffs": [
+        "批次可能增加最短延遲"
+      ],
+      "behavior": "必須定義丟棄或背壓政策",
+      "metrics": [
+        "queue深度",
+        "吞吐"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS overview",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

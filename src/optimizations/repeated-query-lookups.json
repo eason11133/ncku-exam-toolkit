@@ -1,0 +1,160 @@
+{
+  "id": "repeated-query-lookups",
+  "name": "反覆查詢與演算法選擇",
+  "aliases": [
+    "algorithm",
+    "lookup",
+    "set",
+    "bisect",
+    "prefix sum",
+    "重複掃描"
+  ],
+  "category": "Performance Engineering",
+  "summary": "先辨認查詢要解決什麼，再選擇 set、排序二分或 Prefix Sum。",
+  "problems": [
+    "query slow",
+    "查詢太慢",
+    "重複掃描",
+    "迴圈太多",
+    "重複查找",
+    "區間查詢",
+    "線性掃描",
+    "O(n²)"
+  ],
+  "bottlenecks": [
+    "q 次查詢都重新掃描 n 筆資料",
+    "每次都重新排序",
+    "反覆計算同一個固定區間"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python 資料型別文件",
+      "url": "https://docs.python.org/3/library/stdtypes.html"
+    },
+    {
+      "title": "Python bisect",
+      "url": "https://docs.python.org/3/library/bisect.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "ros2-processing-callback"
+  ],
+  "articleIds": [
+    "ncku-algorithm-query-patterns"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "membership-set",
+      "title": "重複 membership 查詢改用 set",
+      "aliases": [
+        "dict",
+        "hash table",
+        "membership"
+      ],
+      "summary": "只需要判斷值是否存在時，把查找資料建立成 set。",
+      "principle": "先付出建立索引的成本，降低後續重複掃描成本。",
+      "conditions": [
+        "資料可雜湊",
+        "只需要判斷存在、不依賴來源中的重複次數"
+      ],
+      "tradeoffs": [
+        "增加記憶體",
+        "少量查詢時可能不值得",
+        "hash 查詢最壞不保證常數時間"
+      ],
+      "behavior": "保留原始查詢資料的輸出順序和重複值，不可用 set 直接取代輸出。",
+      "metrics": [
+        "總耗時",
+        "索引建立時間",
+        "峰值記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python 資料型別文件",
+          "url": "https://docs.python.org/3/library/stdtypes.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "allowed_set = set(allowed)\nresult = [x for x in incoming if x in allowed_set]"
+      }
+    },
+    {
+      "id": "sorted-bisect",
+      "title": "排序一次，重複查詢用 bisect",
+      "aliases": [
+        "binary search",
+        "二分搜尋",
+        "lower bound"
+      ],
+      "summary": "對靜態資料大量門檻查詢，先排序一次再二分。",
+      "principle": "將一次性 O(n log n) 排序成本換取每次 O(log n) 查詢。",
+      "conditions": [
+        "資料查詢遠多於更新",
+        "明確規定 < 和 <= 的差別"
+      ],
+      "tradeoffs": [
+        "排序副本佔空間",
+        "資料插入或改動時可能需要重整"
+      ],
+      "behavior": "bisect_left 回傳小於門檻的數量；bisect_right 對應小於等於。",
+      "metrics": [
+        "總耗時",
+        "查詢數",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python bisect",
+          "url": "https://docs.python.org/3/library/bisect.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "from bisect import bisect_left\nordered = sorted(values)\ncount_less = bisect_left(ordered, threshold)"
+      }
+    },
+    {
+      "id": "prefix-sum",
+      "title": "靜態區間總和改用 Prefix Sum",
+      "aliases": [
+        "prefix sum",
+        "前綴和",
+        "range sum"
+      ],
+      "summary": "大量靜態區間和查詢時預先累積前綴和。",
+      "principle": "以 O(n) 前處理換取每次 O(1) 的區間查詢。",
+      "conditions": [
+        "查詢範圍為 [l,r)",
+        "原始資料在查詢期間不變"
+      ],
+      "tradeoffs": [
+        "多用 O(n) 空間",
+        "資料更新時前綴和會失效"
+      ],
+      "behavior": "任何查詢都要符合 0 <= l <= r <= n。",
+      "metrics": [
+        "總耗時",
+        "查詢正確性",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python 資料型別文件",
+          "url": "https://docs.python.org/3/library/stdtypes.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "prefix = [0]\nfor x in values: prefix.append(prefix[-1] + x)\nanswer = prefix[r] - prefix[l]"
+      }
+    }
+  ]
+}

@@ -63,7 +63,8 @@
           "url": "https://en.cppreference.com/w/c/language/memory_model.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-pthread-work-partition-partition-independent"
     },
     {
       "id": "reduce-lock",
@@ -91,7 +92,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-pthread-work-partition-reduce-lock"
     },
     {
       "id": "thread-count",
@@ -119,7 +121,8 @@
           "url": "https://en.cppreference.com/w/c/language/memory_model.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-pthread-work-partition-thread-count"
     }
   ]
 }

@@ -1,0 +1,113 @@
+{
+  "id": "pio-fifo-stall",
+  "name": "PIO FIFO 空／滿導致的 Stall",
+  "aliases": [
+    "pio",
+    "fifo",
+    "stall",
+    "pull",
+    "push"
+  ],
+  "category": "PIO",
+  "summary": "PIO 狀態機停住，先確認 pull/push 是否卡在 FIFO。",
+  "problems": [
+    "PIO 狀態機停住，先確認 pull/push 是否卡在 FIFO。",
+    "PIO FIFO 空／滿導致的 Stall",
+    "pio",
+    "fifo",
+    "stall",
+    "pull",
+    "push"
+  ],
+  "bottlenecks": [
+    "PIO state machine 有自己的程式；pull block 在 TX FIFO 沒資料時會等，push block 在 RX FIFO 滿時會等"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "RP2350 datasheet",
+      "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pio-fifo-stall"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-tx-fifo",
+      "title": "補足 TX FIFO 資料",
+      "aliases": [],
+      "summary": "確保輸出 state machine 有資料",
+      "principle": "確保輸出 state machine 有資料",
+      "conditions": [
+        "CPU 或 DMA 能提供足夠吞吐"
+      ],
+      "tradeoffs": [
+        "可能提高上游負載"
+      ],
+      "behavior": "輸出位元序列正確",
+      "metrics": [
+        "FIFO空次數"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-rx-fifo",
+      "title": "及時清空 RX FIFO",
+      "aliases": [],
+      "summary": "避免輸入路徑在 push 卡住",
+      "principle": "避免輸入路徑在 push 卡住",
+      "conditions": [
+        "消費端跟得上資料率"
+      ],
+      "tradeoffs": [
+        "可能增加中斷與 CPU 成本"
+      ],
+      "behavior": "不可默默丟關鍵資料",
+      "metrics": [
+        "FIFO滿次數"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "重新設計等待策略",
+      "aliases": [],
+      "summary": "只有允許資料遺失才考慮非阻塞讀寫",
+      "principle": "只有允許資料遺失才考慮非阻塞讀寫",
+      "conditions": [
+        "明確定義缺資料時如何處理"
+      ],
+      "tradeoffs": [
+        "資料語意可能改變"
+      ],
+      "behavior": "資料完整性需驗證",
+      "metrics": [
+        "stall時間"
+      ],
+      "sources": [
+        {
+          "title": "RP2350 datasheet",
+          "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

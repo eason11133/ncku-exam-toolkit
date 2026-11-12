@@ -1,0 +1,114 @@
+{
+  "id": "c-io-buffering",
+  "name": "C 標準輸入輸出與過度 Logging",
+  "aliases": [
+    "printf",
+    "logging",
+    "setvbuf",
+    "stdout",
+    "io"
+  ],
+  "category": "C Programming",
+  "summary": "每筆工作都 printf，程式可能主要花時間在輸出或格式化。",
+  "problems": [
+    "每筆工作都 printf，程式可能主要花時間在輸出或格式化。",
+    "C 標準輸入輸出與過度 Logging",
+    "printf",
+    "logging",
+    "setvbuf",
+    "stdout",
+    "io"
+  ],
+  "bottlenecks": [
+    "大量小筆 printf 可能成為可見瓶頸，尤其是 flush 頻繁或終端機慢"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C stdio buffering",
+      "url": "https://en.cppreference.com/w/c/io/setvbuf"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-c-io-buffering"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-logging",
+      "title": "降低熱路徑內的 Logging",
+      "aliases": [],
+      "summary": "將逐筆輸出改成統計輸出",
+      "principle": "將逐筆輸出改成統計輸出",
+      "conditions": [
+        "允許犧牲細節量"
+      ],
+      "tradeoffs": [
+        "除錯資訊可能不足"
+      ],
+      "behavior": "仍能定位錯誤",
+      "metrics": [
+        "CPU",
+        "吞吐"
+      ],
+      "sources": [
+        {
+          "title": "C stdio buffering",
+          "url": "https://en.cppreference.com/w/c/io/setvbuf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-buffering",
+      "title": "使用適當 Buffering",
+      "aliases": [],
+      "summary": "降低寫入系統呼叫次數",
+      "principle": "降低寫入系統呼叫次數",
+      "conditions": [
+        "可容忍一定輸出延遲"
+      ],
+      "tradeoffs": [
+        "崩潰前未 flush 可能遺失"
+      ],
+      "behavior": "最後輸出完整",
+      "metrics": [
+        "syscalls/s"
+      ],
+      "sources": [
+        {
+          "title": "C stdio buffering",
+          "url": "https://en.cppreference.com/w/c/io/setvbuf"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-debug",
+      "title": "拆分 Debug 與正式執行模式",
+      "aliases": [],
+      "summary": "避免測試被 log 影響",
+      "principle": "避免測試被 log 影響",
+      "conditions": [
+        "能固定執行設定"
+      ],
+      "tradeoffs": [
+        "模式差異需記錄"
+      ],
+      "behavior": "兩種模式結果一致",
+      "metrics": [
+        "benchmark差異"
+      ],
+      "sources": [
+        {
+          "title": "C stdio buffering",
+          "url": "https://en.cppreference.com/w/c/io/setvbuf"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

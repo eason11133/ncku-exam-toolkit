@@ -1,0 +1,113 @@
+{
+  "id": "algorithm-topk-heap",
+  "name": "Top-K、全排序與 Heap 的選擇",
+  "aliases": [
+    "topk",
+    "heap",
+    "sort",
+    "前K",
+    "heapq"
+  ],
+  "category": "Performance Engineering",
+  "summary": "只要前 K 名卻排序 N 筆，可能做了太多工作。",
+  "problems": [
+    "只要前 K 名卻排序 N 筆，可能做了太多工作。",
+    "Top-K、全排序與 Heap 的選擇",
+    "topk",
+    "heap",
+    "sort",
+    "前K",
+    "heapq"
+  ],
+  "bottlenecks": [
+    "如果 N 很大、K 很小，不需要把全部元素排好；Python 可用 heapq.nsmallest / nlargest，或大小為 K 的 Heap 維護候選"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python heapq",
+      "url": "https://docs.python.org/3/library/heapq.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-algorithm-topk-heap"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-nsmallest-nlargest",
+      "title": "改用 nsmallest/nlargest",
+      "aliases": [],
+      "summary": "只計算需要的前 K",
+      "principle": "只計算需要的前 K",
+      "conditions": [
+        "K 明顯小於 N"
+      ],
+      "tradeoffs": [
+        "常數因子未必較小"
+      ],
+      "behavior": "與基準結果一致",
+      "metrics": [
+        "總耗時"
+      ],
+      "sources": [
+        {
+          "title": "Python heapq",
+          "url": "https://docs.python.org/3/library/heapq.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-heap",
+      "title": "串流中維護固定大小 Heap",
+      "aliases": [],
+      "summary": "資料邊到邊維護候選",
+      "principle": "資料邊到邊維護候選",
+      "conditions": [
+        "可逐筆處理且只需 K 個"
+      ],
+      "tradeoffs": [
+        "需要處理平手與刪除"
+      ],
+      "behavior": "Top K 正確",
+      "metrics": [
+        "峰值記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python heapq",
+          "url": "https://docs.python.org/3/library/heapq.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-k-sorted",
+      "title": "K 很大時保留 sorted",
+      "aliases": [],
+      "summary": "避免不必要堆管理",
+      "principle": "避免不必要堆管理",
+      "conditions": [
+        "需要多數元素的完整順序"
+      ],
+      "tradeoffs": [
+        "完整排序成本較高"
+      ],
+      "behavior": "輸出完整",
+      "metrics": [
+        "時間"
+      ],
+      "sources": [
+        {
+          "title": "Python heapq",
+          "url": "https://docs.python.org/3/library/heapq.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

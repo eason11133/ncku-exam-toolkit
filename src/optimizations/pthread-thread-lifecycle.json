@@ -1,0 +1,114 @@
+{
+  "id": "pthread-thread-lifecycle",
+  "name": "pthread 建立／回收與 Thread 數量控制",
+  "aliases": [
+    "pthread_create",
+    "pthread_join",
+    "thread pool",
+    "資源洩漏"
+  ],
+  "category": "pthread",
+  "summary": "每筆資料都 pthread_create，可能把大量時間花在線程建立和 join。",
+  "problems": [
+    "每筆資料都 pthread_create，可能把大量時間花在線程建立和 join。",
+    "pthread 建立／回收與 Thread 數量控制",
+    "pthread_create",
+    "pthread_join",
+    "thread pool",
+    "資源洩漏"
+  ],
+  "bottlenecks": [
+    "pthread_create 有成本；如果任務很短，反覆新建 Thread 可能比直接做還慢"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "POSIX pthread_create",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pthread-thread-lifecycle"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-worker-pool",
+      "title": "改固定大小 Worker Pool",
+      "aliases": [],
+      "summary": "避免頻繁建立與銷毀 Thread",
+      "principle": "避免頻繁建立與銷毀 Thread",
+      "conditions": [
+        "有大量重複短工作"
+      ],
+      "tradeoffs": [
+        "queue 與 shutdown 複雜"
+      ],
+      "behavior": "不漏任務",
+      "metrics": [
+        "吞吐",
+        "thread數"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_create",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-thread",
+      "title": "限制最大同時 Thread 數",
+      "aliases": [],
+      "summary": "避免排程與記憶體爆炸",
+      "principle": "避免排程與記憶體爆炸",
+      "conditions": [
+        "硬體核心數與任務型態已知"
+      ],
+      "tradeoffs": [
+        "可能增加排隊延遲"
+      ],
+      "behavior": "負載高也不掉資料",
+      "metrics": [
+        "CPU",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_create",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-join-detach",
+      "title": "安全管理 join/detach",
+      "aliases": [],
+      "summary": "避免 thread 生命週期資源遺漏",
+      "principle": "避免 thread 生命週期資源遺漏",
+      "conditions": [
+        "清楚知道回收責任"
+      ],
+      "tradeoffs": [
+        "detach 後不能 join"
+      ],
+      "behavior": "全部工作完成可驗證",
+      "metrics": [
+        "資源數",
+        "完成率"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_create",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

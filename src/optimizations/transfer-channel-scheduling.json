@@ -1,0 +1,115 @@
+{
+  "id": "transfer-channel-scheduling",
+  "name": "Transfer Channel 佔用與資源回收",
+  "aliases": [
+    "channel",
+    "claim",
+    "release",
+    "resource",
+    "engine"
+  ],
+  "category": "DMA",
+  "summary": "No channel 或工作忽然不動，先檢查 claim、start、wait、release。",
+  "problems": [
+    "No channel 或工作忽然不動，先檢查 claim、start、wait、release。",
+    "Transfer Channel 佔用與資源回收",
+    "channel",
+    "claim",
+    "release",
+    "resource",
+    "engine"
+  ],
+  "bottlenecks": [
+    "官方 Demo 模擬四個通道，通常需要先 claim 再 configure，完成後 release"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK DMA",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-transfer-channel-scheduling"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "集中管理通道生命週期",
+      "aliases": [],
+      "summary": "讓 claim 和 release 成對出現",
+      "principle": "讓 claim 和 release 成對出現",
+      "conditions": [
+        "程式可重整資源流程"
+      ],
+      "tradeoffs": [
+        "需處理所有錯誤路徑"
+      ],
+      "behavior": "無資源洩漏",
+      "metrics": [
+        "channel占用"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-channel",
+      "title": "避免無意義的並行 channel",
+      "aliases": [],
+      "summary": "按負載排程而非盲目佔滿",
+      "principle": "按負載排程而非盲目佔滿",
+      "conditions": [
+        "傳輸可排隊"
+      ],
+      "tradeoffs": [
+        "可能延遲個別任務"
+      ],
+      "behavior": "輸出順序一致",
+      "metrics": [
+        "吞吐",
+        "等待"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "加入資源不足的回退機制",
+      "aliases": [],
+      "summary": "不能 claim 時等待或改 CPU copy",
+      "principle": "不能 claim 時等待或改 CPU copy",
+      "conditions": [
+        "有可接受的替代路徑"
+      ],
+      "tradeoffs": [
+        "CPU 負載可能增加"
+      ],
+      "behavior": "結果相同",
+      "metrics": [
+        "失敗率",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK DMA",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

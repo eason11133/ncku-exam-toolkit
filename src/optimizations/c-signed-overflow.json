@@ -1,0 +1,113 @@
+{
+  "id": "c-signed-overflow",
+  "name": "C 的 Signed Overflow、Shift 與整數寬度",
+  "aliases": [
+    "overflow",
+    "signed",
+    "shift",
+    "UB",
+    "位元數"
+  ],
+  "category": "C Programming",
+  "summary": "程式在 -O0 正常、-O2 結果變掉，先檢查整數溢位與未定義行為。",
+  "problems": [
+    "程式在 -O0 正常、-O2 結果變掉，先檢查整數溢位與未定義行為。",
+    "C 的 Signed Overflow、Shift 與整數寬度",
+    "overflow",
+    "signed",
+    "shift",
+    "UB",
+    "位元數"
+  ],
+  "bottlenecks": [
+    "C 的 signed overflow 是未定義行為；左移 signed 負數、移位量大於等於位元寬度等也容易出錯"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "GCC integer overflow",
+      "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-c-signed-overflow"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "使用固定寬度無號型別",
+      "aliases": [],
+      "summary": "明確表達位元運算與模數規則",
+      "principle": "明確表達位元運算與模數規則",
+      "conditions": [
+        "規格本來就是無號語意"
+      ],
+      "tradeoffs": [
+        "不能拿無號混當負數"
+      ],
+      "behavior": "邊界值一致",
+      "metrics": [
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "GCC integer overflow",
+          "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "運算前做邊界檢查",
+      "aliases": [],
+      "summary": "避免越界和未定義行為",
+      "principle": "避免越界和未定義行為",
+      "conditions": [
+        "溢位有明確處理策略"
+      ],
+      "tradeoffs": [
+        "多一點檢查成本"
+      ],
+      "behavior": "不產生錯誤結果",
+      "metrics": [
+        "UBSan結果"
+      ],
+      "sources": [
+        {
+          "title": "GCC integer overflow",
+          "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-sanitizer",
+      "title": "用 sanitizer 與多種優化等級驗證",
+      "aliases": [],
+      "summary": "抓編譯器假設下的隱藏問題",
+      "principle": "抓編譯器假設下的隱藏問題",
+      "conditions": [
+        "可以在本機重編譯"
+      ],
+      "tradeoffs": [
+        "sanitizer 本身會變慢"
+      ],
+      "behavior": "正式版本不依賴未定義行為",
+      "metrics": [
+        "測試通過率"
+      ],
+      "sources": [
+        {
+          "title": "GCC integer overflow",
+          "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

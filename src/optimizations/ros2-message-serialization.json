@@ -1,0 +1,116 @@
+{
+  "id": "ros2-message-serialization",
+  "name": "ROS 2 訊息資料量與序列化成本",
+  "aliases": [
+    "serialization",
+    "encode",
+    "decode",
+    "copy",
+    "大量資料"
+  ],
+  "category": "ROS 2",
+  "summary": "Topic 頻率不高仍佔 CPU，先檢查每筆訊息尺寸、複製次數及編解碼。",
+  "problems": [
+    "Topic 頻率不高仍佔 CPU，先檢查每筆訊息尺寸、複製次數及編解碼。",
+    "ROS 2 訊息資料量與序列化成本",
+    "serialization",
+    "encode",
+    "decode",
+    "copy",
+    "大量資料"
+  ],
+  "bottlenecks": [
+    "一張圖片或大型陣列在 Python 裡先轉 list、再轉 bytes、再包成 message，可能比真正運算還耗時"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy topics",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-message-serialization"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "減少不必要的資料轉換",
+      "aliases": [],
+      "summary": "移除 list/bytes 等重複建立",
+      "principle": "移除 list/bytes 等重複建立",
+      "conditions": [
+        "訊息型別允許直接指派相容型別"
+      ],
+      "tradeoffs": [
+        "需要查 ROS 2 API 與資料生命週期"
+      ],
+      "behavior": "資料逐 byte 一致",
+      "metrics": [
+        "alloc次數",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy topics",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "減少不必要欄位或發送頻率",
+      "aliases": [],
+      "summary": "降低每秒移動資料量",
+      "principle": "降低每秒移動資料量",
+      "conditions": [
+        "下游不依賴被移除內容"
+      ],
+      "tradeoffs": [
+        "介面相容性需重新測"
+      ],
+      "behavior": "不能破壞必要欄位",
+      "metrics": [
+        "bytes/s",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy topics",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "大型資料另設適合的傳輸路徑",
+      "aliases": [],
+      "summary": "用分塊或外部共享通道減少單次負擔",
+      "principle": "用分塊或外部共享通道減少單次負擔",
+      "conditions": [
+        "環境允許架構修改"
+      ],
+      "tradeoffs": [
+        "複雜度與同步成本高"
+      ],
+      "behavior": "必須驗證每筆資料完整",
+      "metrics": [
+        "p95",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy topics",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

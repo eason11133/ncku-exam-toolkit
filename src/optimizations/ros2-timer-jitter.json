@@ -1,0 +1,116 @@
+{
+  "id": "ros2-timer-jitter",
+  "name": "ROS 2 Timer 延遲與排程抖動",
+  "aliases": [
+    "timer",
+    "jitter",
+    "period",
+    "週期",
+    "延遲"
+  ],
+  "category": "ROS 2",
+  "summary": "Timer 設 20ms 卻不穩定觸發，先量實際間隔與 callback 時長。",
+  "problems": [
+    "Timer 設 20ms 卻不穩定觸發，先量實際間隔與 callback 時長。",
+    "ROS 2 Timer 延遲與排程抖動",
+    "timer",
+    "jitter",
+    "period",
+    "週期",
+    "延遲"
+  ],
+  "bottlenecks": [
+    "Timer 的 period 不等於保證固定的 callback 開始時間；executor 排程、其他 callback、OS 排程、GC 和負載都可能造成 jitter"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy executors",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-timer-jitter"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-timer-callback",
+      "title": "減少 timer callback 阻塞",
+      "aliases": [],
+      "summary": "讓工作更快返回 executor",
+      "principle": "讓工作更快返回 executor",
+      "conditions": [
+        "callback 有 I/O 或可移出的計算"
+      ],
+      "tradeoffs": [
+        "工作外移可能改變資料更新順序"
+      ],
+      "behavior": "保留每次觸發必做功能",
+      "metrics": [
+        "p95間隔",
+        "callback耗時"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-callback",
+      "title": "拆開互不相依 callback",
+      "aliases": [],
+      "summary": "將 timer 與其他工作分在可並行的 group",
+      "principle": "將 timer 與其他工作分在可並行的 group",
+      "conditions": [
+        "需要多執行緒且資料同步安全"
+      ],
+      "tradeoffs": [
+        "增加共享狀態風險"
+      ],
+      "behavior": "確認定時順序要求",
+      "metrics": [
+        "jitter",
+        "吞吐"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "降低更新頻率或合併事件",
+      "aliases": [],
+      "summary": "避免排程工作超過處理能力",
+      "principle": "避免排程工作超過處理能力",
+      "conditions": [
+        "可接受降採樣／批次結果"
+      ],
+      "tradeoffs": [
+        "可能犧牲即時性"
+      ],
+      "behavior": "輸出頻率需符合需求",
+      "metrics": [
+        "CPU",
+        "p95間隔"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -72,7 +72,8 @@
       "code": {
         "language": "bash",
         "snippet": "ros2 node list\nros2 node info /processor\nros2 topic list -t\nros2 topic info /number -v\nros2 topic echo /number"
-      }
+      },
+      "articleId": "lesson-ros2-topic-pipeline-check-cli"
     },
     {
       "id": "reduce-work",
@@ -104,7 +105,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-ros2-topic-pipeline-reduce-work"
     },
     {
       "id": "parallel-stages",
@@ -137,7 +139,8 @@
           "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-ros2-topic-pipeline-parallel-stages"
     }
   ]
 }

@@ -1,0 +1,155 @@
+{
+  "id": "cpu-memory-locality",
+  "name": "CPU Cache 與記憶體資料布局",
+  "aliases": [
+    "cache miss",
+    "AoS",
+    "SoA",
+    "false sharing",
+    "contiguous array"
+  ],
+  "category": "Memory Management",
+  "summary": "大量資料運算慢時，檢查存取模式與不必要的資料搬入，勿憑直覺宣稱提速。",
+  "problems": [
+    "cache miss",
+    "memory bound",
+    "pointer chasing",
+    "AoS SoA",
+    "假共享",
+    "CPU 利用率不高",
+    "陣列遍歷太慢"
+  ],
+  "bottlenecks": [
+    "只讀一欄卻載入其他欄",
+    "大量離散 malloc",
+    "多執行緒不同變數共享同一 cache line"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C struct",
+      "url": "https://en.cppreference.com/w/c/language/struct.html"
+    },
+    {
+      "title": "Linux perf stat",
+      "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "memory-buffer-copy",
+    "pthread-work-partition"
+  ],
+  "articleIds": [
+    "ncku-memory-locality"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "soa-for-hot-fields",
+      "title": "只讀少數欄位可評估 SoA",
+      "aliases": [
+        "array of structures",
+        "structure of arrays"
+      ],
+      "summary": "將熱欄位放連續陣列，適合主要掃描單一欄位的工作。",
+      "principle": "可能降低無用的資料搬入和幫助向量化。",
+      "conditions": [
+        "可以改資料布局且不破壞指標依賴",
+        "需大量讀同一欄位"
+      ],
+      "tradeoffs": [
+        "資料重排有成本",
+        "需同時存取所有欄位時可能較差"
+      ],
+      "behavior": "逐元素對比結果與總時間，包含資料重整成本。",
+      "metrics": [
+        "總耗時",
+        "RSS",
+        "cache misses"
+      ],
+      "sources": [
+        {
+          "title": "C struct",
+          "url": "https://en.cppreference.com/w/c/language/struct.html"
+        },
+        {
+          "title": "Linux perf stat",
+          "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "struct Point { int x, y, z; };\n/* AoS: struct Point points[N]; */\n/* SoA: int xs[N], ys[N], zs[N]; */"
+      }
+    },
+    {
+      "id": "contiguous-storage",
+      "title": "減少指標跳躍，使用連續資料",
+      "aliases": [
+        "pointer chasing",
+        "malloc per node"
+      ],
+      "summary": "若以順序掃描為主，評估連續陣列取代分散節點。",
+      "principle": "讓連續資料更可能被 cache 預取，降低間接位址存取。",
+      "conditions": [
+        "不需要穩定節點位址",
+        "可調整所有權和索引方式"
+      ],
+      "tradeoffs": [
+        "中間插入刪除可能更慢",
+        "若外部保留原指標會失效"
+      ],
+      "behavior": "確認所有原先指標引用、索引與生命週期都正確。",
+      "metrics": [
+        "總耗時",
+        "cache miss",
+        "峰值記憶體"
+      ],
+      "sources": [
+        {
+          "title": "C struct",
+          "url": "https://en.cppreference.com/w/c/language/struct.html"
+        },
+        {
+          "title": "Linux perf stat",
+          "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "avoid-false-sharing",
+      "title": "確認多執行緒 False Sharing",
+      "aliases": [
+        "cache line",
+        "per-thread counters"
+      ],
+      "summary": "不同執行緒更新不同資料，但若在同一 cache line 可能互相干擾。",
+      "principle": "分離頻繁更新的位置或改用 thread-local 彙總。",
+      "conditions": [
+        "先證實高頻共享 cache line",
+        "平台允許量測"
+      ],
+      "tradeoffs": [
+        "對齊 padding 增加記憶體",
+        "盲目 padding 可能無效"
+      ],
+      "behavior": "保持結果一致，且測 CPU/吞吐量；不可假設 cache line 固定為 64 bytes。",
+      "metrics": [
+        "吞吐量",
+        "CPU 使用率",
+        "cache events"
+      ],
+      "sources": [
+        {
+          "title": "Linux perf stat",
+          "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

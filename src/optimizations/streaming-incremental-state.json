@@ -1,0 +1,158 @@
+{
+  "id": "streaming-incremental-state",
+  "name": "串流資料增量更新與快取",
+  "aliases": [
+    "incremental",
+    "rolling window",
+    "cache",
+    "memoization",
+    "lru_cache"
+  ],
+  "category": "Performance Engineering",
+  "summary": "每筆資料都重算歷史時，考慮增量維護；相同純函式輸入重複出現時才考慮快取。",
+  "problems": [
+    "每筆都重新計算",
+    "streaming slow",
+    "統計太慢",
+    "window average",
+    "cache hit",
+    "重複計算",
+    "數據即時更新"
+  ],
+  "bottlenecks": [
+    "每次重掃全部歷史",
+    "滑動窗口每筆重新 sum",
+    "相同昂貴輸入頻繁重算"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python functools",
+      "url": "https://docs.python.org/3/library/functools.html"
+    },
+    {
+      "title": "Python collections.deque",
+      "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+    }
+  ],
+  "relatedMethodIds": [
+    "ros2-processing-callback",
+    "repeated-query-lookups"
+  ],
+  "articleIds": [
+    "ncku-incremental-cache"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "incremental-running-state",
+      "title": "累積總和改成每筆增量更新",
+      "aliases": [
+        "running total",
+        "incremental update"
+      ],
+      "summary": "如果只依序新增資料，保留 running sum 而非每次 sum(history)。",
+      "principle": "每筆更新 O(1)，不必重新掃描歷史。",
+      "conditions": [
+        "只有 append，或能明確處理撤銷和更新",
+        "必須有一致且完整的事件來源"
+      ],
+      "tradeoffs": [
+        "亂序／重送可能重複加",
+        "需要保存狀態和重啟恢復策略"
+      ],
+      "behavior": "逐筆輸出對照，包含重複、負數、空串流。",
+      "metrics": [
+        "每筆耗時",
+        "總吞吐量",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "Python collections.deque",
+          "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "running = 0\nfor value in stream:\n    running += value\n    emit(running)"
+      }
+    },
+    {
+      "id": "rolling-deque",
+      "title": "固定 N 筆 Rolling Window 用 deque",
+      "aliases": [
+        "deque",
+        "popleft",
+        "滑動平均"
+      ],
+      "summary": "將窗口最舊值移出並加入最新值，維持 window_sum。",
+      "principle": "窗口更新不再每次重掃 N 個元素。",
+      "conditions": [
+        "窗口按筆數而非秒數",
+        "window_size > 0"
+      ],
+      "tradeoffs": [
+        "有額外 O(N) 資料狀態",
+        "時間窗口或亂序不能直接照搬"
+      ],
+      "behavior": "與完整窗口重算的值逐筆比較，包含窗口未滿時。",
+      "metrics": [
+        "平均延遲",
+        "峰值記憶體",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "Python collections.deque",
+          "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "from collections import deque\nwindow = deque()\nrunning = 0\nif len(window) == window_size: running -= window.popleft()\nwindow.append(value); running += value\navg = running / len(window)"
+      }
+    },
+    {
+      "id": "bounded-lru-cache",
+      "title": "重複純函式輸入才使用 LRU Cache",
+      "aliases": [
+        "lru cache",
+        "functools.cache"
+      ],
+      "summary": "參數一樣且回傳不依外部狀態變動，才能安全重用舊答案。",
+      "principle": "以空間換重複計算時間，需測快取命中率。",
+      "conditions": [
+        "可雜湊輸入",
+        "函式結果穩定",
+        "有清除／容量策略"
+      ],
+      "tradeoffs": [
+        "資料更新會產生過時結果",
+        "低命中率浪費成本",
+        "多執行緒首批計算可能重複"
+      ],
+      "behavior": "對比 cache on/off 的輸出，並測試資料版本變更。",
+      "metrics": [
+        "hits/misses",
+        "總耗時",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "Python functools",
+          "url": "https://docs.python.org/3/library/functools.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "from functools import lru_cache\n@lru_cache(maxsize=128)\ndef compute(key):\n    return expensive_pure_function(key)"
+      }
+    }
+  ]
+}

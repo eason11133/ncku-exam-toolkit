@@ -1,0 +1,119 @@
+{
+  "id": "pio-shift-order",
+  "name": "PIO OSR／ISR 移位方向與資料打包",
+  "aliases": [
+    "pio",
+    "osr",
+    "isr",
+    "shift",
+    "autopull",
+    "autopush",
+    "位元順序"
+  ],
+  "category": "PIO",
+  "summary": "PIO 輸入輸出位元顛倒、錯位，先檢查 OSR/ISR 與 shift direction。",
+  "problems": [
+    "PIO 輸入輸出位元顛倒、錯位，先檢查 OSR/ISR 與 shift direction。",
+    "PIO OSR／ISR 移位方向與資料打包",
+    "pio",
+    "osr",
+    "isr",
+    "shift",
+    "autopull",
+    "autopush",
+    "位元順序"
+  ],
+  "bottlenecks": [
+    "OUT 從 OSR 取位元，IN 把 pin 資料塞進 ISR；方向、閾值與每筆資料長度決定高低位如何排列"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK PIO API",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pio-shift-order"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-osr-isr-shift-direction",
+      "title": "釐清 OSR/ISR 的 shift direction",
+      "aliases": [],
+      "summary": "先確認 bit 順序才修改程式",
+      "principle": "先確認 bit 順序才修改程式",
+      "conditions": [
+        "有固定的輸入 pattern"
+      ],
+      "tradeoffs": [
+        "可能需同步改 CPU 端解碼"
+      ],
+      "behavior": "每個 bit 都一致",
+      "metrics": [
+        "bit錯位數"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO API",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-autopull-autopush-threshold",
+      "title": "調整 autopull/autopush threshold",
+      "aliases": [],
+      "summary": "依 payload 長度決定何時換字",
+      "principle": "依 payload 長度決定何時換字",
+      "conditions": [
+        "資料寬度與 shift 行為已確定"
+      ],
+      "tradeoffs": [
+        "閾值錯會造成多讀或少讀"
+      ],
+      "behavior": "不能漏掉邊界位元",
+      "metrics": [
+        "字數",
+        "錯誤率"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO API",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-cpu",
+      "title": "CPU 端統一封包編解碼",
+      "aliases": [],
+      "summary": "隔離硬體表示與資料格式",
+      "principle": "隔離硬體表示與資料格式",
+      "conditions": [
+        "下游需一致格式"
+      ],
+      "tradeoffs": [
+        "可能增加轉換成本"
+      ],
+      "behavior": "端到端資料相同",
+      "metrics": [
+        "處理延遲",
+        "正確率"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO API",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

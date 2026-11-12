@@ -10,7 +10,7 @@
 4. 按「複製技術背景」或「複製給 LLM」，帶到考場提供的 LLM 中直接評估並嘗試修改程式。
 5. 用「測試結果比較」記錄修改前後的實測結果；沒有方案保證一定較快。
 
-目前收錄 2026-11-12 匯入的 14 筆方法、42 個方案和 20 篇教學文章。這批內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善沒有因此被視為已實測。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。初版手動填入的指令、文件清單、錯誤案例與 Docker 文章已移除，相關頁面會顯示空狀態，待正式內容整理後加入。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
+目前收錄 47 筆方法、141 個方案和 92 篇教學文章。其中第一版 42 個方案有 42 篇各自連結的長文：原有 3 篇 SingleThreadedExecutor 長文，加上這次補入的 39 篇。第二版新增 33 筆方法、99 個方向與 33 篇方法主題教材；**這 99 個方向尚未各自配有獨立完整教學**，不能把方案摘要算成完整教材。內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善尚未實測。網站保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。初版手動填入的指令、文件清單、錯誤案例與 Docker 文章已移除，相關頁面會顯示空狀態，待正式內容整理後加入。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。第一版內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
 
 ## 本機開發與部署
 
@@ -20,6 +20,7 @@ npm run dev
 npm run build
 npm test
 python checks/validate_content.py
+python checks/validate_handoff_links.py
 ```
 
 `npm run build` 會執行 TypeScript 檢查並產生 `dist/`。GitHub `main` 已連接 Vercel 正式部署。

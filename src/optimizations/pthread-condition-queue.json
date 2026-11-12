@@ -1,0 +1,153 @@
+{
+  "id": "pthread-condition-queue",
+  "name": "pthread Condition Variable 與有界 Queue",
+  "aliases": [
+    "pthread_cond_wait",
+    "producer consumer",
+    "bounded queue",
+    "ring buffer"
+  ],
+  "category": "Concurrency",
+  "summary": "消除空轉等待，並釐清佇列滿、結束與資料保留政策。",
+  "problems": [
+    "busy wait",
+    "CPU 100%",
+    "沒有資料一直跑",
+    "queue full",
+    "Queue 爆掉",
+    "pthread 等待",
+    "資料消費太慢"
+  ],
+  "bottlenecks": [
+    "Consumer 持續忙等",
+    "Queue 無上限累積",
+    "鎖內執行耗時任務"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "POSIX pthread_cond_wait",
+      "url": "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"
+    },
+    {
+      "title": "POSIX pthread_mutex_lock",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "pthread-work-partition",
+    "spinlock-critical-section"
+  ],
+  "articleIds": [
+    "ncku-pthread-condvar-queue"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "condition-predicate-loop",
+      "title": "用 Condition Variable 取代忙等",
+      "aliases": [
+        "pthread_cond_wait",
+        "condition variable",
+        "spurious wakeup"
+      ],
+      "summary": "在 Mutex 保護的條件不成立時睡眠等待，不持續輪詢。",
+      "principle": "pthread_cond_wait 暫時放開 Mutex 並在回傳前重新取得；以 while 重新檢查 predicate。",
+      "conditions": [
+        "所有共享狀態都在相同同步規則下",
+        "喚醒後使用 while 重檢"
+      ],
+      "tradeoffs": [
+        "不一定更低延遲",
+        "錯誤鎖範圍可能造成死鎖"
+      ],
+      "behavior": "即使有 spurious wakeup、close、競爭 Consumer 仍正確。",
+      "metrics": [
+        "CPU 使用率",
+        "工作延遲",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_wait",
+          "url": "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "pthread_mutex_lock(&q.mu);\nwhile (q.count == 0 && !q.closed)\n    pthread_cond_wait(&q.not_empty, &q.mu);\npthread_mutex_unlock(&q.mu);"
+      }
+    },
+    {
+      "id": "bounded-ring-buffer",
+      "title": "固定容量 Ring Buffer + Backpressure",
+      "aliases": [
+        "ring queue",
+        "bounded buffer",
+        "head tail"
+      ],
+      "summary": "Queue 滿就讓 Producer 等待或依需求選擇明確的丟棄政策。",
+      "principle": "限制記憶體無上限增長並控制下游負載。",
+      "conditions": [
+        "先確定資料是否能丟",
+        "所有 head/tail/count 都有同步保護"
+      ],
+      "tradeoffs": [
+        "若不能丟則上游延遲增加",
+        "容量小可能讓 Producer 頻繁等待"
+      ],
+      "behavior": "不遺失不可丟資料，close 時喚醒等待者並排空資料。",
+      "metrics": [
+        "queue depth",
+        "RSS",
+        "p95 延遲",
+        "吞吐量"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_wait",
+          "url": "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "while (q.count == CAPACITY && !q.closed)\n    pthread_cond_wait(&q.not_full, &q.mu);"
+      }
+    },
+    {
+      "id": "queue-batch-pop",
+      "title": "批次取出細小工作，解鎖後處理",
+      "aliases": [
+        "batch consumer",
+        "batch queue"
+      ],
+      "summary": "若每筆鎖／通知成本偏高，可一次取出少量工作再處理。",
+      "principle": "減少取得鎖的次數，保持計算在鎖外。",
+      "conditions": [
+        "每筆工作彼此獨立或可維持順序",
+        "可定義最大批量與等待上限"
+      ],
+      "tradeoffs": [
+        "批次等待可能增加首筆延遲",
+        "批次過大會造成延遲不公平"
+      ],
+      "behavior": "確認任務順序、一次且只一次處理與關閉時最後一批的完整性。",
+      "metrics": [
+        "吞吐量",
+        "p95 延遲",
+        "鎖等待"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_wait",
+          "url": "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

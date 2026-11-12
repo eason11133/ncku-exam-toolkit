@@ -1,0 +1,236 @@
+[
+  {
+    "methodId": "spinlock-critical-section",
+    "optionId": "move-work-outside",
+    "articleId": "lesson-spinlock-critical-section-move-work-outside",
+    "file": "src/content/lesson-spinlock-critical-section-move-work-outside.md"
+  },
+  {
+    "methodId": "spinlock-critical-section",
+    "optionId": "use-mutex",
+    "articleId": "lesson-spinlock-critical-section-use-mutex",
+    "file": "src/content/lesson-spinlock-critical-section-use-mutex.md"
+  },
+  {
+    "methodId": "spinlock-critical-section",
+    "optionId": "per-thread-count",
+    "articleId": "lesson-spinlock-critical-section-per-thread-count",
+    "file": "src/content/lesson-spinlock-critical-section-per-thread-count.md"
+  },
+  {
+    "methodId": "ros2-processing-callback",
+    "optionId": "instrument",
+    "articleId": "lesson-ros2-processing-callback-instrument",
+    "file": "src/content/lesson-ros2-processing-callback-instrument.md"
+  },
+  {
+    "methodId": "ros2-processing-callback",
+    "optionId": "algorithm",
+    "articleId": "lesson-ros2-processing-callback-algorithm",
+    "file": "src/content/lesson-ros2-processing-callback-algorithm.md"
+  },
+  {
+    "methodId": "ros2-processing-callback",
+    "optionId": "cache",
+    "articleId": "lesson-ros2-processing-callback-cache",
+    "file": "src/content/lesson-ros2-processing-callback-cache.md"
+  },
+  {
+    "methodId": "benchmark-correctness",
+    "optionId": "baseline",
+    "articleId": "lesson-benchmark-correctness-baseline",
+    "file": "src/content/lesson-benchmark-correctness-baseline.md"
+  },
+  {
+    "methodId": "benchmark-correctness",
+    "optionId": "profile-hotspot",
+    "articleId": "lesson-benchmark-correctness-profile-hotspot",
+    "file": "src/content/lesson-benchmark-correctness-profile-hotspot.md"
+  },
+  {
+    "methodId": "benchmark-correctness",
+    "optionId": "compare-tradeoff",
+    "articleId": "lesson-benchmark-correctness-compare-tradeoff",
+    "file": "src/content/lesson-benchmark-correctness-compare-tradeoff.md"
+  },
+  {
+    "methodId": "ros2-qos-profile",
+    "optionId": "fix-compatibility",
+    "articleId": "lesson-ros2-qos-profile-fix-compatibility",
+    "file": "src/content/lesson-ros2-qos-profile-fix-compatibility.md"
+  },
+  {
+    "methodId": "ros2-qos-profile",
+    "optionId": "keep-last-depth",
+    "articleId": "lesson-ros2-qos-profile-keep-last-depth",
+    "file": "src/content/lesson-ros2-qos-profile-keep-last-depth.md"
+  },
+  {
+    "methodId": "ros2-qos-profile",
+    "optionId": "reliability-choice",
+    "articleId": "lesson-ros2-qos-profile-reliability-choice",
+    "file": "src/content/lesson-ros2-qos-profile-reliability-choice.md"
+  },
+  {
+    "methodId": "python-cpu-process",
+    "optionId": "measure-cpu",
+    "articleId": "lesson-python-cpu-process-measure-cpu",
+    "file": "src/content/lesson-python-cpu-process-measure-cpu.md"
+  },
+  {
+    "methodId": "python-cpu-process",
+    "optionId": "process-pool",
+    "articleId": "lesson-python-cpu-process-process-pool",
+    "file": "src/content/lesson-python-cpu-process-process-pool.md"
+  },
+  {
+    "methodId": "python-cpu-process",
+    "optionId": "native-library",
+    "articleId": "lesson-python-cpu-process-native-library",
+    "file": "src/content/lesson-python-cpu-process-native-library.md"
+  },
+  {
+    "methodId": "ros2-topic-pipeline",
+    "optionId": "check-cli",
+    "articleId": "lesson-ros2-topic-pipeline-check-cli",
+    "file": "src/content/lesson-ros2-topic-pipeline-check-cli.md"
+  },
+  {
+    "methodId": "ros2-topic-pipeline",
+    "optionId": "reduce-work",
+    "articleId": "lesson-ros2-topic-pipeline-reduce-work",
+    "file": "src/content/lesson-ros2-topic-pipeline-reduce-work.md"
+  },
+  {
+    "methodId": "ros2-topic-pipeline",
+    "optionId": "parallel-stages",
+    "articleId": "lesson-ros2-topic-pipeline-parallel-stages",
+    "file": "src/content/lesson-ros2-topic-pipeline-parallel-stages.md"
+  },
+  {
+    "methodId": "c-bitfield-operations",
+    "optionId": "mask-and-shift",
+    "articleId": "lesson-c-bitfield-operations-mask-and-shift",
+    "file": "src/content/lesson-c-bitfield-operations-mask-and-shift.md"
+  },
+  {
+    "methodId": "c-bitfield-operations",
+    "optionId": "set-clear",
+    "articleId": "lesson-c-bitfield-operations-set-clear",
+    "file": "src/content/lesson-c-bitfield-operations-set-clear.md"
+  },
+  {
+    "methodId": "c-bitfield-operations",
+    "optionId": "pack-unpack",
+    "articleId": "lesson-c-bitfield-operations-pack-unpack",
+    "file": "src/content/lesson-c-bitfield-operations-pack-unpack.md"
+  },
+  {
+    "methodId": "resource-queues",
+    "optionId": "bounded-queue",
+    "articleId": "lesson-resource-queues-bounded-queue",
+    "file": "src/content/lesson-resource-queues-bounded-queue.md"
+  },
+  {
+    "methodId": "resource-queues",
+    "optionId": "double-buffer",
+    "articleId": "lesson-resource-queues-double-buffer",
+    "file": "src/content/lesson-resource-queues-double-buffer.md"
+  },
+  {
+    "methodId": "resource-queues",
+    "optionId": "producer-consumer",
+    "articleId": "lesson-resource-queues-producer-consumer",
+    "file": "src/content/lesson-resource-queues-producer-consumer.md"
+  },
+  {
+    "methodId": "transfer-engine-configuration",
+    "optionId": "count-unit",
+    "articleId": "lesson-transfer-engine-configuration-count-unit",
+    "file": "src/content/lesson-transfer-engine-configuration-count-unit.md"
+  },
+  {
+    "methodId": "transfer-engine-configuration",
+    "optionId": "copy-vs-fill",
+    "articleId": "lesson-transfer-engine-configuration-copy-vs-fill",
+    "file": "src/content/lesson-transfer-engine-configuration-copy-vs-fill.md"
+  },
+  {
+    "methodId": "transfer-engine-configuration",
+    "optionId": "overlap-cpu",
+    "articleId": "lesson-transfer-engine-configuration-overlap-cpu",
+    "file": "src/content/lesson-transfer-engine-configuration-overlap-cpu.md"
+  },
+  {
+    "methodId": "pthread-work-partition",
+    "optionId": "partition-independent",
+    "articleId": "lesson-pthread-work-partition-partition-independent",
+    "file": "src/content/lesson-pthread-work-partition-partition-independent.md"
+  },
+  {
+    "methodId": "pthread-work-partition",
+    "optionId": "reduce-lock",
+    "articleId": "lesson-pthread-work-partition-reduce-lock",
+    "file": "src/content/lesson-pthread-work-partition-reduce-lock.md"
+  },
+  {
+    "methodId": "pthread-work-partition",
+    "optionId": "thread-count",
+    "articleId": "lesson-pthread-work-partition-thread-count",
+    "file": "src/content/lesson-pthread-work-partition-thread-count.md"
+  },
+  {
+    "methodId": "rp2350-pio-fifo",
+    "optionId": "trace-echo",
+    "articleId": "lesson-rp2350-pio-fifo-trace-echo",
+    "file": "src/content/lesson-rp2350-pio-fifo-trace-echo.md"
+  },
+  {
+    "methodId": "rp2350-pio-fifo",
+    "optionId": "fifo-paced-transfer",
+    "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
+    "file": "src/content/lesson-rp2350-pio-fifo-fifo-paced-transfer.md"
+  },
+  {
+    "methodId": "rp2350-pio-fifo",
+    "optionId": "pio-with-dma",
+    "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
+    "file": "src/content/lesson-rp2350-pio-fifo-pio-with-dma.md"
+  },
+  {
+    "methodId": "transfer-format",
+    "optionId": "remove-unneeded-data",
+    "articleId": "lesson-transfer-format-remove-unneeded-data",
+    "file": "src/content/lesson-transfer-format-remove-unneeded-data.md"
+  },
+  {
+    "methodId": "transfer-format",
+    "optionId": "compact-binary",
+    "articleId": "lesson-transfer-format-compact-binary",
+    "file": "src/content/lesson-transfer-format-compact-binary.md"
+  },
+  {
+    "methodId": "transfer-format",
+    "optionId": "batch",
+    "articleId": "lesson-transfer-format-batch",
+    "file": "src/content/lesson-transfer-format-batch.md"
+  },
+  {
+    "methodId": "memory-buffer-copy",
+    "optionId": "avoid-extra-copy",
+    "articleId": "lesson-memory-buffer-copy-avoid-extra-copy",
+    "file": "src/content/lesson-memory-buffer-copy-avoid-extra-copy.md"
+  },
+  {
+    "methodId": "memory-buffer-copy",
+    "optionId": "choose-memmove",
+    "articleId": "lesson-memory-buffer-copy-choose-memmove",
+    "file": "src/content/lesson-memory-buffer-copy-choose-memmove.md"
+  },
+  {
+    "methodId": "memory-buffer-copy",
+    "optionId": "reuse-buffer",
+    "articleId": "lesson-memory-buffer-copy-reuse-buffer",
+    "file": "src/content/lesson-memory-buffer-copy-reuse-buffer.md"
+  }
+]

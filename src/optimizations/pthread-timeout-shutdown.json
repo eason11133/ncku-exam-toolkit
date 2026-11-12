@@ -1,0 +1,113 @@
+{
+  "id": "pthread-timeout-shutdown",
+  "name": "pthread Condition Variable 逾時與停止流程",
+  "aliases": [
+    "condvar",
+    "shutdown",
+    "broadcast",
+    "timedwait",
+    "worker"
+  ],
+  "category": "pthread",
+  "summary": "程式正常工作卻結束不了，常見原因是 worker 在 cond_wait 永遠等不到通知。",
+  "problems": [
+    "程式正常工作卻結束不了，常見原因是 worker 在 cond_wait 永遠等不到通知。",
+    "pthread Condition Variable 逾時與停止流程",
+    "condvar",
+    "shutdown",
+    "broadcast",
+    "timedwait",
+    "worker"
+  ],
+  "bottlenecks": [
+    "典型的 queue 工人會在空佇列時 wait"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "POSIX pthread_cond_timedwait",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pthread-timeout-shutdown"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-broadcast",
+      "title": "更新停止旗標並 broadcast",
+      "aliases": [],
+      "summary": "喚醒所有可能卡住的 worker",
+      "principle": "喚醒所有可能卡住的 worker",
+      "conditions": [
+        "有共享 predicate 在 Mutex 下保護"
+      ],
+      "tradeoffs": [
+        "需要明確 drain/discard 政策"
+      ],
+      "behavior": "所有 Thread 正常離開",
+      "metrics": [
+        "關閉時間"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_timedwait",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-while-predicate",
+      "title": "改用 while predicate 等待",
+      "aliases": [],
+      "summary": "處理虛假喚醒與競爭",
+      "principle": "處理虛假喚醒與競爭",
+      "conditions": [
+        "每次醒來都檢查 queue/stop"
+      ],
+      "tradeoffs": [
+        "需小心解鎖位置"
+      ],
+      "behavior": "不讀空 queue",
+      "metrics": [
+        "錯誤率"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_timedwait",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "設定可控逾時與取消策略",
+      "aliases": [],
+      "summary": "避免異常等待無期限",
+      "principle": "避免異常等待無期限",
+      "conditions": [
+        "可以處理 timeout 狀態"
+      ],
+      "tradeoffs": [
+        "時間基準易搞錯"
+      ],
+      "behavior": "逾時也安全清理",
+      "metrics": [
+        "timeout率"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_cond_timedwait",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "pio-state-machine-limits",
+  "name": "PIO 指令記憶體與 State Machine 配置",
+  "aliases": [
+    "pio",
+    "state machine",
+    "instruction memory",
+    "GPIO",
+    "資源"
+  ],
+  "category": "PIO",
+  "summary": "PIO 程式載入失敗或多個功能互相干擾，要檢查資源限制。",
+  "problems": [
+    "PIO 程式載入失敗或多個功能互相干擾，要檢查資源限制。",
+    "PIO 指令記憶體與 State Machine 配置",
+    "pio",
+    "state machine",
+    "instruction memory",
+    "GPIO",
+    "資源"
+  ],
+  "bottlenecks": [
+    "PIO 是資源有限的硬體執行單元：每個 PIO block 的指令記憶體共用，state machine 數目有限，FIFO 也受限制"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi Pico SDK PIO",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-pio-state-machine-limits"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-pio",
+      "title": "重用相同的 PIO 程式",
+      "aliases": [],
+      "summary": "避免重複載入同一份指令",
+      "principle": "避免重複載入同一份指令",
+      "conditions": [
+        "SDK 支援共享已載入程式"
+      ],
+      "tradeoffs": [
+        "多個 SM 的設定仍須各自處理"
+      ],
+      "behavior": "不重複使用衝突位址",
+      "metrics": [
+        "可用指令空間"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-pio-program",
+      "title": "縮短 PIO Program",
+      "aliases": [],
+      "summary": "用簡單迴圈代替展開指令",
+      "principle": "用簡單迴圈代替展開指令",
+      "conditions": [
+        "分支與時序容許更動"
+      ],
+      "tradeoffs": [
+        "可能增加執行周期"
+      ],
+      "behavior": "時序仍符合要求",
+      "metrics": [
+        "指令數",
+        "周期"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-sm-gpio",
+      "title": "重新分配 SM 與 GPIO",
+      "aliases": [],
+      "summary": "避開硬體資源衝突",
+      "principle": "避開硬體資源衝突",
+      "conditions": [
+        "資源清單已釐清"
+      ],
+      "tradeoffs": [
+        "硬體接線與配置可能需改"
+      ],
+      "behavior": "pin 行為不變",
+      "metrics": [
+        "資源佔用"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi Pico SDK PIO",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

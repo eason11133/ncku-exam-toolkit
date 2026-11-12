@@ -1,0 +1,115 @@
+{
+  "id": "ros2-remap-diagnostics",
+  "name": "ROS 2 名稱、Namespace、Remapping 排錯",
+  "aliases": [
+    "ros2",
+    "node",
+    "topic",
+    "namespace",
+    "remap",
+    "不通"
+  ],
+  "category": "ROS 2",
+  "summary": "Node 有啟動卻沒有資料，先分辨 topic 名稱、namespace、型別與 QoS 問題。",
+  "problems": [
+    "Node 有啟動卻沒有資料，先分辨 topic 名稱、namespace、型別與 QoS 問題。",
+    "ROS 2 名稱、Namespace、Remapping 排錯",
+    "ros2",
+    "node",
+    "topic",
+    "namespace",
+    "remap",
+    "不通"
+  ],
+  "bottlenecks": [
+    "把 publisher、subscriber 各自使用的完整 topic 名稱列出，不要只看程式中的簡短字串"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy remapping",
+      "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-remap-diagnostics"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-topic",
+      "title": "核對完整 Topic 名稱",
+      "aliases": [],
+      "summary": "先查實際對外提供的名稱",
+      "principle": "先查實際對外提供的名稱",
+      "conditions": [
+        "有不同 namespace 或名稱拼寫"
+      ],
+      "tradeoffs": [
+        "只修名稱不會修 QoS"
+      ],
+      "behavior": "topic publisher/subscriber 對上",
+      "metrics": [
+        "topic count"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy remapping",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-remap",
+      "title": "用 remap 修正連線",
+      "aliases": [],
+      "summary": "在不重寫程式碼下更換 topic",
+      "principle": "在不重寫程式碼下更換 topic",
+      "conditions": [
+        "執行指令能控制 ros-args"
+      ],
+      "tradeoffs": [
+        "執行設定可能分散"
+      ],
+      "behavior": "資料仍走到正確消費者",
+      "metrics": [
+        "接收筆數"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy remapping",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-qos",
+      "title": "檢查訊息型別與 QoS",
+      "aliases": [],
+      "summary": "排除有名稱無連線的原因",
+      "principle": "排除有名稱無連線的原因",
+      "conditions": [
+        "已確認名稱一致"
+      ],
+      "tradeoffs": [
+        "可能需雙方改 QoS"
+      ],
+      "behavior": "不能無條件降低可靠性",
+      "metrics": [
+        "echo成功率"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy remapping",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

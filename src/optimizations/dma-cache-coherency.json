@@ -1,0 +1,114 @@
+{
+  "id": "dma-cache-coherency",
+  "name": "真實 DMA 的 Cache 一致性檢查",
+  "aliases": [
+    "dma",
+    "cache",
+    "coherency",
+    "stale data",
+    "記憶體"
+  ],
+  "category": "DMA",
+  "summary": "真實 DMA 資料偶爾讀到舊值，要先查平台是否需要 Cache 維護。",
+  "problems": [
+    "真實 DMA 資料偶爾讀到舊值，要先查平台是否需要 Cache 維護。",
+    "真實 DMA 的 Cache 一致性檢查",
+    "dma",
+    "cache",
+    "coherency",
+    "stale data",
+    "記憶體"
+  ],
+  "bottlenecks": [
+    "部分平台中 CPU cache 內尚未寫回記憶體的資料，DMA 讀不到；DMA 寫回記憶體後，CPU 也可能讀到舊 cache"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Raspberry Pi DMA documentation",
+      "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-dma-cache-coherency"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "核對平台記憶體區域",
+      "aliases": [],
+      "summary": "先確定 DMA 可存取且區域是否 cacheable",
+      "principle": "先確定 DMA 可存取且區域是否 cacheable",
+      "conditions": [
+        "有目標平台文件"
+      ],
+      "tradeoffs": [
+        "平台不可攜"
+      ],
+      "behavior": "沒有舊資料",
+      "metrics": [
+        "checksum"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi DMA documentation",
+          "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-cache",
+      "title": "依平台做必要 Cache 維護",
+      "aliases": [],
+      "summary": "補齊 DMA 前後可見性操作",
+      "principle": "補齊 DMA 前後可見性操作",
+      "conditions": [
+        "確定 CPU/DMA 存取方向"
+      ],
+      "tradeoffs": [
+        "清理成本與對齊要求"
+      ],
+      "behavior": "不覆蓋有效資料",
+      "metrics": [
+        "錯誤率",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi DMA documentation",
+          "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "改用適當共享緩衝區",
+      "aliases": [],
+      "summary": "減少不必要的 cache 操作",
+      "principle": "減少不必要的 cache 操作",
+      "conditions": [
+        "平台有相容配置"
+      ],
+      "tradeoffs": [
+        "可能增加記憶體成本"
+      ],
+      "behavior": "可見性仍正確",
+      "metrics": [
+        "CPU使用率"
+      ],
+      "sources": [
+        {
+          "title": "Raspberry Pi DMA documentation",
+          "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

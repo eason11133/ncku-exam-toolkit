@@ -1,0 +1,113 @@
+{
+  "id": "algorithm-search-batching",
+  "name": "重複查詢、二分與 Hash Index",
+  "aliases": [
+    "dict",
+    "set",
+    "bisect",
+    "binary search",
+    "lookup"
+  ],
+  "category": "Performance Engineering",
+  "summary": "同一份資料查很多次時，先建索引通常比每次掃描更划算。",
+  "problems": [
+    "同一份資料查很多次時，先建索引通常比每次掃描更划算。",
+    "重複查詢、二分與 Hash Index",
+    "dict",
+    "set",
+    "bisect",
+    "binary search",
+    "lookup"
+  ],
+  "bottlenecks": [
+    "查找只發生一兩次時，O(n) 線性掃描可能足夠；若有大量查詢，已排序資料能用 bisect 做 O(log n) 定位，唯一 Key 可用 dict/set 做平均 O(1) 查找"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python bisect",
+      "url": "https://docs.python.org/3/library/bisect.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-algorithm-search-batching"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-dict-set",
+      "title": "重複查找改 dict/set",
+      "aliases": [],
+      "summary": "以空間換平均查找時間",
+      "principle": "以空間換平均查找時間",
+      "conditions": [
+        "Key 可 hash 且能維護"
+      ],
+      "tradeoffs": [
+        "會多用記憶體"
+      ],
+      "behavior": "查找結果相同",
+      "metrics": [
+        "總查詢耗時"
+      ],
+      "sources": [
+        {
+          "title": "Python bisect",
+          "url": "https://docs.python.org/3/library/bisect.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "排序資料改二分",
+      "aliases": [],
+      "summary": "降低大量 read-only 查找成本",
+      "principle": "降低大量 read-only 查找成本",
+      "conditions": [
+        "資料已排序或可一次排序"
+      ],
+      "tradeoffs": [
+        "插入成本可能高"
+      ],
+      "behavior": "左右界正確",
+      "metrics": [
+        "查找時間"
+      ],
+      "sources": [
+        {
+          "title": "Python bisect",
+          "url": "https://docs.python.org/3/library/bisect.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-method",
+      "title": "小規模少查詢維持線性掃描",
+      "aliases": [],
+      "summary": "避免多餘索引成本",
+      "principle": "避免多餘索引成本",
+      "conditions": [
+        "資料量小／只查幾次"
+      ],
+      "tradeoffs": [
+        "N 增加會退化"
+      ],
+      "behavior": "無重複鍵錯誤",
+      "metrics": [
+        "總耗時"
+      ],
+      "sources": [
+        {
+          "title": "Python bisect",
+          "url": "https://docs.python.org/3/library/bisect.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

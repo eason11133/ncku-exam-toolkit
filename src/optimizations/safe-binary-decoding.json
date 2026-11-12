@@ -1,0 +1,154 @@
+{
+  "id": "safe-binary-decoding",
+  "name": "C 安全解析二進位資料與 Byte Order",
+  "aliases": [
+    "big endian",
+    "little endian",
+    "packet parsing",
+    "uint8_t",
+    "alignment"
+  ],
+  "category": "C Programming",
+  "summary": "從位元組組出整數，先守住端序、長度、對齊與未定義行為，再談效率。",
+  "problems": [
+    "bytes 解錯",
+    "端序錯",
+    "封包解析太慢",
+    "unaligned pointer",
+    "buffer truncated",
+    "位元組轉整數",
+    "binary packet"
+  ],
+  "bottlenecks": [
+    "不檢查長度就讀 buffer",
+    "uint8_t* 直接 cast 成 uint32_t*",
+    "同一欄位重複解析"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C 固定寬度整數",
+      "url": "https://en.cppreference.com/w/c/types/integer.html"
+    },
+    {
+      "title": "GCC Sanitizers",
+      "url": "https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "c-bitfield-operations",
+    "transfer-format"
+  ],
+  "articleIds": [
+    "ncku-binary-packet-parsing"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "shift-or-big-endian",
+      "title": "用 Shift + OR 解讀 Big-endian",
+      "aliases": [
+        "shift or",
+        "mask",
+        "端序轉換"
+      ],
+      "summary": "按協定定義順序組合 bytes，讀之前檢查長度。",
+      "principle": "以無號固定寬度整數移位，避免對齊和主機端序假設。",
+      "conditions": [
+        "len 和 offset 經過邊界檢查",
+        "規格確定欄位為 big-endian 32-bit"
+      ],
+      "tradeoffs": [
+        "解錯端序會得到不同值",
+        "若在內層高頻大量處理仍需測效能"
+      ],
+      "behavior": "測四個 bytes、截斷封包、offset 過大以及最大值。",
+      "metrics": [
+        "解碼正確性",
+        "總耗時"
+      ],
+      "sources": [
+        {
+          "title": "C 固定寬度整數",
+          "url": "https://en.cppreference.com/w/c/types/integer.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "uint32_t v = ((uint32_t)b[0] << 24) |\n             ((uint32_t)b[1] << 16) |\n             ((uint32_t)b[2] << 8)  | b[3];"
+      }
+    },
+    {
+      "id": "no-unaligned-cast",
+      "title": "避免直接轉型不明來源 byte pointer",
+      "aliases": [
+        "strict aliasing",
+        "alignment"
+      ],
+      "summary": "對任意封包位址不要直接 *(uint32_t*)(buf + offset)。",
+      "principle": "減少對齊、別名和主機端序相關未定義／錯誤行為。",
+      "conditions": [
+        "已確認解析格式",
+        "能安全取得足量 bytes"
+      ],
+      "tradeoffs": [
+        "手動解析較長",
+        "固定格式仍需維持正確性"
+      ],
+      "behavior": "在 Sanitizer 和不同 offset 上測試，不能只用對齊的來源。",
+      "metrics": [
+        "正確性",
+        "memory errors"
+      ],
+      "sources": [
+        {
+          "title": "C 固定寬度整數",
+          "url": "https://en.cppreference.com/w/c/types/integer.html"
+        },
+        {
+          "title": "GCC Sanitizers",
+          "url": "https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "parse-once-needed-fields",
+      "title": "只解析必要欄位，減少中間複製",
+      "aliases": [
+        "one pass",
+        "batch parser"
+      ],
+      "summary": "若確實重複解析同一段資料，評估一次通過與按需解析。",
+      "principle": "減少重複掃描與不必要的中間 buffer。",
+      "conditions": [
+        "欄位定義與長度確定",
+        "必須保留校驗與版本相容"
+      ],
+      "tradeoffs": [
+        "可變長封包較複雜",
+        "若欄位只用一次差異不一定顯著"
+      ],
+      "behavior": "使用相同封包集逐欄位比較，包含錯誤輸入。",
+      "metrics": [
+        "總耗時",
+        "拷貝 bytes",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "C 固定寬度整數",
+          "url": "https://en.cppreference.com/w/c/types/integer.html"
+        },
+        {
+          "title": "GCC Sanitizers",
+          "url": "https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

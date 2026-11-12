@@ -75,7 +75,8 @@
       "code": {
         "language": "c",
         "snippet": "local = work(i);\npthread_spin_lock(&lock);\ncounter++;\npthread_spin_unlock(&lock);"
-      }
+      },
+      "articleId": "lesson-spinlock-critical-section-move-work-outside"
     },
     {
       "id": "use-mutex",
@@ -107,7 +108,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_spin_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-spinlock-critical-section-use-mutex"
     },
     {
       "id": "per-thread-count",
@@ -139,7 +141,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-spinlock-critical-section-per-thread-count"
     }
   ]
 }

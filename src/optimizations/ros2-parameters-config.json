@@ -1,0 +1,113 @@
+{
+  "id": "ros2-parameters-config",
+  "name": "ROS 2 Parameters 與可重複調校",
+  "aliases": [
+    "parameter",
+    "參數",
+    "batch_size",
+    "參數調整"
+  ],
+  "category": "ROS 2",
+  "summary": "需要比較不同參數效能時，不要把硬編碼和測試結果混在一起。",
+  "problems": [
+    "需要比較不同參數效能時，不要把硬編碼和測試結果混在一起。",
+    "ROS 2 Parameters 與可重複調校",
+    "parameter",
+    "參數",
+    "batch_size",
+    "參數調整"
+  ],
+  "bottlenecks": [
+    "頻率、批次大小、Queue 大小常需要調整"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy parameters",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-ros2-parameters-config"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "參數化批次與頻率",
+      "aliases": [],
+      "summary": "把調校變成可追蹤設定",
+      "principle": "把調校變成可追蹤設定",
+      "conditions": [
+        "邏輯可以使用參數"
+      ],
+      "tradeoffs": [
+        "有管理設定的成本"
+      ],
+      "behavior": "預設值安全",
+      "metrics": [
+        "吞吐",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy parameters",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-method",
+      "title": "測試多組參數",
+      "aliases": [],
+      "summary": "隔離參數變化的影響",
+      "principle": "隔離參數變化的影響",
+      "conditions": [
+        "有固定基準負載"
+      ],
+      "tradeoffs": [
+        "可能受到背景負載干擾"
+      ],
+      "behavior": "正確性不能退化",
+      "metrics": [
+        "p95",
+        "CPU"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy parameters",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-callback",
+      "title": "不在 Callback 反覆取得昂貴設定",
+      "aliases": [],
+      "summary": "穩定設定可以快取讀值",
+      "principle": "穩定設定可以快取讀值",
+      "conditions": [
+        "允許設定非即時同步"
+      ],
+      "tradeoffs": [
+        "動態改參數需通知更新"
+      ],
+      "behavior": "不能忽略必要的更新",
+      "metrics": [
+        "callback耗時"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy parameters",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

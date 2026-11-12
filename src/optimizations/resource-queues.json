@@ -64,7 +64,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-resource-queues-bounded-queue"
     },
     {
       "id": "double-buffer",
@@ -92,7 +93,8 @@
           "url": "https://en.cppreference.com/w/c/language/memory_model.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-resource-queues-double-buffer"
     },
     {
       "id": "producer-consumer",
@@ -120,7 +122,8 @@
           "url": "https://en.cppreference.com/w/c/language/memory_model.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "lesson-resource-queues-producer-consumer"
     }
   ]
 }

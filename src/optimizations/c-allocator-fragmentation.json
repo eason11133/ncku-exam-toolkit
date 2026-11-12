@@ -1,0 +1,114 @@
+{
+  "id": "c-allocator-fragmentation",
+  "name": "malloc/realloc 頻繁配置與容量策略",
+  "aliases": [
+    "malloc",
+    "realloc",
+    "capacity",
+    "allocation",
+    "記憶體"
+  ],
+  "category": "Memory Management",
+  "summary": "大量小物件一直 malloc/free，可能造成配置時間與記憶體碎片。",
+  "problems": [
+    "大量小物件一直 malloc/free，可能造成配置時間與記憶體碎片。",
+    "malloc/realloc 頻繁配置與容量策略",
+    "malloc",
+    "realloc",
+    "capacity",
+    "allocation",
+    "記憶體"
+  ],
+  "bottlenecks": [
+    "若每新增一筆資料就 realloc 成恰好多一格，可能造成反覆複製"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C realloc",
+      "url": "https://en.cppreference.com/w/c/memory/realloc"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [
+    "ncku-v2-c-allocator-fragmentation"
+  ],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "option-1-method",
+      "title": "倍增容量避免每次搬移",
+      "aliases": [],
+      "summary": "降低 realloc 次數",
+      "principle": "降低 realloc 次數",
+      "conditions": [
+        "資料可接受預留容量"
+      ],
+      "tradeoffs": [
+        "可能增加峰值記憶體"
+      ],
+      "behavior": "元素資料不變",
+      "metrics": [
+        "配置次數",
+        "耗時"
+      ],
+      "sources": [
+        {
+          "title": "C realloc",
+          "url": "https://en.cppreference.com/w/c/memory/realloc"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-2-buffer",
+      "title": "重用短命 Buffer",
+      "aliases": [],
+      "summary": "避免每輪重新配置",
+      "principle": "避免每輪重新配置",
+      "conditions": [
+        "生命周期和佔用可管理"
+      ],
+      "tradeoffs": [
+        "容易留下舊資料"
+      ],
+      "behavior": "無 use-after-free",
+      "metrics": [
+        "峰值RSS"
+      ],
+      "sources": [
+        {
+          "title": "C realloc",
+          "url": "https://en.cppreference.com/w/c/memory/realloc"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "option-3-memory-pool",
+      "title": "只在量出配置瓶頸後上 Memory Pool",
+      "aliases": [],
+      "summary": "集中管理固定尺寸物件",
+      "principle": "集中管理固定尺寸物件",
+      "conditions": [
+        "大量同尺寸短命物件"
+      ],
+      "tradeoffs": [
+        "需要手動生命週期管理"
+      ],
+      "behavior": "無洩漏／越界",
+      "metrics": [
+        "alloc時間"
+      ],
+      "sources": [
+        {
+          "title": "C realloc",
+          "url": "https://en.cppreference.com/w/c/memory/realloc"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}
