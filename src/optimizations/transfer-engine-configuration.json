@@ -1,0 +1,141 @@
+{
+  "id": "transfer-engine-configuration",
+  "name": "Transfer Engine／DMA 工作描述",
+  "aliases": [
+    "Transfer Engine",
+    "DMA",
+    "engine_job_t",
+    "count increment"
+  ],
+  "category": "DMA",
+  "summary": "用 channel 描述來源、目的地、count、size、位址遞增，再啟動、等待及釋放。",
+  "problems": [
+    "transfer-engine wrong data",
+    "count bytes error",
+    "DMA copy slower",
+    "DMA fill",
+    "channel unavailable"
+  ],
+  "bottlenecks": [
+    "count 與 bytes 搞混",
+    "src/dst increment 錯誤",
+    "未完成就修改或讀取 buffer"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Pico SDK DMA Header",
+      "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+    },
+    {
+      "title": "Raspberry Pi Pico SDK Hardware APIs",
+      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "rp2350-pio-fifo"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "count-unit",
+      "title": "先修正 count × size 單位",
+      "aliases": [],
+      "summary": "count 是「筆數」，size 才是每筆 bytes；兩者乘積是總 bytes。",
+      "principle": "若 4096 筆、每筆 4 bytes，總計 16384 bytes。",
+      "conditions": [
+        "已確認 buffer 容量",
+        "count * size 不溢位",
+        "地址和 size 對齊"
+      ],
+      "tradeoffs": [
+        "count 填成 byte 數可能越界",
+        "不同 API 計數單位未必一致"
+      ],
+      "behavior": "先用小陣列測正確性，再測大筆數。",
+      "metrics": [
+        "dst 一致性",
+        "傳輸 bytes",
+        "越界"
+      ],
+      "sources": [
+        {
+          "title": "Pico SDK DMA Header",
+          "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "job.count = 4096;\njob.size = XFER_32;  // 4 bytes per transfer"
+      }
+    },
+    {
+      "id": "copy-vs-fill",
+      "title": "用 increment 旗標區分 Copy / Fill",
+      "aliases": [],
+      "summary": "Copy 來源與目的都遞增；Fill 可固定來源並遞增目的。",
+      "principle": "同一引擎透過不同位址更新策略執行兩種操作。",
+      "conditions": [
+        "目的 buffer 可容納 count * size",
+        "來源具有足夠資料或為一個固定值"
+      ],
+      "tradeoffs": [
+        "重疊 buffer 需特別處理",
+        "不可在搬運尚未完成時釋放或改寫來源"
+      ],
+      "behavior": "比較目的 bytes 內容及數量。",
+      "metrics": [
+        "正確性",
+        "總耗時"
+      ],
+      "sources": [
+        {
+          "title": "Pico SDK DMA Header",
+          "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "job.src_increment = false;  // fill\njob.dst_increment = true;"
+      }
+    },
+    {
+      "id": "overlap-cpu",
+      "title": "搬運期間讓 CPU 做其他獨立工作",
+      "aliases": [],
+      "summary": "非同步 DMA 可能讓 CPU 不必親自做搬運，但需考慮完成等待。",
+      "principle": "先 configure/start，做無關工作，再 wait、讀結果。",
+      "conditions": [
+        "有安全可重疊的 CPU 工作",
+        "完成之前不碰被搬運的資料"
+      ],
+      "tradeoffs": [
+        "軟體模擬引擎本身占 CPU",
+        "硬體 DMA 仍占匯流排"
+      ],
+      "behavior": "保持緩衝區生命週期與完成順序，測的是整體完成時間。",
+      "metrics": [
+        "CPU",
+        "總耗時",
+        "吞吐量",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "Pico SDK DMA Header",
+          "url": "https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h"
+        },
+        {
+          "title": "Raspberry Pi Pico SDK Hardware APIs",
+          "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

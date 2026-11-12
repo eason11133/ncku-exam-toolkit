@@ -1,0 +1,126 @@
+{
+  "id": "resource-queues",
+  "name": "Queue／Double Buffer／Backpressure",
+  "aliases": [
+    "double buffer",
+    "bounded queue",
+    "producer consumer"
+  ],
+  "category": "Concurrency",
+  "summary": "Producer 和 Consumer 速率不同時需要緩衝及背壓策略，否則延遲或記憶體可能越積越多。",
+  "problems": [
+    "queue backlog",
+    "producer faster",
+    "consumer slower",
+    "memory keeps growing",
+    "雙緩衝"
+  ],
+  "bottlenecks": [
+    "生產速度高於消費速度",
+    "沒有 queue 上限",
+    "消費者拿到資料前 buffer 被覆寫"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy QoS",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+    },
+    {
+      "title": "C memory model",
+      "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+    }
+  ],
+  "relatedMethodIds": [],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "bounded-queue",
+      "title": "設定有上限的 Queue",
+      "aliases": [],
+      "summary": "避免無界排隊吃光記憶體，但要明確選擇滿了怎麼辦。",
+      "principle": "限制待處理工作數；滿佇列可阻塞生產者、拒絕新資料或按規格丟舊資料。",
+      "conditions": [
+        "可定義丟失／阻塞語意",
+        "有觀測 queue 長度"
+      ],
+      "tradeoffs": [
+        "阻塞會回傳壓力給前段",
+        "丟資料可能破壞正確性"
+      ],
+      "behavior": "隊列滿的測試必須檢查訊息數量與順序。",
+      "metrics": [
+        "queue depth",
+        "p95",
+        "RSS",
+        "loss rate"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "double-buffer",
+      "title": "雙緩衝區交換讀寫角色",
+      "aliases": [],
+      "summary": "Producer 寫一塊、Consumer 讀另一塊，符合條件時減少互相等待。",
+      "principle": "讀寫分離並在明確同步點交換緩衝區。",
+      "conditions": [
+        "消費者不會仍在讀舊 buffer",
+        "交換順序與記憶體同步安全"
+      ],
+      "tradeoffs": [
+        "占兩份 buffer 記憶體",
+        "若處理速率不均仍需更深 queue"
+      ],
+      "behavior": "不可在 Consumer 讀取時覆寫緩衝區，需確認釋放條件。",
+      "metrics": [
+        "throughput",
+        "waiting",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "C memory model",
+          "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "producer-consumer",
+      "title": "減少高頻跨執行緒共享",
+      "aliases": [],
+      "summary": "使用明確的單向資料通道避免多處直接改共享狀態。",
+      "principle": "讓資料所有權在 Producer / Consumer 之間交接，減少共同修改。",
+      "conditions": [
+        "有可明確分界的資料流",
+        "可設計 shutdown 和 backpressure"
+      ],
+      "tradeoffs": [
+        "需要額外排程",
+        "若 queue 無界會爆記憶體"
+      ],
+      "behavior": "比對無損、無重複、必要先後順序。",
+      "metrics": [
+        "latency",
+        "CPU",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "C memory model",
+          "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

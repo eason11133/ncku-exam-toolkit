@@ -1,0 +1,134 @@
+{
+  "id": "memory-buffer-copy",
+  "name": "Buffer 記憶體複製與所有權",
+  "aliases": [
+    "memcpy",
+    "memmove",
+    "pointer"
+  ],
+  "category": "Memory Management",
+  "summary": "減少複製可能節省時間與空間，但緩衝區長度、重疊與生命週期要先正確。",
+  "problems": [
+    "memcpy slow",
+    "buffer copy",
+    "memory corruption",
+    "double free",
+    "copy data"
+  ],
+  "bottlenecks": [
+    "每個階段重複複製整份資料",
+    "不必要的 allocation",
+    "buffer 使用期間被覆蓋或釋放"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C memcpy",
+      "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
+    },
+    {
+      "title": "C memmove",
+      "url": "https://en.cppreference.com/w/c/string/byte/memmove.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "transfer-engine-configuration"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "avoid-extra-copy",
+      "title": "避免不必要的重複 Copy",
+      "aliases": [],
+      "summary": "如果下一階段可以安全直接讀同一份 buffer，評估傳參考而非再次複製。",
+      "principle": "少一次大資料複製可能減少記憶體頻寬需求。",
+      "conditions": [
+        "所有權與生命週期明確",
+        "允許共享只讀資料"
+      ],
+      "tradeoffs": [
+        "共享可寫 buffer 會造成競爭",
+        "可能引入難追蹤的 alias"
+      ],
+      "behavior": "對照輸出 bytes、buffer 寫入時機、RSS 與整體耗時。",
+      "metrics": [
+        "bytes copied",
+        "總耗時",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "C memcpy",
+          "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "choose-memmove",
+      "title": "重疊區域改用 memmove",
+      "aliases": [],
+      "summary": "如果來源與目的範圍重疊，不能直接使用 memcpy。",
+      "principle": "memmove 將資料按安全順序移動，避免重疊造成未定義行為。",
+      "conditions": [
+        "已證實 ranges overlap",
+        "buffer 尺寸正確"
+      ],
+      "tradeoffs": [
+        "有可能比 memcpy 多成本",
+        "不是效能優化優先選擇，而是正確性修正"
+      ],
+      "behavior": "測重疊前移與後移的內容相同。",
+      "metrics": [
+        "正確性",
+        "總耗時"
+      ],
+      "sources": [
+        {
+          "title": "C memcpy",
+          "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
+        },
+        {
+          "title": "C memmove",
+          "url": "https://en.cppreference.com/w/c/string/byte/memmove.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "c",
+        "snippet": "memmove(buffer + 1, buffer, n * sizeof(buffer[0]));"
+      }
+    },
+    {
+      "id": "reuse-buffer",
+      "title": "重用固定大小 Buffer",
+      "aliases": [],
+      "summary": "高頻分配／釋放造成額外成本時可重用記憶體。",
+      "principle": "減少 malloc/free 呼叫與記憶體碎片。",
+      "conditions": [
+        "明確初始化和可寫範圍",
+        "同時使用者有同步規則"
+      ],
+      "tradeoffs": [
+        "占住高峰容量記憶體",
+        "可能意外保留舊資料"
+      ],
+      "behavior": "每次使用前正確初始化，測峰值 RSS 和分配耗時。",
+      "metrics": [
+        "allocation count",
+        "RSS",
+        "耗時"
+      ],
+      "sources": [
+        {
+          "title": "C memcpy",
+          "url": "https://en.cppreference.com/w/c/string/byte/memcpy.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

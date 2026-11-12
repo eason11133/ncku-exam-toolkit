@@ -1,0 +1,125 @@
+{
+  "id": "pthread-work-partition",
+  "name": "pthread 分工／工作分片",
+  "aliases": [
+    "pthread create",
+    "parallel worker"
+  ],
+  "category": "Concurrency",
+  "summary": "多執行緒可以處理獨立工作；但共享資料、工作分配與記憶體存取會決定效益。",
+  "problems": [
+    "threads slower",
+    "more threads no speedup",
+    "pthread performance",
+    "work imbalance"
+  ],
+  "bottlenecks": [
+    "工作量不均",
+    "所有執行緒爭一把鎖",
+    "每個 worker 不斷修改相鄰 cache line"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "C memory model",
+      "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+    },
+    {
+      "title": "POSIX pthread_mutex_lock",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "spinlock-critical-section"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "partition-independent",
+      "title": "將獨立資料按範圍切分",
+      "aliases": [],
+      "summary": "每個執行緒處理不重疊的資料範圍，最後合併。",
+      "principle": "減少共享寫入；資料需可安全獨立處理。",
+      "conditions": [
+        "不需要每步共享全局狀態",
+        "分塊與合併邊界正確"
+      ],
+      "tradeoffs": [
+        "工作不均造成慢執行緒拖住整體",
+        "額外同步與分工成本"
+      ],
+      "behavior": "驗證切分後每筆資料恰好處理一次，輸出順序符合規格。",
+      "metrics": [
+        "總耗時",
+        "CPU",
+        "輸出正確性"
+      ],
+      "sources": [
+        {
+          "title": "C memory model",
+          "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "reduce-lock",
+      "title": "減少頻繁全域鎖",
+      "aliases": [],
+      "summary": "若資料可分片，考慮局部緩衝或較低頻合併。",
+      "principle": "減少所有 worker 同時等待單一鎖。",
+      "conditions": [
+        "分片可定義",
+        "跨分片一致性有策略"
+      ],
+      "tradeoffs": [
+        "複雜度與記憶體增加",
+        "跨分片更新仍可能需要同步"
+      ],
+      "behavior": "不能因為減鎖就丟掉共享更新。",
+      "metrics": [
+        "鎖等待",
+        "RSS",
+        "正確性"
+      ],
+      "sources": [
+        {
+          "title": "POSIX pthread_mutex_lock",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "thread-count",
+      "title": "測量合理的執行緒數",
+      "aliases": [],
+      "summary": "多執行緒數量超過可用資源可能變慢。",
+      "principle": "建立線程、排程、cache、記憶體頻寬都會造成成本。",
+      "conditions": [
+        "先測單執行緒 baseline",
+        "可觀察可用核心數及真實工作量"
+      ],
+      "tradeoffs": [
+        "結果受環境限制",
+        "I/O 和 CPU 任務不宜用同一假設"
+      ],
+      "behavior": "記錄不同 worker 數的效能曲線，保留最正確且穩定的版本。",
+      "metrics": [
+        "時間",
+        "CPU",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "C memory model",
+          "url": "https://en.cppreference.com/w/c/language/memory_model.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

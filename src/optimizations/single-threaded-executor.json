@@ -1,0 +1,210 @@
+{
+  "id": "single-threaded-executor",
+  "name": "SingleThreadedExecutor（ROS 2 單執行緒執行器）",
+  "aliases": [
+    "SingleThreadedExecutor",
+    "ROS2 executor",
+    "single threaded executor",
+    "rclpy.spin",
+    "ROS 2 callback 串行",
+    "單執行緒 ROS 2",
+    "timer 卡住"
+  ],
+  "category": "ROS 2 / Performance Engineering",
+  "summary": "同一時間只有一條執行緒在跑 Callback：如果 A 很久沒結束，準備好的 B 就要等。先確定延遲是等待開始，還是 B 自己執行太久。",
+  "problems": [
+    "訊息處理延遲",
+    "ROS 2 訂閱延遲",
+    "callback blocking",
+    "callback 太慢",
+    "timer 延遲",
+    "定時器反應慢",
+    "訊息堆積",
+    "ROS 2 CPU 使用率高",
+    "process-heavy node"
+  ],
+  "bottlenecks": [
+    "Callback 裡有阻塞等待，例如同步 I/O 或 sleep",
+    "Callback 重複做昂貴工作，長時間占住 executor",
+    "多個彼此獨立的 Callback 需要及時執行，卻被單執行緒限制",
+    "大量純 Python CPU 計算拖慢 Callback"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy Executors",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+    },
+    {
+      "title": "ROS 2 Jazzy Callback Groups",
+      "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+    },
+    {
+      "title": "Python 3.12 threading",
+      "url": "https://docs.python.org/3.12/library/threading.html"
+    },
+    {
+      "title": "Python 3.12 concurrent.futures",
+      "url": "https://docs.python.org/3.12/library/concurrent.futures.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "ros2-processing-callback",
+    "python-cpu-process"
+  ],
+  "articleIds": [],
+  "commandIds": [
+    "ros2-topic-list"
+  ],
+  "docIds": [
+    "ros-docs"
+  ],
+  "options": [
+    {
+      "id": "shorten-callback",
+      "articleId": "ros2-ste-short-callback",
+      "title": "先縮短 Callback：不要在裡面做不必要的工作",
+      "aliases": [
+        "short callback",
+        "callback duration",
+        "cache config",
+        "移出耗時工作",
+        "減少 callback 工作"
+      ],
+      "summary": "若每個訊息都在重複解析不會變的資料，或做無必要等待，先把這些工作移出。這通常比先改並行架構更容易驗證。",
+      "principle": "SingleThreadedExecutor 要等目前 Callback 返回才能處理下一個。減少此 Callback 佔用時間，就能減少其他 Callback 受到的阻塞。",
+      "conditions": [
+        "確認佔用時間確實主要花在這個 Callback",
+        "要搬出去或快取的結果與目前訊息無關，或可以明確證明資料更新時會重新計算",
+        "不改變原本必要輸出、更新時機與順序"
+      ],
+      "tradeoffs": [
+        "快取可能增加記憶體或產生過期資料",
+        "若運算與每個訊息內容有關，不可只算一次",
+        "某些耗時工作不可隨意跳過"
+      ],
+      "behavior": "保留每次 Callback 必需的行為；變更快取時需處理配置更新，避免讀取過期狀態。",
+      "metrics": [
+        "Callback Duration",
+        "其他 Callback 等待時間",
+        "端到端延遲",
+        "CPU 使用率"
+      ],
+      "code": {
+        "language": "python",
+        "snippet": "# config_json 是不隨每則訊息變動的設定：只解析一次\nself.config = json.loads(config_json)  # 在 __init__\n\ndef on_message(self, msg):\n    limit = self.config[\"limit\"]  # 不再每次 json.loads(config_json)\n    self.handle(msg, limit)"
+      },
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "multithreaded-callback-groups",
+      "articleId": "ros2-ste-multithreaded-groups",
+      "title": "MultiThreadedExecutor ＋ 分開 Callback Group",
+      "aliases": [
+        "MultiThreadedExecutor",
+        "callback groups",
+        "MutuallyExclusiveCallbackGroup",
+        "executor threading",
+        "多執行緒 ROS2"
+      ],
+      "summary": "若 A 卡在等待，B 卻需要及時執行：用至少兩條執行緒，並把能安全重疊的 Callback 放進不同群組。光改 Executor 不夠。",
+      "principle": "ROS 2 用 Executor 決定工作由哪個執行緒處理，也用 Callback Group 決定哪些工作可以重疊。多執行緒加不同互斥群組，才容許 A、B 重疊執行。",
+      "conditions": [
+        "使用 MultiThreadedExecutor 且至少兩條工作執行緒",
+        "需要重疊的 Callback 不是同一個互斥 Callback Group，並保留 callback group 物件參照",
+        "A、B 不會破壞共享資料或必要順序，或已實作適當同步",
+        "瓶頸屬於互相等待／延後開始，不是直接假定純 Python CPU 計算會多核心加速"
+      ],
+      "tradeoffs": [
+        "增加 thread 排程成本，CPU 與記憶體不一定下降",
+        "共享可變資料可能發生競爭，結果錯誤或不穩定",
+        "同步服務呼叫與不當群組配置可能死結",
+        "純 Python CPU-heavy 部分在常見 GIL 啟用 CPython 不會自動多核心加速"
+      ],
+      "behavior": "不同 Callback 可能重疊或改變完成順序，若原功能要求順序必須補同步或保留原架構。",
+      "metrics": [
+        "B 等待開始的時間",
+        "Callback 重疊紀錄",
+        "端到端延遲分布",
+        "CPU／記憶體",
+        "輸出正確性與順序"
+      ],
+      "code": {
+        "language": "python",
+        "snippet": "from rclpy.executors import MultiThreadedExecutor\nfrom rclpy.callback_groups import MutuallyExclusiveCallbackGroup\n\nself.group_a = MutuallyExclusiveCallbackGroup()\nself.group_b = MutuallyExclusiveCallbackGroup()\nself.timer_a = self.create_timer(0.5, self.cb_a, callback_group=self.group_a)\nself.timer_b = self.create_timer(0.1, self.cb_b, callback_group=self.group_b)\n# 在 main：executor = MultiThreadedExecutor(num_threads=2)"
+      },
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy Executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        },
+        {
+          "title": "ROS 2 Jazzy Callback Groups",
+          "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html"
+        },
+        {
+          "title": "Python 3.12 threading",
+          "url": "https://docs.python.org/3.12/library/threading.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "process-pool-cpu",
+      "articleId": "ros2-ste-process-pool",
+      "title": "純 Python CPU 密集運算交給獨立 Process",
+      "aliases": [
+        "multiprocessing",
+        "ProcessPoolExecutor",
+        "GIL",
+        "CPU bound",
+        "Python 多核心計算",
+        "process pool"
+      ],
+      "summary": "若瓶頸是真正的 Python 計算，並行的 Process 能各用自己的 Python 執行環境；但傳資料、結果排序和額外記憶體都有代價。",
+      "principle": "不同 Process 各自有 Python interpreter，常見的 GIL 啟用 CPython 可在多核心上分開計算；ROS Node 應留在主程序，工作程序只做可獨立計算的函式。",
+      "conditions": [
+        "瓶頸確認是大計算量且可獨立拆分",
+        "工作函式位於模組頂層，輸入輸出可 pickle 序列化",
+        "能接受跨程序傳輸成本並確認記憶體限制",
+        "已定義併發上限、輸出順序與關閉程序池的處理"
+      ],
+      "tradeoffs": [
+        "Process 啟動、資料序列化與 IPC 會增加延遲與 CPU 工作",
+        "Process 各有記憶體，RAM 使用量可能上升",
+        "不同任務的結果可能亂序回來，需要按原需求重新排序",
+        "若任務短小或資料太大，可能比原來慢"
+      ],
+      "behavior": "用序號重排或明確定義可接受亂序；不能把 rclpy Node、Publisher 或 Executor 直接傳入 Process。",
+      "metrics": [
+        "單筆端到端延遲",
+        "整體吞吐量",
+        "CPU 核心使用率",
+        "總記憶體使用量",
+        "錯誤與輸出順序"
+      ],
+      "code": {
+        "language": "python",
+        "snippet": "from concurrent.futures import ProcessPoolExecutor\nfrom multiprocessing import get_context\n\ndef heavy(n):  # 必須是模組頂層函式；不傳 ROS Node\n    return sum(i * i for i in range(n))\n\n# 只示意工作池，不是完整 ROS Node；不可在 Callback 內呼叫 .result() 等待\npool = ProcessPoolExecutor(max_workers=2, mp_context=get_context(\"spawn\"))\nfuture = pool.submit(heavy, 500_000)"
+      },
+      "sources": [
+        {
+          "title": "Python 3.12 threading",
+          "url": "https://docs.python.org/3.12/library/threading.html"
+        },
+        {
+          "title": "Python 3.12 concurrent.futures",
+          "url": "https://docs.python.org/3.12/library/concurrent.futures.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

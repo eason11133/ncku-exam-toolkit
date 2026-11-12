@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, BookOpen, Check, ChevronDown, Copy, ExternalLink, Search } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { articles, commands, docs } from './content'
 import { optimizations } from './optimizations'
 import { llmSuggestion, rankOptions, searchOptimizationMethods, technicalBackground } from './optimization-core'
@@ -53,10 +55,12 @@ function MethodResult({ method, query, openOption, setOpenOption, onCopy, copied
 
 function OptionDetail({ method, option, onCopy, copied }: { method: OptimizationMethod; option: OptimizationOption; onCopy: Props['onCopy']; copied: string }) {
   const id = `${method.id}::${option.id}`
+  const detailArticle = option.articleId ? articles.find(article => article.id === option.articleId) : undefined
   return <div className="opt-detail">
     <div className="opt-detail-grid"><div><h3>原理</h3><p>{option.principle}</p><h3>適用條件</h3><ul>{option.conditions.map(item => <li key={item}>{item}</li>)}</ul></div><div><h3>限制與代價</h3><ul>{option.tradeoffs.map(item => <li key={item}>{item}</li>)}</ul><h3>行為與正確性</h3><p>{option.behavior}</p></div></div>
     <p className="opt-metrics"><strong>觀察指標：</strong>{option.metrics.join('、')}</p>
     {option.code && <div className="opt-code"><div><span>範例 · {option.code.language}</span><button onClick={() => onCopy(option.code!.snippet, `code-${id}`)}>{copied === `code-${id}` ? <Check size={14}/> : <Copy size={14}/>} 複製程式碼</button></div><pre><code>{option.code.snippet}</code></pre></div>}
+    {detailArticle && <article className="opt-long-form markdown" aria-label={`${option.title}完整說明`}><ReactMarkdown remarkPlugins={[remarkGfm]} components={{ a: ({ href, children }) => <a href={href} target="_blank" rel="noreferrer">{children}</a> }}>{detailArticle.body}</ReactMarkdown></article>}
     <div className="opt-source"><BookOpen size={15}/><span>參考來源：</span>{option.sources.map(source => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.title} <ExternalLink size={12}/></a>)}</div>
     <div className="opt-detail-actions"><button onClick={() => onCopy(technicalBackground(method, option), `background-${id}`)}>{copied === `background-${id}` ? <Check size={15}/> : <Copy size={15}/>} 複製技術背景</button><button className="opt-copy-primary" onClick={() => onCopy(llmSuggestion(method, option), `llm-${id}`)}>{copied === `llm-${id}` ? <Check size={15}/> : <Copy size={15}/>} 複製給 LLM</button></div>
   </div>

@@ -1,0 +1,137 @@
+{
+  "id": "ros2-processing-callback",
+  "name": "ROS 2 訊息處理 Callback",
+  "aliases": [
+    "rclpy callback",
+    "subscription callback"
+  ],
+  "category": "ROS 2",
+  "summary": "訂閱 Callback 可能包含資料解析、計算與發布；應拆段計時，避免把整段耗時都歸咎 ROS。",
+  "problems": [
+    "callback too slow",
+    "資料處理延遲",
+    "ROS 2 CPU 高",
+    "parse slow"
+  ],
+  "bottlenecks": [
+    "重複解析不變資料",
+    "每筆都完整排序或重新配置記憶體",
+    "同步 I/O 阻塞執行器"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy Executors",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+    },
+    {
+      "title": "Python perf_counter",
+      "url": "https://docs.python.org/3/library/time.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "single-threaded-executor"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "instrument",
+      "title": "分段計時找到真正瓶頸",
+      "aliases": [],
+      "summary": "用 perf_counter 比較 parse、compute、publish；不要猜哪個慢。",
+      "principle": "比較各步耗時，優先修改佔比最大的步驟。",
+      "conditions": [
+        "不改動輸入輸出",
+        "不要每筆都大量輸出 log"
+      ],
+      "tradeoffs": [
+        "紀錄本身也有 overhead",
+        "計時位置不等於端到端延遲"
+      ],
+      "behavior": "先測正確性與分布，不根據單次數字做結論。",
+      "metrics": [
+        "parse ms",
+        "compute ms",
+        "publish ms"
+      ],
+      "sources": [
+        {
+          "title": "Python perf_counter",
+          "url": "https://docs.python.org/3/library/time.html"
+        },
+        {
+          "title": "ROS 2 Jazzy Executors",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "t0 = perf_counter()\nparsed = parse(msg)\nt1 = perf_counter()\nresult = calculate(parsed)\nt2 = perf_counter()"
+      }
+    },
+    {
+      "id": "algorithm",
+      "title": "替換不必要的演算法",
+      "aliases": [],
+      "summary": "例如只求最大值就避免整個排序。",
+      "principle": "找最大值可用線性掃描，而排序通常需 O(n log n) 時間。",
+      "conditions": [
+        "資料非空或有完整空輸入處理",
+        "替換前後語意相同"
+      ],
+      "tradeoffs": [
+        "不同資料型態結果可能不同",
+        "實測才能知道整體收益"
+      ],
+      "behavior": "對照隨機、邊界與空資料輸出是否一致。",
+      "metrics": [
+        "CPU",
+        "callback 執行時間",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python perf_counter",
+          "url": "https://docs.python.org/3/library/time.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "value = max(data)  # 非空；而不是 sorted(data)[-1]"
+      }
+    },
+    {
+      "id": "cache",
+      "title": "快取不會改變的初始化資料",
+      "aliases": [],
+      "summary": "避免對同一份設定每次重新解析或配置。",
+      "principle": "把固定配置從高頻 Callback 移到初始化或資料更新點。",
+      "conditions": [
+        "資料是否真的不變已確認",
+        "定義何時失效重建"
+      ],
+      "tradeoffs": [
+        "快取需占記憶體",
+        "舊資料可能造成錯誤"
+      ],
+      "behavior": "資料更新時必須失效，觀察快取正確性與 RSS。",
+      "metrics": [
+        "執行時間",
+        "cache hit",
+        "記憶體"
+      ],
+      "sources": [
+        {
+          "title": "Python perf_counter",
+          "url": "https://docs.python.org/3/library/time.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

@@ -6,6 +6,7 @@ const option = z.object({
   summary: z.string().min(1), principle: z.string().min(1),
   conditions: z.array(z.string()).min(1), tradeoffs: z.array(z.string()).min(1),
   behavior: z.string().min(1), metrics: z.array(z.string()).min(1),
+  articleId: z.string().min(1).optional(),
   code: z.object({ language: z.string(), snippet: z.string().min(1) }).optional(),
   sources: z.array(source).min(1), verified: z.boolean(),
 })

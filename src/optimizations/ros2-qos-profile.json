@@ -1,0 +1,128 @@
+{
+  "id": "ros2-qos-profile",
+  "name": "ROS 2 QoS／History／Reliability",
+  "aliases": [
+    "QoS",
+    "KeepLast",
+    "BestEffort",
+    "Reliable"
+  ],
+  "category": "ROS 2",
+  "summary": "ROS 2 的訊息傳遞條件，影響能否連線、是否重傳、保留多少資料。",
+  "problems": [
+    "QoS mismatch",
+    "訊息掉包",
+    "latest data delay",
+    "訂閱不到訊息",
+    "隊列積壓"
+  ],
+  "bottlenecks": [
+    "Publisher 與 Subscriber QoS 不相容",
+    "History depth 太小而漏資料",
+    "佇列太長導致過時資料積壓"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "ROS 2 Jazzy QoS",
+      "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "ros2-topic-pipeline"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "fix-compatibility",
+      "title": "先解決 QoS 不相容",
+      "aliases": [],
+      "summary": "確認 Reliable、Best Effort、Durability 的 request/offer。",
+      "principle": "ROS 2 的 QoS 端點設定必須可相容，Topic 名稱正確並不保證能傳輸。",
+      "conditions": [
+        "可讀到兩端的 QoS 設定",
+        "了解資料是否允許遺失"
+      ],
+      "tradeoffs": [
+        "修改可靠性需求可能犧牲正確性",
+        "不同 RMW 的效能也可能不同"
+      ],
+      "behavior": "修改前先說清可接受的遺失與重送需求。",
+      "metrics": [
+        "成功接收率",
+        "丟訊息率",
+        "延遲"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "bash",
+        "snippet": "ros2 topic info /number -v"
+      }
+    },
+    {
+      "id": "keep-last-depth",
+      "title": "評估 Keep Last 的 depth",
+      "aliases": [],
+      "summary": "若積壓的是過時狀態，減少 queue 深度可能減少等待。",
+      "principle": "只保留最近 N 筆資料，讓新狀態能較快被處理。",
+      "conditions": [
+        "業務容許捨棄過時資料",
+        "負載與收到的 sequence 可量測"
+      ],
+      "tradeoffs": [
+        "深度過小會漏資料",
+        "若每筆都有意義，不能套用"
+      ],
+      "behavior": "不能把漏資料誤當成效能改善；計算送達率。",
+      "metrics": [
+        "p95 延遲",
+        "丟失率",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "reliability-choice",
+      "title": "Reliable 和 Best Effort 取捨",
+      "aliases": [],
+      "summary": "對感測器狀態可以評估 Best Effort，但不能套到不能漏的指令。",
+      "principle": "Best Effort 不要求可靠重傳；少了部分重傳等待成本，但資料可能遺失。",
+      "conditions": [
+        "可容忍遺失",
+        "接收端 QoS 必須相容"
+      ],
+      "tradeoffs": [
+        "網路不穩時可能丟資料",
+        "可能不符合控制命令正確性"
+      ],
+      "behavior": "確認目的端的訊息語意，不要不經審查就從 Reliable 改成 Best Effort。",
+      "metrics": [
+        "丟失率",
+        "延遲",
+        "吞吐量"
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 Jazzy QoS",
+          "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}

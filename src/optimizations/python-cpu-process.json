@@ -1,0 +1,136 @@
+{
+  "id": "python-cpu-process",
+  "name": "Python CPU-bound／Process Pool",
+  "aliases": [
+    "multiprocessing",
+    "ProcessPoolExecutor"
+  ],
+  "category": "Performance Engineering",
+  "summary": "普通 GIL 啟用 CPython 的純 Python 計算執行緒不會自動在多核心同時執行位元碼。",
+  "problems": [
+    "Python CPU 100%",
+    "threads not faster",
+    "GIL",
+    "parallel python process"
+  ],
+  "bottlenecks": [
+    "高比例純 Python CPU 計算",
+    "傳大物件造成序列化成本",
+    "同一 Callback 等待 future.result"
+  ],
+  "verified": false,
+  "updatedAt": "2026-11-12",
+  "sources": [
+    {
+      "title": "Python threading",
+      "url": "https://docs.python.org/3/library/threading.html"
+    },
+    {
+      "title": "Python concurrent.futures",
+      "url": "https://docs.python.org/3/library/concurrent.futures.html"
+    }
+  ],
+  "relatedMethodIds": [
+    "single-threaded-executor"
+  ],
+  "articleIds": [],
+  "commandIds": [],
+  "docIds": [],
+  "options": [
+    {
+      "id": "measure-cpu",
+      "title": "先判斷是否真的 CPU-bound",
+      "aliases": [],
+      "summary": "若時間主要花在 I/O 等待，換 Process 未必有益。",
+      "principle": "I/O 等待可讓其他工作執行；純 Python CPU 計算則受一般 GIL 限制。",
+      "conditions": [
+        "可區分等待與計算",
+        "有 wall/CPU 量測"
+      ],
+      "tradeoffs": [
+        "程序間傳輸成本可能高於計算",
+        "C 原生套件可能釋放 GIL"
+      ],
+      "behavior": "記錄不同工作量與多核心情況。",
+      "metrics": [
+        "CPU",
+        "time",
+        "throughput"
+      ],
+      "sources": [
+        {
+          "title": "Python threading",
+          "url": "https://docs.python.org/3/library/threading.html"
+        },
+        {
+          "title": "Python concurrent.futures",
+          "url": "https://docs.python.org/3/library/concurrent.futures.html"
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "process-pool",
+      "title": "純計算搬到 ProcessPoolExecutor",
+      "aliases": [],
+      "summary": "每個 Process 可各自執行計算，但要傳送資料和收回結果。",
+      "principle": "計算被拆成獨立純函式，才可能跨 Process 使用多核心。",
+      "conditions": [
+        "計算函式可 pickle",
+        "資料分塊夠大",
+        "結果順序需求明確"
+      ],
+      "tradeoffs": [
+        "建立 Process、pickle、IPC 成本",
+        "ROS 2 Node 物件不能隨意跨程序"
+      ],
+      "behavior": "不應在 Executor Callback 立即 blocking wait；結果需配對來源。",
+      "metrics": [
+        "總耗時",
+        "CPU",
+        "序列化時間",
+        "RSS"
+      ],
+      "sources": [
+        {
+          "title": "Python concurrent.futures",
+          "url": "https://docs.python.org/3/library/concurrent.futures.html"
+        }
+      ],
+      "verified": false,
+      "code": {
+        "language": "python",
+        "snippet": "with ProcessPoolExecutor(max_workers=2) as pool:\n    answers = list(pool.map(pure_calculation, chunks))"
+      }
+    },
+    {
+      "id": "native-library",
+      "title": "評估 NumPy / 原生計算函式",
+      "aliases": [],
+      "summary": "若現有程式可用原生向量化避免 Python 層迴圈，可能更有效。",
+      "principle": "原生實作可減少 Python 直譯成本；部分操作會釋放 GIL，但依函式而定。",
+      "conditions": [
+        "考場環境已安裝對應套件",
+        "輸入形狀與數值規格明確"
+      ],
+      "tradeoffs": [
+        "新增依賴不一定可用",
+        "浮點精度與溢位行為可能不同"
+      ],
+      "behavior": "用隨機／邊界輸入比對數值、速度與記憶體。",
+      "metrics": [
+        "time",
+        "CPU",
+        "RSS",
+        "結果精度"
+      ],
+      "sources": [
+        {
+          "title": "Python threading",
+          "url": "https://docs.python.org/3/library/threading.html"
+        }
+      ],
+      "verified": false
+    }
+  ]
+}
