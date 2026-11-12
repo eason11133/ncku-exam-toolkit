@@ -1,0 +1,250 @@
+[
+  {
+    "methodId": "algorithm-search-batching",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "algorithm-topk-heap",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "benchmark-correctness",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "c-allocator-fragmentation",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "c-bitfield-operations",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": [
+      "pio-instructions"
+    ]
+  },
+  {
+    "methodId": "c-io-buffering",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "c-memcpy-overlap",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "c-signed-overflow",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "c-struct-packing",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "compiler-profile-guided",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "cpu-memory-locality",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "dma-cache-coherency",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": [
+      "perf-memory",
+      "pio-fifo"
+    ]
+  },
+  {
+    "methodId": "memory-buffer-copy",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "perf-batch-vs-realtime",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "perf-tail-latency",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pio-delay-clock",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pio-fifo-stall",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": [
+      "transfer-dma"
+    ]
+  },
+  {
+    "methodId": "pio-shift-order",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pio-state-machine-limits",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-atomic-counter",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-condition-queue",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-deadlock-order",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-thread-lifecycle",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-timeout-shutdown",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "pthread-work-partition",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": [
+      "thread-lock"
+    ]
+  },
+  {
+    "methodId": "python-cpu-process",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "repeated-query-lookups",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "resource-queues",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-message-serialization",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-parameters-config",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-processing-callback",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-qos-profile",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-remap-diagnostics",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-service-client-deadlock",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-timer-jitter",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-topic-backlog",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "ros2-topic-pipeline",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "rp2350-pio-fifo",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": [
+      "transfer-dma"
+    ]
+  },
+  {
+    "methodId": "safe-binary-decoding",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "single-threaded-executor",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": [
+      "thread-start"
+    ]
+  },
+  {
+    "methodId": "spinlock-critical-section",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "streaming-incremental-state",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "transfer-channel-scheduling",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "transfer-double-buffer",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "transfer-engine-configuration",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "transfer-format",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "methodId": "transfer-interrupt-or-poll",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  }
+]

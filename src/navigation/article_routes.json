@@ -1,0 +1,477 @@
+[
+  {
+    "articleId": "lesson-benchmark-correctness-baseline",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-benchmark-correctness-compare-tradeoff",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-benchmark-correctness-profile-hotspot",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-mask-and-shift",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": [
+      "pio-instructions"
+    ]
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-pack-unpack",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-set-clear",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-avoid-extra-copy",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-choose-memmove",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-reuse-buffer",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-partition-independent",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-reduce-lock",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-thread-count",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-measure-cpu",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-native-library",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-process-pool",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-bounded-queue",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-double-buffer",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-producer-consumer",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-algorithm",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-cache",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-instrument",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-fix-compatibility",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-keep-last-depth",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-reliability-choice",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-check-cli",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-parallel-stages",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-reduce-work",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": [
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-trace-echo",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-move-work-outside",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-per-thread-count",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-use-mutex",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-copy-vs-fill",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-count-unit",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-overlap-cpu",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-batch",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-compact-binary",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-remove-unneeded-data",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-algorithm-query-patterns",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-binary-packet-parsing",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-bitwise-c",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-c-language-bridge",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-c-memory",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-compiler-profile-sanitize",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-concurrency-advanced",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-debug-decision-tree",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-docker-debug",
+    "primaryLeafId": "tools-docker",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-embedded-riscv-io",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-gitlab-workflow",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-incremental-cache",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-local-llm-prompts",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-memory-locality",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-performance-benchmark",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-pio-dataflow",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": [
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "ncku-pthread-condvar-queue",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-pthread-critical-section",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-cli-workflow",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-executor",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-qos",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-systems-foundations",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-transfer-engine",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": [
+      "thread-start"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-algorithm-search-batching",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-algorithm-topk-heap",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-allocator-fragmentation",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-io-buffering",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-memcpy-overlap",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-signed-overflow",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-struct-packing",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-dma-cache-coherency",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": [
+      "perf-memory",
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-perf-batch-vs-realtime",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-perf-tail-latency",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-delay-clock",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-fifo-stall",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": [
+      "transfer-dma"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-pio-shift-order",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-state-machine-limits",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-atomic-counter",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-deadlock-order",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-thread-lifecycle",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-timeout-shutdown",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-message-serialization",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-parameters-config",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-remap-diagnostics",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-service-client-deadlock",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-timer-jitter",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-topic-backlog",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-channel-scheduling",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-double-buffer",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-interrupt-or-poll",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ros2-ste-multithreaded-groups",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": [
+      "thread-lock"
+    ]
+  },
+  {
+    "articleId": "ros2-ste-process-pool",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ros2-ste-short-callback",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  }
+]

@@ -18,6 +18,12 @@
 
 詞條原文放在 `src/concepts/concepts.json`，辨識別名放在 `src/concepts/term_aliases_for_linking.json`；同目錄另保留來源清單、涵蓋說明與人類可閱讀版。新增詞條時使用唯一 `id`，填寫 `title`、`english`、`aliases`、`category`、`coverage`、`explanation`、`example`、`whenToUse`、`source`。`relatedArticle.articleId` 指向現有 Markdown 文章；`exampleSolution.methodId` 與 `optionId` 指向現有優化方法及方案；`relatedConceptIds` 指向其他詞條。沒有真實目標時使用 `null` 或空陣列，勿建立假連結。增加需要在正文辨識的寫法時，同步更新別名 JSON，避免大小寫不敏感的重複別名指向不同詞條。執行 `npm test` 會檢查資料連結、別名衝突及 Markdown 顯示。
 
+## LLM 分層教材導航
+
+從首頁、側邊欄或技術知識庫的「我不知道該選哪篇」進入。可以貼題目摘要，或勾選題目已提供給考場 LLM。每層複製 Prompt，依 LLM 回覆的分類 ID 自行點選；中途可直接查看目前分類所有教材。候選頁列出真實觀念、文章、優化方法與方案，並提供最後一層的閱讀順序 Prompt。網站不呼叫 LLM API，也不自動解析它的回覆。
+
+分類樹與三種 Prompt 模板分別放在 `src/navigation/taxonomy.json`、`src/navigation/prompt_templates.json`。觀念、文章、方法的主要與跨分類路徑分別放在 `concept_routes.json`、`article_routes.json`、`optimization_routes.json`；這些檔案只存 ID，頁面標題與摘要取自原本的內容資料。新增教材時加上對應 route；新增分類時修改樹與 route，不必改導覽元件。`node checks/validate_navigation.mjs` 會檢查所有現有內容均有有效分類，`npm run build` 也會先執行此檢查。
+
 ## 本機開發與部署
 
 ```sh

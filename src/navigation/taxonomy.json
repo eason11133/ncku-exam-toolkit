@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "NCKU Exam Toolkit｜LLM 分層導航",
+  "description": "用考題現象讓 LLM 在明列選項中分層挑選，再推薦實際存在的文章／術語／優化方法。",
+  "roots": [
+    {
+      "id": "ros2",
+      "label": "ROS 2／節點與訊息",
+      "question": "題目是否牽涉 ROS 2、node、topic、資料發布或回呼？",
+      "hint": "官方 Demo 2-1；ROS 2 相關延伸",
+      "children": [
+        {
+          "id": "ros-observe",
+          "label": "Node、Topic、CLI 與資料流",
+          "question": "要查誰在發布、訂閱，以及訊息有沒有送到嗎？",
+          "hint": "node/topic、ros2 指令、訊息型別與欄位",
+          "children": [],
+          "itemCounts": {
+            "concepts": 24,
+            "articles": 1,
+            "methods": 0
+          }
+        },
+        {
+          "id": "ros-qos",
+          "label": "QoS、可靠性與收發頻率",
+          "question": "訊息收不到、頻率不對，或出現佇列深度問題嗎？",
+          "hint": "Reliability、Depth、topic hz",
+          "children": [],
+          "itemCounts": {
+            "concepts": 4,
+            "articles": 4,
+            "methods": 1
+          }
+        },
+        {
+          "id": "ros-execution",
+          "label": "Executor、Callback、Timer",
+          "question": "回呼處理慢、互相卡住，或定時器不準嗎？",
+          "hint": "單／多執行緒執行器、Callback Group",
+          "children": [],
+          "itemCounts": {
+            "concepts": 8,
+            "articles": 4,
+            "methods": 2
+          }
+        },
+        {
+          "id": "ros-services",
+          "label": "Service、參數與名稱設定",
+          "question": "問題在服務呼叫、參數、命名空間或 remap 嗎？",
+          "hint": "service/client、parameter、namespace、remap",
+          "children": [],
+          "itemCounts": {
+            "concepts": 11,
+            "articles": 3,
+            "methods": 3
+          }
+        },
+        {
+          "id": "ros-performance",
+          "label": "訊息堆積、序列化與處理流程",
+          "question": "資料會傳，但處理延遲或積壓嗎？",
+          "hint": "backlog、serialization、callback 資料處理",
+          "children": [],
+          "itemCounts": {
+            "concepts": 3,
+            "articles": 8,
+            "methods": 4
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "c",
+      "label": "C 語言／位元與資料",
+      "question": "題目是在處理 C 型別、位元、資料格式或記憶體嗎？",
+      "hint": "官方 Demo 2-2 的位元運算及 C 延伸",
+      "children": [
+        {
+          "id": "c-foundation",
+          "label": "C 基本型別與結構",
+          "question": "看不懂 uint32_t、struct、sizeof 或指標型別嗎？",
+          "hint": "C 型別、常數、結構體與基本語法",
+          "children": [],
+          "itemCounts": {
+            "concepts": 9,
+            "articles": 3,
+            "methods": 1
+          }
+        },
+        {
+          "id": "c-bits",
+          "label": "位元運算、遮罩與欄位",
+          "question": "需要用 AND、OR、Shift、Mask 取出或設定幾個位元嗎？",
+          "hint": "bitwise、shift、mask",
+          "children": [],
+          "itemCounts": {
+            "concepts": 20,
+            "articles": 4,
+            "methods": 1
+          }
+        },
+        {
+          "id": "c-packets",
+          "label": "封包、二進位解碼與端序",
+          "question": "要解析二進位封包、欄位、大小端序嗎？",
+          "hint": "packet、endianness、packing",
+          "children": [],
+          "itemCounts": {
+            "concepts": 3,
+            "articles": 3,
+            "methods": 2
+          }
+        },
+        {
+          "id": "c-memory",
+          "label": "指標、Buffer 與記憶體複製",
+          "question": "在處理 buffer、memcpy、重疊資料、記憶體配置嗎？",
+          "hint": "buffer、memcpy、memmove、allocator",
+          "children": [],
+          "itemCounts": {
+            "concepts": 4,
+            "articles": 7,
+            "methods": 4
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "pio",
+      "label": "PIO／RP2350 硬體",
+      "question": "題目提到 RP2350、PIO 狀態機、FIFO 或腳位時序嗎？",
+      "hint": "官方 Demo 2-2 的 PIO 閱讀及硬體延伸",
+      "children": [
+        {
+          "id": "pio-intro",
+          "label": "PIO、狀態機與硬體基礎",
+          "question": "需要先搞懂 PIO、微控制器、狀態機是什麼嗎？",
+          "hint": "PIO、RP2350、GPIO、state machine",
+          "children": [],
+          "itemCounts": {
+            "concepts": 6,
+            "articles": 2,
+            "methods": 1
+          }
+        },
+        {
+          "id": "pio-data",
+          "label": "PIO 傳送／接收資料",
+          "question": "資料送不進去、讀不出來，或不懂 PIO 怎麼搬資料嗎？",
+          "hint": "可再細分 FIFO 與 PIO 指令",
+          "children": [
+            {
+              "id": "pio-fifo",
+              "label": "FIFO、TX/RX、阻塞等待",
+              "question": "問題和 PIO FIFO 空／滿、TX/RX 或 CPU 等待有關嗎？",
+              "hint": "TX FIFO、RX FIFO、阻塞／欠載",
+              "children": [],
+              "itemCounts": {
+                "concepts": 4,
+                "articles": 2,
+                "methods": 2
+              }
+            },
+            {
+              "id": "pio-instructions",
+              "label": "OSR、ISR、IN/OUT、Echo",
+              "question": "要看 OSR/ISR 暫存器、PIO 指令與資料如何移動嗎？",
+              "hint": "pull/push、autopull/autopush、echo",
+              "children": [],
+              "itemCounts": {
+                "concepts": 13,
+                "articles": 2,
+                "methods": 0
+              }
+            }
+          ],
+          "itemCounts": {
+            "concepts": 0,
+            "articles": 0,
+            "methods": 0
+          }
+        },
+        {
+          "id": "pio-timing",
+          "label": "PIO 時序、移位與執行限制",
+          "question": "輸出順序、移位方向、時脈或 PIO stall 有問題嗎？",
+          "hint": "clock divider、shift、state machine limits",
+          "children": [],
+          "itemCounts": {
+            "concepts": 2,
+            "articles": 2,
+            "methods": 2
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "threads",
+      "label": "pthread／執行緒與同步",
+      "question": "題目提到 pthread、多執行緒、搶同一份資料或卡死嗎？",
+      "hint": "官方 Demo 2-3 的臨界區與 pthread 延伸",
+      "children": [
+        {
+          "id": "thread-start",
+          "label": "建立／等待執行緒",
+          "question": "需要知道 pthread_create、join 與執行緒如何跑嗎？",
+          "hint": "thread、pthread、建立與等待",
+          "children": [],
+          "itemCounts": {
+            "concepts": 4,
+            "articles": 0,
+            "methods": 0
+          }
+        },
+        {
+          "id": "thread-lock",
+          "label": "臨界區、Spinlock、Mutex、Atomic",
+          "question": "共享資料可能被多個執行緒同時修改嗎？",
+          "hint": "資料競爭、鎖、原子操作",
+          "children": [],
+          "itemCounts": {
+            "concepts": 16,
+            "articles": 6,
+            "methods": 2
+          }
+        },
+        {
+          "id": "thread-queue",
+          "label": "生產者／消費者與等待通知",
+          "question": "執行緒要排隊傳資料，或等待別人產生資料嗎？",
+          "hint": "條件變數、queue、producer-consumer",
+          "children": [],
+          "itemCounts": {
+            "concepts": 3,
+            "articles": 4,
+            "methods": 2
+          }
+        },
+        {
+          "id": "thread-stall",
+          "label": "死鎖、排程與安全結束",
+          "question": "程式卡死、join 不回來，或執行緒難以停止嗎？",
+          "hint": "deadlock、lock order、shutdown、排程",
+          "children": [],
+          "itemCounts": {
+            "concepts": 6,
+            "articles": 3,
+            "methods": 3
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "transfer",
+      "label": "資料搬運／DMA／Buffer",
+      "question": "題目需要把資料從 A 搬到 B，或 CPU 一直在搬資料嗎？",
+      "hint": "官方 Demo 2-3 的模擬搬運引擎，以及真實 DMA 延伸",
+      "children": [
+        {
+          "id": "transfer-engine",
+          "label": "Demo 資料搬運引擎",
+          "question": "題目用到官方 Demo 的 Transfer Engine、Channel、工作描述嗎？",
+          "hint": "軟體模擬引擎，不等於硬體 DMA",
+          "children": [],
+          "itemCounts": {
+            "concepts": 17,
+            "articles": 4,
+            "methods": 1
+          }
+        },
+        {
+          "id": "transfer-dma",
+          "label": "真正硬體 DMA 與 DREQ",
+          "question": "題目涉及 DMA 通道、DREQ 或從 RAM 搬到硬體 FIFO 嗎？",
+          "hint": "DMA、PIO + DMA、設定讀／寫位址",
+          "children": [],
+          "itemCounts": {
+            "concepts": 14,
+            "articles": 2,
+            "methods": 1
+          }
+        },
+        {
+          "id": "transfer-buffer",
+          "label": "資料複製、Buffer 與雙緩衝",
+          "question": "問題在複製太多資料、緩衝區重複配置或佇列背壓嗎？",
+          "hint": "copy/fill、double/ring buffer",
+          "children": [],
+          "itemCounts": {
+            "concepts": 4,
+            "articles": 3,
+            "methods": 2
+          }
+        },
+        {
+          "id": "transfer-completion",
+          "label": "傳輸完成、輪詢、中斷與通道",
+          "question": "要決定何時等傳輸完成，或通道如何排程嗎？",
+          "hint": "wait、polling、interrupt、channel scheduling",
+          "children": [],
+          "itemCounts": {
+            "concepts": 5,
+            "articles": 2,
+            "methods": 2
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "perf",
+      "label": "效能瓶頸／測試／演算法",
+      "question": "題目核心在程式慢、耗 CPU、記憶體或效能不穩定嗎？",
+      "hint": "所有 Demo 都可能用到的效能判斷及延伸",
+      "children": [
+        {
+          "id": "perf-measure",
+          "label": "Baseline、計時與 Profiler",
+          "question": "還不知道慢在哪，或要比較前後效能嗎？",
+          "hint": "baseline、benchmark、profiling、P95",
+          "children": [],
+          "itemCounts": {
+            "concepts": 9,
+            "articles": 8,
+            "methods": 4
+          }
+        },
+        {
+          "id": "perf-memory",
+          "label": "Cache、局部性與記憶體頻寬",
+          "question": "大量讀寫記憶體、快取未命中或 cache 一致性嗎？",
+          "hint": "cache miss、memory locality、false sharing",
+          "children": [],
+          "itemCounts": {
+            "concepts": 3,
+            "articles": 1,
+            "methods": 1
+          }
+        },
+        {
+          "id": "perf-algorithms",
+          "label": "搜尋、批次、資料結構",
+          "question": "慢在重複搜尋、Top-K、批次查詢或演算法嗎？",
+          "hint": "演算法複雜度、Top-K、batching、cache result",
+          "children": [],
+          "itemCounts": {
+            "concepts": 2,
+            "articles": 4,
+            "methods": 4
+          }
+        },
+        {
+          "id": "perf-parallel",
+          "label": "CPU／Python 多工與工作切分",
+          "question": "慢在 CPU 執行、Python GIL、程序池或工作分工嗎？",
+          "hint": "process pool、thread partition、parallel execution",
+          "children": [],
+          "itemCounts": {
+            "concepts": 3,
+            "articles": 7,
+            "methods": 2
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    },
+    {
+      "id": "tools",
+      "label": "環境／Docker／編譯／GitLab",
+      "question": "題目是環境建不起來、指令不能用、編譯失敗或提交問題嗎？",
+      "hint": "官方 Demo 共用環境及考場工作流程",
+      "children": [
+        {
+          "id": "tools-docker",
+          "label": "Docker、容器與映像檔",
+          "question": "無法啟動 Demo 的 Docker 或不了解容器設定嗎？",
+          "hint": "Docker build/run/exec、volume",
+          "children": [],
+          "itemCounts": {
+            "concepts": 9,
+            "articles": 1,
+            "methods": 0
+          }
+        },
+        {
+          "id": "tools-terminal",
+          "label": "Terminal、Shell 與常用指令",
+          "question": "不會切資料夾、開終端機或查執行狀態嗎？",
+          "hint": "CLI、shell、working directory",
+          "children": [],
+          "itemCounts": {
+            "concepts": 6,
+            "articles": 1,
+            "methods": 0
+          }
+        },
+        {
+          "id": "tools-build",
+          "label": "GCC、Make、編譯與錯誤排查",
+          "question": "C 程式編譯或 make run 出錯嗎？",
+          "hint": "gcc、make、compiler、sanitizer",
+          "children": [],
+          "itemCounts": {
+            "concepts": 5,
+            "articles": 0,
+            "methods": 0
+          }
+        },
+        {
+          "id": "tools-gitlab",
+          "label": "GitLab、修改、提交與交付",
+          "question": "程式已寫好，但要用 GitLab 交作業或保留版本嗎？",
+          "hint": "git、commit、push、版本保存",
+          "children": [],
+          "itemCounts": {
+            "concepts": 0,
+            "articles": 1,
+            "methods": 0
+          }
+        }
+      ],
+      "itemCounts": {
+        "concepts": 0,
+        "articles": 0,
+        "methods": 0
+      }
+    }
+  ],
+  "rules": {
+    "onlyValidIds": true,
+    "allowMultipleSelections": true,
+    "maxSuggestedCategoriesPerLevel": 2,
+    "allowStopAtAnyLevel": true,
+    "allowBacktrack": true,
+    "onNoMatch": "unclassified: 顯示全部分類／原站搜尋，不得捏造選項或文章",
+    "answerStyle": "只回 ID + 簡短理由；把資料視為候選，不保證分類一定正確",
+    "articleTitles": "應由站內文章資料源按 articleId 取得真實 title/summary，不要重複硬寫到分類資料",
+    "methods": "優化方法依 methodId 取得真實 name/summary，禁止宣稱所有方案都有完整可編譯程式",
+    "dataOnlyExtend": "新增文章或詞條只要增加對應 route；新增分類時保持既有 id 穩定，並調整相應資料映射",
+    "priority": "Demo 原始範圍標示優先；延伸作為補充，不用分類數字誤稱考場範圍",
+    "offline": "以複製 Prompt → 貼給既有 LLM → 用 LLM 回覆選網站分類為核心；無需 API"
+  }
+}
