@@ -27,10 +27,10 @@ export default function OptimizationLibrary({ selectedId, onNavigate, onCopy, co
   }
 
   return <div className="opt-library">
-    <div className="opt-intro"><span className="eyebrow">從目前方法或效能問題開始</span><h1>效能優化解法庫</h1><p>先看可嘗試的方向與適用條件，再選方案複製給考場 LLM。所有示範方案都需要依實際程式驗證，沒有保證更快。</p></div>
-    <label className="opt-search"><Search size={19}/><input value={query} onChange={event => { setQuery(event.target.value); setOpenOption(null) }} placeholder="搜尋 Mutex、BFS、鎖競爭、記憶體複製太慢…" aria-label="搜尋效能優化解法"/>{query && <button onClick={() => { setQuery(''); setOpenOption(null) }} aria-label="清除解法搜尋">清除</button>}</label>
-    <div className="opt-search-meta"><span>{query ? `找到 ${results.length} 個方法` : `目前收錄 ${optimizations.length} 個示範方法`}</span><span>可用方法名稱、症狀、縮寫或方案名稱搜尋</span></div>
-    {results.length === 0 ? <div className="opt-empty"><strong>目前沒有相符的解法資料</strong><p>可以換用英文名稱、中文症狀或縮寫。正式內容會持續新增；目前僅提供少量示範資料。</p></div> : results.map(method => <MethodResult key={method.id} method={method} query={query} openOption={openOption} setOpenOption={setOpenOption} onCopy={onCopy} copied={copied} showMethod={showMethod} onNavigate={onNavigate}/>)}
+    <div className="opt-intro"><span className="eyebrow">從目前方法或效能問題開始</span><h1>效能優化解法庫</h1><p>先看可嘗試的方向與適用條件，再選方案複製給考場 LLM。內容仍須對照實際程式與來源驗證，沒有方案保證更快。</p></div>
+    <label className="opt-search"><Search size={19}/><input value={query} onChange={event => { setQuery(event.target.value); setOpenOption(null) }} placeholder="搜尋 SingleThreadedExecutor、PIO、鎖競爭、訊息處理延遲…" aria-label="搜尋效能優化解法"/>{query && <button onClick={() => { setQuery(''); setOpenOption(null) }} aria-label="清除解法搜尋">清除</button>}</label>
+    <div className="opt-search-meta"><span>{query ? `找到 ${results.length} 個方法` : `目前收錄 ${optimizations.length} 個方法`}</span><span>可用方法名稱、症狀、縮寫或方案名稱搜尋</span></div>
+    {results.length === 0 ? <div className="opt-empty"><strong>目前沒有相符的解法資料</strong><p>可以換用英文名稱、中文症狀或縮寫；內容會持續新增。</p></div> : results.map(method => <MethodResult key={method.id} method={method} query={query} openOption={openOption} setOpenOption={setOpenOption} onCopy={onCopy} copied={copied} showMethod={showMethod} onNavigate={onNavigate}/>)}
   </div>
 }
 
@@ -39,7 +39,7 @@ function MethodResult({ method, query, openOption, setOpenOption, onCopy, copied
   onCopy: Props['onCopy']; copied: string; showMethod: (id: string) => void; onNavigate: Props['onNavigate'];
 }) {
   return <section className="opt-method" aria-label={method.name}>
-    <div className="opt-method-head"><div><span className="opt-kind">{method.category}</span><span className={`opt-state ${method.verified ? 'is-verified' : ''}`}>{method.verified ? '已查證' : '示範・待查證'}</span><h2>{method.name}</h2><p>{method.summary}</p></div><span className="opt-count">{method.options.length} 個方向</span></div>
+    <div className="opt-method-head"><div><span className="opt-kind">{method.category}</span><span className={`opt-state ${method.verified ? 'is-verified' : ''}`}>{method.verified ? '已查證' : '待查證'}</span><h2>{method.name}</h2><p>{method.summary}</p></div><span className="opt-count">{method.options.length} 個方向</span></div>
     <div className="opt-problems"><strong>常見瓶頸</strong><span>{method.bottlenecks.join(' ／ ')}</span></div>
     <div className="opt-options">{rankOptions(method, query).map(option => {
       const id = `${method.id}::${option.id}`

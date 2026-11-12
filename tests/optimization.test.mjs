@@ -5,32 +5,35 @@ import { searchOptimizationMethods, rankOptions, technicalBackground, llmSuggest
 import { optimizationMethodSchema } from '../src/optimization-schema.ts'
 
 const read = name => JSON.parse(readFileSync(new URL(`../src/optimizations/${name}.json`, import.meta.url), 'utf8'))
-const methods = [read('mutex'), read('bfs'), read('memory-copy')]
-const importedMethods = readdirSync(new URL('../src/optimizations/', import.meta.url))
+const methods = readdirSync(new URL('../src/optimizations/', import.meta.url))
   .filter(name => name.endsWith('.json'))
   .map(name => read(name.slice(0, -5)))
 
-test('all demonstration files satisfy the extensible schema', () => {
+test('all published methods satisfy the extensible schema', () => {
   for (const method of methods) assert.equal(optimizationMethodSchema.safeParse(method).success, true, method.id)
+  assert.equal(methods.length, 14)
+  assert.equal(methods.reduce((count, method) => count + method.options.length, 0), 42)
+  assert.ok(methods.every(method => !method.verified && method.options.every(option => !option.verified)))
 })
 
 test('search finds methods by name, symptoms, and option aliases', () => {
-  assert.equal(searchOptimizationMethods(methods, 'Mutex')[0]?.id, 'mutex')
-  assert.equal(searchOptimizationMethods(methods, '鎖競爭')[0]?.id, 'mutex')
-  assert.equal(searchOptimizationMethods(methods, 'atomic')[0]?.id, 'mutex')
-  assert.equal(searchOptimizationMethods(methods, '記憶體複製太慢')[0]?.id, 'memory-copy')
-  assert.equal(searchOptimizationMethods(methods, 'BFS')[0]?.id, 'bfs')
+  assert.ok(searchOptimizationMethods(methods, 'SingleThreadedExecutor').some(method => method.id === 'single-threaded-executor'))
+  assert.ok(searchOptimizationMethods(methods, '鎖競爭').some(method => method.id === 'spinlock-critical-section'))
+  assert.ok(searchOptimizationMethods(methods, 'Mutex').some(method => method.id === 'spinlock-critical-section'))
+  assert.ok(searchOptimizationMethods(methods, 'memcpy').some(method => method.id === 'memory-buffer-copy'))
+  assert.ok(searchOptimizationMethods(methods, 'PIO').some(method => method.id === 'rp2350-pio-fifo'))
 })
 
 test('matching option comes first while all alternatives remain visible', () => {
-  const ranked = rankOptions(methods[0], 'Spinlock')
-  assert.equal(ranked[0].id, 'spinlock')
-  assert.equal(ranked.length, 5)
+  const method = read('spinlock-critical-section')
+  const ranked = rankOptions(method, 'Mutex')
+  assert.equal(ranked[0].id, 'use-mutex')
+  assert.equal(ranked.length, method.options.length)
 })
 
 test('copy text carries conditions, tradeoffs, behavior and direct implementation request', () => {
-  const method = methods[0]
-  const option = method.options.find(item => item.id === 'atomic-operations')
+  const method = read('spinlock-critical-section')
+  const option = method.options.find(item => item.id === 'use-mutex')
   const background = technicalBackground(method, option)
   const suggestion = llmSuggestion(method, option)
   assert.match(background, /適用條件：/)
@@ -52,7 +55,7 @@ test('imported methods remain searchable by exam terms and symptoms', () => {
     ['位元運算', 'c-bitfield-operations'],
   ]
   for (const [query, id] of expected) {
-    assert.ok(searchOptimizationMethods(importedMethods, query).some(item => item.id === id), `${query} should find ${id}`)
+    assert.ok(searchOptimizationMethods(methods, query).some(item => item.id === id), `${query} should find ${id}`)
   }
 })
 

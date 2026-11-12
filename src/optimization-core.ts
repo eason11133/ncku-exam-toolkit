@@ -69,7 +69,7 @@ export function technicalBackground(method: OptimizationMethod, option: Optimiza
     `行為與正確性：${option.behavior}`,
     `觀察指標：${option.metrics.join('、')}`,
     `參考資料：${option.sources.map(source => `${source.title} ${source.url}`).join('；')}`,
-    `資料狀態：${option.verified ? '已查證' : '示範內容，尚未完整查證；必須對照實際程式與來源'}`,
+    `資料狀態：${option.verified ? '已查證' : '尚未完整查證；必須對照實際程式與來源'}`,
   ].join('\n')
 }
 

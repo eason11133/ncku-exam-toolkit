@@ -35,7 +35,6 @@
     }
   ],
   "relatedMethodIds": [
-    "mutex",
     "pthread-work-partition"
   ],
   "articleIds": [],

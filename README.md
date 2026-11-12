@@ -4,13 +4,13 @@
 
 ## 主要操作
 
-1. 打開「效能優化解法庫」，輸入目前方法（例如 `Mutex`、`BFS`）或效能症狀（例如「鎖競爭」）。
+1. 打開「效能優化解法庫」，輸入目前方法（例如 `SingleThreadedExecutor`、`PIO`）或效能症狀（例如「鎖競爭」）。
 2. 搜尋結果先比較可能的優化方向、觀察指標與簡短說明。
 3. 展開一個方案，檢查原理、適用條件、代價、行為差異、程式範例與來源。
 4. 按「複製技術背景」或「複製給 LLM」，帶到考場提供的 LLM 中直接評估並嘗試修改程式。
 5. 用「測試結果比較」記錄修改前後的實測結果；沒有方案保證一定較快。
 
-目前收錄原有 `Mutex`、`BFS`、`Memory Copy` 三筆示範資料，以及 2026-11-12 匯入的 14 筆方法、42 個方案和 20 篇教學文章。新內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善沒有因此被視為已實測。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
+目前收錄 2026-11-12 匯入的 14 筆方法、42 個方案和 20 篇教學文章。這批內容仍是待查證草稿，`verified` 均為 `false`；程式範例及效能改善沒有因此被視為已實測。網站也保留技術文章、指令速查、注音輸入、錯誤排查、官方文件、個人筆記和提示詞產生器。個人筆記、測試與流程紀錄留在瀏覽器 LocalStorage，可匯出 JSON。內容對照見 [CONTENT_MAP.md](CONTENT_MAP.md)。
 
 ## 本機開發與部署
 
@@ -28,7 +28,7 @@ python checks/validate_content.py
 
 在 `src/optimizations/` 新增一個 `.json` 檔即可；Vite 會自動載入，不需修改 React 元件。每個檔案代表一個**目前使用的方法**，其 `options` 可包含多個優化方案。搜尋會索引方法名稱、別名、問題、瓶頸、方案名稱、方案別名與條件。請把中英文名稱及常見縮寫放入 `aliases`，把使用者實際可能輸入的症狀放入 `problems`。
 
-可直接複製 [src/optimizations/mutex.json](src/optimizations/mutex.json) 作為完整範例，或從下列精簡範例開始。替換 ID、內容與來源後再放入 `src/optimizations/`：
+可參考 [src/optimizations/single-threaded-executor.json](src/optimizations/single-threaded-executor.json) 的完整內容格式，或從下列精簡範本開始。替換 ID、內容與來源後再放入 `src/optimizations/`：
 
 ```json
 {

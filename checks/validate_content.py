@@ -48,8 +48,7 @@ for f in sorted(OPT.glob('*.json')):
     assert set(d)==METHOD_FIELDS,(f,set(d)^METHOD_FIELDS)
     assert d['id']==f.stem and d['id'] not in method_ids,f
     assert d['options'] and all(d[x] for x in ('summary','category','name','problems','bottlenecks','sources')),f
-    if f.stem not in {'mutex', 'bfs', 'memory-copy'}:
-        assert d['verified'] is False,f
+    assert d['verified'] is False,f
     for s in d['sources']: verify_source(s)
     opt_ids=set()
     for o in d['options']:
@@ -57,8 +56,7 @@ for f in sorted(OPT.glob('*.json')):
         assert o['id'] not in opt_ids,(f,o['id'])
         opt_ids.add(o['id'])
         assert all(o[k] for k in ('title','summary','principle','conditions','tradeoffs','behavior','metrics','sources')),(f,o['id'])
-        if f.stem not in {'mutex', 'bfs', 'memory-copy'}:
-            assert o['verified'] is False,(f,o['id'])
+        assert o['verified'] is False,(f,o['id'])
         for s in o['sources']:verify_source(s)
     method_ids.add(d['id']);methods.append(d)
 
