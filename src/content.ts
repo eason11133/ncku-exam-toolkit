@@ -1,12 +1,5 @@
 import { z } from 'zod'
 
-export const categoryTree = [
-  { name: 'Systems', children: ['Linux & Shell', 'Docker', 'Git & GitLab', 'C Programming', 'Memory Management', 'Debugging'] },
-  { name: 'Embedded', children: ['Embedded Systems', 'RP2040 / RP2350', 'ESP32', 'RISC-V', 'PIO', 'GPIO', 'UART / SPI / I²C', 'DMA'] },
-  { name: 'Concurrency', children: ['pthread', 'Mutex / Spinlock', 'Concurrency'] },
-  { name: 'Workflow', children: ['ROS 2', 'Performance Engineering', 'Benchmarking', 'AI-Assisted Development', 'Exam Practice Scenarios'] },
-]
-
 const base = z.object({
   id: z.string().min(1), title: z.string().min(1), category: z.string().min(1),
   tags: z.array(z.string()).default([]), aliases: z.array(z.string()).default([]),
@@ -52,5 +45,3 @@ export const docs: DocLink[] = []
 
 export type Troubleshooting = { id: string; symptom: string; category: string; causes: string[]; diagnostics: string[]; checks: string[]; fixes: string[]; verification: string[]; source: string }
 export const troubleshooting: Troubleshooting[] = []
-
-export const scenarios: { id: string; title: string; tier: 'official' | 'extension' | 'speculative'; summary: string }[] = []

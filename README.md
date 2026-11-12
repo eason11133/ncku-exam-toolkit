@@ -28,44 +28,7 @@ python checks/validate_content.py
 
 在 `src/optimizations/` 新增一個 `.json` 檔即可；Vite 會自動載入，不需修改 React 元件。每個檔案代表一個**目前使用的方法**，其 `options` 可包含多個優化方案。搜尋會索引方法名稱、別名、問題、瓶頸、方案名稱、方案別名與條件。請把中英文名稱及常見縮寫放入 `aliases`，把使用者實際可能輸入的症狀放入 `problems`。
 
-可參考 [src/optimizations/single-threaded-executor.json](src/optimizations/single-threaded-executor.json) 的完整內容格式，或從下列精簡範本開始。替換 ID、內容與來源後再放入 `src/optimizations/`：
-
-```json
-{
-  "id": "unique-method-id",
-  "name": "方法名稱",
-  "aliases": ["English name", "中文別名", "縮寫"],
-  "category": "技術分類",
-  "summary": "一句話說明目前方法。",
-  "problems": ["使用者會搜尋的效能症狀"],
-  "bottlenecks": ["此方法在特定情況下可能遇到的瓶頸"],
-  "verified": false,
-  "updatedAt": "2026-11-10",
-  "sources": [{"title": "來源名稱", "url": "https://example.org/reference"}],
-  "relatedMethodIds": [],
-  "articleIds": [],
-  "commandIds": [],
-  "docIds": [],
-  "options": [
-    {
-      "id": "unique-option-id",
-      "title": "優化方案名稱",
-      "aliases": ["方案別名"],
-      "summary": "搜尋結果中的一句話摘要。",
-      "principle": "此方案如何運作。",
-      "conditions": ["何時適用；必須檢查的前提"],
-      "tradeoffs": ["可能增加的成本或退化情況"],
-      "behavior": "是否改變正確性、順序、可見性或輸入輸出語意。",
-      "metrics": ["延遲", "CPU 使用率"],
-      "code": {"language": "cpp", "snippet": "// 可選：最小且完整標註前提的範例"},
-      "sources": [{"title": "此方案的來源", "url": "https://example.org/option"}],
-      "verified": false
-    }
-  ]
-}
-```
-
-`code` 可省略。`sources` 請填真正可查的文件，勿保留範例網址。確認內容與來源、平台、版本、適用條件後，才把對應的 `verified` 設為 `true`。`relatedMethodIds` 連到其他解法檔的 `id`；`articleIds`、`commandIds`、`docIds` 分別連到既有文章、指令及官方文件 ID。資料以 Zod 驗證，格式錯誤會在載入時明確報錯；同一方法內的方案 ID 必須唯一。
+可直接複製 [SingleThreadedExecutor 方法資料](src/optimizations/single-threaded-executor.json) 或 [ROS 2 完整教學文章](src/content/ros2-ste-short-callback.md) 當作新增內容的起點；兩者都是真正載入網站的檔案。更換 ID、標題、說明、條件及來源後，再依內容實際的查證狀態設定 `verified`。方法資料的 `options` 可列出多個方案；每個方案要說明 `principle`、`conditions`、`tradeoffs`、`behavior`、`metrics` 和 `sources`。`code` 可省略，但提供時應與說明和前提一致。`relatedMethodIds` 連到其他解法檔的 `id`；`articleIds`、`commandIds`、`docIds` 分別連到文章、指令及文件 ID。資料以 Zod 驗證，格式錯誤會在載入時明確報錯；同一方法內的方案 ID 必須唯一。
 
 若某個方案有完整教學，可在該方案加上 `"articleId": "文章-id"`，指向 `src/content/` 的 Markdown 文章；展開方案時會在原頁面直接顯示全文。沒有此欄位的方案仍顯示原有 JSON 詳情。範例見 `src/optimizations/single-threaded-executor.json` 與三篇 `src/content/ros2-ste-*.md`。
 

@@ -4,14 +4,14 @@ import { z } from 'zod'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Search, Command as CommandIcon, BookOpen, Keyboard, Gauge, WandSparkles, Wrench, FileText, ExternalLink, Copy, Check, Sun, Moon, Menu, X, Download, Upload, Trash2, ChevronRight, PanelLeftClose } from 'lucide-react'
-import { articles, commands, docs, scenarios, troubleshooting, type Command } from './content'
+import { articles, commands, docs, troubleshooting, type Command } from './content'
 import { buildPrompt, compare, csvCell, download, parseTimes, promptTasks, stats, toMilliseconds, workflowSteps, type Trial } from './tools'
 import { optimizations } from './optimizations'
 import OptimizationLibrary from './OptimizationLibrary'
 import './theme.css'
 import './home.css'
 
-type View = 'home' | 'knowledge' | 'commands' | 'zhuyin' | 'prompts' | 'performance' | 'troubleshooting' | 'scenarios' | 'docs' | 'notes'
+type View = 'home' | 'knowledge' | 'commands' | 'zhuyin' | 'prompts' | 'performance' | 'troubleshooting' | 'docs' | 'notes'
 type Note = { id: string; title: string; category: string; text: string; updatedAt: string }
 const noteSchema = z.object({ id: z.string().min(1), title: z.string().min(1), category: z.string(), text: z.string(), updatedAt: z.string() })
 const trialSchema = z.object({ version: z.string().min(1), times: z.array(z.number().finite().nonnegative()), unit: z.enum(['ms', 's', 'us']), changes: z.string(), correctness: z.string(), notes: z.string() })
@@ -26,7 +26,6 @@ const nav: { id: View; label: string; icon: typeof Search; section: string }[] =
   { id: 'zhuyin', label: '注音輸入', icon: Keyboard, section: 'TOOLS' },
   { id: 'prompts', label: '提示詞產生器', icon: WandSparkles, section: 'TOOLS' },
   { id: 'notes', label: '個人筆記', icon: FileText, section: 'PERSONAL' },
-  { id: 'scenarios', label: '練習情境', icon: BookOpen, section: 'PERSONAL' },
 ]
 const sectionLabels: Record<string, string> = { WORKSPACE: '開始使用', REFERENCE: '查找資料', TOOLS: '實用工具', PERSONAL: '個人資料' }
 const difficultyLabels: Record<string, string> = { beginner: '入門', intermediate: '中階', advanced: '進階' }
@@ -36,7 +35,6 @@ const categoryLabels: Record<string, string> = {
   'Memory Management': '記憶體管理', Debugging: '除錯', 'Embedded Systems': '嵌入式系統',
   'Mutex / Spinlock': '互斥鎖／自旋鎖', 'Performance Engineering': '效能工程',
   Benchmarking: '效能測試', 'AI-Assisted Development': 'AI 輔助開發',
-  'Exam Practice Scenarios': '考試練習情境',
 }
 function displayCategory(value: string) { return categoryLabels[value] || value }
 const promptTaskLabels = ['理解專案', '解釋架構', '定位相關程式碼', '實作功能', '除錯', '分析效能', '優化程式碼', '審查變更', '解讀文件', '比較方案', '產生測試', '修正編譯錯誤', '分析記憶體用量', '分析並行問題', '分析硬體介面']
@@ -110,11 +108,11 @@ function App() {
           <span className="eyebrow">成大程式工具箱</span>
           <h1>今天要查什麼？</h1>
           <p className="home-intro">搜尋目前使用的方法或遇到的效能問題，快速比較優化方向；技術筆記、指令與注音輸入也都可以直接開啟。</p>
-          <button className="home-search" onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 0) }}><Search size={20}/><span>搜尋技術資料、指令或錯誤…</span><kbd>Ctrl K</kbd></button>
+          <button className="home-search" onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 0) }}><Search size={20}/><span>搜尋技術文章、優化方法或症狀…</span><kbd>Ctrl K</kbd></button>
           <div className="home-columns"><section><div className="home-section-title"><h2>常用工具</h2><span>點選後直接使用</span></div><div className="home-links">
             <button onClick={() => navigate('performance')}><Gauge size={18}/><span><strong>效能優化解法庫</strong><small>搜尋方法或瓶頸，直接比較可嘗試的方案</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('zhuyin')}><Keyboard size={18}/><span><strong>注音輸入</strong><small>直接在瀏覽器輸入繁體中文</small></span><ChevronRight size={16}/></button>
-            <button onClick={() => navigate('commands')}><CommandIcon size={18}/><span><strong>指令速查</strong><small>正式指令內容加入後可在此速查</small></span><ChevronRight size={16}/></button>
+            <button onClick={() => navigate('knowledge')}><FileText size={18}/><span><strong>技術知識庫</strong><small>閱讀已匯入的技術文章與來源</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('prompts')}><WandSparkles size={18}/><span><strong>提示詞產生器</strong><small>組合可複製的英文提示詞</small></span><ChevronRight size={16}/></button>
           </div></section><section><div className="home-section-title"><h2>技術資料</h2><button onClick={() => navigate('knowledge')}>查看全部 <ChevronRight size={15}/></button></div><div className="home-links">
             {articles.slice(0, 4).map(item => <button key={item.id} onClick={() => navigate('knowledge', item.id)}><FileText size={18}/><span><strong>{item.title}</strong><small>{item.summary}</small></span><ChevronRight size={16}/></button>)}
@@ -127,11 +125,10 @@ function App() {
         {view === 'performance' && <><div className="opt-tabs" role="tablist" aria-label="效能工具"><button role="tab" aria-selected={performanceTab === 'solutions'} onClick={() => setPerformanceTab('solutions')}>優化解法庫</button><button role="tab" aria-selected={performanceTab === 'benchmarks'} onClick={() => setPerformanceTab('benchmarks')}>測試結果比較</button></div>{performanceTab === 'solutions' ? <OptimizationLibrary key={selected || "library"} selectedId={selected} onNavigate={navigate} onCopy={copy} copied={copied}/> : <Performance trials={trials} setTrials={setTrials} workflow={workflow} setWorkflow={setWorkflow}/>}</>}
         {view === 'troubleshooting' && <><PageHeader eyebrow="資料查找 / 錯誤排查" title="錯誤排查" subtitle="依症狀搜尋、檢查原因，並以官方文件驗證修復方式。"/><div className="reference-list">{troubleshooting.length === 0 && <Empty title="尚無正式錯誤案例" text="查證過的排查條目會在這裡顯示。"/>}{troubleshooting.map(item => <div className="trouble-card" key={item.id}><span className="pill">{displayCategory(item.category)}</span><h3>{item.symptom}</h3><div className="trouble-grid"><div><strong>可能原因</strong>{item.causes.map(x => <p key={x}>· {x}</p>)}</div><div><strong>診斷指令</strong>{item.diagnostics.map(x => <code key={x}>{x} <button aria-label={`複製 ${x}`} onClick={() => copy(x, x)}><Copy size={13}/></button></code>)}</div><div><strong>建議檢查</strong>{item.checks.map(x => <p key={x}>· {x}</p>)}</div><div><strong>驗證方式</strong>{item.verification.map(x => <code key={x}>{x}</code>)}</div></div><a href={item.source} target="_blank" rel="noreferrer">官方參考資料 <ExternalLink size={14}/></a></div>)}</div></>}
         {view === 'docs' && <><PageHeader eyebrow="資料查找 / 官方文件" title={selectedDoc?.title || '官方文件'} subtitle={selectedDoc?.summary || '直接前往原始文件。版本與查證日期依資料記錄。'} onBack={selectedDoc ? () => setSelected(null) : undefined}/>{selectedDoc ? <div className="detail-card"><div className="meta-row"><span className="pill">{displayCategory(selectedDoc.category)}</span><span>{selectedDoc.version}</span><span>查證日期 {selectedDoc.checkedAt}</span></div><p>{selectedDoc.summary}</p><p>相關主題： {selectedDoc.topics.join(', ')}</p><a className="primary-button inline" href={selectedDoc.url} target="_blank" rel="noreferrer">開啟官方文件 <ExternalLink size={16}/></a></div> : <div className="command-grid">{docs.length === 0 && <Empty title="尚無正式文件清單" text="可先從技術文章中的來源連結開啟官方文件。"/>}{docs.map(item => <button className="command-card" key={item.id} onClick={() => setSelected(item.id)}><span className="pill">{displayCategory(item.category)}</span><strong>{item.title}</strong><p>{item.summary}</p><span className="card-link">查看詳情 <ChevronRight size={14}/></span></button>)}</div>}</>}
-        {view === 'scenarios' && <><PageHeader eyebrow="個人資料 / 練習情境" title="練習情境" subtitle="官方示範、合理延伸與推測情境會明確標記；不會宣稱模擬題是真正考題。"/>{scenarios.length ? scenarios.map(item => <div key={item.id}>{item.title}</div>) : <Empty title="練習情境待加入" text="題目與練習專案會在資料查證後加入。內容結構已預留來源分級。"/>}</>}
         {view === 'notes' && <Notes notes={notes} setNotes={setNotes} trials={trials} setTrials={setTrials} workflow={workflow} setWorkflow={setWorkflow}/>}
       </main>
     </div>
-    {searchOpen && <div className="search-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setSearchOpen(false) }}><div className="search-modal"><div className="search-input"><Search size={19}/><input ref={searchRef} value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋指令、技術觀念、錯誤與文件…" aria-label="全站搜尋"/><button onClick={() => setSearchOpen(false)} aria-label="關閉搜尋"><X size={18}/></button></div><div className="search-results">{query.trim() ? results.length ? results.map(item => <button key={`${item.type}-${item.id}`} onClick={() => navigate(item.target, item.id)}><span className="result-icon"><Search size={15}/></span><span><strong>{item.title}</strong><small>{item.summary}</small></span><span className="pill">{item.type}</span></button>) : <Empty title="沒有找到結果" text="試試英文別名、縮寫或其他關鍵字。"/> : <div className="search-hint"><span>可試試「SingleThreadedExecutor」、「docker exec」或「鎖競爭」</span><span>按 Esc 關閉</span></div>}</div></div></div>}
+    {searchOpen && <div className="search-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setSearchOpen(false) }}><div className="search-modal"><div className="search-input"><Search size={19}/><input ref={searchRef} value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋技術文章、優化方法與症狀…" aria-label="全站搜尋"/><button onClick={() => setSearchOpen(false)} aria-label="關閉搜尋"><X size={18}/></button></div><div className="search-results">{query.trim() ? results.length ? results.map(item => <button key={`${item.type}-${item.id}`} onClick={() => navigate(item.target, item.id)}><span className="result-icon"><Search size={15}/></span><span><strong>{item.title}</strong><small>{item.summary}</small></span><span className="pill">{item.type}</span></button>) : <Empty title="沒有找到結果" text="試試英文別名、縮寫或其他關鍵字。"/> : <div className="search-hint"><span>可試試「SingleThreadedExecutor」、「PIO」或「鎖競爭」</span><span>按 Esc 關閉</span></div>}</div></div></div>}
   </div>
 }
 
