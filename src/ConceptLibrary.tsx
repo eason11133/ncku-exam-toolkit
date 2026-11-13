@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen, Search } from 'lucide-react'
 import { articles } from './content'
 import { optimizations } from './optimizations'
@@ -14,7 +15,18 @@ type Props = {
   onNavigate: (view: 'knowledge' | 'performance', id: string) => void
 }
 
+function conceptLabel(item: Concept): string {
+  const abbreviation = item.aliases.find(alias => /^[A-Z][A-Z0-9-]{1,11}$/.test(alias))
+  return abbreviation && !item.title.includes(abbreviation) ? `${abbreviation}（${item.title}）` : item.title
+}
+
 export default function ConceptLibrary({ selected, concepts, query, onQuery, onSelect, onBack, backLabel, onNavigate }: Props) {
+  const [showAll, setShowAll] = useState(false)
+  const needle = query.trim().toLocaleLowerCase()
+  const exact = needle ? concepts.find(item => [item.title, item.english, ...item.aliases].some(value => value.trim().toLocaleLowerCase() === needle)) : undefined
+  const related = exact ? concepts.filter(item => item.id !== exact.id) : concepts
+  const limit = needle ? 10 : 30
+  const displayed = showAll ? related : related.slice(0, limit)
   if (selected) {
     const article = articles.find(item => item.id === selected.relatedArticle?.articleId)
     const method = optimizations.find(item => item.id === selected.exampleSolution?.methodId)
@@ -37,5 +49,31 @@ export default function ConceptLibrary({ selected, concepts, query, onQuery, onS
       </div>
     </div>
   }
-  return <div className="concept-page"><span className="eyebrow">資料查找</span><h1>技術觀念庫</h1><p className="concept-english">搜尋名詞或縮寫，先理解意思，再前往相關文章與解法。</p><label className="concept-search"><Search size={18}/><input value={query} onChange={event => onQuery(event.target.value)} placeholder="搜尋 PIO FIFO、DMA、DREQ、臨界區…" aria-label="搜尋技術觀念"/></label><p className="concept-count">{query.trim() ? `找到 ${concepts.length} 個觀念` : `收錄 ${concepts.length} 個觀念`}</p><div className="concept-list">{concepts.map(item => <button key={item.id} onClick={() => onSelect(item.id)}><span className="pill">{item.category}</span><strong>{item.title}</strong><small>{item.explanation}</small><ArrowRight size={16}/></button>)}</div></div>
+  return <div className="concept-page">
+    <span className="eyebrow">資料查找</span>
+    <h1>技術觀念庫</h1>
+    <p className="concept-english">搜尋名詞或縮寫，先理解意思，再前往相關文章與解法。</p>
+    <label className="concept-search">
+      <Search size={18}/>
+      <input value={query} onChange={event => { setShowAll(false); onQuery(event.target.value) }} placeholder="搜尋 PIO FIFO、DMA、DREQ、臨界區…" aria-label="搜尋技術觀念"/>
+    </label>
+    {exact && <section className="concept-definition">
+      <span className="eyebrow">最符合的名詞解釋</span>
+      <button onClick={() => onSelect(exact.id)}>
+        <strong>{conceptLabel(exact)}</strong>
+        <span>{exact.plain}</span>
+        <small>查看完整解釋 <ArrowRight size={14}/></small>
+      </button>
+    </section>}
+    <p className="concept-count">{needle
+      ? (exact ? `另外找到 ${related.length} 個相關觀念` : `找到 ${related.length} 個觀念`)
+      : `收錄 ${concepts.length} 個觀念`}</p>
+    <div className="concept-list">{displayed.map(item => <button key={item.id} onClick={() => onSelect(item.id)}>
+      <span className="pill">{item.category}</span>
+      <strong>{conceptLabel(item)}</strong>
+      <small>{item.explanation}</small>
+      <ArrowRight size={16}/>
+    </button>)}</div>
+    {related.length > limit && <button className="concept-more" onClick={() => setShowAll(value => !value)}>{showAll ? '收起相關結果' : `顯示其他 ${related.length - limit} 個結果`}</button>}
+  </div>
 }
