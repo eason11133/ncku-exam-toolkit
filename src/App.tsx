@@ -10,11 +10,12 @@ import ToolkitMarkdown, { getHeadings } from './ToolkitMarkdown'
 import { concepts, conceptById, searchConcepts } from './concepts'
 import ConceptLibrary from './ConceptLibrary'
 import LessonNavigator from './LessonNavigator'
+import GitLabHelp from './GitLabHelp'
 import './theme.css'
 import './home.css'
 import './concepts.css'
 
-type View = 'home' | 'navigation' | 'knowledge' | 'concepts' | 'commands' | 'zhuyin' | 'prompts' | 'performance' | 'troubleshooting' | 'docs' | 'notes'
+type View = 'home' | 'navigation' | 'gitlab-help' | 'knowledge' | 'concepts' | 'commands' | 'zhuyin' | 'prompts' | 'performance' | 'troubleshooting' | 'docs' | 'notes'
 type Note = { id: string; title: string; category: string; text: string; updatedAt: string }
 const noteSchema = z.object({ id: z.string().min(1), title: z.string().min(1), category: z.string(), text: z.string(), updatedAt: z.string() })
 const trialSchema = z.object({ version: z.string().min(1), times: z.array(z.number().finite().nonnegative()), unit: z.enum(['ms', 's', 'us']), changes: z.string(), correctness: z.string(), notes: z.string(), workPerRun: z.number().positive().optional(), workUnit: z.string().optional() })
@@ -22,6 +23,7 @@ const importSchema = z.object({ notes: z.array(noteSchema), trials: z.array(tria
 const nav: { id: View; label: string; icon: typeof Search; section: string }[] = [
   { id: 'home', label: '首頁', icon: BookOpen, section: 'WORKSPACE' },
   { id: 'navigation', label: 'LLM 教材導航', icon: BookOpen, section: 'WORKSPACE' },
+  { id: 'gitlab-help', label: 'GitLab 操作與排錯', icon: Wrench, section: 'WORKSPACE' },
   { id: 'performance', label: '效能優化解法庫', icon: Gauge, section: 'WORKSPACE' },
   { id: 'knowledge', label: '技術知識庫', icon: FileText, section: 'REFERENCE' },
   { id: 'concepts', label: '技術觀念庫', icon: BookOpen, section: 'REFERENCE' },
@@ -131,6 +133,7 @@ function App() {
           <button className="home-search" onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 0) }}><Search size={20}/><span>搜尋技術文章、優化方法或症狀…</span><kbd>Ctrl K</kbd></button>
           <div className="home-columns"><section><div className="home-section-title"><h2>常用工具</h2><span>點選後直接使用</span></div><div className="home-links">
             <button onClick={() => navigate('navigation')}><BookOpen size={18}/><span><strong>不知道該看哪篇？</strong><small>把題目交給考場 LLM，逐層找到站內教材</small></span><ChevronRight size={16}/></button>
+            <button onClick={() => navigate('gitlab-help')}><Wrench size={18}/><span><strong>GitLab 操作與問題排查</strong><small>Clone、Push、Pipeline、評分與連線錯誤</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('performance')}><Gauge size={18}/><span><strong>效能優化解法庫</strong><small>搜尋方法或瓶頸，直接比較可嘗試的方案</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('zhuyin')}><Keyboard size={18}/><span><strong>注音輸入</strong><small>直接在瀏覽器輸入繁體中文</small></span><ChevronRight size={16}/></button>
             <button onClick={() => navigate('knowledge')}><FileText size={18}/><span><strong>技術知識庫</strong><small>閱讀已匯入的技術文章與來源</small></span><ChevronRight size={16}/></button>
@@ -140,6 +143,7 @@ function App() {
             {articles.slice(0, 4).map(item => <button key={item.id} onClick={() => navigate('knowledge', item.id)}><FileText size={18}/><span><strong>{item.title}</strong><small>{item.summary}</small></span><ChevronRight size={16}/></button>)}
           </div></section></div>
         </div>}
+        {view === 'gitlab-help' && <GitLabHelp/>}
         {view === 'navigation' && <LessonNavigator pathIds={navigationPath} setPathIds={setNavigationPath} showCandidates={navigationShowCandidates} setShowCandidates={setNavigationShowCandidates} onCopy={copy} copied={copied} onOpenItem={openNavigationItem} onSearch={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 0) }}/>}
         {navigationReturn && ['concepts', 'knowledge', 'performance'].includes(view) && <button className="navigation-return" onClick={() => navigate('navigation')}>← 返回教材導航</button>}
         {view === 'concepts' && <ConceptLibrary selected={selectedConcept} concepts={visibleConcepts} query={conceptQuery} onQuery={setConceptQuery} onSelect={openConcept} onBack={returnFromConcept} backLabel={conceptHistory.at(-1)?.view === 'concepts' ? conceptHistory.at(-1)?.selected ? '返回上一個觀念' : '返回詞條列表' : conceptHistory.length ? '返回原文' : '返回詞條列表'} onNavigate={navigateFromConcept}/>}
