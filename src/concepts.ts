@@ -23,11 +23,46 @@ const fuse = new Fuse(concepts, {
 })
 const normalize = (value: string) => value.trim().toLocaleLowerCase()
 
+// Use one exact-match index for both the global search and the concept library.
+// Search aliases from markdown linking must work here too.
+const exactIdsByTerm = new Map<string, Set<string>>()
+function addExactTerm(term: string, conceptId: string): void {
+  const key = normalize(term)
+  if (!key || !conceptById.has(conceptId)) return
+  const matches = exactIdsByTerm.get(key) || new Set<string>()
+  matches.add(conceptId)
+  exactIdsByTerm.set(key, matches)
+}
+for (const concept of concepts) {
+  for (const term of [concept.title, concept.english, ...concept.aliases]) addExactTerm(term, concept.id)
+}
+for (const alias of aliases) addExactTerm(alias.text, alias.conceptId)
+
+export function getExactConcepts(query: string): Concept[] {
+  const ids = exactIdsByTerm.get(normalize(query))
+  return ids ? [...ids].map(id => conceptById.get(id)!).filter(Boolean) : []
+}
+
+export function conceptDisplayTitle(concept: Concept): string {
+  const abbreviation = concept.aliases.find(alias => /^[A-Z][A-Z0-9_-]{1,11}$/.test(alias))
+  if (!abbreviation) return concept.title
+  const compact = (value: string) => value.toLocaleUpperCase().replace(/[^A-Z0-9]/g, '')
+  return compact(concept.title).includes(compact(abbreviation)) ? concept.title : `${abbreviation}（${concept.title}）`
+}
+
+export function exactConceptDisplayTitle(concept: Concept, query: string): string {
+  const display = conceptDisplayTitle(concept)
+  const key = normalize(query)
+  if (!key || normalize(display).includes(key)) return display
+  const supplied = [concept.english, ...concept.aliases, ...aliases.filter(alias => alias.conceptId === concept.id).map(alias => alias.text)]
+    .find(value => normalize(value) === key) || query.trim()
+  return /^[\x20-\x7E]{2,48}$/.test(supplied) ? `${supplied}（${concept.title}）` : display
+}
+
 export function searchConcepts(query: string, limit = 12): Concept[] {
   const needle = normalize(query)
   if (!needle) return concepts.slice(0, limit)
-  const exactIds = new Set(aliases.filter(alias => normalize(alias.text) === needle).map(alias => alias.conceptId))
-  const exact = concepts.filter(concept => exactIds.has(concept.id) || [concept.title, concept.english, ...concept.aliases].some(value => normalize(value) === needle))
+  const exact = getExactConcepts(query)
   const seen = new Set(exact.map(concept => concept.id))
   return [...exact, ...fuse.search(query).map(result => result.item).filter(concept => !seen.has(concept.id))].slice(0, limit)
 }
