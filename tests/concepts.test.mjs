@@ -69,3 +69,56 @@ test('ISR search stays ambiguous while the Markdown renderer links only explicit
     await server.close()
   }
 })
+
+
+test('all known exact terms resolve consistently, including extra linking aliases', async () => {
+  const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
+  try {
+    const { searchConcepts, getExactConcepts, conceptDisplayTitle, exactConceptDisplayTitle } = await server.ssrLoadModule('/src/concepts.ts')
+    const exactIds = query => getExactConcepts(query).map(item => item.id)
+    for (const concept of concepts) {
+      for (const term of [concept.title, concept.english, ...concept.aliases]) {
+        assert.ok(exactIds(term).includes(concept.id), `concept term: ${term} -> ${concept.id}`)
+      }
+    }
+    for (const alias of aliases) {
+      assert.ok(exactIds(alias.text).includes(alias.conceptId), `linking alias: ${alias.text}`)
+    }
+    for (const query of ['PIO', 'DMA', 'GPIO', 'FIFO', 'OSR', 'DREQ', 'pthread', 'condition var', 'PIO ISR']) {
+      const matches = getExactConcepts(query)
+      assert.ok(matches.length > 0, query)
+      assert.deepEqual(searchConcepts(query, matches.length).map(item => item.id), matches.map(item => item.id), query)
+    }
+    assert.deepEqual(new Set(exactIds('ISR')), new Set(['isr', 'interrupt-service-routine']))
+    assert.match(conceptDisplayTitle(concepts.find(item => item.id === 'pio')), /PIO/)
+    assert.match(exactConceptDisplayTitle(concepts.find(item => item.id === 'condition-variable'), 'condition var'), /condition var/i)
+    assert.deepEqual(exactIds('pIo'), exactIds('PIO'))
+  } finally {
+    await server.close()
+  }
+})
+
+test('concept library displays precise definitions instead of hiding ambiguous acronyms', async () => {
+  const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
+  try {
+    const { searchConcepts } = await server.ssrLoadModule('/src/concepts.ts')
+    const { default: ConceptLibrary } = await server.ssrLoadModule('/src/ConceptLibrary.tsx')
+    const makeView = query => renderToStaticMarkup(React.createElement(ConceptLibrary, {
+      concepts: searchConcepts(query, 259), query,
+      onQuery: () => {}, onSelect: () => {}, onBack: () => {},
+      backLabel: '返回', onNavigate: () => {},
+    }))
+    const pioHtml = makeView('PIO')
+    assert.match(pioHtml, /PIO（可程式化輸入輸出）/)
+    assert.match(pioHtml, /最符合的名詞解釋/)
+    const isrHtml = makeView('ISR')
+    assert.match(isrHtml, /這個名稱有不同意思/)
+    assert.match(isrHtml, /輸入移位暫存器/)
+    assert.match(isrHtml, /中斷服務函式/)
+    const aliasHtml = makeView('condition var')
+    assert.match(aliasHtml, /條件變數/)
+    assert.match(aliasHtml, /最符合的名詞解釋/)
+  } finally {
+    await server.close()
+  }
+})
