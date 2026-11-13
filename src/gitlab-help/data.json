@@ -1,51 +1,40 @@
 {
-  "intro": "用 VS Code 修改、Git 送出、GitLab 看 Pipeline。依今年現場規則為準；這是考前操作速查，不是正式評分規格。",
+  "intro": "先連線、再提交、最後看 Pipeline。題號格式與分支依今年現場規則。",
   "checklists": [
     {
       "id": "before",
-      "title": "開始寫題目之前",
-      "lead": "先確認你真的站在對的專案和分支",
-      "code": "git status --short\ngit branch --show-current\ngit remote -v\ngit ls-remote origin",
+      "title": "確認連線",
+      "lead": "先確認遠端能讀取。",
+      "code": "git status -sb\ngit remote -v\ngit ls-remote origin",
       "notes": [
-        "前三行只讀本機狀態；ls-remote 嘗試連線讀取遠端，但成功不保證有 Push 權限。",
-        "如果不是 Git 專案，先用 VS Code 開啟正確的專案資料夾。",
-        "測機階段有任何認證錯誤，先依官方說明或找監考人員，不要修改全域安全設定。"
+        "ls-remote 成功不代表一定能 Push；若連不上，先找現場人員。"
       ]
     },
     {
       "id": "submit",
-      "title": "VS Code 修改後怎麼送",
-      "lead": "先測、確認差異，再送到題目指定分支",
-      "code": "git status --short\ngit diff --check\ngit diff\n# 只加入自己確認過的檔案\ngit add hello.py\ngit commit -m \"依今年規則填寫題號前綴與說明\"\ngit push",
+      "title": "修改後提交",
+      "lead": "確認沒加到多餘檔案。",
+      "code": "git status -sb\ngit diff --check\ngit add .\ngit commit -m \"請替換成官方指定的題號格式\"\ngit push",
       "notes": [
-        "hello.py 只是今天練習專案的檔名，考試請改成實際要提交的檔案。",
-        "Commit message 的題號前綴、要推哪個分支，以今年官方說明為準。",
-        "如果 git push 沒有設定上游分支，才依 Git 提示使用 git push -u origin 分支名稱。",
-        "Commit 成功只代表本機有版本；Push 成功後還要核對 GitLab 上的 SHA。"
+        "先確認 git status；Commit 格式、分支按官方要求。"
       ]
     },
     {
       "id": "grading",
-      "title": "分數與錯誤去哪裡看",
-      "lead": "先找對 Pipeline，再看真正執行的 Job",
-      "code": "git log -1 --oneline\ngit status -sb\ngit remote -v",
+      "title": "看結果",
+      "lead": "GitLab：Build → Pipelines → Job Log",
+      "code": "git log -1 --oneline",
       "notes": [
-        "在 GitLab 專案進入 Build → Pipelines → 對應提交 → Job → Job Log。",
-        "Pending／Created 可能在排隊；Running 表示在執行；Failed 要看 Job Log 裡第一個有用的錯誤。",
-        "Passed 只代表該 Pipeline 的工作通過，不一定有評分；是否顯示分數要看今年的評分 Job。",
-        "學長曾提到排隊和提交覆蓋風險；不要一直 Push，先看前一個工作是否完成。"
+        "核對最新 SHA。Passed 未必等於有分數；以評分 Job 為準。"
       ]
     },
     {
       "id": "emergency",
-      "title": "交卷前快速確認",
-      "lead": "避免程式寫好了卻交錯分支",
-      "code": "git status -sb\ngit log -1 --oneline\ngit remote -v",
+      "title": "交卷前",
+      "lead": "確認真的送上去。",
+      "code": "git status -sb\ngit log -1 --oneline",
       "notes": [
-        "檢查目前分支、最後提交 SHA 和 GitLab 網頁顯示的分支與 SHA 是否一致。",
-        "確認 Pipeline 是對應最新提交，不要把舊版的綠燈當成本次結果。",
-        "別用 git push --force、git reset --hard、git clean -fd 等可能毀損結果的指令。",
-        "發現校內伺服器連線或權限異常，保留錯誤訊息並立即向現場人員回報。"
+        "核對 GitLab 分支、最新 SHA、Pipeline，別看錯舊版本。"
       ]
     }
   ],
@@ -53,189 +42,157 @@
     {
       "id": "powershell-angle",
       "kind": "指令",
-      "title": "PowerShell 出現「< 運算子保留」",
-      "symptom": "git clone <git@...> 直接噴 ParserError",
-      "cause": "教學中的 < > 是佔位標記，被當成 PowerShell 語法。",
+      "title": "PowerShell：< 運算子保留",
+      "symptom": "git clone 指令解析失敗",
+      "cause": "多打了尖括號。",
       "fix": [
-        "從 GitLab 的 Code 選單複製完整 URL。",
-        "git clone 後面直接貼網址，不要輸入尖括號。",
-        "URL 若以 git@ 開頭，是 SSH；若以 http:// 或 https:// 開頭，走 HTTP(S)。"
+        "複製 GitLab 的 Clone 網址，直接貼在 git clone 後面，不加 < >。"
       ],
-      "code": "git clone URL_請換成實際完整網址",
-      "warning": "URL_請換成實際完整網址 不是可以照貼的真網址。"
+      "code": ""
     },
     {
       "id": "http-unsafe",
       "kind": "連線",
-      "title": "Unencrypted HTTP is not recommended for GitLab",
-      "symptom": "Git Credential Manager 在 Clone 時拒絕不加密 HTTP",
-      "cause": "學校提供的 http:// 遠端與本機的憑證安全政策衝突。",
+      "title": "Unencrypted HTTP",
+      "symptom": "Git Credential Manager 擋住 HTTP Clone",
+      "cause": "HTTP 傳送憑證不安全。",
       "fix": [
-        "先確認官方是否提供 HTTPS 或已設定好的 SSH 方式。",
-        "不要為了讓指令能跑，直接全域關閉憑證安全保護。",
-        "考場若有這個狀況，先把完整錯誤交給監考或技術人員，按官方指示處理。"
+        "改用官方支援的 HTTPS／SSH；考場先找現場人員。"
       ],
       "code": "git remote -v",
-      "warning": "改成 https:// 前須先確認伺服器真的支援 HTTPS，不能只改前綴。"
+      "warning": "不要直接關閉 Git 的憑證安全設定。"
     },
     {
       "id": "ssh-fingerprint",
       "kind": "連線",
       "title": "The authenticity of host can't be established",
-      "symptom": "第一次 SSH Clone 詢問 yes/no/[fingerprint]",
-      "cause": "電腦尚未記錄這台伺服器的公開主機金鑰。",
+      "symptom": "第一次 SSH 連線要求確認",
+      "cause": "電腦還沒記錄伺服器金鑰。",
       "fix": [
-        "核對官方文件或管理員提供的主機金鑰 fingerprint。",
-        "只有確認一致後，才輸入 yes。",
-        "這個提示和自己的 SSH 公開金鑰是否已加入 GitLab 是兩件不同的事。"
+        "先和官方核對 fingerprint，一致才輸入 yes。"
       ],
-      "code": "ssh -T git@你的學校GitLab主機",
-      "warning": "請用實際主機名稱；沒有核對指紋前不要盲目接受。"
+      "code": ""
     },
     {
       "id": "ssh-publickey",
       "kind": "連線",
       "title": "Permission denied (publickey)",
-      "symptom": "SSH 連線成功但 GitLab 拒絕登入",
-      "cause": "沒有適用的私鑰、公開金鑰未登記，或帳號沒有 Repo 權限。",
+      "symptom": "SSH 認證被拒",
+      "cause": "SSH Key 沒設定好或沒權限。",
       "fix": [
-        "先查看現場官方的連線教學，確認是否根本要求使用 HTTP(S)。",
-        "使用自己的 GitLab 帳號檢查 SSH Keys 是否有對應公鑰。",
-        "不要把私鑰、密碼或 Token 貼給他人；考場配置不符就請管理員處理。"
+        "確認 GitLab 的 SSH Keys 與帳號權限；考場找管理員。"
       ],
-      "code": "ssh -T git@你的學校GitLab主機",
-      "warning": "主機名稱只是示意，請換成官方提供的。"
+      "code": ""
     },
     {
       "id": "not-repo",
       "kind": "Git 指令",
-      "title": "fatal: not a git repository",
-      "symptom": "git status、git push 都說目前不是 Repository",
-      "cause": "VS Code Terminal 可能在錯誤資料夾。",
+      "title": "not a git repository",
+      "symptom": "git status 也失敗",
+      "cause": "Terminal 不在專案資料夾。",
       "fix": [
-        "用 VS Code 開啟 Clone 後的專案目錄。",
-        "在 Terminal 查看目前位置與資料夾內容。",
-        "別在電腦其他資料夾直接執行 git init，以免建立另一個錯誤專案。"
+        "在 VS Code 開啟正確的 Repo 資料夾。"
       ],
-      "code": "pwd\ngit status\n# PowerShell 可用：Get-Location"
+      "code": "pwd\ngit status"
     },
     {
       "id": "no-origin",
       "kind": "Git 指令",
-      "title": "fatal: 'origin' does not appear to be a git repository",
-      "symptom": "git push 或 git ls-remote origin 找不到遠端",
-      "cause": "Repo 可能沒有 origin，或 remote URL 設錯。",
+      "title": "origin does not appear to be a git repository",
+      "symptom": "找不到遠端 Repo",
+      "cause": "origin 遺失或網址錯誤。",
       "fix": [
-        "先執行 git remote -v，確認有沒有 origin。",
-        "核對 GitLab Code 選單的完整 Clone URL。",
-        "不明白原因時先不要直接改成另一個專案的遠端網址。"
+        "用 git remote -v 核對 GitLab 的 Clone URL。"
       ],
-      "code": "git remote -v\ngit status -sb"
+      "code": "git remote -v"
     },
     {
       "id": "auth-failed",
       "kind": "連線",
-      "title": "Authentication failed／repository not found",
-      "symptom": "網址有貼對，但 Clone 或 Push 被拒",
-      "cause": "憑證或帳號錯誤、沒有專案權限，也可能是遠端 URL 不對。",
+      "title": "Authentication failed / repository not found",
+      "symptom": "Clone 或 Push 被拒",
+      "cause": "帳號、權限或 URL 有問題。",
       "fix": [
-        "先用瀏覽器確認同一個帳號能進入該 GitLab 專案。",
-        "確認 HTTPS/SSH 使用的認證方式是否符合現場說明。",
-        "不要把帳號密碼放在 git clone URL；考場狀況請管理員確認權限。"
+        "確認網頁能登入 Repo，並核對遠端 URL；考場請管理員確認權限。"
       ],
       "code": "git remote -v\ngit ls-remote origin"
     },
     {
       "id": "rejected",
       "kind": "Git 指令",
-      "title": "Push rejected／non-fast-forward",
-      "symptom": "Git 說遠端有更新，拒絕直接 Push",
-      "cause": "你的本機分支比遠端落後，可能有人或系統更新了同一分支。",
+      "title": "Push rejected / non-fast-forward",
+      "symptom": "遠端拒絕 Push",
+      "cause": "遠端分支有較新的提交。",
       "fix": [
-        "先確認分支與規則，避免把考場指定分支改錯。",
-        "確認是否有未提交改動，再看 git fetch 後的遠端差異。",
-        "不要直接 git push --force；先取得現場指示，再選擇 pull --rebase 或其他合併策略。"
+        "先查看遠端差異，按官方規則合併；不要直接 force push。"
       ],
-      "code": "git status -sb\ngit fetch origin\ngit branch -vv\ngit log -5 --oneline",
-      "warning": "如果上游分支尚未設定，先核對遠端分支；不要直接 --force。"
+      "code": "git status -sb\ngit fetch origin\ngit branch -vv"
     },
     {
       "id": "nothing-commit",
       "kind": "Git 指令",
-      "title": "nothing to commit／工作樹乾淨",
-      "symptom": "Git commit 沒有產生新版本",
-      "cause": "可能沒有存檔、修改已提交，或只修改了別的資料夾。",
+      "title": "nothing to commit",
+      "symptom": "Commit 沒有新版本",
+      "cause": "沒存檔、已提交或在錯誤資料夾。",
       "fix": [
-        "確認 VS Code 檔案已存檔，以及目前 Terminal 是否在正確 Repo。",
-        "用 git status -sb 和 git diff --stat 看實際變更。",
-        "如果已有 commit，仍要確認有沒有成功 Push。"
+        "先存檔，再檢查 git status；已提交就看是否 Push。"
       ],
-      "code": "git status -sb\ngit diff --stat\ngit log -2 --oneline"
+      "code": "git status -sb\ngit log -1 --oneline"
     },
     {
       "id": "no-pipeline",
       "kind": "CI 評分",
-      "title": "Push 成功，但沒有新的 Pipeline",
-      "symptom": "GitLab 有新提交，Build → Pipelines 卻沒有對應執行",
-      "cause": "可能是分支、CI 規則、檔案或題號前綴不符合觸發條件。",
+      "title": "Push 成功，卻沒有 Pipeline",
+      "symptom": "沒出現新的評分工作",
+      "cause": "可能是分支或觸發格式不符。",
       "fix": [
-        "先核對 GitLab 上的分支與 commit SHA。",
-        "查看今年官方規定的 Commit message 前綴和 CI 觸發條件。",
-        "確認 .gitlab-ci.yml 的規則，不要假設每次 Push 都一定評分。"
+        "核對最新 SHA、分支、官方 Commit 題號格式及 CI 規則。"
       ],
       "code": "git log -1 --oneline\ngit status -sb"
     },
     {
       "id": "pipeline-pending",
       "kind": "CI 評分",
-      "title": "Pipeline Pending／Job Stuck",
-      "symptom": "已經提交，但一直等不到結果",
-      "cause": "Job 可能在等待 Runner、排隊或標籤不符合；不能直接判定失敗。",
+      "title": "Pipeline Pending / Stuck",
+      "symptom": "一直沒有結果",
+      "cause": "可能在等 Runner 或排隊。",
       "fix": [
-        "進 Pipeline 詳情查看 Job 狀態和是否有 Runner 訊息。",
-        "確認專案使用的 Runner 標籤，例如今天練習專案用 [demo]。",
-        "正式評分可能等待較久，避免不必要的連續 Push；長時間卡住就向現場人員反映。"
+        "打開 Job 看狀態；異常太久就找現場人員，不要連續亂 Push。"
       ],
       "code": "git log -1 --oneline"
     },
     {
       "id": "pipeline-failed",
       "kind": "CI 評分",
-      "title": "Pipeline Failed／Job failed: exit code 1",
-      "symptom": "Job 變紅燈，Log 末尾是 exit code 1",
-      "cause": "exit code 只能說有命令失敗；真正錯誤通常在前幾行。",
+      "title": "Pipeline Failed / exit code 1",
+      "symptom": "紅燈、Job 執行失敗",
+      "cause": "編譯、執行或測試出了錯。",
       "fix": [
-        "點 Build → Pipelines → Pipeline → 失敗的 Job。",
-        "先找實際執行指令，再往下找第一個 SyntaxError、compile error 或測試錯誤。",
-        "你今天的練習是 hello.py 少一個右括號，修正後 Job #756 成功；正式題目未必相同。"
+        "Build → Pipelines → 失敗的 Job → Log，找第一個實際錯誤。"
       ],
-      "code": "python hello.py"
+      "code": "git log -1 --oneline"
     },
     {
       "id": "passed-no-score",
       "kind": "CI 評分",
-      "title": "Passed 但沒有分數",
-      "symptom": "綠燈出現，卻找不到題目分數",
-      "cause": "通過可能只代表 lint、build、demo 測試，真正評分 Job 也許是另一個流程。",
+      "title": "Passed 卻沒有分數",
+      "symptom": "綠燈，但沒看到分數",
+      "cause": "Passed 可能只是 CI 測試通過。",
       "fix": [
-        "檢查 Pipeline 的 Job 名稱，找到今年官方指定的評分工作。",
-        "閱讀該 Job Log 或官方指定的結果頁；不是所有成功 Pipeline 都會印分數。",
-        "核對提交 SHA，避免看成其他題或之前提交的結果。"
+        "找官方指定的評分 Job 或結果頁，不要把綠燈當分數。"
       ],
       "code": "git log -1 --oneline"
     },
     {
       "id": "wrong-branch",
       "kind": "CI 評分",
-      "title": "看到了綠燈，但可能是舊版本",
-      "symptom": "GitLab 顯示 Passed，程式卻不像剛才修改的內容",
-      "cause": "可能看錯 branch、commit SHA 或 Pipeline。",
+      "title": "綠燈是舊版本",
+      "symptom": "結果與剛修改的程式不同",
+      "cause": "可能看錯分支或提交。",
       "fix": [
-        "看本機最後提交 SHA，核對 GitLab 最新 Pipeline 頁面對應的 SHA。",
-        "檢查 GitLab 正在看的分支是否為今年規定的提交分支。",
-        "不要把練習 Repo 的 main 分支習慣直接套在考試 Repo。"
+        "核對 GitLab Pipeline 與本機最新 Commit SHA。"
       ],
-      "code": "git branch --show-current\ngit log -1 --oneline\ngit status -sb"
+      "code": "git branch --show-current\ngit log -1 --oneline"
     }
   ],
   "sources": [
