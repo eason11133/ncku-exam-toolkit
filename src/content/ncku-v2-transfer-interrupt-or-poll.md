@@ -34,8 +34,6 @@ engine_wait(ch);       // 若不需與其他工作交錯，避免 busy loop
 engine_release(ch);    // 必須在工作完成後釋放
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 改阻塞等待完成
@@ -72,8 +70,6 @@ engine_release(ch);    // 必須在工作完成後釋放
 
 用固定的搬運大小，分別測 busy poll 與阻塞等待的 CPU 使用率、總時間和回應時間。確認在每條執行路徑上都會 wait、release，沒有中途退出而把 channel 卡住。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 官方模擬程式 wait 是 pthread join；不要宣稱它提供真實硬體 IRQ。IRQ 可能需要清旗標和處理同時完成的事件。
@@ -81,5 +77,7 @@ engine_release(ch);    // 必須在工作完成後釋放
 ## 參考與查證狀態
 
 - 參考：[Raspberry Pi Pico SDK DMA](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。
+
+## 官方練習程式的同步限制
+
+使用者提供的 `demo/section2-3/transfer-engine/engine.c` 以 `volatile bool busy` 表示通道工作中；worker 寫入，主執行緒在 `engine_busy()` 等處讀取。C 的 `volatile` 不提供跨執行緒同步，這個示範不能當成無 data race 的生產用引擎。正式程式需依完整生命週期採用 C atomic 或 mutex／condition variable，並檢查 `pthread_create` 失敗、`wait`／`release` 順序；本篇不宣稱已用 TSan 驗證 Demo。參考：[C 記憶體模型](https://en.cppreference.com/w/c/language/memory_model)。

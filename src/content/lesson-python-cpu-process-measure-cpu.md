@@ -32,8 +32,6 @@ result = handle(msg)
 print(time.perf_counter() - start)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -47,9 +45,7 @@ print(f"wall={wall:.3f}s cpu={cpu:.3f}s")
 
 ## 逐步理解，為什麼這樣改
 
-牆上時間包含等待，`process_time` 是當前程序 CPU 時間。兩者一起看有助於區分等待與運算，但多執行緒、多進程時 CPU 時間的解讀要更謹慎。
-
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
+牆上時間包含等待，`process_time` 是當前程序 CPU 時間。兩者一起看有助於區分等待與運算。`process_time()` 累計整個程序所有執行緒的 CPU 時間，不是這段函式或單一 Callback 的專屬時間；若只需目前執行緒的 CPU 時間，可在同一執行緒的開始與結束使用 `time.thread_time()`，但其他程序的時間仍須各自量測。
 
 ## 什麼情況才適合
 
@@ -61,7 +57,7 @@ print(f"wall={wall:.3f}s cpu={cpu:.3f}s")
 - 程序間傳輸成本可能高於計算
 - C 原生套件可能釋放 GIL
 
-**正確性界線：**記錄不同工作量與多核心情況。
+**正確性界線：** 記錄不同工作量與多核心情況。
 
 ## 怎麼做測試
 
@@ -71,11 +67,11 @@ print(f"wall={wall:.3f}s cpu={cpu:.3f}s")
 
 ## 考場快速判斷
 
-看到 **Python CPU 100%** 或 **高比例純 Python CPU 計算** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+尚未確認工作是 CPU-bound 還是 I/O 等待時，先比較牆上時間與適當範圍的 CPU 時間。process_time 是整個程序 CPU 時間，不能直接當成某個 Callback 自身的 CPU 時間。
 
 ## 參考文件與驗證狀態
 
+- [Python `time.process_time()` 與 `time.thread_time()`](https://docs.python.org/3/library/time.html#time.process_time)
 - [Python threading](https://docs.python.org/3/library/threading.html)
 - [Python concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

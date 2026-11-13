@@ -7,7 +7,7 @@ aliases: count-unit, transfer-engine-configuration
 difficulty: intermediate
 priority: P0
 source_type: personal
-source_url: https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h
+source_url: https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_dma
 verified: false
 updated_at: 2026-11-12
 summary: count 是「筆數」，size 才是每筆 bytes；兩者乘積是總 bytes。
@@ -16,37 +16,52 @@ related: ncku-transfer-engine
 
 # 先修正 count × size 單位
 
-## 先弄懂這個問題
+## 先看 Demo 的工作描述
 
-目前的方法是 **Transfer Engine／DMA 工作描述**。用 channel 描述來源、目的地、count、size、位址遞增，再啟動、等待及釋放。
+Demo 使用的 `engine_job_t` 有 `src`、`dst`、`count`、`size`、`src_increment`、`dst_increment` 等欄位。**`job.count` 是傳輸筆數；`job.size` 表示每筆大小**（例如 `XFER_32` 對應每筆 4 bytes）。因此真正要改的是描述工作時填入的 `job.count` 或 `job.size`，不是另算一個 `bytes` 後卻不改 job。若 `count = 4096`、`size = XFER_32`，來源與目的地各至少要有 `4096 × 4 = 16384` bytes。這個 Demo 的軟體 Transfer Engine 與 Pico SDK 硬體 DMA 是不同 API，不能把兩者的欄位或速度混為一談。
 
-這個方案的目的是：若 4096 筆、每筆 4 bytes，總計 16384 bytes。
-
-你可以先想像這個情境：Transfer Engine 設定 count=100，卻把它當成 100 bytes 而不是 100 個元素。
-
-## 修改前：先看哪裡有問題
+### 錯誤與修正的欄位
 
 ```c
-size_t count = 100;
-size_t bytes = count;           // 若每元素 4 bytes，搬不滿
+// engine_job_t 的欄位設定片段；須放在 Demo 已宣告 job、src、dst 的函式內。
+job.src = src;
+job.dst = dst;
+job.count = 4096 * 4;  // 錯：把總 bytes 當作 32-bit 傳輸筆數
+job.size = XFER_32;    // 每筆 4 bytes；上行將要求搬運 65536 bytes
+
+job.count = 4096;      // 對：4096 筆，而非 16384 bytes
+job.size = XFER_32;    // 每筆 4 bytes，總計 16384 bytes
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
+### 容量及溢位檢查
 
-## 修改後：對照實作
+以下仍是 **Demo 程式的函式內片段**；`engine_job_t` 與 `XFER_32` 已依使用者提供的 Demo `engine.h` 摘錄核對；`job`、`src`、`dst` 及 buffer 容量仍需由呼叫端提供。這裡不冒充已驗證的獨立編譯範例。
 
 ```c
-size_t count = 100;
-size_t element_size = sizeof(uint32_t);
-if (count > SIZE_MAX / element_size) return ERROR;
-size_t bytes = count * element_size;
+#include <stdint.h>
+#include <stddef.h>
+
+size_t count = 4096;
+size_t bytes_per_transfer = sizeof(uint32_t); // 對應 XFER_32
+if (count > SIZE_MAX / bytes_per_transfer) {
+    /* 回報整數溢位，不得啟動傳輸 */
+    return ERROR;
+}
+size_t total_bytes = count * bytes_per_transfer;
+if (src_capacity_bytes < total_bytes || dst_capacity_bytes < total_bytes) {
+    /* 回報來源或目的地空間不足 */
+    return ERROR;
+}
+/* Demo engine.h 宣告 job.count 為 size_t；上方已檢查乘法溢位。 */
+job.src = src;
+job.dst = dst;
+job.count = count;
+job.size = XFER_32;
+job.src_increment = true;
+job.dst_increment = true;
 ```
 
-## 逐步理解，為什麼這樣改
-
-先看規格中 `count` 的單位。如果 count 是元素數，總 byte 數才是 `count * element_size`。若 API 已經使用 byte count，就不可再乘一次；乘法前要防整數溢位。
-
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
+`SIZE_MAX` 檢查必須在乘法前做；乘完還要對照 **來源和目的地各自的實際容量**，再確認位址對齊與實際傳輸上限。若原本的程式是 Pico SDK 的 `dma_channel_configure()`，應改查該 API 的 transfer count 規則，不能直接套用 `engine_job_t` 欄位名稱。
 
 ## 什麼情況才適合
 
@@ -59,7 +74,7 @@ size_t bytes = count * element_size;
 - count 填成 byte 數可能越界
 - 不同 API 計數單位未必一致
 
-**正確性界線：**先用小陣列測正確性，再測大筆數。
+**正確性界線：** 先用小陣列測正確性，再測大筆數。
 
 ## 怎麼做測試
 
@@ -69,10 +84,10 @@ size_t bytes = count * element_size;
 
 ## 考場快速判斷
 
-看到 **transfer-engine wrong data** 或 **count 與 bytes 搞混** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Transfer Engine 結果錯誤、越界，或 job.count 被填成總 byte 數時，確認 count 是傳輸筆數、size 是每筆 bytes，並檢查乘法溢位和來源／目的容量。
 
 ## 參考文件與驗證狀態
 
-- [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。
+- [Pico SDK DMA transfer count：以筆數計，不是 bytes](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_dma)
+- 使用者提供的 Demo `engine.h` 摘錄宣告 `size_t count`（傳輸筆數）與 `xfer_size_t size`（每筆位元組數，`XFER_8=1`、`XFER_16=2`、`XFER_32=4`）。此處已據摘錄核對欄位；未取得完整 Demo 專案與硬體執行結果，不宣稱片段可獨立編譯或已實測。

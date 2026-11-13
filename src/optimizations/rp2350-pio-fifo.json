@@ -75,17 +75,17 @@
       "id": "fifo-paced-transfer",
       "title": "按 FIFO 節奏供應或消耗資料",
       "aliases": [],
-      "summary": "避免 CPU／DMA 不適當的進出速率造成欠載與阻塞。",
-      "principle": "確認 TX/RX FIFO、PIO state machine 的執行速率與資料消費速率。",
+      "summary": "分辨 CPU 等 FIFO、PIO 消費速度與 CPU 搬運成本；手動輪詢不會比 pio_sm_put_blocking() 自動更快。",
+      "principle": "Pico SDK 的 pio_sm_put_blocking() 已在 TX FIFO 滿時等待。先查實際瓶頸是 PIO／外部裝置速度、CPU 供應不足，還是 CPU 逐筆搬運成本。",
       "conditions": [
-        "能讀取或推導 FIFO 狀態",
-        "有實際目標硬體與 PIO 設定"
+        "已核對 PIO 程式、state machine 時脈與 TX/RX FIFO 方向",
+        "有固定輸入和硬體量測方式，可分辨 CPU 等待與 PIO 實際輸出時間"
       ],
       "tradeoffs": [
-        "增加緩衝會占資源",
-        "錯誤的 FIFO 方向或時序會造成資料遺失"
+        "單純增加手動 FIFO 輪詢只增加檢查成本，不能提高 PIO 消費速率",
+        "改時脈或排程可能破壞協定時序；增加緩衝會占資源"
       ],
-      "behavior": "不改變協定輸出與時序的正確性。",
+      "behavior": "保留每個 word 的數量、順序與協定時序；DMA 只在 CPU 搬運負擔是瓶頸時才值得評估。",
       "metrics": [
         "有效吞吐",
         "丟失率",
@@ -107,14 +107,15 @@
       "summary": "避免 CPU 持續忙於搬資料，但不保證總延遲更低。",
       "principle": "DMA 可依 DREQ 與 FIFO 速率協調記憶體和周邊的傳輸。",
       "conditions": [
+        "已量測 CPU 逐筆餵資料的成本；若 PIO 或外部協定是上限，DMA 不會提高該上限",
         "有實體 DMA 與 PIO 支援",
-        "確認地址、資料寬度、DREQ、完成通知"
+        "確認來源緩衝區容量與生命週期、資料寬度、PIO TX/RX DREQ 和完成訊號"
       ],
       "tradeoffs": [
         "需要通道及匯流排頻寬",
-        "小資料量或同步成本可能更慢"
+        "小資料量或同步成本可能更慢；若 PIO／外部裝置是上限，DMA 不會提高輸出速率"
       ],
-      "behavior": "DMA 未完成不能讀 buffer，也要檢查 cache 與一致性。",
+      "behavior": "TX DMA 讀取來源 buffer 時，CPU 可讀既有資料，但完成前不得改寫、釋放或讓來源失效；RX DMA 寫入目的 buffer 時，CPU 應等完成及必要同步後才讀取新結果。Cache 維護依目標平台與記憶體區域判定，不是 RP2350 的通用固定步驟。",
       "metrics": [
         "CPU",
         "吞吐量",

@@ -26,15 +26,27 @@ difficulty: intermediate
 
 ## 具體修改／排查示例
 
+以下是 **完整 C11 程式**。在第一次對 `stdout` 輸出之前設定全緩衝；靜態陣列會一直有效到程式結束，不會在函式返回時失效。
+
 ```c
 #include <stdio.h>
-// 在正常 I/O 發生前選擇適當 buffering；用途依 stdout/stderr 而定
-char output_buffer[8192];
-setvbuf(stdout, output_buffer, _IOFBF, sizeof output_buffer);
-// buffer 必須活到 stdout 結束使用；不能用短命區域陣列
+
+static char output_buffer[8192];
+
+int main(void) {
+    if (setvbuf(stdout, output_buffer, _IOFBF, sizeof output_buffer) != 0) {
+        return 1;
+    }
+
+    for (int i = 0; i < 1000; ++i) {
+        if (printf("record=%d\n", i) < 0) return 1;
+    }
+    if (fflush(stdout) == EOF) return 1;
+    return 0;
+}
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
+`output_buffer` 不能改成會先於 `stdout` 關閉而失效的區域陣列。這個範例只示範緩衝區生命週期；它仍逐筆呼叫 `printf`，若格式化本身是瓶頸，應另外比較減少輸出次數或改成彙總輸出。輸出到終端機時，全緩衝會推遲可見時間，需即時顯示的訊息不適合直接套用。
 
 ## 可以嘗試的方案
 
@@ -72,14 +84,11 @@ setvbuf(stdout, output_buffer, _IOFBF, sizeof output_buffer);
 
 同一筆工作分別測全量逐筆 log、每 1000 筆彙總、完全停 log；確認最終輸出／錯誤紀錄仍可重現。量吞吐和耗時，並在 redirection 與 terminal 測差異。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 stderr 通常不同緩衝策略；即時控制／安全事件不可因緩衝而失去必要的立即回報。
 
 ## 參考與查證狀態
 
-- 參考：[C stdio buffering](https://en.cppreference.com/w/c/io/setvbuf)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。
+- 參考：[C `setvbuf()` 與緩衝區生命週期](https://en.cppreference.com/w/c/io/setvbuf)
+- [WG14 C11 草案 N1570 §7.21.5.6：`setvbuf` 的呼叫時機與 buffer 生命週期](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)

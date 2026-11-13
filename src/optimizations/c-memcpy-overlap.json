@@ -59,7 +59,8 @@
           "url": "https://en.cppreference.com/w/c/string/byte/memmove"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-memmove-overlap"
     },
     {
       "id": "option-2-method",
@@ -84,7 +85,8 @@
           "url": "https://en.cppreference.com/w/c/string/byte/memmove"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-skip-buffer-compaction"
     },
     {
       "id": "option-3-method",
@@ -108,7 +110,8 @@
           "url": "https://en.cppreference.com/w/c/string/byte/memmove"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-checked-copy-bytes"
     }
   ]
 }

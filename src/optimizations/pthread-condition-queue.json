@@ -79,7 +79,8 @@
       "code": {
         "language": "c",
         "snippet": "pthread_mutex_lock(&q.mu);\nwhile (q.count == 0 && !q.closed)\n    pthread_cond_wait(&q.not_empty, &q.mu);\npthread_mutex_unlock(&q.mu);"
-      }
+      },
+      "articleId": "opt-cond-wait-predicate"
     },
     {
       "id": "bounded-ring-buffer",
@@ -116,7 +117,8 @@
       "code": {
         "language": "c",
         "snippet": "while (q.count == CAPACITY && !q.closed)\n    pthread_cond_wait(&q.not_full, &q.mu);"
-      }
+      },
+      "articleId": "opt-cond-bounded-ring"
     },
     {
       "id": "queue-batch-pop",
@@ -147,7 +149,8 @@
           "url": "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-cond-batch-pop"
     }
   ]
 }

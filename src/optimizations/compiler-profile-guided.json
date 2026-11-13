@@ -87,7 +87,8 @@
       "code": {
         "language": "bash",
         "snippet": "gcc -std=c11 -O2 -g main.c -o prog_o2\ngcc -std=c11 -O3 -g main.c -o prog_o3"
-      }
+      },
+      "articleId": "opt-c-compare-optimization-levels"
     },
     {
       "id": "sanitize-before-speed",
@@ -122,7 +123,8 @@
       "code": {
         "language": "bash",
         "snippet": "gcc -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined main.c -o prog_check"
-      }
+      },
+      "articleId": "opt-c-sanitize-then-benchmark"
     },
     {
       "id": "perf-stage-profile",
@@ -158,8 +160,9 @@
       "verified": false,
       "code": {
         "language": "bash",
-        "snippet": "/usr/bin/time -v ./program input.txt\nperf stat -- ./program input.txt"
-      }
+        "snippet": "/usr/bin/time -v ./program < input.txt\nperf stat -- ./program < input.txt"
+      },
+      "articleId": "opt-benchmark-stdin-and-rate"
     }
   ]
 }

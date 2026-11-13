@@ -32,8 +32,6 @@ result = compute(result)
 write_output(result)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -53,8 +51,6 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 
 先量出熱點再決定優化位置。若 90% 時間在 `compute`，只優化 `write_output` 通常不會有大幅成果。埋點有成本，短流程要多次累積量測。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 可安插計時且知道預期輸出
@@ -65,7 +61,7 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 - 測量也有 overhead
 - 不同測試負載瓶頸可能不同
 
-**正確性界線：**分段加總與端到端用不同指標檢查。
+**正確性界線：** 分段加總與端到端用不同指標檢查。
 
 ## 怎麼做測試
 
@@ -75,10 +71,9 @@ print("parse,compute,write(ms)",*(round(x*1e3,2) for x in
 
 ## 考場快速判斷
 
-看到 **benchmark unreliable** 或 **單次數據不穩** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+知道程式慢，卻不知道時間花在哪個階段時，先做分段計時或 Profiling，確認真正熱點後再改。
 
 ## 參考文件與驗證狀態
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

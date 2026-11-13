@@ -5,7 +5,7 @@ category: pthread
 tags: atomic, relaxed, counter, memory_order, 互斥鎖
 aliases: atomic,relaxed,counter,memory_order,互斥鎖
 source_type: personal
-source_url: https://en.cppreference.com/w/cpp/atomic/atomic
+source_url: https://en.cppreference.com/w/c/atomic/atomic_fetch_add
 verified: false
 updated_at: 2026-11-12
 summary: 共享計數器搶同一把鎖，先判斷是不是可以使用原子操作。
@@ -22,19 +22,28 @@ difficulty: intermediate
 
 ## 先理解瓶頸
 
-單一數字的累加可由 atomic fetch_add 完成；但「檢查 A 再改 B」不是只把 A 宣告 atomic 就能安全。Atomic 讓單次讀寫有定義，記憶體順序與跨變數條件還要另看。
+單一計數器的累加可用 C11 `<stdatomic.h>` 的 `atomic_fetch_add_explicit()`：各執行緒對同一個 atomic 物件做讀取、修改、寫回，不會互相覆蓋增量。`memory_order_relaxed` 保證此計數器操作本身的原子性，**不**建立其他非原子資料的先後可見性。若程式要「先檢查 A，再一起更新 A、B」，只把 A 改成 atomic 無法保護整組不變條件，仍需鎖或經過證明的原子協定。
 
 ## 具體修改／排查示例
 
+以下是 **pthread 工作函式片段**；呼叫端仍須建立與 join 每個執行緒，且在啟動前初始化 `total`。所有執行緒都結束後，主執行緒才能把最後讀值當作完整統計。
+
 ```c
 #include <stdatomic.h>
-atomic_ulong total = 0;
-// 每個 Thread 內：
-atomic_fetch_add_explicit(&total, 1UL, memory_order_relaxed);
-// 此處只用來統計，不拿來通知其他共享資料已準備好
+#include <stddef.h>
+
+static atomic_ulong total = ATOMIC_VAR_INIT(0);
+
+void *count_one(void *unused) {
+    (void)unused;
+    atomic_fetch_add_explicit(&total, 1UL, memory_order_relaxed);
+    return NULL;
+}
+
+/* pthread_create(..., count_one, ...); pthread_join(...); 後再讀 total。 */
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
+這個範例只統計次數，不用 `total` 宣告別的共享資料已準備好。若其他共享資料依賴計數器作為通知，必須重新設計同步順序。數值也要確保不超過 `unsigned long` 的範圍；高競爭下 atomic 不保證比 mutex 或每執行緒局部加總快。
 
 ## 可以嘗試的方案
 
@@ -72,14 +81,13 @@ atomic_fetch_add_explicit(&total, 1UL, memory_order_relaxed);
 
 用相同數量工作者、相同增量次數對照 mutex 和 atomic；每次必須得到 N * ROUNDS。再量 CPU 和吞吐，特別測高競爭情況。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 memory_order_relaxed 只適合不要求透過計數器同步其他資料的案例。非原子共享讀寫有 data race，屬於錯誤而非只是偶爾少一筆。
 
 ## 參考與查證狀態
 
-- 參考：[C++ atomics](https://en.cppreference.com/w/cpp/atomic/atomic)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。
+- [C11 `atomic_fetch_add_explicit()`](https://en.cppreference.com/w/c/atomic/atomic_fetch_add)
+- [C11 `<stdatomic.h>`](https://en.cppreference.com/w/c/header/stdatomic)
+- [WG14 C11 草案 N1570 §7.17：原子操作與記憶體順序](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)
+- API 與 relaxed 語意已對照 C 語言參考資料；此 pthread 片段未在目標環境執行。

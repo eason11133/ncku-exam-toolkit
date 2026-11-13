@@ -59,7 +59,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-program-sharing"
     },
     {
       "id": "option-2-pio-program",
@@ -84,7 +85,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-compact-instructions"
     },
     {
       "id": "option-3-sm-gpio",
@@ -108,7 +110,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-sm-gpio-allocation"
     }
   ]
 }

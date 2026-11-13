@@ -26,17 +26,44 @@ difficulty: intermediate
 
 ## 具體修改／排查示例
 
+以下是 **完整 C11 程式**。線上格式固定為 5 bytes：第 0 byte 是 `kind`，第 1～4 byte 是 big-endian `value`。函式先檢查指標與長度，再逐 byte 解析；成功才寫入輸出參數。
+
 ```c
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
-// 不把此 struct 直接當線上封包
+
 struct Packet { uint8_t kind; uint32_t value; };
-// 線上格式另定長度並逐 byte 解析，例如 value 是 big endian
-uint32_t value = ((uint32_t)p[1]<<24) | ((uint32_t)p[2]<<16)
-               | ((uint32_t)p[3]<<8) | (uint32_t)p[4];
-// 讀取前必須先確認封包長度 >= 5
+
+bool parse_packet(const uint8_t *data, size_t length, struct Packet *out) {
+    if (data == NULL || out == NULL || length < 5) return false;
+
+    struct Packet parsed;
+    parsed.kind = data[0];
+    parsed.value = ((uint32_t)data[1] << 24)
+                 | ((uint32_t)data[2] << 16)
+                 | ((uint32_t)data[3] << 8)
+                 |  (uint32_t)data[4];
+    *out = parsed;
+    return true;
+}
+
+int main(void) {
+    const uint8_t valid[5] = {0x7a, 0x12, 0x34, 0x56, 0x78};
+    struct Packet result = {0};
+    if (!parse_packet(valid, sizeof valid, &result)) return 1;
+    if (result.kind != 0x7a || result.value != UINT32_C(0x12345678)) return 2;
+    if (parse_packet(valid, 4, &result)) return 3;
+    if (parse_packet(NULL, 5, &result)) return 4;
+    if (parse_packet(valid, 5, NULL)) return 5;
+    const uint8_t reversed[5] = {0x7a, 0x78, 0x56, 0x34, 0x12};
+    if (!parse_packet(reversed, sizeof reversed, &result)) return 6;
+    if (result.value != UINT32_C(0x78563412)) return 7;
+    return 0;
+}
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
+`struct Packet` 是解析後供程式內部使用的表示，**不是**可直接寫上線的 5-byte 格式；它的 `sizeof` 與欄位偏移仍由平台 ABI 決定。如果協定要求長度恰好 5 bytes，而不能有尾隨資料，應把 `length < 5` 改成 `length != 5`。
 
 ## 可以嘗試的方案
 
@@ -74,8 +101,6 @@ uint32_t value = ((uint32_t)p[1]<<24) | ((uint32_t)p[2]<<16)
 
 比較 sizeof 與 offsetof，做資料 endian 交叉測試、未對齊位置與短封包測試。使用已知十六進位 payload 核對解碼結果。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 不建議靠 packed struct 取代正確封包解析；packed 欄位的存取可能有未對齊成本，某些平台甚至不能直接存取。
@@ -83,5 +108,4 @@ uint32_t value = ((uint32_t)p[1]<<24) | ((uint32_t)p[2]<<16)
 ## 參考與查證狀態
 
 - 參考：[C struct byte alignment](https://en.cppreference.com/w/c/language/object)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。
+- [WG14 C11 草案 N1570 §6.7.2.1：struct 對齊與 padding](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)

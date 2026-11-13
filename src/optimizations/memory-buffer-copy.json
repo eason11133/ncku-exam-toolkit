@@ -75,6 +75,7 @@
       "summary": "如果來源與目的範圍重疊，不能直接使用 memcpy。",
       "principle": "memmove 將資料按安全順序移動，避免重疊造成未定義行為。",
       "conditions": [
+        "來源與目的記憶體範圍確實重疊；非重疊時不因 memcpy 慢就換 memmove",
         "已證實 ranges overlap",
         "buffer 尺寸正確"
       ],

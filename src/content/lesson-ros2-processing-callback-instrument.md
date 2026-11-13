@@ -33,8 +33,6 @@ def callback(self, msg):
     self.publisher.publish(output)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -57,8 +55,6 @@ def callback(self, msg):
 
 `perf_counter` 適合量經過時間；相鄰兩個時間點的差，才能定位某段工作。Log 本身也有成本，量正式效能時要降低頻率或記錄到緩衝區。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 不改動輸入輸出
@@ -69,7 +65,7 @@ def callback(self, msg):
 - 紀錄本身也有 overhead
 - 計時位置不等於端到端延遲
 
-**正確性界線：**先測正確性與分布，不根據單次數字做結論。
+**正確性界線：** 先測正確性與分布，不根據單次數字做結論。
 
 ## 怎麼做測試
 
@@ -79,11 +75,14 @@ def callback(self, msg):
 
 ## 考場快速判斷
 
-看到 **callback too slow** 或 **重複解析不變資料** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+訊息可收到但 Callback 延遲高、尚不清楚耗時在解析、計算還是發布時，先用低擾動分段計時找出瓶頸。
 
 ## 參考文件與驗證狀態
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
 - [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
 
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。
+## 量測擾動
+
+範例逐筆呼叫 `get_logger().info()` 是方便看單筆數值的教學片段；正式量延遲時，格式化與大量 logging 本身會占用 CPU／I/O。改採低頻抽樣或累積統計，並在相同輸入負載下比較有 log 與無 log 的結果，避免把記錄成本當成 Callback 計算成本。

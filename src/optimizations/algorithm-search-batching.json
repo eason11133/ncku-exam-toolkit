@@ -59,7 +59,8 @@
           "url": "https://docs.python.org/3/library/bisect.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-algo-hash-index-multiple-queries"
     },
     {
       "id": "option-2-method",
@@ -83,7 +84,8 @@
           "url": "https://docs.python.org/3/library/bisect.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-algo-binary-left-bound-c"
     },
     {
       "id": "option-3-method",
@@ -107,7 +109,8 @@
           "url": "https://docs.python.org/3/library/bisect.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-algo-linear-small-workload"
     }
   ]
 }

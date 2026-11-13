@@ -34,8 +34,6 @@ for (size_t i = start; i < end; ++i) {
 }
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -50,8 +48,6 @@ pthread_mutex_unlock(&m);
 
 將 N 次共享更新改成每個 worker 一次合併，可減少鎖操作；前提是合併運算允許換序。整數溢位、浮點數相加順序可能影響答案，不能忽略。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 結果只需最後讀取
@@ -62,7 +58,7 @@ pthread_mutex_unlock(&m);
 - 中途觀察值不再立即反映全部更新
 - 多一段合併與額外記憶體
 
-**正確性界線：**需確保所有 worker 完成後再合併，並檢查 overflow。
+**正確性界線：** 需確保所有 worker 完成後再合併，並檢查 overflow。
 
 ## 怎麼做測試
 
@@ -72,11 +68,10 @@ pthread_mutex_unlock(&m);
 
 ## 考場快速判斷
 
-看到 **counter lost update** 或 **共享 counter 讀寫競爭** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+每筆更新共享 counter 都搶鎖、沒有逐筆即時公布的需求時，在各 worker 累加後安全合併；不能因此漏掉其他共享狀態。
 
 ## 參考文件與驗證狀態
 
 - [C memory model](https://en.cppreference.com/w/c/language/memory_model.html)
 - [POSIX pthread_mutex_lock](https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

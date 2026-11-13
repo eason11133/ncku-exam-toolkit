@@ -60,7 +60,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-timer-short-callback"
     },
     {
       "id": "option-2-callback",
@@ -85,7 +86,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-timer-split-groups"
     },
     {
       "id": "option-3-method",
@@ -110,7 +112,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-timer-rate-budget"
     }
   ]
 }

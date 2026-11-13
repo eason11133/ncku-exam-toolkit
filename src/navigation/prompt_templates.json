@@ -1,0 +1,18 @@
+{
+  "root": {
+    "title": "選大分類",
+    "template": "根據目前對話中的題目與程式碼，從下列大分類選最相關的 1～2 個。只回覆 ID、名稱和簡短理由；資料不足就回 NEED_CONTEXT 並指出缺什麼。不得選清單外的 ID。\n\n{root_options}"
+  },
+  "branch": {
+    "title": "選細分類",
+    "template": "根據目前題目，從下列子分類選最相關的 1～2 個。只回覆 ID、名稱和簡短理由；目前分類已足夠就回 STOP_AT_CURRENT，資料不足就回 NEED_CONTEXT 並指出缺什麼。不得選清單外的 ID。\n\n{child_options}"
+  },
+  "articles": {
+    "title": "選閱讀順序",
+    "template": "根據目前題目，從下列真正存在的教材文章選 1～5 篇，依閱讀順序回覆文章 ID、標題和各一句理由；若都需要，可回覆 ALL。沒有合適文章就回 NO_MATCH，不得編造標題或 ID。\n\n{available_items}"
+  },
+  "emptyArticles": {
+    "title": "改選相關分類",
+    "template": "這個分類目前沒有可讀的教材文章。請根據題目，從下列相關分類選 1 個 ID；若都不符合，回 NO_MATCH。不要把觀念詞條當成文章，也不要編造教材。\n\n{related_options}"
+  }
+}

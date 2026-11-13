@@ -60,7 +60,8 @@
           "url": "https://en.cppreference.com/w/c/io/setvbuf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-io-hotpath-logs"
     },
     {
       "id": "option-2-buffering",
@@ -84,7 +85,8 @@
           "url": "https://en.cppreference.com/w/c/io/setvbuf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-io-setvbuf"
     },
     {
       "id": "option-3-debug",
@@ -108,7 +110,8 @@
           "url": "https://en.cppreference.com/w/c/io/setvbuf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-debug-build-switch"
     }
   ]
 }

@@ -59,7 +59,8 @@
           "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-dma-identify-memory-region"
     },
     {
       "id": "option-2-cache",
@@ -84,7 +85,8 @@
           "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-dma-cache-direction-check"
     },
     {
       "id": "option-3-method",
@@ -108,7 +110,8 @@
           "url": "https://www.raspberrypi.com/documentation/microcontrollers/"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-dma-shared-buffer-ownership"
     }
   ]
 }

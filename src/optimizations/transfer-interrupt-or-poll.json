@@ -62,7 +62,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-blocking-wait"
     },
     {
       "id": "option-2-method",
@@ -87,7 +88,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-irq-event"
     },
     {
       "id": "option-3-method",
@@ -112,7 +114,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-short-poll"
     }
   ]
 }

@@ -31,8 +31,6 @@ payload = {"timestamp": stamp, "pixels": pixels, "average": avg}
 publish(payload)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -44,8 +42,6 @@ publish(payload)
 
 發送前先列出下游真正讀取的欄位，確認沒有其他 Subscriber 需要 `pixels`，再刪除。資料量變小可能降低序列化和傳輸成本，但直接修改既有 ROS message 定義可能破壞相容性，必要時新增 topic/訊息型別。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 接收端確定不需要刪除欄位
@@ -56,7 +52,7 @@ publish(payload)
 - 協定不相容
 - 重新編碼本身有成本
 
-**正確性界線：**比較 payload bytes、接收端正確性及總延遲。
+**正確性界線：** 比較 payload bytes、接收端正確性及總延遲。
 
 ## 怎麼做測試
 
@@ -66,10 +62,9 @@ publish(payload)
 
 ## 考場快速判斷
 
-看到 **payload too large** 或 **不必要的大欄位** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+資料包含下游確定用不到的大欄位，且可在不破壞其他 Subscriber 與訊息相容性的前提下移除時，先減少不必要的 Payload。
 
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy Topic CLI](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

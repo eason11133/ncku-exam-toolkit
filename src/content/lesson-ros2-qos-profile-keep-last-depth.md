@@ -31,8 +31,6 @@ related: ncku-ros2-qos
 sub = self.create_subscription(Msg, "/state", cb, 100)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -44,8 +42,6 @@ sub = self.create_subscription(Msg, "/state", cb, 1)
 
 `depth` 控制 Keep Last 歷史深度，但減小可能在忙碌時覆蓋尚未處理的舊訊息。它適用於「最新狀態比每筆紀錄重要」的情境，不適用於不得漏掉每筆事件的交易/日誌。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 業務容許捨棄過時資料
@@ -56,7 +52,7 @@ sub = self.create_subscription(Msg, "/state", cb, 1)
 - 深度過小會漏資料
 - 若每筆都有意義，不能套用
 
-**正確性界線：**不能把漏資料誤當成效能改善；計算送達率。
+**正確性界線：** 不能把漏資料誤當成效能改善；計算送達率。
 
 ## 怎麼做測試
 
@@ -66,10 +62,9 @@ sub = self.create_subscription(Msg, "/state", cb, 1)
 
 ## 考場快速判斷
 
-看到 **QoS mismatch** 或 **Publisher 與 Subscriber QoS 不相容** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Topic 已連通但 Subscriber 落後、正在處理過時狀態，而且允許捨棄舊狀態時，才評估 Keep Last depth。不能用改 depth 修復 Reliability／Durability 不相容。
 
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy QoS](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -60,7 +60,8 @@
           "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-fixed-batching"
     },
     {
       "id": "option-2-method",
@@ -84,7 +85,8 @@
           "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-batch-max-wait"
     },
     {
       "id": "option-3-method",
@@ -109,7 +111,8 @@
           "url": "https://www.man7.org/linux/man-pages/man1/perf-stat.1.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-adaptive-batch-cap"
     }
   ]
 }

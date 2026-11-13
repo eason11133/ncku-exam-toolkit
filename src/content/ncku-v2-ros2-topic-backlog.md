@@ -34,8 +34,6 @@ qos = QoSProfile(depth=1, history=HistoryPolicy.KEEP_LAST,
 # 建立 publisher / subscriber 時要核對 QoS 兼容性
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 需要最新狀態時減小 depth
@@ -72,8 +70,6 @@ qos = QoSProfile(depth=1, history=HistoryPolicy.KEEP_LAST,
 
 每則訊息攜帶發送時間戳／序號，計算丟失率、處理率、age_ms 的 P95。分別測小負載、突發負載與服務恢復；每種更動前先決定允不允許丟資料。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 BEST_EFFORT 可以丟訊息，且 QoS 不相容時可能完全無法通訊；若時間戳在不同機器，必須考慮時鐘同步。
@@ -81,5 +77,3 @@ BEST_EFFORT 可以丟訊息，且 QoS 不相容時可能完全無法通訊；若
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy QoS overview](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

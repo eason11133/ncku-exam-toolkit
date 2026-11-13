@@ -35,8 +35,6 @@ if len(batch) >= MAX_BATCH or age_of_oldest(batch) >= MAX_WAIT:
 # 定時 flush 需要真的有 timer；只有新 item 進來才檢查會卡住
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 固定批次改善吞吐
@@ -73,8 +71,6 @@ if len(batch) >= MAX_BATCH or age_of_oldest(batch) >= MAX_WAIT:
 
 量 batch=1、4、16、64 的 throughput、P50/P95 latency、最大 buffer 記憶體，資料量要一致；最後加一筆稀疏輸入測「一直湊不滿」的情況。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 大小與等待時間都設太大，可能讓即時結果延後；Batch 不應破壞事件順序或不可拆分的工作單位。
@@ -82,5 +78,3 @@ if len(batch) >= MAX_BATCH or age_of_oldest(batch) >= MAX_WAIT:
 ## 參考與查證狀態
 
 - 參考：[Linux perf tools](https://www.man7.org/linux/man-pages/man1/perf-stat.1.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

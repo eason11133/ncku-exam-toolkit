@@ -31,8 +31,6 @@ related: ncku-systems-foundations
 lock(); shared.append(new_value); unlock()
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```text
@@ -46,9 +44,7 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 
 ## 逐步理解，為什麼這樣改
 
-交換兩塊 buffer 的角色，讓昂貴處理離開臨界區。最關鍵的是所有權：Consumer 還在使用的 buffer，Producer 不能重新拿去寫。兩塊不足時需要等待、回壓或更多 buffer。
-
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
+交換兩塊 buffer 的角色，讓昂貴處理離開臨界區。最關鍵的是所有權：Consumer 還在使用的 buffer，Producer 不能重新拿去寫。兩塊不足時需要等待、回壓或更多 buffer。交換後 Producer 只持有新的 write buffer；Consumer 處理完畢並發出完成訊號，該 read buffer 才能重用。單靠交換兩個指標，無法阻止下一輪覆寫仍被讀取的資料。
 
 ## 什麼情況才適合
 
@@ -60,7 +56,7 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 - 占兩份 buffer 記憶體
 - 若處理速率不均仍需更深 queue
 
-**正確性界線：**不可在 Consumer 讀取時覆寫緩衝區，需確認釋放條件。
+**正確性界線：** 不可在 Consumer 讀取時覆寫緩衝區，需確認釋放條件。
 
 ## 怎麼做測試
 
@@ -70,10 +66,9 @@ consumer_process(read_buf)  # 離開鎖後處理；須確保不會被覆寫
 
 ## 考場快速判斷
 
-看到 **queue backlog** 或 **生產速度高於消費速度** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+生產與消費可使用兩塊互斥 buffer，且已設計交換與完成交接時，才採用 Double Buffer。只加兩塊記憶體不能自動解決 Producer 比 Consumer 快。
 
 ## 參考文件與驗證狀態
 
 - [C memory model](https://en.cppreference.com/w/c/language/memory_model.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -59,7 +59,8 @@
           "url": "https://docs.python.org/3/library/heapq.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-topk-heapq-nsmallest"
     },
     {
       "id": "option-2-heap",
@@ -83,7 +84,8 @@
           "url": "https://docs.python.org/3/library/heapq.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-algorithm-topk-ties"
     },
     {
       "id": "option-3-k-sorted",
@@ -107,7 +109,8 @@
           "url": "https://docs.python.org/3/library/heapq.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-topk-large-k-sorted"
     }
   ]
 }

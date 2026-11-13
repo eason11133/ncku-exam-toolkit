@@ -31,8 +31,6 @@ ros2 topic list -t
 # 只看 topic 名稱，沒檢查 QoS
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```bash
@@ -45,8 +43,6 @@ ros2 topic info /sensor -v
 
 ROS 2 QoS 可能造成端點不配對。先確認型別和 topic 完整名稱，再看 offered/requested QoS；不能把「改成 Reliable」當萬用解法，因為需求與提供之間有相容性規則。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 可讀到兩端的 QoS 設定
@@ -57,7 +53,7 @@ ROS 2 QoS 可能造成端點不配對。先確認型別和 topic 完整名稱，
 - 修改可靠性需求可能犧牲正確性
 - 不同 RMW 的效能也可能不同
 
-**正確性界線：**修改前先說清可接受的遺失與重送需求。
+**正確性界線：** 修改前先說清可接受的遺失與重送需求。
 
 ## 怎麼做測試
 
@@ -67,10 +63,9 @@ ROS 2 QoS 可能造成端點不配對。先確認型別和 topic 完整名稱，
 
 ## 考場快速判斷
 
-看到 **QoS mismatch** 或 **Publisher 與 Subscriber QoS 不相容** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Publisher/Subscriber topic 名稱與型別已相同，卻無法通訊，且 `ros2 topic info -v` 顯示 Reliability／Durability 等 Request/Offered 不相容時，先修相容性，不要只調 depth。
 
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy QoS](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -35,13 +35,7 @@ uint32_t value = ((uint32_t)buf[0] << 24) |
 
 這裡 `(uint32_t)` 很重要：先轉成足夠寬度的**無號整數**，再左移，避免把較窄的整數提升成不適合的有號型別後產生問題。
 
-完整安全版在 `examples/parse_u32_be.c`：包含 `len`、`offset` 和 `out`，讀取前檢查至少還有 4 bytes。用 `len - offset < 4` 的前提是先確保 `offset <= len`，否則 `size_t` 做無號減法可能下溢。
-
-```bash
-gcc -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -g examples/parse_u32_be.c -o parse_demo
-./parse_demo
-# 預期輸出：parse OK
-```
+上面的 C 程式碼是 **解析運算片段**，缺少 `buf` 的宣告、長度和輸出參數，不能單獨編譯。整合進解析函式時，讀取前必須確認至少還有 4 bytes；用 `len - offset < 4` 的前提是先確保 `offset <= len`，否則 `size_t` 做無號減法可能下溢。完整的邊界檢查與回傳狀態範例見 `examples/parse_u32_be.c`；頁內上方仍只是片段。
 
 ## 方案 B：避免直接 Cast 不明來源的 byte pointer
 
@@ -72,6 +66,6 @@ uint32_t value = *(const uint32_t *)(buf + 1);
 
 最後比較不同輸入長度下的總處理時間，而不是把「少寫幾行 C」當成效能改善。
 
-**查證狀態**：根據 C 整數型別與記憶體安全原則整理，獨立示範程式可編譯測試；未在特定硬體／正式考試專案測速。
+**查證狀態**：根據 C 整數型別與記憶體安全原則整理；此頁程式碼為片段，未作獨立編譯或特定硬體測速。
 
 來源：[C fixed-width integer types](https://en.cppreference.com/w/c/types/integer.html)、[GCC sanitizers](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html)。

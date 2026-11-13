@@ -94,3 +94,7 @@ ros2 topic pub --once /number std_msgs/msg/Int32 '{data: 21}'
 官方 2-1 是 CLI 看 node/topic、觀察訊息、發測試訊息，以及故障排查。Executor、QoS、跨節點優化是相關延伸，不代表正式考題會要求這些技術。
 
 參考：[ROS 2 Topics](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)；[Understanding Nodes](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html)。
+
+## ROS 2 Node 看不到時
+
+先確認程式有啟動、兩端使用相同的 `ROS_DOMAIN_ID`、已 source 正確環境，再查容器網路與 DDS Discovery。Bash 可執行 `printenv ROS_DOMAIN_ID`；不同 Domain 不能互相發現，單改 Topic remap 無效。參考：[ROS 2 Domain ID](https://github.com/ros2/ros2_documentation/blob/rolling/source/Get-Started/Configuring-ROS2-Environment.rst)。

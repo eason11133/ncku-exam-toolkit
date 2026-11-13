@@ -82,7 +82,8 @@
       "code": {
         "language": "python",
         "snippet": "allowed_set = set(allowed)\nresult = [x for x in incoming if x in allowed_set]"
-      }
+      },
+      "articleId": "opt-query-membership-set"
     },
     {
       "id": "sorted-bisect",
@@ -118,7 +119,8 @@
       "code": {
         "language": "python",
         "snippet": "from bisect import bisect_left\nordered = sorted(values)\ncount_less = bisect_left(ordered, threshold)"
-      }
+      },
+      "articleId": "opt-query-bisect-boundaries"
     },
     {
       "id": "prefix-sum",
@@ -154,7 +156,8 @@
       "code": {
         "language": "python",
         "snippet": "prefix = [0]\nfor x in values: prefix.append(prefix[-1] + x)\nanswer = prefix[r] - prefix[l]"
-      }
+      },
+      "articleId": "opt-query-prefix-range"
     }
   ]
 }

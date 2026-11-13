@@ -33,8 +33,6 @@ def cb(self, msg):
     self.pub.publish(out)
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```python
@@ -50,8 +48,6 @@ def cb(self, msg):
 
 減少同一個 executor 中 callback 的占用，有機會改善其他工作等待；但設定可更新時要配套失效機制，不能因此送錯資料。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 已量測到 Callback 自身耗時
@@ -62,7 +58,7 @@ def cb(self, msg):
 - 重複工作若改成快取，要處理更新與失效
 - 過度省略可能丟必要驗證
 
-**正確性界線：**輸入輸出資料值、順序、數量必須符合原規格。
+**正確性界線：** 輸入輸出資料值、順序、數量必須符合原規格。
 
 ## 怎麼做測試
 
@@ -72,11 +68,10 @@ def cb(self, msg):
 
 ## 考場快速判斷
 
-看到 **ROS 2 找不到資料** 或 **topic 名稱不一致** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+Topic 已通、Callback 內有不必要的重算或設定解析，導致延遲偏高時，先把不變工作移出 Callback；Topic 名稱錯誤應先走 CLI 排查。
 
 ## 參考文件與驗證狀態
 
 - [ROS 2 Jazzy Topic CLI](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)
 - [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。

@@ -35,8 +35,6 @@ ros2 topic echo /number --once
 # 必要時：ros2 run PKG NODE --ros-args -r /numbers:=/number
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 核對完整 Topic 名稱
@@ -73,8 +71,6 @@ ros2 topic echo /number --once
 
 先用官方 Demo 將 /number 故意改成 /numbers，記錄 CLI 中 publisher、subscriber 的實際名稱；修正後再用 topic echo 和輸出值驗證連接。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 ros2 topic info -v 的選項依環境版本確認；名稱修正不能代替資料型別及 QoS 檢查。
@@ -82,5 +78,7 @@ ros2 topic info -v 的選項依環境版本確認；名稱修正不能代替資�
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy remapping](https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。
+
+## Node 完全看不到時先檢查 Domain
+
+若 `ros2 node list` 看不到預期節點，先確認節點真的啟動、兩端 shell／容器的 `ROS_DOMAIN_ID` 是否一致，以及是否 source 相同 ROS 2 環境。Bash 可用 `printenv ROS_DOMAIN_ID`；未設定時通常使用預設 Domain 0。不同 Domain 的節點不會互相發現，這時改 Topic remap 或 QoS depth 都不能解決。若 Domain 相同仍看不到，再檢查容器網路與 DDS Discovery。來源：[ROS 2 Domain ID](https://github.com/ros2/ros2_documentation/blob/rolling/source/Get-Started/Configuring-ROS2-Environment.rst)。

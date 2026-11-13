@@ -1,4 +1,4 @@
-export type Trial = { version: string; times: number[]; unit: 'ms' | 's' | 'us'; changes: string; correctness: string; notes: string }
+export type Trial = { version: string; times: number[]; unit: 'ms' | 's' | 'us'; changes: string; correctness: string; notes: string; workPerRun?: number; workUnit?: string }
 export const workflowSteps = ['Correctness', 'Baseline', 'Profiling', 'Hypothesis', 'Change', 'Benchmark', 'Compare', 'Keep / Revert'] as const
 
 export function toMilliseconds(value: number, unit: Trial['unit']) { return unit === 's' ? value * 1000 : unit === 'us' ? value / 1000 : value }
@@ -11,9 +11,9 @@ export function stats(values: number[]) {
   const stddev = Math.sqrt(valid.reduce((sum, value) => sum + (value - average) ** 2, 0) / valid.length)
   return { average, median, min: sorted[0], max: sorted[sorted.length - 1], stddev, count: valid.length }
 }
-export function compare(baselineMs: number, candidateMs: number) {
+export function compare(baselineMs: number, candidateMs: number, workPerRun = 1) {
   if (!(baselineMs > 0) || !(candidateMs > 0)) return null
-  return { speedup: baselineMs / candidateMs, improvement: (baselineMs - candidateMs) / baselineMs * 100, throughput: 1000 / candidateMs }
+  return { speedup: baselineMs / candidateMs, improvement: (baselineMs - candidateMs) / baselineMs * 100, throughput: workPerRun * 1000 / candidateMs }
 }
 export function parseTimes(input: string) {
   const parts = input.split(/[\s,;]+/).filter(Boolean)

@@ -76,6 +76,7 @@
       "summary": "若積壓的是過時狀態，減少 queue 深度可能減少等待。",
       "principle": "只保留最近 N 筆資料，讓新狀態能較快被處理。",
       "conditions": [
+        "Publisher 與 Subscriber 已相容且可收到資料；症狀是舊資料積壓，不是 QoS mismatch",
         "業務容許捨棄過時資料",
         "負載與收到的 sequence 可量測"
       ],

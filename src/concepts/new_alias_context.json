@@ -1,0 +1,734 @@
+[
+  {
+    "text": "thread-sanitizer",
+    "conceptId": "thread-sanitizer",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "TSan",
+    "conceptId": "thread-sanitizer",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "fsanitize=thread",
+    "conceptId": "thread-sanitizer",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "gdb",
+    "conceptId": "gdb",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "GNU Debugger",
+    "conceptId": "gdb",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "debugger",
+    "conceptId": "gdb",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "cmake",
+    "conceptId": "cmake",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "CMakeLists.txt",
+    "conceptId": "cmake",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "cmake -S",
+    "conceptId": "cmake",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "ctest",
+    "conceptId": "ctest",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "ctest --test-dir",
+    "conceptId": "ctest",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "enable_testing",
+    "conceptId": "ctest",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "gitlab",
+    "conceptId": "gitlab",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "gitlab repository",
+    "conceptId": "gitlab",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "GitLab CI",
+    "conceptId": "cicd",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "cicd",
+    "conceptId": "cicd",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "CI/CD",
+    "conceptId": "cicd",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "CI",
+    "conceptId": "cicd",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "continuous integration",
+    "conceptId": "cicd",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "continuous deployment",
+    "conceptId": "cicd",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "pipeline",
+    "conceptId": "cicd",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "git-diff",
+    "conceptId": "git-diff",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "diff",
+    "conceptId": "git-diff",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "patch",
+    "conceptId": "git-diff",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "byte-offset",
+    "conceptId": "byte-offset",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "Offset",
+    "conceptId": "byte-offset",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "偏移量",
+    "conceptId": "byte-offset",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "offsetof",
+    "conceptId": "offsetof",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "stddef offsetof",
+    "conceptId": "offsetof",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "欄位偏移",
+    "conceptId": "offsetof",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "alignof",
+    "conceptId": "alignof",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "_Alignof／alignof",
+    "conceptId": "alignof",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "對齊要求",
+    "conceptId": "alignof",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "abi",
+    "conceptId": "abi",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "application binary interface",
+    "conceptId": "abi",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "呼叫慣例",
+    "conceptId": "abi",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "padding",
+    "conceptId": "padding",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "struct padding",
+    "conceptId": "padding",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "填充位元組",
+    "conceptId": "padding",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "bisect",
+    "conceptId": "bisect",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "binary insertion",
+    "conceptId": "bisect",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "binary search python",
+    "conceptId": "bisect",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "bisect-left",
+    "conceptId": "bisect-left",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "lower_bound",
+    "conceptId": "bisect-left",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "bisect-right",
+    "conceptId": "bisect-right",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "upper_bound",
+    "conceptId": "bisect-right",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "prefix-sum",
+    "conceptId": "prefix-sum",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "prefix array",
+    "conceptId": "prefix-sum",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "累積和",
+    "conceptId": "prefix-sum",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "lru",
+    "conceptId": "lru",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "least recently used",
+    "conceptId": "lru",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "lru_cache",
+    "conceptId": "lru",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "heapq",
+    "conceptId": "heapq",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "heapq.nlargest",
+    "conceptId": "heapq",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "heapq.nsmallest",
+    "conceptId": "heapq",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "heap-data-structure",
+    "conceptId": "heap-data-structure",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "Heap",
+    "conceptId": "heap-data-structure",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "min-heap",
+    "conceptId": "heap-data-structure",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "max-heap",
+    "conceptId": "heap-data-structure",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "priority queue",
+    "conceptId": "heap-data-structure",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "top-k",
+    "conceptId": "top-k",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "nsmallest",
+    "conceptId": "top-k",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "nlargest",
+    "conceptId": "top-k",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "hash",
+    "conceptId": "hash",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "hashing",
+    "conceptId": "hash",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "hash table",
+    "conceptId": "hash",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "dict lookup",
+    "conceptId": "hash",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "deque",
+    "conceptId": "deque",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "collections.deque",
+    "conceptId": "deque",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "double-ended queue",
+    "conceptId": "deque",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "malloc",
+    "conceptId": "malloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "malloc()",
+    "conceptId": "malloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "C malloc",
+    "conceptId": "malloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "realloc",
+    "conceptId": "realloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "realloc()",
+    "conceptId": "realloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "C realloc",
+    "conceptId": "realloc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "free",
+    "conceptId": "free",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "free()",
+    "conceptId": "free",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "C free",
+    "conceptId": "free",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "memory-pool",
+    "conceptId": "memory-pool",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "arena allocator",
+    "conceptId": "memory-pool",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "stdin",
+    "conceptId": "stdin",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "standard input",
+    "conceptId": "stdin",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "輸入重導向",
+    "conceptId": "stdin",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "stderr",
+    "conceptId": "stderr",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "standard error",
+    "conceptId": "stderr",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "錯誤重導向",
+    "conceptId": "stderr",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "argv",
+    "conceptId": "argv",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "argv[]",
+    "conceptId": "argv",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "command-line arguments",
+    "conceptId": "argv",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "argc",
+    "conceptId": "argc",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "argument count",
+    "conceptId": "argc",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "timeout",
+    "conceptId": "timeout",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "逾時",
+    "conceptId": "timeout",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "deadline",
+    "conceptId": "timeout",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "posix",
+    "conceptId": "posix",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "POSIX.1",
+    "conceptId": "posix",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "pthread POSIX",
+    "conceptId": "posix",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "pico-sdk",
+    "conceptId": "pico-sdk",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "Raspberry Pi Pico SDK",
+    "conceptId": "pico-sdk",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "rp2350 sdk",
+    "conceptId": "pico-sdk",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "pioasm",
+    "conceptId": "pioasm",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": ".pio assembler",
+    "conceptId": "pioasm",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "pioasm tool",
+    "conceptId": "pioasm",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "logic-analyzer",
+    "conceptId": "logic-analyzer",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "數位波形分析儀",
+    "conceptId": "logic-analyzer",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "rss",
+    "conceptId": "rss",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "resident set size",
+    "conceptId": "rss",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "peak RSS",
+    "conceptId": "rss",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "perf",
+    "conceptId": "perf",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "perf stat",
+    "conceptId": "perf",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "perf record",
+    "conceptId": "perf",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "CPU counters",
+    "conceptId": "perf",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "cpu-bound",
+    "conceptId": "cpu-bound",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "計算密集",
+    "conceptId": "cpu-bound",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "io-bound",
+    "conceptId": "io-bound",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "I/O-bound",
+    "conceptId": "io-bound",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "輸入輸出瓶頸",
+    "conceptId": "io-bound",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "spurious-wakeup",
+    "conceptId": "spurious-wakeup",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "虛假喚醒",
+    "conceptId": "spurious-wakeup",
+    "linkPolicy": "explicit-technical-context",
+    "searchable": true
+  },
+  {
+    "text": "pio-side-set",
+    "conceptId": "pio-side-set",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  },
+  {
+    "text": "side-set",
+    "conceptId": "pio-side-set",
+    "linkPolicy": "safe-contextual",
+    "searchable": true
+  }
+]

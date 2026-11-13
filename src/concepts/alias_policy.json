@@ -1,0 +1,49 @@
+{
+  "aliasAdds": [
+    {
+      "text": "conditional variable",
+      "conceptId": "condition-variable",
+      "reason": "英文近義寫法，應共用既有詞條"
+    },
+    {
+      "text": "Condition Var",
+      "conceptId": "condition-variable",
+      "reason": "英文縮寫，應共用既有詞條"
+    },
+    {
+      "text": "side set",
+      "conceptId": "pio-side-set",
+      "reason": "Side-set 同義寫法"
+    },
+    {
+      "text": "side-set",
+      "conceptId": "pio-side-set",
+      "reason": "Side-set 同義寫法"
+    }
+  ],
+  "prohibitedAutoLinksInOrdinaryProse": [
+    "and",
+    "or",
+    "not",
+    "copy",
+    "size",
+    "in",
+    "out",
+    "node",
+    "push",
+    "pull",
+    "process",
+    "buffer",
+    "byte",
+    "bit",
+    "set",
+    "get",
+    "time",
+    "main",
+    "return",
+    "true",
+    "false"
+  ],
+  "strategy": "詞條仍可被站內搜尋；只有上下文證實技術意義才在正文自動產生連結。程式碼、檔案路徑、網址和現有超連結不得自動修改。每節最多連第一次。",
+  "compatibility": "新 alias 必須和 PR #4 原本 872 個 alias 一起完整去重；這包只檢查新候選間衝突。"
+}

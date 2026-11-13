@@ -14,6 +14,7 @@ test('speedup and zero timing guards', () => {
   assert.equal(result.speedup, 1.5)
   assert.ok(Math.abs(result.improvement - 33.33333333333333) < 0.000001)
   assert.equal(result.throughput, 12.5)
+  assert.equal(compare(100, 100, 4096).throughput, 40960)
   assert.equal(compare(0, 80), null)
   assert.equal(compare(80, 0), null)
 })

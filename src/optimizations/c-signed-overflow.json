@@ -59,7 +59,8 @@
           "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-unsigned-modulo"
     },
     {
       "id": "option-2-method",
@@ -83,7 +84,8 @@
           "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-checked-signed-add"
     },
     {
       "id": "option-3-sanitizer",
@@ -107,7 +109,8 @@
           "url": "https://gcc.gnu.org/onlinedocs/gcc/Integers-implementation.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-sanitizer-before-speed"
     }
   ]
 }

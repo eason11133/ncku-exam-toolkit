@@ -1,0 +1,1107 @@
+[
+  {
+    "articleId": "lesson-benchmark-correctness-baseline",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-benchmark-correctness-compare-tradeoff",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-benchmark-correctness-profile-hotspot",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-mask-and-shift",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": [
+      "pio-instructions"
+    ]
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-pack-unpack",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-c-bitfield-operations-set-clear",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-avoid-extra-copy",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-choose-memmove",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-memory-buffer-copy-reuse-buffer",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-partition-independent",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-reduce-lock",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-pthread-work-partition-thread-count",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-measure-cpu",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-native-library",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-python-cpu-process-process-pool",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-bounded-queue",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-double-buffer",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-resource-queues-producer-consumer",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-algorithm",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-cache",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-processing-callback-instrument",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-fix-compatibility",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-keep-last-depth",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-qos-profile-reliability-choice",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-check-cli",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-parallel-stages",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-ros2-topic-pipeline-reduce-work",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": [
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "lesson-rp2350-pio-fifo-trace-echo",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-move-work-outside",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-per-thread-count",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-spinlock-critical-section-use-mutex",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-copy-vs-fill",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-count-unit",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-engine-configuration-overlap-cpu",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-batch",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-compact-binary",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "lesson-transfer-format-remove-unneeded-data",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-algorithm-query-patterns",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-binary-packet-parsing",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-bitwise-c",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-c-language-bridge",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-c-memory",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-compiler-profile-sanitize",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-concurrency-advanced",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-debug-decision-tree",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-docker-debug",
+    "primaryLeafId": "tools-docker",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-embedded-riscv-io",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-gitlab-workflow",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-incremental-cache",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-local-llm-prompts",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-memory-locality",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-performance-benchmark",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-pio-dataflow",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": [
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "ncku-pthread-condvar-queue",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-pthread-critical-section",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-cli-workflow",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-executor",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-ros2-qos",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-systems-foundations",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-transfer-engine",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": [
+      "thread-start"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-algorithm-search-batching",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-algorithm-topk-heap",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-allocator-fragmentation",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-io-buffering",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-memcpy-overlap",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-signed-overflow",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-c-struct-packing",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-dma-cache-coherency",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": [
+      "perf-memory",
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-perf-batch-vs-realtime",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-perf-tail-latency",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-delay-clock",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-fifo-stall",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": [
+      "transfer-dma"
+    ]
+  },
+  {
+    "articleId": "ncku-v2-pio-shift-order",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pio-state-machine-limits",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-atomic-counter",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-deadlock-order",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-thread-lifecycle",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-pthread-timeout-shutdown",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-message-serialization",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-parameters-config",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-remap-diagnostics",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-service-client-deadlock",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-timer-jitter",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-ros2-topic-backlog",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-channel-scheduling",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-double-buffer",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ncku-v2-transfer-interrupt-or-poll",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ros2-ste-multithreaded-groups",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": [
+      "thread-lock"
+    ]
+  },
+  {
+    "articleId": "ros2-ste-process-pool",
+    "primaryLeafId": "perf-parallel",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ros2-ste-short-callback",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-shell-windows",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-linux-paths",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-linux-text-search",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-linux-processes",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-docker-lifecycle",
+    "primaryLeafId": "tools-docker",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-docker-bind-mount",
+    "primaryLeafId": "tools-docker",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-git-safe-workflow",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-gitlab-ci-oj",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-unknown-repo-first-look",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-gcc-compile-link",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-make-targets",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-cmake-projects",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-debug-c",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-debug-python",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-ros2-environment",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-perf-cpu-memory",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-perf-test-protocol",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-llm-stepwise-guide",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-code-change-audit",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-gitlab-final-check",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "ops-pthread-create-join",
+    "primaryLeafId": "thread-start",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-safe-bit-fields",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-safe-packet-reader",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": [
+      "c-bits"
+    ]
+  },
+  {
+    "articleId": "opt-pthread-atomic-counter",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-unit-capacity",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-double-buffer-sequence",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": [
+      "transfer-engine"
+    ]
+  },
+  {
+    "articleId": "opt-ros2-topic-domain-qos",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": [
+      "ros-qos"
+    ]
+  },
+  {
+    "articleId": "opt-ros2-async-service",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": [
+      "ros-execution"
+    ]
+  },
+  {
+    "articleId": "opt-pio-echo-autopull",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": [
+      "pio-fifo"
+    ]
+  },
+  {
+    "articleId": "opt-algorithm-topk-ties",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-benchmark-stdin-and-rate",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-query-membership-set",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-query-bisect-boundaries",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-query-prefix-range",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-stream-running-sum",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-stream-rolling-window",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-stream-lru-cache",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-grow-buffer",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-reuse-scratch",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-memory-pool-boundaries",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-unsigned-modulo",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-checked-signed-add",
+    "primaryLeafId": "c-bits",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-sanitizer-before-speed",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-topic-name-check",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-remap-cli",
+    "primaryLeafId": "ros-observe",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-type-qos-diagnose",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-tx-underflow",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-rx-drain",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-wait-strategy",
+    "primaryLeafId": "pio-fifo",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-fixed-worker-pool",
+    "primaryLeafId": "thread-start",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-worker-count",
+    "primaryLeafId": "thread-start",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-join-vs-detach",
+    "primaryLeafId": "thread-start",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-cond-wait-predicate",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-cond-bounded-ring",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-cond-batch-pop",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-stop-broadcast",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-wait-loop",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-cond-timeout",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-lock-order",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-single-lock-redesign",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-trylock-policy",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-timer-short-callback",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-timer-split-groups",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-timer-rate-budget",
+    "primaryLeafId": "ros-execution",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-topic-last-state",
+    "primaryLeafId": "ros-qos",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-topic-consumer-hotspot",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-topic-flow-control",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-channel-owner",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-few-channels",
+    "primaryLeafId": "transfer-engine",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-no-channel-fallback",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-blocking-wait",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-irq-event",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-short-poll",
+    "primaryLeafId": "transfer-completion",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-count-cycles",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-config-clock-divider",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-reduce-instructions",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-io-hotpath-logs",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-io-setvbuf",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-debug-build-switch",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-memmove-overlap",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-skip-buffer-compaction",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-checked-copy-bytes",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-wire-format-no-struct",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-struct-reorder-layout",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-alignment-safe-byte-parser",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-compare-optimization-levels",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-sanitize-then-benchmark",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-aos-to-soa",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-contiguous-array-vs-nodes",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-false-sharing-bench-safe",
+    "primaryLeafId": "perf-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-dma-identify-memory-region",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-dma-cache-direction-check",
+    "primaryLeafId": "transfer-dma",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-dma-shared-buffer-ownership",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-avoid-reencoding",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-payload-contract",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-large-data-path",
+    "primaryLeafId": "ros-performance",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-parameterize-knobs",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-param-matrix",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-parameter-dynamic-refresh",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-parser-no-unaligned-cast",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-c-parser-only-needed-fields",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-algo-hash-index-multiple-queries",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-algo-binary-left-bound-c",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-algo-linear-small-workload",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-topk-heapq-nsmallest",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-topk-large-k-sorted",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-fixed-batching",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-batch-max-wait",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-adaptive-batch-cap",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-nearest-rank-and-max",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-link-slow-events",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-perf-fair-ab-matching",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-osr-isr-direction",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-auto-thresholds",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-cpu-pack-unpack",
+    "primaryLeafId": "pio-instructions",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-program-sharing",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-compact-instructions",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pio-sm-gpio-allocation",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-local-count-merge",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-pthread-mutex-multifield",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-service-callback-groups",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-ros2-service-request-state-machine",
+    "primaryLeafId": "ros-services",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-last-chunk-split",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  },
+  {
+    "articleId": "opt-transfer-single-buffer-fallback",
+    "primaryLeafId": "transfer-buffer",
+    "secondaryLeafIds": []
+  }
+]

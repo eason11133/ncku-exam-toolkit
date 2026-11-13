@@ -28,14 +28,16 @@ memcpy 的來源與目的記憶體區段不可以重疊；memmove 則支援重�
 
 ```c
 #include <string.h>
-char buf[] = "abcdef";
-// 將 buf[2..5] 向左搬兩格：來源與目的重疊
-memmove(buf, buf + 2, 4);
-buf[4] = '\0';
-// buf 現在是 "cdef"
-```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
+int main(void) {
+    char buf[] = "abcdef";
+    /* 來源 buf[2..5] 與目的 buf[0..3] 重疊。 */
+    memmove(buf, buf + 2, 4);
+    buf[4] = '\0';
+    if (strcmp(buf, "cdef") != 0) return 1;
+    return 0;
+}
+```
 
 ## 可以嘗試的方案
 
@@ -73,8 +75,6 @@ buf[4] = '\0';
 
 用相同 Buffer 在向左、向右、完全不重疊的場合做 byte-by-byte 比對。加入 n=0、首尾邊界及容量不足的測試，再比較小/大尺寸下 memcpy/memmove 的性能。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 memmove 支援重疊也不代表可超出來源或目標 Buffer 大小；這仍是記憶體越界。
@@ -82,5 +82,3 @@ memmove 支援重疊也不代表可超出來源或目標 Buffer 大小；這仍�
 ## 參考與查證狀態
 
 - 參考：[C memory functions](https://en.cppreference.com/w/c/string/byte/memmove)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

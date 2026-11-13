@@ -24,14 +24,14 @@
     "位元順序"
   ],
   "bottlenecks": [
-    "OUT 從 OSR 取位元，IN 把 pin 資料塞進 ISR；方向、閾值與每筆資料長度決定高低位如何排列"
+    "OUT 從 OSR 移出位元，可寫入 X、Y、PINS 等目的地；IN 可從 X、Y、PINS 等來源移入 ISR，並非只能讀 GPIO。方向、閾值與筆數影響位元排列"
   ],
   "verified": false,
   "updatedAt": "2026-11-12",
   "sources": [
     {
-      "title": "Raspberry Pi Pico SDK PIO API",
-      "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
+      "title": "RP2350 Datasheet：PIO 指令集",
+      "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
     }
   ],
   "relatedMethodIds": [],
@@ -63,7 +63,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-osr-isr-direction"
     },
     {
       "id": "option-2-autopull-autopush-threshold",
@@ -88,7 +89,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-auto-thresholds"
     },
     {
       "id": "option-3-cpu",
@@ -113,7 +115,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-cpu-pack-unpack"
     }
   ]
 }

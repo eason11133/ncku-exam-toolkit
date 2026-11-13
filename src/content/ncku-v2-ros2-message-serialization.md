@@ -39,8 +39,6 @@ t3 = perf_counter()
 print('encode/assign/publish:', t1-t0, t2-t1, t3-t2)
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 減少不必要的資料轉換
@@ -77,8 +75,6 @@ print('encode/assign/publish:', t1-t0, t2-t1, t3-t2)
 
 在輸入完全相同、訊息數量與大小固定時，量資料準備、建立 message、publish 與接收端解碼的時間。核對發送端和接收端 checksum，記錄每秒傳輸 bytes。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 不要把「減少 Python 轉換」誤當成真正 middleware zero-copy。壓縮會增加 CPU；大 payload 可能影響 QoS 和記憶體。
@@ -86,5 +82,3 @@ print('encode/assign/publish:', t1-t0, t2-t1, t3-t2)
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy topics](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

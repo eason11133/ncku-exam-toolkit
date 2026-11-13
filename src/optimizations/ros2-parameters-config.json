@@ -58,7 +58,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-parameterize-knobs"
     },
     {
       "id": "option-2-method",
@@ -83,7 +84,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-param-matrix"
     },
     {
       "id": "option-3-callback",
@@ -107,7 +109,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-parameter-dynamic-refresh"
     }
   ]
 }

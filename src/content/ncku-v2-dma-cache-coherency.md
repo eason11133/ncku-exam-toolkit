@@ -34,8 +34,6 @@ difficulty: intermediate
 // CPU 讀取 dst 前，確認硬體完成且符合所需記憶體順序
 ```
 
-這是方便定位問題的最小示例或概念片段，不是完整專案替換檔。請先核對原專案使用的版本、API、資料格式與生命週期；不能只因範例看起來較快就直接複製到正式程式。
-
 ## 可以嘗試的方案
 
 ### 1. 核對平台記憶體區域
@@ -72,8 +70,6 @@ difficulty: intermediate
 
 先測純 CPU copy 保證正確，再測 DMA；用不同大小和對齊方式做 checksum，並檢查實際平台 memory map 與 cache policy。若沒有目標板，就只列排查線索，不宣稱實測。
 
-修改結果請記錄同一份輸入的 **修改前輸出、修改後輸出、時間、CPU、記憶體、錯誤率**；沒有關係的指標可以標示「未量」，不要填想像的數值。測試前先保留原版以便回退。
-
 ## 什麼情況不該用
 
 Cache 清除、Memory barrier、volatile 用途不同，不能互相替代；錯誤 invalidate 可能丟掉 CPU 尚未寫回的修改。
@@ -81,5 +77,3 @@ Cache 清除、Memory barrier、volatile 用途不同，不能互相替代；錯
 ## 參考與查證狀態
 
 - 參考：[Raspberry Pi DMA documentation](https://www.raspberrypi.com/documentation/microcontrollers/)
-- 官方 Demo 若沒有相應環境或開發板，本篇不宣稱執行過硬體實測。
-- 本篇是技術解法資料，**不是官方考題或經過考場證實的加速結果**。

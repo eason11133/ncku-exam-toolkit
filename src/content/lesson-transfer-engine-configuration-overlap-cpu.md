@@ -32,8 +32,6 @@ wait_until_done(desc);
 process_unrelated_job();
 ```
 
-這段是**教學情境**，不代表所有考場程式都這樣寫。先理解它為什麼可能慢、可能錯或可能卡住。
-
 ## 修改後：對照實作
 
 ```c
@@ -47,33 +45,30 @@ consume_transferred_buffer();
 
 只有當搬運是非同步、且其他工作互不依賴、buffer 所有權安全時才會重疊。若官方 Demo 的 Transfer Engine 是 thread 模擬，也必須遵守該實作的同步與狀態規則。
 
-不要只記住程式碼。題目換了，先確認瓶頸是不是同一種，以及修改後有沒有改變輸出或執行順序。
-
 ## 什麼情況才適合
 
 - 有安全可重疊的 CPU 工作
-- 完成之前不碰被搬運的資料
+- 搬運期間不改寫／釋放來源；不把尚在寫入的目的地當成完整結果讀取
 
 ## 常見錯誤與代價
 
 - 軟體模擬引擎本身占 CPU
 - 硬體 DMA 仍占匯流排
 
-**正確性界線：**保持緩衝區生命週期與完成順序，測的是整體完成時間。
+**正確性界線：** 保持緩衝區生命週期與完成順序，測的是整體完成時間。
 
 ## 怎麼做測試
 
-比較總耗時與 CPU 使用；同時驗證搬運完成前不讀取未完成資料、沒有 data race。
+比較總耗時與 CPU 使用；同時驗證來源在搬運期間保持有效且未被改寫，目的地只在完成後作為完整結果讀取。CPU 單純讀取不變的來源資料不必一律禁止；若要讀取進行中的目的地，則需另有部分完成與同步協定。
 
 優先觀察：CPU、總耗時、吞吐量、RSS。每次都要保留舊版結果做對照。單次跑得快不能證明方案有效；輸出錯了更不能算優化成功。
 
 ## 考場快速判斷
 
-看到 **transfer-engine wrong data** 或 **count 與 bytes 搞混** 時，可以把這個方案列為候選，但先確認實際程式是否符合上面的前提。若題目沒有對應瓶頸，就不要為了套用方案而改動架構。
+
+非同步傳輸已啟動卻立即等待、CPU 還有安全獨立工作可做時，才評估先做其他工作再 wait；錯誤資料或 count 單位問題不能靠此修正。
 
 ## 參考文件與驗證狀態
 
 - [Pico SDK DMA Header](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)
 - [Raspberry Pi Pico SDK Hardware APIs](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
-
-這篇是依照文件與教學情境撰寫，**尚未在指定考場環境實測**。ROS 2、PIO、DMA 相關片段若標示示意或使用未定義的函式，不能直接當成可編譯的完整專案。
