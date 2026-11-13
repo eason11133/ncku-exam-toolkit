@@ -92,6 +92,12 @@ function App() {
   ], [])
   const fuse = useMemo(() => new Fuse(index, { includeScore: true, threshold: 0.42, ignoreLocation: true, keys: [{ name: 'title', weight: 4 }, { name: 'aliases', weight: 3 }, { name: 'summary', weight: 2 }, 'category', 'body'] }), [index])
   const conceptResults = query.trim() ? searchConcepts(query.trim(), 6) : []
+  const exactConcept = conceptResults.find(item => [item.title, item.english, ...item.aliases].some(value => value.trim().toLocaleLowerCase() === query.trim().toLocaleLowerCase()))
+  const exactConceptLabel = exactConcept
+    ? (exactConcept.title.toLocaleLowerCase() === query.trim().toLocaleLowerCase()
+      ? exactConcept.title
+      : `${exactConcept.aliases.find(alias => alias.toLocaleLowerCase() === query.trim().toLocaleLowerCase()) || query.trim()}（${exactConcept.title}）`)
+    : ''
   const results = query.trim() ? fuse.search(query.trim()).map(result => result.item) : []
   const articleResults = results.filter(item => item.target === 'knowledge').slice(0, 5)
   const solutionResults = results.filter(item => item.target === 'performance').slice(0, 5)
@@ -158,7 +164,8 @@ function App() {
       </main>
     </div>
     {searchOpen && <div className="search-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setSearchOpen(false) }}><div className="search-modal"><div className="search-input"><Search size={19}/><input ref={searchRef} value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋技術觀念、文章、優化方法與症狀…" aria-label="全站搜尋"/><button onClick={() => setSearchOpen(false)} aria-label="關閉搜尋"><X size={18}/></button></div><div className="search-results">{query.trim() ? <>
-      {conceptResults.length > 0 && <SearchGroup title="先了解這個觀念" items={conceptResults.map(item => ({ id: item.id, title: item.title, summary: item.explanation, type: '技術觀念', target: 'concepts' as View }))} onSelect={(target, id) => navigate(target, id)}/>}
+      {exactConcept && <button className="search-exact" onClick={() => navigate('concepts', exactConcept.id)}><span className="search-exact-label">最符合的名詞解釋</span><strong>{exactConceptLabel}</strong><small>{exactConcept.plain}</small></button>}
+      {conceptResults.some(item => item.id !== exactConcept?.id) && <SearchGroup title={exactConcept ? '其他相關觀念' : '先了解這個觀念'} items={conceptResults.filter(item => item.id !== exactConcept?.id).map(item => ({ id: item.id, title: item.title, summary: item.explanation, type: '技術觀念', target: 'concepts' as View }))} onSelect={(target, id) => navigate(target, id)}/>}
       {articleResults.length > 0 && <SearchGroup title="相關技術文章" items={articleResults} onSelect={navigate}/>}
       {solutionResults.length > 0 && <SearchGroup title="優化解法" items={solutionResults} onSelect={navigate}/>}
       {otherResults.length > 0 && <SearchGroup title="其他資料" items={otherResults} onSelect={navigate}/>}
