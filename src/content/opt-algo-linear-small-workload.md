@@ -28,9 +28,12 @@ def first_match(key):
         if k == key:
             return v
     return None
-assert first_match(3) == "old"
-assert first_match(7) == "ok"
-assert first_match(4) is None
+if not (first_match(3) == "old"):
+    raise RuntimeError("check failed: opt-algo-linear-small-workload")
+if not (first_match(7) == "ok"):
+    raise RuntimeError("check failed: opt-algo-linear-small-workload")
+if not (first_match(4) is None):
+    raise RuntimeError("check failed: opt-algo-linear-small-workload")
 print("linear-first-match ok")
 ```
 
@@ -41,7 +44,7 @@ print("linear-first-match ok")
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/bisect.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 為什麼 O(N) 有時會贏 O(log N)？
 

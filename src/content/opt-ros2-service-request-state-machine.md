@@ -22,6 +22,8 @@ related: ncku-v2-ros2-service-client-deadlock
 
 ## 純 Python 狀態機（不含 ROS 2）
 
+**明確約定截止點：** `now < deadline` 才允許完成；`now >= deadline` 視為逾時。兩個函式必須採取同一種比較。這裡 `now` 與 `deadline` 應來自**同一個單調時鐘**（例如 Python 的 `time.monotonic()`），不能把系統年月日直接和單調秒數混比。真實多執行緒系統還需要對同一筆請求的狀態更新加鎖或採事件迴圈序列化。
+
 <!-- test: full-python -->
 ```python
 states={}
@@ -31,18 +33,30 @@ def start(req_id,deadline):
     return True
 def complete(req_id,now):
     x=states.get(req_id)
-    if not x or x['status']!='pending' or now>x['deadline']: return False
+    if not x or x['status']!='pending' or now>=x['deadline']: return False
     x['status']='done'; return True
 def expire(now):
     for x in states.values():
         if x['status']=='pending' and now>=x['deadline']:
             x['status']='timeout'
-assert start('a',5)
-assert not start('a',5)
-assert complete('a',3) and not complete('a',4)
-assert start('b',5)
+if not (start('a',5)):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (not start('a',5)):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (complete('a',3) and not complete('a',4)):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (start('b',5)):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
 expire(5)
-assert states['b']['status']=='timeout'
+if not (states['b']['status']=='timeout'):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (start('edge', 5)):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (complete('edge', 5) is False):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+expire(5)
+if not (states['edge']['status'] == 'timeout'):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
 print(states)
 ```
 
@@ -53,7 +67,7 @@ print(states)
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 
 ---
@@ -82,8 +96,10 @@ def on_reply(req_id, result):
     return 'accepted'
 
 on_clock('r7', 6)
-assert on_reply('r7', 'ok') == 'late/duplicate: investigate before retry'
-assert requests['r7']['state'] == 'timeout'
+if not (on_reply('r7', 'ok') == 'late/duplicate: investigate before retry'):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
+if not (requests['r7']['state'] == 'timeout'):
+    raise RuntimeError("check failed: opt-ros2-service-request-state-machine")
 print('late reply handled')
 ```
 

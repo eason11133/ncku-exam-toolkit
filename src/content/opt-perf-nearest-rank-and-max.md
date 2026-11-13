@@ -31,9 +31,12 @@ def p95_nearest(xs):
     ordered=sorted(xs)
     idx=math.ceil(0.95*len(ordered))-1
     return ordered[idx]
-assert p95_nearest(samples)==100
-assert max(samples)==100
-assert round(sum(samples)/len(samples),1)==13.5
+if not (p95_nearest(samples)==100):
+    raise RuntimeError("check failed: opt-perf-nearest-rank-and-max")
+if not (max(samples)==100):
+    raise RuntimeError("check failed: opt-perf-nearest-rank-and-max")
+if not (round(sum(samples)/len(samples),1)==13.5):
+    raise RuntimeError("check failed: opt-perf-nearest-rank-and-max")
 print('avg',sum(samples)/len(samples),'p95',p95_nearest(samples))
 ```
 
@@ -44,7 +47,7 @@ print('avg',sum(samples)/len(samples),'p95',p95_nearest(samples))
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/statistics.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 同一組資料，平均值會把慢的那筆藏起來
 
@@ -69,15 +72,18 @@ def percentile_nearest_rank(values, p):
         raise ValueError('need samples and 0 < p <= 1')
     return sorted(values)[ceil(p * len(values))-1]
 
-assert percentile_nearest_rank([2]*9 + [30], .95) == 30
-assert percentile_nearest_rank([1,1,1,1,100], .95) == 100
+if not (percentile_nearest_rank([2]*9 + [30], .95) == 30):
+    raise RuntimeError("example check failed")
+if not (percentile_nearest_rank([1,1,1,1,100], .95) == 100):
+    raise RuntimeError("example check failed")
 rng = Random(2026)
 for size in range(1, 100):
     for _ in range(10):
         vals = [rng.randrange(0, 1000) for _ in range(size)]
         for p in (.01, .5, .95, 1.0):
             result = percentile_nearest_rank(vals,p)
-            assert result == sorted(vals)[ceil(p * size)-1]
+            if not (result == sorted(vals)[ceil(p * size)-1]):
+                raise RuntimeError("example check failed")
 try:
     percentile_nearest_rank([], .95)
 except ValueError:

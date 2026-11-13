@@ -43,7 +43,7 @@ int main(void) {
 ## 來源與驗證界線
 
 - 參考：https://en.cppreference.com/c/language/object
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 
 
 ---
@@ -62,11 +62,13 @@ AoS (`struct Point {x,y,z;}`) 若欄位都是 4-byte int，四筆資料的排列
 ```python
 points = [(1, 8, 9), (2, 8, 9), (3, 8, 9), (4, 8, 9)]
 xs = [p[0] for p in points]
-assert sum(p[0] for p in points) == sum(xs) == 10
+if not (sum(p[0] for p in points) == sum(xs) == 10):
+    raise RuntimeError("check failed: opt-c-aos-to-soa")
 # 如果下一步還要每筆的 y/z，也必須保留欄位對應索引。
 ys = [p[1] for p in points]
 zs = [p[2] for p in points]
-assert list(zip(xs, ys, zs)) == points
+if not (list(zip(xs, ys, zs)) == points):
+    raise RuntimeError("check failed: opt-c-aos-to-soa")
 print('same results; no speed measurement')
 ```
 

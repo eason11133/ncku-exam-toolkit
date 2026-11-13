@@ -36,7 +36,8 @@ RP2350 的 PIO 指令一般執行一個 State Machine cycle，方括號 `[n]` �
 high_cycles = 1 + 3
 low_cycles = 1 + 3
 period = high_cycles + low_cycles
-assert (high_cycles, low_cycles, period) == (4, 4, 8)
+if not ((high_cycles, low_cycles, period) == (4, 4, 8)):
+    raise RuntimeError("example check failed")
 print("high=4 low=4 total=8")
 ```
 

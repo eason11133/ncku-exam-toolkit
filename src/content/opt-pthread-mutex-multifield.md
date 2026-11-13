@@ -39,7 +39,8 @@ int main(void) {
     pthread_t a,b;
     if (pthread_create(&a,NULL,worker,NULL)!=0) return 1;
     if (pthread_create(&b,NULL,worker,NULL)!=0) { pthread_join(a,NULL); return 2; }
-    if (pthread_join(a,NULL)!=0 || pthread_join(b,NULL)!=0) return 3;
+    int ja=pthread_join(a,NULL), jb=pthread_join(b,NULL);
+    if (ja!=0 || jb!=0) return 3;
     if (left!=20000 || right!=left) return 4;
     puts("both=20000");
     pthread_mutex_destroy(&mu);
@@ -54,7 +55,7 @@ int main(void) {
 ## 來源與驗證界線
 
 - 參考：https://en.cppreference.com/c/atomic
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 兩個 Atomic 變數，不等於兩個欄位一起更新是原子的
 
@@ -91,8 +92,17 @@ static void *worker(void *ignored) {
 }
 int main(void) {
     pthread_t t[WORKERS];
-    for(int i=0;i<WORKERS;++i)if(pthread_create(&t[i],NULL,worker,NULL)!=0)return 1;
-    for(int i=0;i<WORKERS;++i){void *result=NULL; if(pthread_join(t[i],&result)!=0||result!=NULL)return 2;}
+    int made=0, failed=0;
+    for(int i=0;i<WORKERS;++i) {
+        if(pthread_create(&t[i],NULL,worker,NULL)!=0) {failed=1;break;}
+        ++made;
+    }
+    for(int i=0;i<made;++i) {
+        void *result=NULL;
+        int rc=pthread_join(t[i],&result);
+        if(rc!=0 || result!=NULL) failed=1;
+    }
+    if(failed) return 2;
     if(pthread_mutex_lock(&a.mu)!=0)return 3;
     long x=a.balance,y=a.transactions;
     if(pthread_mutex_unlock(&a.mu)!=0)return 4;
@@ -103,3 +113,8 @@ int main(void) {
 ```
 
 請先預測輸出，再改動一個邊界條件看看檢查為什麼會失敗。不要只記住測試印出 `PASS`，最好能指出哪一筆輸入應該被拒絕，或哪個輸出必須保留。
+
+
+### 實作邊界：兩次 `pthread_join` 請分別執行
+
+`pthread_join(first) || pthread_join(second)` 在第一個回傳非零時會短路，第二個就不執行。這不是測試通過就能忽略的錯誤路徑。應分別呼叫兩次、保存返回碼，再一起判斷。若第二個 `pthread_create` 失敗，已建立的第一個 Thread 也要依工作生命週期妥善 join 或停止；**不能對建立失敗的 thread ID 執行 join**。此處是教學範例，沒有模擬每種 pthread API 故障，正式工作池仍需完整 shutdown 設計。

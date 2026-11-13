@@ -3188,10 +3188,6 @@
     "conceptId": "irq"
   },
   {
-    "text": "ISR",
-    "conceptId": "isr"
-  },
-  {
     "text": "job",
     "conceptId": "transfer-job"
   },
@@ -3986,5 +3982,21 @@
   {
     "text": "pio-side-set",
     "conceptId": "pio-side-set"
+  },
+  {
+    "text": "Interrupt Service Routine",
+    "conceptId": "interrupt-service-routine"
+  },
+  {
+    "text": "中斷服務函式",
+    "conceptId": "interrupt-service-routine"
+  },
+  {
+    "text": "中斷處理函式",
+    "conceptId": "interrupt-service-routine"
+  },
+  {
+    "text": "PIO ISR",
+    "conceptId": "isr"
   }
 ]

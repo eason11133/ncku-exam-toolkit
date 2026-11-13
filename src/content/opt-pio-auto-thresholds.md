@@ -44,7 +44,7 @@ Pico SDK 的 `sm_config_set_out_shift(c, shift_right, autopull, pull_threshold)`
 ## 來源與驗證界線
 
 - 參考：https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 ---
 

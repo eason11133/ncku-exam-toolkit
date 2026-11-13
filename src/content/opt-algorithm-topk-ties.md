@@ -39,9 +39,12 @@ def topk(scores, k):
             for score, negative_index in sorted(heap, reverse=True)]
 
 sample = [9, 4, 9, 7, 7]
-assert topk(sample, 3) == [(9, 0), (9, 2), (7, 3)]
-assert topk(sample, 0) == []
-assert topk(sample, 9) == [(9, 0), (9, 2), (7, 3), (7, 4), (4, 1)]
+if not (topk(sample, 3) == [(9, 0), (9, 2), (7, 3)]):
+    raise RuntimeError("example check failed")
+if not (topk(sample, 0) == []):
+    raise RuntimeError("example check failed")
+if not (topk(sample, 9) == [(9, 0), (9, 2), (7, 3), (7, 4), (4, 1)]):
+    raise RuntimeError("example check failed")
 print("topk=ok")
 ```
 

@@ -35,8 +35,10 @@ PIO 的指令記憶體有上限；`set`、`jmp` 等指令、Side-set 與 Delay �
 # 假設沒有 stall，也沒有額外 side-set 限制
 old = [(1,3),(1,0)]   # (基本週期, delay)
 new = [(1,4)]         # 假設想合成單一指令
-assert sum(a+b for a,b in old)==5
-assert sum(a+b for a,b in new)==5
+if not (sum(a+b for a,b in old)==5):
+    raise RuntimeError("check failed: opt-pio-compact-instructions")
+if not (sum(a+b for a,b in new)==5):
+    raise RuntimeError("check failed: opt-pio-compact-instructions")
 print('total cycles match, but pin transitions may differ')
 ```
 
@@ -47,7 +49,7 @@ print('total cycles match, but pin transitions may differ')
 ## 來源與驗證界線
 
 - 參考：https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## PIO 指令少一條，波形可能就變了
 

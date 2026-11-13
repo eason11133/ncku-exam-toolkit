@@ -38,11 +38,14 @@ def flush():
 def tick(t):
     if queue and t-first_at>=max_wait: flush()
 receive(0,"A"); receive(1,"B"); tick(4)
-assert outputs == []
+if not (outputs == []):
+    raise RuntimeError("check failed: opt-perf-batch-max-wait")
 tick(5)
-assert outputs == ["A","B"]
+if not (outputs == ["A","B"]):
+    raise RuntimeError("check failed: opt-perf-batch-max-wait")
 receive(6,"C"); flush() # 模擬 shutdown
-assert outputs == ["A","B","C"]
+if not (outputs == ["A","B","C"]):
+    raise RuntimeError("check failed: opt-perf-batch-max-wait")
 print(outputs)
 ```
 
@@ -53,7 +56,7 @@ print(outputs)
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/time.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 
 ---

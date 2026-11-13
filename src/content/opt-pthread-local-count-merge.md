@@ -37,7 +37,8 @@ int main(void) {
     pthread_t x,y;
     if (pthread_create(&x,NULL,worker,&a)!=0) return 1;
     if (pthread_create(&y,NULL,worker,&b)!=0) { pthread_join(x,NULL); return 2; }
-    if (pthread_join(x,NULL)!=0 || pthread_join(y,NULL)!=0) return 3;
+    int jx=pthread_join(x,NULL), jy=pthread_join(y,NULL);
+    if (jx!=0 || jy!=0) return 3;
     long total=a.local+b.local;
     if (total!=40000) return 4;
     printf("total=%ld\n",total);
@@ -52,4 +53,9 @@ int main(void) {
 ## 來源與驗證界線
 
 - 參考：https://en.cppreference.com/c/atomic
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+
+
+### 實作邊界：兩次 `pthread_join` 請分別執行
+
+`pthread_join(first) || pthread_join(second)` 在第一個回傳非零時會短路，第二個就不執行。這不是測試通過就能忽略的錯誤路徑。應分別呼叫兩次、保存返回碼，再一起判斷。若第二個 `pthread_create` 失敗，已建立的第一個 Thread 也要依工作生命週期妥善 join 或停止；**不能對建立失敗的 thread ID 執行 join**。此處是教學範例，沒有模擬每種 pthread API 故障，正式工作池仍需完整 shutdown 設計。

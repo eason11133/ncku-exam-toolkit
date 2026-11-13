@@ -27,10 +27,13 @@ related: ncku-v2-perf-tail-latency
 from statistics import median
 baseline=[12,11,10,13,12]
 candidate=[10,9,11,10,10]
-assert len(baseline)==len(candidate)
-assert all(t>0 for t in baseline+candidate)
+if not (len(baseline)==len(candidate)):
+    raise RuntimeError("check failed: opt-perf-fair-ab-matching")
+if not (all(t>0 for t in baseline+candidate)):
+    raise RuntimeError("check failed: opt-perf-fair-ab-matching")
 med_a,med_b=median(baseline),median(candidate)
-assert med_a==12 and med_b==10
+if not (med_a==12 and med_b==10):
+    raise RuntimeError("check failed: opt-perf-fair-ab-matching")
 ratio=med_a/med_b
 print('baseline',med_a,'candidate',med_b,'ratio',ratio)
 ```
@@ -42,7 +45,7 @@ print('baseline',med_a,'candidate',med_b,'ratio',ratio)
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/statistics.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 
 ---
@@ -66,9 +69,11 @@ def compare(a, b):
         return 'INVALID'
     return median(a[2]) / median(b[2])
 
-assert compare((1000,1000,[20,21,19]),(800,1000,[15,16,14])) == 'INVALID'
+if not (compare((1000,1000,[20,21,19]),(800,1000,[15,16,14])) == 'INVALID'):
+    raise RuntimeError("check failed: opt-perf-fair-ab-matching")
 ratio=compare((1000,1000,[20,21,19]),(1000,1000,[18,19,17]))
-assert abs(ratio-(20/18)) < 1e-12
+if not (abs(ratio-(20/18)) < 1e-12):
+    raise RuntimeError("check failed: opt-perf-fair-ab-matching")
 print('example ratio (synthetic only)=',ratio)
 ```
 

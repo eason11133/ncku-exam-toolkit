@@ -38,8 +38,9 @@ static void *worker(void *unused) {
 int main(void) {
     pthread_t a, b;
     if (pthread_create(&a, NULL, worker, NULL) != 0) return 1;
-    if (pthread_create(&b, NULL, worker, NULL) != 0) return 2;
-    if (pthread_join(a, NULL) || pthread_join(b, NULL)) return 3;
+    if (pthread_create(&b, NULL, worker, NULL) != 0) { (void)pthread_join(a,NULL); return 2; }
+    int ja=pthread_join(a,NULL), jb=pthread_join(b,NULL);
+    if (ja!=0 || jb!=0) return 3;
     if (available != 20 || reserved != 80 || available + reserved != 100) return 4;
     puts("invariant=100");
     return 0;
@@ -49,3 +50,8 @@ int main(void) {
 兩個欄位一起更新時，需要一個能保護**整組不變條件**的同步機制。如果想讓兩把鎖各自只鎖一半，其他 Thread 可能在中間讀到不一致狀態。這個範例只是說明重組方式，並不代表所有雙鎖設計都應合成一把大鎖。
 
 **如何驗收**：列出跨欄位條件（例如 `available + reserved == 100`），在多組隨機並行操作後檢查；對照 lock contention 和吞吐量。若臨界區過長，單一 mutex 也可能變慢，要拿量測數據決定。
+
+
+### 實作邊界：兩次 `pthread_join` 請分別執行
+
+`pthread_join(first) || pthread_join(second)` 在第一個回傳非零時會短路，第二個就不執行。這不是測試通過就能忽略的錯誤路徑。應分別呼叫兩次、保存返回碼，再一起判斷。若第二個 `pthread_create` 失敗，已建立的第一個 Thread 也要依工作生命週期妥善 join 或停止；**不能對建立失敗的 thread ID 執行 join**。此處是教學範例，沒有模擬每種 pthread API 故障，正式工作池仍需完整 shutdown 設計。

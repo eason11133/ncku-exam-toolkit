@@ -58,10 +58,14 @@ def chunked(items, batch_size):
 
 
 def test_chunked():
-    assert list(chunked([], 4)) == []
-    assert list(chunked([10, 20], 4)) == [[10, 20]]
-    assert list(chunked(range(8), 4)) == [[0, 1, 2, 3], [4, 5, 6, 7]]
-    assert list(chunked(range(10), 4))[-1] == [8, 9]
+    if not (list(chunked([], 4)) == []):
+        raise RuntimeError("check failed: opt-perf-fixed-batching")
+    if not (list(chunked([10, 20], 4)) == [[10, 20]]):
+        raise RuntimeError("check failed: opt-perf-fixed-batching")
+    if not (list(chunked(range(8), 4)) == [[0, 1, 2, 3], [4, 5, 6, 7]]):
+        raise RuntimeError("check failed: opt-perf-fixed-batching")
+    if not (list(chunked(range(10), 4))[-1] == [8, 9]):
+        raise RuntimeError("check failed: opt-perf-fixed-batching")
     try:
         list(chunked([1], 0))
         raise AssertionError("batch_size=0 should fail")
@@ -74,9 +78,12 @@ def test_chunked():
         size = rng.randrange(1, 40)
         data = [rng.randrange(-3, 4) for _ in range(n)]  # 含重複與負數
         batches = list(chunked(data, size))
-        assert list(chain.from_iterable(batches)) == data
-        assert all(1 <= len(b) <= size for b in batches)
-        assert len(batches) == (n + size - 1) // size
+        if not (list(chain.from_iterable(batches)) == data):
+            raise RuntimeError("check failed: opt-perf-fixed-batching")
+        if not (all(1 <= len(b) <= size for b in batches)):
+            raise RuntimeError("check failed: opt-perf-fixed-batching")
+        if not (len(batches) == (n + size - 1) // size):
+            raise RuntimeError("check failed: opt-perf-fixed-batching")
 
 
 test_chunked()

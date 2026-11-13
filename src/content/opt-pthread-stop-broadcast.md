@@ -39,18 +39,28 @@ static void *worker(void *unused) {
 int main(void) {
     pthread_t a, b;
     if (pthread_create(&a, NULL, worker, NULL) != 0) return 1;
-    if (pthread_create(&b, NULL, worker, NULL) != 0) return 2;
+    if (pthread_create(&b, NULL, worker, NULL) != 0) {
+        /* 第二位沒建立成功，也要讓第一位醒來並被回收。 */
+        if (pthread_mutex_lock(&mu) != 0) return 2;
+        stopping = true;
+        pthread_cond_broadcast(&cv);
+        pthread_mutex_unlock(&mu);
+        (void)pthread_join(a, NULL);
+        return 2;
+    }
     pthread_mutex_lock(&mu);
     stopping = true;
     pthread_cond_broadcast(&cv);
     pthread_mutex_unlock(&mu);
-    if (pthread_join(a, NULL) != 0 || pthread_join(b, NULL) != 0) return 3;
+    int ja = pthread_join(a, NULL);
+    int jb = pthread_join(b, NULL);
+    if (ja != 0 || jb != 0) return 3;
     puts("both joined");
     return 0;
 }
 ```
 
-這個例子刻意**沒有真實工作 Queue**，只示範停止 predicate。若第二次 `pthread_create` 失敗，完整產品程式應立即安全通知既有 Thread 並 join；範例未涵蓋這條錯誤恢復流程。
+這個例子刻意**沒有真實工作 Queue**，只示範停止 predicate。現在已補上「第二個 `pthread_create` 失敗」時如何喚醒並 join 第一個 Thread；錯誤路徑的完整設計仍要核對 mutex/cond API 失敗、已接受任務如何收尾，以及系統退出時的資源生命週期。注意 `pthread_join(a) || pthread_join(b)` 會短路：第一個失敗，第二個就沒執行，所以不能拿它當成「兩位都嘗試回收」。
 
 ## 真實 Queue 需要額外定義的事
 

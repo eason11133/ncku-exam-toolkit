@@ -30,12 +30,14 @@ def improved(allowed, incoming):
     lookup = set(allowed)
     return [x for x in incoming if x in lookup]
 
-assert improved([2, 5, 7], [5, 2, 5, 9]) == [5, 2, 5]
+if not (improved([2, 5, 7], [5, 2, 5, 9]) == [5, 2, 5]):
+    raise RuntimeError("example check failed")
 rng = Random(11)
 for _ in range(200):
     allowed = [rng.randrange(100) for _ in range(rng.randrange(35))]
     incoming = [rng.randrange(100) for _ in range(rng.randrange(50))]
-    assert original(allowed, incoming) == improved(allowed, incoming)
+    if not (original(allowed, incoming) == improved(allowed, incoming)):
+        raise RuntimeError("example check failed")
 print('membership=ok')
 ```
 

@@ -41,7 +41,7 @@ self.client_group = MutuallyExclusiveCallbackGroup()
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/How-To-Guides/Using-callback-groups.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 為什麼換成 MultiThreadedExecutor 還是可能卡住？
 
 假設 Callback A 收到請求後，用同步方式等待 Service 回覆；但是 Service 的回覆也需要 executor 安排另一個 Callback 才能被處理。如果兩個 Callback 被放進同一個 **MutuallyExclusiveCallbackGroup**，A 一直佔著群組不放，另一個 Callback 沒機會開始，就可能互相等下去。

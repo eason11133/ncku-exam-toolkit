@@ -45,7 +45,7 @@ def validate_params(self, params):
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 ## 設定值與程式真正用到的值，是兩件事
 
 假設 Node 啟動時做了這件事：

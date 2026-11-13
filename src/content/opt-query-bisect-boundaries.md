@@ -26,16 +26,21 @@ from random import Random
 
 values = [4, 1, 4, 2, 4]
 a = sorted(values)    # [1,2,4,4,4]
-assert bisect_left(a, 4) == 2   # 小於 4 的筆數
-assert bisect_right(a, 4) == 5  # 小於等於 4 的筆數
-assert bisect_right(a, 4) - bisect_left(a, 4) == 3
+if not (bisect_left(a, 4) == 2):
+    raise RuntimeError("check failed: opt-query-bisect-boundaries")
+if not (bisect_right(a, 4) == 5):
+    raise RuntimeError("check failed: opt-query-bisect-boundaries")
+if not (bisect_right(a, 4) - bisect_left(a, 4) == 3):
+    raise RuntimeError("check failed: opt-query-bisect-boundaries")
 
 rng = Random(42)
 for _ in range(200):
     a = sorted(rng.randrange(-5, 6) for _ in range(rng.randrange(60)))
     for x in range(-7, 8):
-        assert bisect_left(a, x) == sum(v < x for v in a)
-        assert bisect_right(a, x) == sum(v <= x for v in a)
+        if not (bisect_left(a, x) == sum(v < x for v in a)):
+            raise RuntimeError("check failed: opt-query-bisect-boundaries")
+        if not (bisect_right(a, x) == sum(v <= x for v in a)):
+            raise RuntimeError("check failed: opt-query-bisect-boundaries")
 print('bisect=ok')
 ```
 
@@ -44,6 +49,31 @@ print('bisect=ok')
 ## 什麼時候值得先排序？
 
 排序一次 `O(n log n)`，每次查詢 `O(log n)`；只有幾次查詢、資料量又小時，單次線性掃描可能更省。若要找「第一筆大於等於 x」用 `bisect_left`；「第一筆大於 x」用 `bisect_right`。若元素是物件，可指定 `key`，但要注意比較和查詢值的型別要對應。
+
+### 閉區間查詢還有一個陷阱：`L > R`
+
+`bisect_right(a, R)-bisect_left(a, L)` 是**在 L <= R 的前提下**求閉區間筆數。若使用者把範圍輸成 `L=9, R=2`，兩個插入位置的差可能是負數；這不是合理的「負幾筆資料」。題目若允許不合法區間，應明確拋出錯誤或依規格回傳 0，不能默默使用原公式。
+
+```python
+from bisect import bisect_left, bisect_right
+
+def count_closed(sorted_values, left, right):
+    if left > right:
+        raise ValueError('left > right')
+    return bisect_right(sorted_values, right) - bisect_left(sorted_values, left)
+
+values = [1, 3, 3, 7]
+for left, right, expected in [(3, 3, 2), (2, 6, 2), (-10, 0, 0), (7, 7, 1)]:
+    if count_closed(values, left, right) != expected:
+        raise RuntimeError('錯誤的閉區間筆數')
+try:
+    count_closed(values, 9, 2)
+except ValueError:
+    pass
+else:
+    raise RuntimeError('顛倒範圍應被拒絕')
+print('closed range boundaries PASS')
+```
 
 **驗收**：專門測空陣列、全相同、邊界以下／以上、重複數、負數，以及等於門檻的情形。別把 `bisect_left` 當成精確存在檢查，存在判斷還要確認 `i < len(a)` 且 `a[i] == x`。
 
@@ -67,7 +97,8 @@ for _ in range(100):
         for right in range(left, 11, 4):
             fast = bisect_right(a,right)-bisect_left(a,left)
             slow = sum(left <= x <= right for x in a)
-            assert fast == slow
+            if not (fast == slow):
+                raise RuntimeError("example check failed")
 print('closed intervals=ok')
 ```
 
@@ -85,10 +116,14 @@ for _ in range(2000):
     xs = sorted(rng.randint(-10, 10) for _ in range(rng.randint(0, 60)))
     q = rng.randint(-12, 12)
     l,r = bisect_left(xs,q),bisect_right(xs,q)
-    assert l == sum(x<q for x in xs)
-    assert r == sum(x<=q for x in xs)
-    assert r-l == xs.count(q)
-    assert (l<len(xs) and xs[l]==q) == (q in xs)
+    if not (l == sum(x<q for x in xs)):
+        raise RuntimeError("example check failed")
+    if not (r == sum(x<=q for x in xs)):
+        raise RuntimeError("example check failed")
+    if not (r-l == xs.count(q)):
+        raise RuntimeError("example check failed")
+    if not ((l<len(xs) and xs[l]==q) == (q in xs)):
+        raise RuntimeError("example check failed")
 print('bisect duplicate / empty / boundary PASS')
 ```
 

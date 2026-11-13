@@ -40,7 +40,8 @@ for _ in range(80):
     p = build_prefix(data)
     for l in range(len(data) + 1):
         for r in range(l, len(data) + 1):
-            assert range_sum(p, l, r) == sum(data[l:r])
+            if not (range_sum(p, l, r) == sum(data[l:r])):
+                raise RuntimeError("example check failed")
 print('prefix=ok')
 ```
 

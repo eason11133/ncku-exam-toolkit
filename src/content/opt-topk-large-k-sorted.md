@@ -26,10 +26,12 @@ from heapq import nsmallest
 values=[9,1,5,4,4,8,3]
 for k in (0,1,3,7,100):
     expected=sorted(values)[:k]
-    assert nsmallest(k,values)==expected
+    if not (nsmallest(k,values)==expected):
+        raise RuntimeError("check failed: opt-topk-large-k-sorted")
 # 需要完整排序就直接 sorted；它也保留所有元素
 all_sorted=sorted(values)
-assert all_sorted == [1,3,4,4,5,8,9]
+if not (all_sorted == [1,3,4,4,5,8,9]):
+    raise RuntimeError("check failed: opt-topk-large-k-sorted")
 print("sorted/heap equivalent on sample")
 ```
 
@@ -40,7 +42,7 @@ print("sorted/heap equivalent on sample")
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/heapq.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 先問「要前 K 個」還是「每個元素都排序」
 
 例如 `values=[8,2,7,2,5]`，若只要最小 2 個，答案是 `[2,2]`；若題目要求全部升冪，則是 `[2,2,5,7,8]`。Heap 適合不必保留所有元素順序的情況；整份 `sorted` 則是排序所有元素。兩者的輸出需求不同時，不應直接拿執行時間比較。

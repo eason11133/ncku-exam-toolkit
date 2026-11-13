@@ -21,6 +21,8 @@ related: ncku-compiler-profile-sanitize
 固定同一份輸入、編譯器版本與參數，建立三個 binary。測「執行時間」時不要把編譯時間混進去；如果評分規則包含編譯，則另列總耗時。
 
 ```bash
+# 放在 Linux sh/bash 腳本中執行，任一編譯、程式或 cmp 失敗就停止。
+set -eu
 cc -std=c11 -O0 -g -Wall -Wextra main.c -o prog_o0
 cc -std=c11 -O2 -g -Wall -Wextra main.c -o prog_o2
 cc -std=c11 -O3 -g -Wall -Wextra main.c -o prog_o3
@@ -33,7 +35,7 @@ cmp o0.txt o2.txt && cmp o2.txt o3.txt
 /usr/bin/time -p ./prog_o3 < input.txt > /dev/null
 ```
 
-`/usr/bin/time` 是可選工具；如果沒安裝，用 shell `time` 但紀錄單位。上面使用 `< input.txt` 是餵給 stdin，和 `./program input.txt`（傳 argv）**不同**。
+`set -eu` 會在這個無管線的範例中遇到編譯、程式非零退出碼或 `cmp` 不一致就停止；**不要**在多條指令的互動式 Shell 盲目啟用它，以免影響其他操作。若使用管線（`|`），還得另外處理各段失敗傳遞。`/usr/bin/time` 是可選工具；如果沒安裝，用 shell `time` 但紀錄單位。上面使用 `< input.txt` 是餵給 stdin，和 `./program input.txt`（傳 argv）**不同**。
 
 ## 注意事項
 
@@ -42,7 +44,7 @@ cmp o0.txt o2.txt && cmp o2.txt o3.txt
 ## 來源與驗證界線
 
 - 參考：https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 
 ## 延伸推演｜遇到變形題怎麼判斷
 

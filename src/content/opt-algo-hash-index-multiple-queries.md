@@ -28,9 +28,11 @@ records = [(11, "A"), (22, "B"), (11, "C")]
 queries = [11, 33, 22]
 # Key 重複時，這個版本刻意採「最後一筆覆蓋先前」的規則
 by_key = {key: value for key, value in records}
-assert by_key[11] == "C"
+if not (by_key[11] == "C"):
+    raise RuntimeError("check failed: opt-algo-hash-index-multiple-queries")
 found = [by_key.get(q) for q in queries]
-assert found == ["C", None, "B"]
+if not (found == ["C", None, "B"]):
+    raise RuntimeError("check failed: opt-algo-hash-index-multiple-queries")
 print(found)
 ```
 
@@ -43,7 +45,7 @@ print(found)
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/bisect.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## `set`、`dict` 和「列表有沒有包含」其實是在回答不同題目
 

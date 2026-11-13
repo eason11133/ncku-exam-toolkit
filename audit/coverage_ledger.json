@@ -1,12 +1,16 @@
 {
-  "scope": "static inventory; no automatic semantic or runtime signoff",
+  "scope": "static inventory with per-item partial test evidence; examples do not certify article or hardware behavior",
+  "environment": "Windows, w64devkit GCC, Python 3.11, Node.js/Vite; ROS 2 and RP2350 hardware not run; UBSan unavailable",
   "rows": [
     {
       "kind": "article",
       "id": "lesson-benchmark-correctness-baseline",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -14,7 +18,10 @@
       "id": "lesson-benchmark-correctness-compare-tradeoff",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -22,7 +29,10 @@
       "id": "lesson-benchmark-correctness-profile-hotspot",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -30,7 +40,10 @@
       "id": "lesson-c-bitfield-operations-mask-and-shift",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -38,7 +51,10 @@
       "id": "lesson-c-bitfield-operations-pack-unpack",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -46,7 +62,10 @@
       "id": "lesson-c-bitfield-operations-set-clear",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -54,7 +73,10 @@
       "id": "lesson-memory-buffer-copy-avoid-extra-copy",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -62,7 +84,10 @@
       "id": "lesson-memory-buffer-copy-choose-memmove",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -70,7 +95,10 @@
       "id": "lesson-memory-buffer-copy-reuse-buffer",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -78,7 +106,10 @@
       "id": "lesson-pthread-work-partition-partition-independent",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -86,7 +117,10 @@
       "id": "lesson-pthread-work-partition-reduce-lock",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -94,7 +128,10 @@
       "id": "lesson-pthread-work-partition-thread-count",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -102,7 +139,10 @@
       "id": "lesson-python-cpu-process-measure-cpu",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -110,7 +150,10 @@
       "id": "lesson-python-cpu-process-native-library",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -118,7 +161,10 @@
       "id": "lesson-python-cpu-process-process-pool",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -126,7 +172,10 @@
       "id": "lesson-resource-queues-bounded-queue",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -134,7 +183,10 @@
       "id": "lesson-resource-queues-double-buffer",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -142,7 +194,10 @@
       "id": "lesson-resource-queues-producer-consumer",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -150,7 +205,10 @@
       "id": "lesson-ros2-processing-callback-algorithm",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -158,7 +216,10 @@
       "id": "lesson-ros2-processing-callback-cache",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -166,7 +227,10 @@
       "id": "lesson-ros2-processing-callback-instrument",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -174,7 +238,10 @@
       "id": "lesson-ros2-qos-profile-fix-compatibility",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -182,7 +249,10 @@
       "id": "lesson-ros2-qos-profile-keep-last-depth",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -190,7 +260,10 @@
       "id": "lesson-ros2-qos-profile-reliability-choice",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -198,7 +271,10 @@
       "id": "lesson-ros2-topic-pipeline-check-cli",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -206,7 +282,10 @@
       "id": "lesson-ros2-topic-pipeline-parallel-stages",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -214,7 +293,10 @@
       "id": "lesson-ros2-topic-pipeline-reduce-work",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -222,7 +304,10 @@
       "id": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -230,7 +315,10 @@
       "id": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -238,7 +326,10 @@
       "id": "lesson-rp2350-pio-fifo-trace-echo",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -246,7 +337,10 @@
       "id": "lesson-spinlock-critical-section-move-work-outside",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -254,7 +348,10 @@
       "id": "lesson-spinlock-critical-section-per-thread-count",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -262,7 +359,10 @@
       "id": "lesson-spinlock-critical-section-use-mutex",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -270,7 +370,10 @@
       "id": "lesson-transfer-engine-configuration-copy-vs-fill",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -278,7 +381,10 @@
       "id": "lesson-transfer-engine-configuration-count-unit",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -286,7 +392,10 @@
       "id": "lesson-transfer-engine-configuration-overlap-cpu",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -294,7 +403,10 @@
       "id": "lesson-transfer-format-batch",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -302,7 +414,10 @@
       "id": "lesson-transfer-format-compact-binary",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -310,7 +425,10 @@
       "id": "lesson-transfer-format-remove-unneeded-data",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -318,7 +436,10 @@
       "id": "ncku-algorithm-query-patterns",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -326,7 +447,10 @@
       "id": "ncku-binary-packet-parsing",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -334,7 +458,10 @@
       "id": "ncku-bitwise-c",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -342,7 +469,10 @@
       "id": "ncku-c-language-bridge",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -350,7 +480,10 @@
       "id": "ncku-c-memory",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -358,7 +491,10 @@
       "id": "ncku-compiler-profile-sanitize",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 6
     },
     {
@@ -366,7 +502,10 @@
       "id": "ncku-concurrency-advanced",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -374,7 +513,10 @@
       "id": "ncku-debug-decision-tree",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -382,7 +524,10 @@
       "id": "ncku-docker-debug",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -390,7 +535,10 @@
       "id": "ncku-embedded-riscv-io",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -398,7 +546,10 @@
       "id": "ncku-gitlab-workflow",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -406,7 +557,10 @@
       "id": "ncku-incremental-cache",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -414,7 +568,10 @@
       "id": "ncku-local-llm-prompts",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -422,7 +579,10 @@
       "id": "ncku-memory-locality",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -430,7 +590,10 @@
       "id": "ncku-performance-benchmark",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -438,7 +601,10 @@
       "id": "ncku-pio-dataflow",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -446,7 +612,10 @@
       "id": "ncku-pthread-condvar-queue",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -454,7 +623,10 @@
       "id": "ncku-pthread-critical-section",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -462,7 +634,10 @@
       "id": "ncku-ros2-cli-workflow",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -470,7 +645,10 @@
       "id": "ncku-ros2-executor",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -478,7 +656,10 @@
       "id": "ncku-ros2-qos",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -486,7 +667,10 @@
       "id": "ncku-systems-foundations",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -494,7 +678,10 @@
       "id": "ncku-transfer-engine",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -502,7 +689,10 @@
       "id": "ncku-v2-algorithm-search-batching",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -510,7 +700,10 @@
       "id": "ncku-v2-algorithm-topk-heap",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -518,7 +711,10 @@
       "id": "ncku-v2-c-allocator-fragmentation",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -526,7 +722,12 @@
       "id": "ncku-v2-c-io-buffering",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -534,15 +735,26 @@
       "id": "ncku-v2-c-memcpy-overlap",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "ncku-v2-c-signed-overflow",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A7",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -550,7 +762,12 @@
       "id": "ncku-v2-c-struct-packing",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -558,7 +775,10 @@
       "id": "ncku-v2-dma-cache-coherency",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -566,7 +786,10 @@
       "id": "ncku-v2-perf-batch-vs-realtime",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -574,7 +797,10 @@
       "id": "ncku-v2-perf-tail-latency",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -582,7 +808,10 @@
       "id": "ncku-v2-pio-delay-clock",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -590,7 +819,10 @@
       "id": "ncku-v2-pio-fifo-stall",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -598,7 +830,10 @@
       "id": "ncku-v2-pio-shift-order",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -606,7 +841,10 @@
       "id": "ncku-v2-pio-state-machine-limits",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -614,7 +852,10 @@
       "id": "ncku-v2-pthread-atomic-counter",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -622,7 +863,10 @@
       "id": "ncku-v2-pthread-deadlock-order",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -630,7 +874,10 @@
       "id": "ncku-v2-pthread-thread-lifecycle",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -638,7 +885,10 @@
       "id": "ncku-v2-pthread-timeout-shutdown",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -646,7 +896,10 @@
       "id": "ncku-v2-ros2-message-serialization",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -654,7 +907,10 @@
       "id": "ncku-v2-ros2-parameters-config",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -662,7 +918,10 @@
       "id": "ncku-v2-ros2-remap-diagnostics",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -670,7 +929,10 @@
       "id": "ncku-v2-ros2-service-client-deadlock",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -678,7 +940,10 @@
       "id": "ncku-v2-ros2-timer-jitter",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -686,7 +951,10 @@
       "id": "ncku-v2-ros2-topic-backlog",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -694,7 +962,10 @@
       "id": "ncku-v2-transfer-channel-scheduling",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -702,7 +973,10 @@
       "id": "ncku-v2-transfer-double-buffer",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -710,7 +984,10 @@
       "id": "ncku-v2-transfer-interrupt-or-poll",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -718,7 +995,10 @@
       "id": "ops-cmake-projects",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 5
     },
     {
@@ -726,7 +1006,10 @@
       "id": "ops-code-change-audit",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -734,7 +1017,12 @@
       "id": "ops-debug-c",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -742,7 +1030,10 @@
       "id": "ops-debug-python",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -750,7 +1041,10 @@
       "id": "ops-docker-bind-mount",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -758,7 +1052,10 @@
       "id": "ops-docker-lifecycle",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 5
     },
     {
@@ -766,7 +1063,10 @@
       "id": "ops-gcc-compile-link",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -774,7 +1074,10 @@
       "id": "ops-git-safe-workflow",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -782,7 +1085,10 @@
       "id": "ops-gitlab-ci-oj",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -790,7 +1096,10 @@
       "id": "ops-gitlab-final-check",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -798,7 +1107,10 @@
       "id": "ops-linux-paths",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -806,7 +1118,10 @@
       "id": "ops-linux-processes",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -814,7 +1129,10 @@
       "id": "ops-linux-text-search",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -822,7 +1140,10 @@
       "id": "ops-llm-stepwise-guide",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -830,7 +1151,10 @@
       "id": "ops-make-targets",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -838,7 +1162,10 @@
       "id": "ops-perf-cpu-memory",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -846,7 +1173,10 @@
       "id": "ops-perf-test-protocol",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -854,7 +1184,12 @@
       "id": "ops-pthread-create-join",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -862,7 +1197,10 @@
       "id": "ops-ros2-environment",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -870,7 +1208,10 @@
       "id": "ops-shell-windows",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -878,7 +1219,10 @@
       "id": "ops-unknown-repo-first-look",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -886,7 +1230,12 @@
       "id": "opt-algo-binary-left-bound-c",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -894,7 +1243,12 @@
       "id": "opt-algo-hash-index-multiple-queries",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -902,7 +1256,12 @@
       "id": "opt-algo-linear-small-workload",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -910,7 +1269,10 @@
       "id": "opt-algorithm-topk-ties",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -918,7 +1280,10 @@
       "id": "opt-benchmark-stdin-and-rate",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -926,7 +1291,12 @@
       "id": "opt-c-alignment-safe-byte-parser",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -934,7 +1304,12 @@
       "id": "opt-c-aos-to-soa",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -942,7 +1317,12 @@
       "id": "opt-c-checked-copy-bytes",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -950,15 +1330,25 @@
       "id": "opt-c-checked-signed-add",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
       "kind": "article",
       "id": "opt-c-compare-optimization-levels",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A8",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -966,7 +1356,12 @@
       "id": "opt-c-contiguous-array-vs-nodes",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -974,15 +1369,26 @@
       "id": "opt-c-debug-build-switch",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
       "kind": "article",
       "id": "opt-c-false-sharing-bench-safe",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -990,7 +1396,12 @@
       "id": "opt-c-grow-buffer",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -998,7 +1409,12 @@
       "id": "opt-c-io-hotpath-logs",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1006,7 +1422,12 @@
       "id": "opt-c-io-setvbuf",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1014,7 +1435,12 @@
       "id": "opt-c-memmove-overlap",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1022,7 +1448,12 @@
       "id": "opt-c-memory-pool-boundaries",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1030,7 +1461,12 @@
       "id": "opt-c-parser-no-unaligned-cast",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1038,7 +1474,12 @@
       "id": "opt-c-parser-only-needed-fields",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1046,7 +1487,12 @@
       "id": "opt-c-reuse-scratch",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1054,7 +1500,12 @@
       "id": "opt-c-safe-bit-fields",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1062,7 +1513,12 @@
       "id": "opt-c-safe-packet-reader",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1070,7 +1526,12 @@
       "id": "opt-c-sanitize-then-benchmark",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1078,7 +1539,10 @@
       "id": "opt-c-sanitizer-before-speed",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1086,7 +1550,12 @@
       "id": "opt-c-skip-buffer-compaction",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1094,7 +1563,12 @@
       "id": "opt-c-struct-reorder-layout",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -1102,7 +1576,12 @@
       "id": "opt-c-unsigned-modulo",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1110,7 +1589,12 @@
       "id": "opt-c-wire-format-no-struct",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -1118,15 +1602,24 @@
       "id": "opt-cond-batch-pop",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-cond-bounded-ring",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1134,7 +1627,12 @@
       "id": "opt-cond-wait-predicate",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1142,7 +1640,10 @@
       "id": "opt-dma-cache-direction-check",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1150,7 +1651,10 @@
       "id": "opt-dma-identify-memory-region",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1158,7 +1662,10 @@
       "id": "opt-dma-shared-buffer-ownership",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1166,7 +1673,12 @@
       "id": "opt-perf-adaptive-batch-cap",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1174,7 +1686,12 @@
       "id": "opt-perf-batch-max-wait",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1182,7 +1699,12 @@
       "id": "opt-perf-fair-ab-matching",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1190,7 +1712,12 @@
       "id": "opt-perf-fixed-batching",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1198,7 +1725,12 @@
       "id": "opt-perf-link-slow-events",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1206,7 +1738,12 @@
       "id": "opt-perf-nearest-rank-and-max",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1214,7 +1751,10 @@
       "id": "opt-pio-auto-thresholds",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1222,7 +1762,12 @@
       "id": "opt-pio-compact-instructions",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1230,7 +1775,10 @@
       "id": "opt-pio-config-clock-divider",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1238,7 +1786,10 @@
       "id": "opt-pio-count-cycles",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -1246,7 +1797,12 @@
       "id": "opt-pio-cpu-pack-unpack",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1254,7 +1810,10 @@
       "id": "opt-pio-echo-autopull",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1262,7 +1821,12 @@
       "id": "opt-pio-osr-isr-direction",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1270,7 +1834,10 @@
       "id": "opt-pio-program-sharing",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1278,7 +1845,12 @@
       "id": "opt-pio-reduce-instructions",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 4
     },
     {
@@ -1286,7 +1858,10 @@
       "id": "opt-pio-rx-drain",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1294,7 +1869,10 @@
       "id": "opt-pio-sm-gpio-allocation",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1302,7 +1880,10 @@
       "id": "opt-pio-tx-underflow",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1310,7 +1891,10 @@
       "id": "opt-pio-wait-strategy",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1318,7 +1902,12 @@
       "id": "opt-pthread-atomic-counter",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1326,15 +1915,26 @@
       "id": "opt-pthread-cond-timeout",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-pthread-fixed-worker-pool",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1342,55 +1942,96 @@
       "id": "opt-pthread-join-vs-detach",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-pthread-local-count-merge",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-pthread-lock-order",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
       "kind": "article",
       "id": "opt-pthread-mutex-multifield",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
       "kind": "article",
       "id": "opt-pthread-single-lock-redesign",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-pthread-stop-broadcast",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-pthread-trylock-policy",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A3/A4",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1398,7 +2039,10 @@
       "id": "opt-pthread-wait-loop",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1406,7 +2050,12 @@
       "id": "opt-pthread-worker-count",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1414,15 +2063,21 @@
       "id": "opt-query-bisect-boundaries",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
-      "codeBlocks": 3
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
+      "codeBlocks": 4
     },
     {
       "kind": "article",
       "id": "opt-query-membership-set",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1430,7 +2085,10 @@
       "id": "opt-query-prefix-range",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1438,7 +2096,10 @@
       "id": "opt-ros2-async-service",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -1446,7 +2107,12 @@
       "id": "opt-ros2-avoid-reencoding",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1454,7 +2120,10 @@
       "id": "opt-ros2-large-data-path",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1462,7 +2131,12 @@
       "id": "opt-ros2-param-matrix",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1470,23 +2144,34 @@
       "id": "opt-ros2-parameter-dynamic-refresh",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
       "kind": "article",
       "id": "opt-ros2-parameterize-knobs",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
-      "codeBlocks": 2
+      "technical": "focused-correction-reviewed",
+      "issue": "A5",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
+      "codeBlocks": 3
     },
     {
       "kind": "article",
       "id": "opt-ros2-payload-contract",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1494,7 +2179,10 @@
       "id": "opt-ros2-remap-cli",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1502,15 +2190,24 @@
       "id": "opt-ros2-service-callback-groups",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-ros2-service-request-state-machine",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A2",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1518,7 +2215,10 @@
       "id": "opt-ros2-timer-rate-budget",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1526,7 +2226,10 @@
       "id": "opt-ros2-timer-short-callback",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1534,7 +2237,10 @@
       "id": "opt-ros2-timer-split-groups",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1542,7 +2248,10 @@
       "id": "opt-ros2-topic-consumer-hotspot",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1550,7 +2259,10 @@
       "id": "opt-ros2-topic-domain-qos",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1558,7 +2270,10 @@
       "id": "opt-ros2-topic-flow-control",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1566,7 +2281,10 @@
       "id": "opt-ros2-topic-last-state",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1574,7 +2292,10 @@
       "id": "opt-ros2-topic-name-check",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1582,7 +2303,10 @@
       "id": "opt-ros2-type-qos-diagnose",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1590,7 +2314,10 @@
       "id": "opt-stream-lru-cache",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1598,7 +2325,10 @@
       "id": "opt-stream-rolling-window",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1606,15 +2336,23 @@
       "id": "opt-stream-running-sum",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
-      "codeBlocks": 2
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
+      "codeBlocks": 3
     },
     {
       "kind": "article",
       "id": "opt-topk-heapq-nsmallest",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1622,7 +2360,12 @@
       "id": "opt-topk-large-k-sorted",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1630,7 +2373,10 @@
       "id": "opt-transfer-blocking-wait",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1638,7 +2384,10 @@
       "id": "opt-transfer-channel-owner",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1646,7 +2395,10 @@
       "id": "opt-transfer-double-buffer-sequence",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1654,7 +2406,10 @@
       "id": "opt-transfer-few-channels",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1662,7 +2417,10 @@
       "id": "opt-transfer-irq-event",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1670,15 +2428,26 @@
       "id": "opt-transfer-last-chunk-split",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/audit_python_examples.py: Python normal and -O; execute marked blocks"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-transfer-no-channel-fallback",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A1",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1686,7 +2455,12 @@
       "id": "opt-transfer-short-poll",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
@@ -1694,15 +2468,26 @@
       "id": "opt-transfer-single-buffer-fallback",
       "static": "present",
       "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "issue": null,
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 1
     },
     {
       "kind": "article",
       "id": "opt-transfer-unit-capacity",
       "static": "present",
-      "technical": "manual-review-needed",
-      "runtime": "not-tested",
+      "technical": "focused-correction-reviewed",
+      "issue": "A1",
+      "runtime": "partial-examples-executed",
+      "evidence": [
+        "checks/compile_c_examples.py: Windows GCC -O0/-O2/-O2 -DNDEBUG; compile and execute",
+        "checks/audit_known_fixes.py: focused counterexamples; see script for executable scope"
+      ],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1710,7 +2495,10 @@
       "id": "ros2-ste-multithreaded-groups",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 7
     },
     {
@@ -1718,7 +2506,10 @@
       "id": "ros2-ste-process-pool",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 3
     },
     {
@@ -1726,7 +2517,10 @@
       "id": "ros2-ste-short-callback",
       "static": "present",
       "technical": "manual-review-needed",
+      "issue": null,
       "runtime": "not-tested",
+      "evidence": [],
+      "sourceVerification": "not-individually-certified",
       "codeBlocks": 2
     },
     {
@@ -1735,7 +2529,8 @@
       "articleId": "opt-algo-hash-index-multiple-queries",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1743,7 +2538,8 @@
       "articleId": "opt-algo-binary-left-bound-c",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1751,7 +2547,8 @@
       "articleId": "opt-algo-linear-small-workload",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1759,7 +2556,8 @@
       "articleId": "opt-topk-heapq-nsmallest",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1767,7 +2565,8 @@
       "articleId": "opt-algorithm-topk-ties",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1775,7 +2574,8 @@
       "articleId": "opt-topk-large-k-sorted",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1783,7 +2583,8 @@
       "articleId": "lesson-benchmark-correctness-baseline",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1791,7 +2592,8 @@
       "articleId": "lesson-benchmark-correctness-profile-hotspot",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1799,7 +2601,8 @@
       "articleId": "lesson-benchmark-correctness-compare-tradeoff",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1807,7 +2610,8 @@
       "articleId": "opt-c-grow-buffer",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1815,7 +2619,8 @@
       "articleId": "opt-c-reuse-scratch",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1823,7 +2628,8 @@
       "articleId": "opt-c-memory-pool-boundaries",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1831,7 +2637,8 @@
       "articleId": "lesson-c-bitfield-operations-mask-and-shift",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1839,7 +2646,8 @@
       "articleId": "lesson-c-bitfield-operations-set-clear",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1847,7 +2655,8 @@
       "articleId": "lesson-c-bitfield-operations-pack-unpack",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1855,7 +2664,8 @@
       "articleId": "opt-c-io-hotpath-logs",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1863,7 +2673,8 @@
       "articleId": "opt-c-io-setvbuf",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1871,7 +2682,8 @@
       "articleId": "opt-c-debug-build-switch",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1879,7 +2691,8 @@
       "articleId": "opt-c-memmove-overlap",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1887,7 +2700,8 @@
       "articleId": "opt-c-skip-buffer-compaction",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1895,7 +2709,8 @@
       "articleId": "opt-c-checked-copy-bytes",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1903,7 +2718,8 @@
       "articleId": "opt-c-unsigned-modulo",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1911,7 +2727,8 @@
       "articleId": "opt-c-checked-signed-add",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1919,7 +2736,8 @@
       "articleId": "opt-c-sanitizer-before-speed",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1927,7 +2745,8 @@
       "articleId": "opt-c-wire-format-no-struct",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1935,7 +2754,8 @@
       "articleId": "opt-c-struct-reorder-layout",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1943,7 +2763,8 @@
       "articleId": "opt-c-alignment-safe-byte-parser",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1951,7 +2772,8 @@
       "articleId": "opt-c-compare-optimization-levels",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1959,7 +2781,8 @@
       "articleId": "opt-c-sanitize-then-benchmark",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1967,7 +2790,8 @@
       "articleId": "opt-benchmark-stdin-and-rate",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1975,7 +2799,8 @@
       "articleId": "opt-c-aos-to-soa",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1983,7 +2808,8 @@
       "articleId": "opt-c-contiguous-array-vs-nodes",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1991,7 +2817,8 @@
       "articleId": "opt-c-false-sharing-bench-safe",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -1999,7 +2826,8 @@
       "articleId": "opt-dma-identify-memory-region",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2007,7 +2835,8 @@
       "articleId": "opt-dma-cache-direction-check",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2015,7 +2844,8 @@
       "articleId": "opt-dma-shared-buffer-ownership",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2023,7 +2853,8 @@
       "articleId": "lesson-memory-buffer-copy-avoid-extra-copy",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2031,7 +2862,8 @@
       "articleId": "lesson-memory-buffer-copy-choose-memmove",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2039,7 +2871,8 @@
       "articleId": "lesson-memory-buffer-copy-reuse-buffer",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2047,7 +2880,8 @@
       "articleId": "opt-perf-fixed-batching",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2055,7 +2889,8 @@
       "articleId": "opt-perf-batch-max-wait",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2063,7 +2898,8 @@
       "articleId": "opt-perf-adaptive-batch-cap",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2071,7 +2907,8 @@
       "articleId": "opt-perf-nearest-rank-and-max",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2079,7 +2916,8 @@
       "articleId": "opt-perf-link-slow-events",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2087,7 +2925,8 @@
       "articleId": "opt-perf-fair-ab-matching",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2095,7 +2934,8 @@
       "articleId": "opt-pio-count-cycles",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2103,7 +2943,8 @@
       "articleId": "opt-pio-config-clock-divider",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2111,7 +2952,8 @@
       "articleId": "opt-pio-reduce-instructions",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2119,7 +2961,8 @@
       "articleId": "opt-pio-tx-underflow",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2127,7 +2970,8 @@
       "articleId": "opt-pio-rx-drain",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2135,7 +2979,8 @@
       "articleId": "opt-pio-wait-strategy",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2143,7 +2988,8 @@
       "articleId": "opt-pio-osr-isr-direction",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2151,7 +2997,8 @@
       "articleId": "opt-pio-auto-thresholds",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2159,7 +3006,8 @@
       "articleId": "opt-pio-cpu-pack-unpack",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2167,7 +3015,8 @@
       "articleId": "opt-pio-program-sharing",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2175,7 +3024,8 @@
       "articleId": "opt-pio-compact-instructions",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2183,7 +3033,8 @@
       "articleId": "opt-pio-sm-gpio-allocation",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2191,7 +3042,8 @@
       "articleId": "opt-pthread-atomic-counter",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2199,7 +3051,8 @@
       "articleId": "opt-pthread-local-count-merge",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2207,7 +3060,8 @@
       "articleId": "opt-pthread-mutex-multifield",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2215,7 +3069,8 @@
       "articleId": "opt-cond-wait-predicate",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2223,7 +3078,8 @@
       "articleId": "opt-cond-bounded-ring",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2231,7 +3087,8 @@
       "articleId": "opt-cond-batch-pop",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2239,7 +3096,8 @@
       "articleId": "opt-pthread-lock-order",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2247,7 +3105,8 @@
       "articleId": "opt-pthread-single-lock-redesign",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2255,7 +3114,8 @@
       "articleId": "opt-pthread-trylock-policy",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2263,7 +3123,8 @@
       "articleId": "opt-pthread-fixed-worker-pool",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2271,7 +3132,8 @@
       "articleId": "opt-pthread-worker-count",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2279,7 +3141,8 @@
       "articleId": "opt-pthread-join-vs-detach",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2287,7 +3150,8 @@
       "articleId": "opt-pthread-stop-broadcast",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2295,7 +3159,8 @@
       "articleId": "opt-pthread-wait-loop",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2303,7 +3168,8 @@
       "articleId": "opt-pthread-cond-timeout",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2311,7 +3177,8 @@
       "articleId": "lesson-pthread-work-partition-partition-independent",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2319,7 +3186,8 @@
       "articleId": "lesson-pthread-work-partition-reduce-lock",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2327,7 +3195,8 @@
       "articleId": "lesson-pthread-work-partition-thread-count",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2335,7 +3204,8 @@
       "articleId": "lesson-python-cpu-process-measure-cpu",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2343,7 +3213,8 @@
       "articleId": "lesson-python-cpu-process-process-pool",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2351,7 +3222,8 @@
       "articleId": "lesson-python-cpu-process-native-library",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2359,7 +3231,8 @@
       "articleId": "opt-query-membership-set",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2367,7 +3240,8 @@
       "articleId": "opt-query-bisect-boundaries",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2375,7 +3249,8 @@
       "articleId": "opt-query-prefix-range",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2383,7 +3258,8 @@
       "articleId": "lesson-resource-queues-bounded-queue",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2391,7 +3267,8 @@
       "articleId": "lesson-resource-queues-double-buffer",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2399,7 +3276,8 @@
       "articleId": "lesson-resource-queues-producer-consumer",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2407,7 +3285,8 @@
       "articleId": "opt-ros2-avoid-reencoding",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2415,7 +3294,8 @@
       "articleId": "opt-ros2-payload-contract",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2423,7 +3303,8 @@
       "articleId": "opt-ros2-large-data-path",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2431,7 +3312,8 @@
       "articleId": "opt-ros2-parameterize-knobs",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2439,7 +3321,8 @@
       "articleId": "opt-ros2-param-matrix",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2447,7 +3330,8 @@
       "articleId": "opt-ros2-parameter-dynamic-refresh",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2455,7 +3339,8 @@
       "articleId": "lesson-ros2-processing-callback-instrument",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2463,7 +3348,8 @@
       "articleId": "lesson-ros2-processing-callback-algorithm",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2471,7 +3357,8 @@
       "articleId": "lesson-ros2-processing-callback-cache",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2479,7 +3366,8 @@
       "articleId": "lesson-ros2-qos-profile-fix-compatibility",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2487,7 +3375,8 @@
       "articleId": "lesson-ros2-qos-profile-keep-last-depth",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2495,7 +3384,8 @@
       "articleId": "lesson-ros2-qos-profile-reliability-choice",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2503,7 +3393,8 @@
       "articleId": "opt-ros2-topic-name-check",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2511,7 +3402,8 @@
       "articleId": "opt-ros2-remap-cli",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2519,7 +3411,8 @@
       "articleId": "opt-ros2-type-qos-diagnose",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2527,7 +3420,8 @@
       "articleId": "opt-ros2-async-service",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2535,7 +3429,8 @@
       "articleId": "opt-ros2-service-callback-groups",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2543,7 +3438,8 @@
       "articleId": "opt-ros2-service-request-state-machine",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2551,7 +3447,8 @@
       "articleId": "opt-ros2-timer-short-callback",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2559,7 +3456,8 @@
       "articleId": "opt-ros2-timer-split-groups",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2567,7 +3465,8 @@
       "articleId": "opt-ros2-timer-rate-budget",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2575,7 +3474,8 @@
       "articleId": "opt-ros2-topic-last-state",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2583,7 +3483,8 @@
       "articleId": "opt-ros2-topic-consumer-hotspot",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2591,7 +3492,8 @@
       "articleId": "opt-ros2-topic-flow-control",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2599,7 +3501,8 @@
       "articleId": "lesson-ros2-topic-pipeline-check-cli",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2607,7 +3510,8 @@
       "articleId": "lesson-ros2-topic-pipeline-reduce-work",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2615,7 +3519,8 @@
       "articleId": "lesson-ros2-topic-pipeline-parallel-stages",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2623,7 +3528,8 @@
       "articleId": "lesson-rp2350-pio-fifo-trace-echo",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2631,7 +3537,8 @@
       "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2639,7 +3546,8 @@
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2647,7 +3555,8 @@
       "articleId": "opt-c-safe-packet-reader",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2655,7 +3564,8 @@
       "articleId": "opt-c-parser-no-unaligned-cast",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2663,7 +3573,8 @@
       "articleId": "opt-c-parser-only-needed-fields",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2671,7 +3582,8 @@
       "articleId": "ros2-ste-short-callback",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2679,7 +3591,8 @@
       "articleId": "ros2-ste-multithreaded-groups",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2687,7 +3600,8 @@
       "articleId": "ros2-ste-process-pool",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2695,7 +3609,8 @@
       "articleId": "lesson-spinlock-critical-section-move-work-outside",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2703,7 +3618,8 @@
       "articleId": "lesson-spinlock-critical-section-use-mutex",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2711,7 +3627,8 @@
       "articleId": "lesson-spinlock-critical-section-per-thread-count",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2719,7 +3636,8 @@
       "articleId": "opt-stream-running-sum",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2727,7 +3645,8 @@
       "articleId": "opt-stream-rolling-window",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2735,7 +3654,8 @@
       "articleId": "opt-stream-lru-cache",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2743,7 +3663,8 @@
       "articleId": "opt-transfer-channel-owner",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2751,7 +3672,8 @@
       "articleId": "opt-transfer-few-channels",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2759,7 +3681,8 @@
       "articleId": "opt-transfer-no-channel-fallback",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2767,7 +3690,8 @@
       "articleId": "opt-transfer-double-buffer-sequence",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2775,7 +3699,8 @@
       "articleId": "opt-transfer-last-chunk-split",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2783,7 +3708,8 @@
       "articleId": "opt-transfer-single-buffer-fallback",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2791,7 +3717,8 @@
       "articleId": "lesson-transfer-engine-configuration-count-unit",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2799,7 +3726,8 @@
       "articleId": "lesson-transfer-engine-configuration-copy-vs-fill",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2807,7 +3735,8 @@
       "articleId": "lesson-transfer-engine-configuration-overlap-cpu",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2815,7 +3744,8 @@
       "articleId": "lesson-transfer-format-remove-unneeded-data",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2823,7 +3753,8 @@
       "articleId": "lesson-transfer-format-compact-binary",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2831,7 +3762,8 @@
       "articleId": "lesson-transfer-format-batch",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2839,7 +3771,8 @@
       "articleId": "opt-transfer-blocking-wait",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2847,7 +3780,8 @@
       "articleId": "opt-transfer-irq-event",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "option",
@@ -2855,1813 +3789,2343 @@
       "articleId": "opt-transfer-short-poll",
       "static": "linked",
       "technical": "manual-review-needed",
-      "runtime": "not-tested"
+      "runtime": "not-tested",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "docker",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "image",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "container",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dockerfile",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "docker-build",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "docker-run",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "docker-exec",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "docker-rm",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "terminal",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "shell",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cli",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "working-dir",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "wsl",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "compiler",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "gcc",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "make",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "make-target",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "source-code",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "process",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "stdout",
       "articleId": "ncku-docker-debug",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-node",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-publisher",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-subscriber",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-message",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-message-type",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-field",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "rclpy",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-init",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-spin",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "callback",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-timer",
       "articleId": "ncku-v2-ros2-timer-jitter",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-name",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-name",
       "articleId": "ncku-v2-ros2-remap-diagnostics",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-graph",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-node-list",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-node-info",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-list",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-info",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-interface-show",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-echo",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-hz",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-topic-pub",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-service",
       "articleId": null,
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-action",
       "articleId": null,
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-jazzy",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-discovery",
       "articleId": "ncku-v2-ros2-remap-diagnostics",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "byte",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "word",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "binary",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "hex",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "uint32",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "stdint",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "stdio",
       "articleId": "ncku-v2-c-io-buffering",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bitwise",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-and",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-or",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-xor",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-not",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "shift-left",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "shift-right",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-mask",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "set-bit",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "clear-bit",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "test-bit",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "extract-field",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "combine-fields",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "unsigned-suffix",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-position",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bit-width",
       "articleId": "ncku-bitwise-c",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "rp2350",
       "articleId": "ncku-embedded-riscv-io",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "mcu",
       "articleId": "ncku-embedded-riscv-io",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-fifo",
       "articleId": "ncku-v2-pio-fifo-stall",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "fifo",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "state-machine",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-program",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-x",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-y",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "osr",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "isr",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "ISR-disambiguation-reviewed",
+      "runtime": "not-applicable",
+      "evidence": [
+        "tests/concepts.test.mjs: rendered ISR link and search"
+      ]
     },
     {
       "kind": "concept",
       "id": "tx-fifo",
       "articleId": "ncku-v2-pio-fifo-stall",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "rx-fifo",
       "articleId": "ncku-v2-pio-fifo-stall",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-out",
       "articleId": "ncku-v2-pio-shift-order",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-in",
       "articleId": "ncku-v2-pio-shift-order",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-push",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-pull",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "autopull",
       "articleId": "ncku-v2-pio-shift-order",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "autopush",
       "articleId": "ncku-v2-pio-shift-order",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-wrap",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-echo",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "gpio",
       "articleId": "ncku-embedded-riscv-io",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "shift-direction",
       "articleId": "ncku-v2-pio-shift-order",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "thread",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pthread",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pthread-create",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pthread-join",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "shared-variable",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "counter",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "lost-update",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "critical-section",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "lock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "spinlock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "spin-lock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "spin-unlock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "no-lock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "short-lock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "long-lock",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "volatile",
       "articleId": "ncku-pthread-critical-section",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "thread-schedule",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cpu-affinity",
       "articleId": "lesson-pthread-work-partition-thread-count",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "clock-monotonic",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-engine",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-job",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-channel",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-claim",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-configure",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-start",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-busy",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-wait",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-release",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-src",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-dst",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-count",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-size",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-increment",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-copy",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "transfer-fill",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "alignment",
       "articleId": "ncku-v2-c-struct-packing",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "buffer",
       "articleId": "ncku-c-memory",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "memcpy",
       "articleId": "ncku-c-memory",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "memcmp",
       "articleId": "ncku-c-memory",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "sizeof",
       "articleId": "ncku-c-language-bridge",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "struct",
       "articleId": "ncku-c-language-bridge",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "enum",
       "articleId": "ncku-c-language-bridge",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bool",
       "articleId": "ncku-c-language-bridge",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "uintptr",
       "articleId": "ncku-v2-c-struct-packing",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-controller",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-dma",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dreq",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-get-dreq",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-put-blocking",
       "articleId": "lesson-rp2350-pio-fifo-fifo-paced-transfer",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "blocking",
       "articleId": "ncku-v2-transfer-interrupt-or-poll",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "nonblocking",
       "articleId": "ncku-v2-transfer-interrupt-or-poll",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-config",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-read-increment",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-write-increment",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-transfer-width",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-completion",
       "articleId": "lesson-rp2350-pio-fifo-pio-with-dma",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-cache",
       "articleId": "ncku-v2-dma-cache-coherency",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "double-buffer",
       "articleId": "ncku-v2-transfer-double-buffer",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ring-buffer",
       "articleId": "ncku-pthread-condvar-queue",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "backpressure",
       "articleId": "ncku-pthread-condvar-queue",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "throughput",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "latency",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "clock-divider",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-stall",
       "articleId": "ncku-v2-pio-fifo-stall",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "irq",
       "articleId": "ncku-v2-transfer-interrupt-or-poll",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "polling",
       "articleId": "ncku-v2-transfer-interrupt-or-poll",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "peripheral",
       "articleId": "ncku-embedded-riscv-io",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "register",
       "articleId": "ncku-systems-foundations",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "mmio",
       "articleId": "ncku-embedded-riscv-io",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "executor",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "single-executor",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "multi-executor",
       "articleId": "ros2-ste-multithreaded-groups",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "callback-group",
       "articleId": "ros2-ste-multithreaded-groups",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "mutex-callback-group",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "reentrant-callback-group",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "qos",
       "articleId": "ncku-ros2-qos",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "qos-reliability",
       "articleId": "ncku-ros2-qos",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "qos-depth",
       "articleId": "ncku-ros2-qos",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-remap",
       "articleId": "ncku-v2-ros2-remap-diagnostics",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros-domain-id",
       "articleId": "ncku-v2-ros2-remap-diagnostics",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros-namespace",
       "articleId": "ncku-v2-ros2-remap-diagnostics",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros-parameter",
       "articleId": "ncku-v2-ros2-parameters-config",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "serialization",
       "articleId": "ncku-v2-ros2-message-serialization",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "message-backlog",
       "articleId": "ncku-v2-ros2-topic-backlog",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "service-client",
       "articleId": "ncku-v2-ros2-service-client-deadlock",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "service-server",
       "articleId": "ncku-v2-ros2-service-client-deadlock",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "call-async",
       "articleId": "ncku-v2-ros2-service-client-deadlock",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "future",
       "articleId": "ncku-v2-ros2-service-client-deadlock",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ros2-deadlock",
       "articleId": "ncku-v2-ros2-service-client-deadlock",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "publisher-rate",
       "articleId": "ncku-ros2-cli-workflow",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "end-to-end-latency",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "mutex",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "atomic",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "data-race",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "condition-variable",
       "articleId": "ncku-pthread-condvar-queue",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "producer-consumer",
       "articleId": "ncku-pthread-condvar-queue",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "thread-pool",
       "articleId": "ncku-v2-pthread-thread-lifecycle",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "deadlock",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "lock-order",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "thread-shutdown",
       "articleId": "ncku-v2-pthread-timeout-shutdown",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "false-sharing",
       "articleId": "ncku-memory-locality",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cache",
       "articleId": "ncku-memory-locality",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cache-miss",
       "articleId": "ncku-memory-locality",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "memory-locality",
       "articleId": "ncku-memory-locality",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "endianness",
       "articleId": "ncku-binary-packet-parsing",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "byte-order",
       "articleId": "ncku-binary-packet-parsing",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "packet",
       "articleId": "ncku-binary-packet-parsing",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "profiling",
       "articleId": "ncku-compiler-profile-sanitize",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "baseline",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "benchmark",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "p95",
       "articleId": "ncku-performance-benchmark",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "complexity",
       "articleId": "ncku-algorithm-query-patterns",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "space-complexity",
       "articleId": "ncku-algorithm-query-patterns",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "sanitizer",
       "articleId": "ncku-compiler-profile-sanitize",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "undefined-behavior",
       "articleId": null,
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "mutex-vs-spin",
       "articleId": "ncku-concurrency-advanced",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "queue",
       "articleId": "ncku-pthread-condvar-queue",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "gil",
       "articleId": "ncku-ros2-executor",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "process-pool",
       "articleId": "ros2-ste-process-pool",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "copy-vs-zero-copy",
       "articleId": "ncku-c-memory",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "dma-vs-thread",
       "articleId": "ncku-transfer-engine",
       "static": "linked",
-      "semantic": "priority-mapping-reviewed"
+      "semantic": "priority-mapping-reviewed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "thread-sanitizer",
       "articleId": "ops-debug-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "gdb",
       "articleId": "ops-debug-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cmake",
       "articleId": "ops-cmake-projects",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "ctest",
       "articleId": "ops-cmake-projects",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "gitlab",
       "articleId": "ops-gitlab-ci-oj",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cicd",
       "articleId": "ops-gitlab-ci-oj",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "git-diff",
       "articleId": "ops-git-safe-workflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "byte-offset",
       "articleId": "ncku-binary-packet-parsing",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "offsetof",
       "articleId": "opt-c-struct-reorder-layout",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "alignof",
       "articleId": "opt-c-struct-reorder-layout",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "abi",
       "articleId": "opt-c-struct-reorder-layout",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "padding",
       "articleId": "opt-c-struct-reorder-layout",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bisect",
       "articleId": "opt-query-bisect-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bisect-left",
       "articleId": "opt-query-bisect-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "bisect-right",
       "articleId": "opt-query-bisect-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "prefix-sum",
       "articleId": "opt-query-prefix-range",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "lru",
       "articleId": "opt-stream-lru-cache",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "heapq",
       "articleId": "opt-topk-heapq-nsmallest",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "heap-data-structure",
       "articleId": "opt-topk-heapq-nsmallest",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "top-k",
       "articleId": "opt-topk-heapq-nsmallest",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "hash",
       "articleId": "opt-algo-hash-index-multiple-queries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "deque",
       "articleId": "opt-stream-rolling-window",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "malloc",
       "articleId": "opt-c-memory-pool-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "realloc",
       "articleId": "opt-c-grow-buffer",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "free",
       "articleId": "opt-c-memory-pool-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "memory-pool",
       "articleId": "opt-c-memory-pool-boundaries",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "stdin",
       "articleId": "ops-linux-paths",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "stderr",
       "articleId": "ops-debug-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "argv",
       "articleId": "ops-gcc-compile-link",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "argc",
       "articleId": "ops-gcc-compile-link",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "timeout",
       "articleId": "opt-ros2-service-request-state-machine",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "posix",
       "articleId": "ops-debug-c",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pico-sdk",
       "articleId": "opt-pio-tx-underflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pioasm",
       "articleId": "ncku-pio-dataflow",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "logic-analyzer",
       "articleId": "opt-pio-reduce-instructions",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "rss",
       "articleId": "ops-perf-cpu-memory",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "perf",
       "articleId": "ops-perf-cpu-memory",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "cpu-bound",
       "articleId": "ops-perf-test-protocol",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "io-bound",
       "articleId": "ops-perf-test-protocol",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "spurious-wakeup",
       "articleId": "opt-cond-wait-predicate",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     },
     {
       "kind": "concept",
       "id": "pio-side-set",
       "articleId": "opt-pio-reduce-instructions",
       "static": "linked",
-      "semantic": "manual-review-needed"
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "interrupt-service-routine",
+      "articleId": "opt-transfer-irq-event",
+      "static": "linked",
+      "semantic": "ISR-disambiguation-reviewed",
+      "runtime": "not-applicable",
+      "evidence": [
+        "tests/concepts.test.mjs: rendered ISR link and search"
+      ]
     }
   ]
 }

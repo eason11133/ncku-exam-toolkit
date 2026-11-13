@@ -1,6 +1,6 @@
 # 實戰導讀 02｜pthread 正確性：從「少算」到「全部處理完」
 
-> 這篇請把 Queue 畫在紙上跟著追。附帶實際 C 測試：`quality_v11/examples/pthread_exactly_once.c`，在支援 POSIX pthread 的 Linux 編譯；範例與 Demo 題目不一定是完全相同的程式。
+> 這篇請把 Queue 畫在紙上跟著追。站內的 `examples/pthread_bounded_queue.c` 可作為有界 Queue 練習；範例與 Demo 題目不一定是完全相同的程式。
 
 ## 為什麼兩條 Thread 各加 20,000 次，不一定是 40,000？
 

@@ -40,7 +40,8 @@ clkdiv = 4.0
 cycles = 8
 sm_hz = sysclk_hz / clkdiv
 output_hz = sm_hz / cycles
-assert (sm_hz, output_hz) == (31_250_000.0, 3_906_250.0)
+if not ((sm_hz, output_hz) == (31_250_000.0, 3_906_250.0)):
+    raise RuntimeError("example check failed")
 ```
 
 以上數值只是算例，**不是 RP2350 開發板的實際量測或預設 Clock**。若 FIFO 空、WAIT 條件、IRQ 或其他裝置時序造成 Stall，實際輸出頻率會低於單純算術預估。
