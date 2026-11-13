@@ -28,7 +28,8 @@ import json
 sample = '{"x": 12, "y": 30}'
 parsed_once = json.loads(sample)
 answer = parsed_once["x"] + parsed_once["y"]
-assert answer == 42
+if not (answer == 42):
+    raise RuntimeError("check failed: opt-ros2-avoid-reencoding")
 print(answer)
 ```
 
@@ -41,7 +42,7 @@ print(answer)
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/Tutorials/Demos/Intra-Process-Communication.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 
 ## 延伸推演｜遇到變形題怎麼判斷
 

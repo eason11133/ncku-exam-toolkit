@@ -36,8 +36,10 @@ packet = f"{sensor_id},{reading}".encode("ascii")
 import struct
 # 1 byte ID + 2 bytes unsigned value, network byte order
 packet = struct.pack(">BH", sensor_id, reading)
-assert len(packet) == 3
-assert struct.unpack(">BH", packet) == (sensor_id, reading)
+if not (len(packet) == 3):
+    raise RuntimeError("example check failed")
+if not (struct.unpack(">BH", packet) == (sensor_id, reading)):
+    raise RuntimeError("example check failed")
 ```
 
 ## 逐步理解，為什麼這樣改

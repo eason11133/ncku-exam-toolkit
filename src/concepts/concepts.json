@@ -7238,5 +7238,33 @@
     "walkthrough": "一條 OUT 指令除了搬資料，還可用 side-set 位元對某個 GPIO 改變電位；要先設定 side-set 腳位與位數。",
     "commonMistake": "覺得 Side-set 不占指令編碼資源或能任意增加腳位數；延遲與 side-set 會共用有限欄位。",
     "verified": false
+  },
+  {
+    "id": "interrupt-service-routine",
+    "title": "中斷服務函式",
+    "english": "Interrupt Service Routine",
+    "aliases": [
+      "中斷處理函式",
+      "ISR"
+    ],
+    "category": "PIO 與硬體",
+    "coverage": "demo",
+    "explanation": "裝置提出中斷後，CPU 進入指定的處理函式，辨識事件並完成必要回應。它與 PIO 的輸入移位暫存器同縮寫，但不是同一項技術。",
+    "example": "DMA 完成 → 裝置提出中斷 → CPU 進入處理函式 → 依硬體規格確認來源與旗標 → 將耗時工作交給正常執行流程。",
+    "whenToUse": "辨識中斷完成通知、IRQ 旗標與 CPU 處理流程。",
+    "relatedArticle": {
+      "kind": "article",
+      "articleId": "opt-transfer-irq-event"
+    },
+    "exampleSolution": null,
+    "relatedConceptIds": [
+      "isr",
+      "irq"
+    ],
+    "source": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+    "plain": "裝置提出中斷後，CPU 進入指定的處理函式，辨識事件並完成必要回應。它與 PIO 的輸入移位暫存器同縮寫，但不是同一項技術。",
+    "walkthrough": "DMA 完成 → 裝置提出中斷 → CPU 進入處理函式 → 依硬體規格確認來源與旗標 → 將耗時工作交給正常執行流程。",
+    "commonMistake": "把中斷服務函式與 PIO 的輸入移位暫存器視為同一個 ISR；或在中斷處理內直接執行長時間阻塞工作。",
+    "verified": false
   }
 ]

@@ -42,7 +42,8 @@ def after(allowed, incoming):
     known = set(allowed)
     return [x for x in incoming if x in known]
 
-assert before([2, 5, 7], [7, 1, 5, 7]) == after([2, 5, 7], [7, 1, 5, 7])
+if not (before([2, 5, 7], [7, 1, 5, 7]) == after([2, 5, 7], [7, 1, 5, 7])):
+    raise RuntimeError("example check failed")
 ```
 
 注意輸出仍依照 `incoming` 的順序，且重複值仍保留。這和 `list(set(incoming) & set(allowed))` 不一樣，後者會去掉重複值、順序也不能拿來保證一樣。
@@ -62,7 +63,8 @@ sorted_values = sorted(values)  # 只排序一次
 for threshold in [0, 5, 6, 20]:
     slow = sum(x < threshold for x in values)
     fast = bisect_left(sorted_values, threshold)
-    assert slow == fast
+    if not (slow == fast):
+        raise RuntimeError("example check failed")
 ```
 
 排序要在迴圈**外面**。如果每次查詢都重新 `sorted(values)`，建立成本會反覆付出。
@@ -85,7 +87,8 @@ queries = [(0, 4), (1, 3), (2, 2)]
 for l, r in queries:
     slow = sum(a[l:r])
     fast = prefix[r] - prefix[l]
-    assert slow == fast
+    if not (slow == fast):
+        raise RuntimeError("example check failed")
 ```
 
 `prefix[i]` 表示「前 i 個數字總和」。因此 `[l, r)` 就是 `prefix[r] - prefix[l]`，空區間也正確得到 0。不要把 `[l, r]`（兩端包含）混成同一種規格。

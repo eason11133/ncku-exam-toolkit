@@ -27,10 +27,13 @@ related: ncku-v2-pio-shift-order
 value=0b10100101
 lsb_first=[(value>>i)&1 for i in range(8)]
 msb_first=[(value>>(7-i))&1 for i in range(8)]
-assert lsb_first == [1,0,1,0,0,1,0,1]
-assert msb_first == [1,0,1,0,0,1,0,1]  # 此例剛好回文
+if not (lsb_first == [1,0,1,0,0,1,0,1]):
+    raise RuntimeError("check failed: opt-pio-osr-isr-direction")
+if not (msb_first == [1,0,1,0,0,1,0,1]):
+    raise RuntimeError("check failed: opt-pio-osr-isr-direction")
 value=0b10000110
-assert [(value>>i)&1 for i in range(8)] != [(value>>(7-i))&1 for i in range(8)]
+if not ([(value>>i)&1 for i in range(8)] != [(value>>(7-i))&1 for i in range(8)]):
+    raise RuntimeError("check failed: opt-pio-osr-isr-direction")
 print('direction patterns differ for 0x86')
 ```
 
@@ -41,7 +44,7 @@ print('direction patterns differ for 0x86')
 ## 來源與驗證界線
 
 - 參考：https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## OSR、ISR 的順序，不能只看 C 裡的 `0x12345678`
 
 `0x12345678` 在人眼裡是 8 個十六進位數字，但 PIO 一次 `out x, 8` 取的是**位元**，而且先取哪一端，要看 State Machine 的 **shift direction**。`out x,32` 是把整個 32-bit word 放入 X，所以你可能看不出方向問題；若改成四次 `out x,8`，順序差異就會跑出來。

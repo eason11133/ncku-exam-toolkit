@@ -34,7 +34,7 @@ SM1 configure program(offset) # 同一個 block 可共用已載入的程式
 ## 來源與驗證界線
 
 - 參考：https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 先分清 PIO block、State Machine、指令記憶體
 

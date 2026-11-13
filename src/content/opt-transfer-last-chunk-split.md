@@ -26,10 +26,13 @@ related: ncku-v2-transfer-double-buffer
 ```python
 payload=bytes(range(10))
 chunk_size=4
-assert chunk_size>0
+if not (chunk_size>0):
+    raise RuntimeError("check failed: opt-transfer-last-chunk-split")
 chunks=[payload[i:i+chunk_size] for i in range(0,len(payload),chunk_size)]
-assert [len(c) for c in chunks]==[4,4,2]
-assert b''.join(chunks)==payload
+if not ([len(c) for c in chunks]==[4,4,2]):
+    raise RuntimeError("check failed: opt-transfer-last-chunk-split")
+if not (b''.join(chunks)==payload):
+    raise RuntimeError("check failed: opt-transfer-last-chunk-split")
 print('chunk sizes',[len(c) for c in chunks])
 ```
 
@@ -40,7 +43,7 @@ print('chunk sizes',[len(c) for c in chunks])
 ## 來源與驗證界線
 
 - 參考：https://en.cppreference.com/c/string/byte/memcpy
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 最後一塊資料不能偷偷消失
 

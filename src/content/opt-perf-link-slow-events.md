@@ -32,7 +32,8 @@ for j in jobs:
     j['process_ms']=j['finish']-j['start']
     j['total_ms']=j['finish']-j['arrive']
 slow=max(jobs,key=lambda x:x['total_ms'])
-assert slow['id']=='b' and slow['process_ms']==17
+if not (slow['id']=='b' and slow['process_ms']==17):
+    raise RuntimeError("check failed: opt-perf-link-slow-events")
 print(slow)
 ```
 
@@ -43,7 +44,7 @@ print(slow)
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/time.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 ## 延伸推演｜遇到變形題怎麼判斷
 

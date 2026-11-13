@@ -5,6 +5,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { createServer } from 'vite'
 
 const readJson = path => JSON.parse(readFileSync(path, 'utf8'))
 const concepts = readJson('src/concepts/concepts.json')
@@ -47,5 +48,24 @@ test('published Markdown has no visible raw bold delimiters outside code', () =>
     const html = renderToStaticMarkup(React.createElement(ReactMarkdown, { remarkPlugins: [remarkGfm] }, body))
     const visible = html.replace(/<pre[\s\S]*?<\/pre>/g, '').replace(/<code[\s\S]*?<\/code>/g, '')
     assert.ok(!visible.includes('**'), id)
+  }
+})
+
+test('ISR search stays ambiguous while the Markdown renderer links only explicit meanings', async () => {
+  const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
+  try {
+    const { searchConcepts, linkConcepts } = await server.ssrLoadModule('/src/concepts.ts')
+    const { default: ToolkitMarkdown } = await server.ssrLoadModule('/src/ToolkitMarkdown.tsx')
+    assert.deepEqual(new Set(searchConcepts('ISR').slice(0, 2).map(item => item.id)), new Set(['isr', 'interrupt-service-routine']))
+    assert.ok(!linkConcepts('ISR').some(span => span.conceptId), 'bare ISR must stay unlinked')
+    const html = renderToStaticMarkup(React.createElement(ToolkitMarkdown, {
+      body: 'PIO ISR 儲存位元；Interrupt Service Routine 處理中斷。ISR 單獨出現時語意未定。',
+      onConcept: () => {},
+    }))
+    assert.match(html, /concept-link[^>]*>PIO ISR<\/button>/)
+    assert.match(html, /concept-link[^>]*>Interrupt Service Routine<\/button>/)
+    assert.ok(!html.includes('>ISR</button>'))
+  } finally {
+    await server.close()
   }
 })

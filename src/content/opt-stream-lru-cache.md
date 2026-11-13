@@ -27,12 +27,17 @@ def triangular(n, version):
         raise ValueError('n must be nonnegative')
     return n * (n + 1) // 2 + version
 
-assert triangular(9, 0) == 45
-assert triangular(9, 0) == 45
-assert triangular.cache_info().hits >= 1
-assert triangular(9, 1) == 46   # 版本不同，不重用舊結果
+if not (triangular(9, 0) == 45):
+    raise RuntimeError("example check failed")
+if not (triangular(9, 0) == 45):
+    raise RuntimeError("example check failed")
+if not (triangular.cache_info().hits >= 1):
+    raise RuntimeError("example check failed")
+if not (triangular(9, 1) == 46):
+    raise RuntimeError("example check failed")
 triangular.cache_clear()
-assert triangular.cache_info().currsize == 0
+if not (triangular.cache_info().currsize == 0):
+    raise RuntimeError("example check failed")
 print('lru=ok')
 ```
 

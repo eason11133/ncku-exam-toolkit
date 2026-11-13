@@ -41,7 +41,7 @@ push
 | Buffer 擁有者 | 完成後再讀、再重用 | start 回來就覆寫 |
 | 正確性驗證 | 逐筆比對而非只比總和 | 一筆重複、一筆漏掉卻總和相等 |
 
-**帶回去練：** 寫 `src[i]=3*i+1` 搬到目的地，末端留一格 Canary。跑完檢查全部元素及 Canary 未被覆寫。附帶範例 `quality_v11/examples/transfer_last_chunk.c` 已在本機 GCC 檢查；這證明的是 C 中分塊與容量邏輯，**不是硬體 DMA 吞吐量**。
+**帶回去練：** 寫 `src[i]=3*i+1` 搬到目的地，末端留一格 Canary。跑完檢查全部元素及 Canary 未被覆寫。這是 C 中分塊與容量邏輯的練習，**不是硬體 DMA 吞吐量測試**；目前站內沒有獨立的 `transfer_last_chunk.c` 範例檔。
 
 **相關詞條：** PIO、State Machine、TX/RX FIFO、OSR、ISR、Autopull、PUSH、DREQ、DMA、Channel、Buffer Ownership、Data Race、`sizeof`、Big-endian。
 

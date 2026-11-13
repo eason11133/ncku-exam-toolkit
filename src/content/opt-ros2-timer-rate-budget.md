@@ -24,10 +24,12 @@ related: ncku-v2-ros2-timer-jitter
 # 可直接執行的算術示範；不是 ROS 2 實際量測。
 period_s = 0.05
 work_s = 0.03
-assert period_s > 0
+if not (period_s > 0):
+    raise RuntimeError("check failed: opt-ros2-timer-rate-budget")
 utilization_of_one_worker = work_s / period_s
 print(f"estimated work/period={utilization_of_one_worker:.1%}")
-assert abs(utilization_of_one_worker - 0.6) < 1e-12
+if not (abs(utilization_of_one_worker - 0.6) < 1e-12):
+    raise RuntimeError("check failed: opt-ros2-timer-rate-budget")
 ```
 
 如果每次工作要 30 ms、目標每 50 ms 發一次，單一 Worker 的純計算占用估計約 60%；但這只是排程容量的**粗估**，不含 I/O、DDS、其他 callback、抖動和負載尖峰，不能當實機保證值。長期工作量大於可用時間時，Queue 可能堆積或不斷延後。
@@ -57,7 +59,8 @@ for i in range(5):
     start = max(arrival, next_free)
     waiting_ms.append(start-arrival)
     next_free = start + work_ms
-assert waiting_ms == [0, 20, 40, 60, 80]
+if not (waiting_ms == [0, 20, 40, 60, 80]):
+    raise RuntimeError("example check failed")
 print('queue wait(ms)=', waiting_ms)
 ```
 

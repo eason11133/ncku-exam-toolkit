@@ -26,15 +26,40 @@ C 的 signed overflow 是未定義行為；左移 signed 負數、移位量大�
 
 ## 具體修改／排查示例
 
+以下是可獨立編譯的 C11 範例。無號加法檢查用 `UINT32_MAX - a` 避免先溢位；有號加法則在運算前比較 `INT32_MAX - b` 或 `INT32_MIN - b`。兩者的規則不同。輸出指標為空時先拒絕，不能先解參照。
+
 ```c
 #include <stdint.h>
 #include <stdbool.h>
 #include <limits.h>
-// 加法前檢查 uint32_t 範圍
+#include <stddef.h>
+#include <stdio.h>
+
 bool add_u32(uint32_t a, uint32_t b, uint32_t *out) {
+    if (out == NULL) return false;
     if (UINT32_MAX - a < b) return false;
     *out = a + b;
     return true;
+}
+
+bool add_i32(int32_t a, int32_t b, int32_t *out) {
+    if (out == NULL) return false;
+    if (b > 0 && a > INT32_MAX - b) return false;
+    if (b < 0 && a < INT32_MIN - b) return false;
+    *out = a + b;
+    return true;
+}
+
+int main(void) {
+    uint32_t u = 0;
+    int32_t s = 0;
+    if (!add_u32(UINT32_MAX - 1u, 1u, &u) || u != UINT32_MAX) return 1;
+    if (add_u32(UINT32_MAX, 1u, &u) || add_u32(1u, 1u, NULL)) return 2;
+    if (!add_i32(INT32_MAX - 1, 1, &s) || s != INT32_MAX) return 3;
+    if (add_i32(INT32_MAX, 1, &s) || add_i32(INT32_MIN, -1, &s)) return 4;
+    if (add_i32(0, 0, NULL)) return 5;
+    puts("checked addition PASS");
+    return 0;
 }
 ```
 

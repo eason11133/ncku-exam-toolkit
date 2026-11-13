@@ -45,7 +45,7 @@ int main(void) {
 ## 來源與驗證界線
 
 - 參考：https://en.cppreference.com/c/io/setvbuf
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 ## 深讀延伸｜把原理放進真實情境
 ## `setvbuf` 是調整 I/O 策略，不是通用加速按鈕
 

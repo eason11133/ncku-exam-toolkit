@@ -28,7 +28,7 @@ related: ncku-v2-transfer-channel-scheduling
 static int copy_fallback(void *dst, size_t dst_size,
                          const void *src, size_t src_size,
                          size_t count, size_t unit) {
-    if (!dst || !src || unit == 0 || count > SIZE_MAX / unit) return -1;
+    if (!dst || !src || count == 0 || (unit != 1 && unit != 2 && unit != 4) || count > SIZE_MAX / unit) return -1;
     size_t bytes = count * unit;
     if (bytes > dst_size || bytes > src_size) return -1;
     memmove(dst, src, bytes);  /* 允許重疊，也保留原 byte 內容 */
@@ -40,12 +40,14 @@ int main(void) {
     if (copy_fallback(dst, sizeof dst, src, sizeof src, 4, 1)) return 1;
     if (memcmp(src, dst, 4) != 0) return 2;
     if (copy_fallback(dst, sizeof dst, src, sizeof src, SIZE_MAX, 4) == 0) return 3;
+    if (copy_fallback(dst, sizeof dst, src, sizeof src, 0, 1) == 0) return 4;
+    if (copy_fallback(dst, sizeof dst, src, sizeof src, 1, 3) == 0) return 5;
     puts("fallback=ok");
     return 0;
 }
 ```
 
-這是**同步 Copy** 示範，不會替代 `src_increment=false` 的 Fill，亦不能處理特定硬體寄存器／DMA side effects。真實回退前要確認 `job` 所描述的是連續 Copy 且結果語意允許同步執行。
+這個 `count>0` 且 `unit` 僅限 1/2/4 的規則是為了**對齊官方 `engine_configure` 的合法參數**，不是說一般 `memmove` API 本身不能接受零長度。這是**同步 Copy** 示範，不會替代 `src_increment=false` 的 Fill，亦不能處理特定硬體寄存器／DMA side effects。真實回退前要確認 `job` 所描述的是連續 Copy 且結果語意允許同步執行。
 
 ## 何時不該回退
 

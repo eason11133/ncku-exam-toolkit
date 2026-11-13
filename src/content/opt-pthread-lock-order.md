@@ -42,8 +42,9 @@ static void *worker(void *unused) {
 int main(void) {
     pthread_t p, q;
     if (pthread_create(&p, NULL, worker, NULL) != 0) return 1;
-    if (pthread_create(&q, NULL, worker, NULL) != 0) return 2;
-    if (pthread_join(p, NULL) || pthread_join(q, NULL)) return 3;
+    if (pthread_create(&q, NULL, worker, NULL) != 0) { (void)pthread_join(p,NULL); return 2; }
+    int jp=pthread_join(p,NULL), jq=pthread_join(q,NULL);
+    if (jp!=0 || jq!=0) return 3;
     if (left != 2000 || right != 2000) return 4;
     puts("both=2000");
     return 0;
@@ -94,3 +95,8 @@ A: lock L2  等待    B: lock L1 等待
 它不會像 `lock()` 一樣在失敗當下等待，但如果失敗後忘了釋放**已拿到的鎖**，還是會讓別人卡住；若每次失敗都立刻再試，還可能忙等或活鎖。合理的回退必須交代：釋放哪些鎖、是否重新排程、工作能不能丟、重試有沒有上限。
 
 **練習：** A 先拿 users 再拿 orders；B 先拿 orders 再拿 users；兩邊都沒有錯誤處理。如何修改？讓 B 改成 users → orders；而且所有呼叫路徑都要跟著遵守。這是**修正規則**，不是只替某一支測試程式加幾毫秒 `sleep`。
+
+
+### 實作邊界：兩次 `pthread_join` 請分別執行
+
+`pthread_join(first) || pthread_join(second)` 在第一個回傳非零時會短路，第二個就不執行。這不是測試通過就能忽略的錯誤路徑。應分別呼叫兩次、保存返回碼，再一起判斷。若第二個 `pthread_create` 失敗，已建立的第一個 Thread 也要依工作生命週期妥善 join 或停止；**不能對建立失敗的 thread ID 執行 join**。此處是教學範例，沒有模擬每種 pthread API 故障，正式工作池仍需完整 shutdown 設計。

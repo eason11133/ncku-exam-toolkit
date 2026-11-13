@@ -38,7 +38,7 @@ Compare: payload bytes, correct messages, dropped count, latency distribution
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/How-To-Guides/Configure-ZeroCopy-loaned-messages.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 
 ## 延伸推演｜遇到變形題怎麼判斷
 

@@ -53,8 +53,10 @@ self.subscription = self.create_subscription(
 ```python
 sent = [1, 2, 3, 4, 5]
 latest_only = [sent[-1]]
-assert latest_only == [5]
-assert len(latest_only) != len(sent)  # 明確知道少處理了四筆
+if not (latest_only == [5]):
+    raise RuntimeError("example check failed")
+if not (len(latest_only) != len(sent)):
+    raise RuntimeError("example check failed")
 print('latest state:', latest_only, '; lost intermediate events:', len(sent)-len(latest_only))
 ```
 

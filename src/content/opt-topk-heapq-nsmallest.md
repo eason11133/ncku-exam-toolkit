@@ -27,9 +27,12 @@ rows = [(10,"A"),(5,"B"),(5,"C"),(7,"D")]
 # 記錄原始序號，顯式規定：分數相同時先出現者優先
 ranked = [(score,i,name) for i,(score,name) in enumerate(rows)]
 small = heapq.nsmallest(3, ranked)
-assert [x[2] for x in small] == ["B","C","D"]
-assert heapq.nsmallest(0, ranked) == []
-assert len(heapq.nsmallest(99, ranked)) == 4
+if not ([x[2] for x in small] == ["B","C","D"]):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
+if not (heapq.nsmallest(0, ranked) == []):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
+if not (len(heapq.nsmallest(99, ranked)) == 4):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
 print(small)
 ```
 
@@ -40,7 +43,7 @@ print(small)
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/heapq.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 
 ---
@@ -59,9 +62,12 @@ from heapq import nsmallest
 rows = [{'score':5,'id':'A'}, {'score':3,'id':'B'},
         {'score':3,'id':'C'}, {'score':1,'id':'D'}]
 ranked = [(row['score'], i, row['id']) for i, row in enumerate(rows)]
-assert [r[2] for r in nsmallest(3,ranked)] == ['D','B','C']
-assert nsmallest(0,ranked) == []
-assert [r[2] for r in nsmallest(99,ranked)] == ['D','B','C','A']
+if not ([r[2] for r in nsmallest(3,ranked)] == ['D','B','C']):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
+if not (nsmallest(0,ranked) == []):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
+if not ([r[2] for r in nsmallest(99,ranked)] == ['D','B','C','A']):
+    raise RuntimeError("check failed: opt-topk-heapq-nsmallest")
 print('top-k tie rule ok')
 ```
 

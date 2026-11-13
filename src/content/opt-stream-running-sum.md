@@ -31,12 +31,45 @@ rng = Random(5)
 for _ in range(100):
     values = [rng.randint(-10, 10) for _ in range(rng.randrange(100))]
     expected = [sum(values[:i]) for i in range(1, len(values) + 1)]
-    assert list(running_sums(values)) == expected
-assert list(running_sums([])) == []
+    if not (list(running_sums(values)) == expected):
+        raise RuntimeError("example check failed")
+if not (list(running_sums([])) == []):
+    raise RuntimeError("example check failed")
 print('incremental=ok')
 ```
 
 `running` 只對**同一條已處理序列**有效。若系統斷線後重送同一事件，直接再加會重複計數；若會撤銷、修改舊值，還需要補償事件或重新建狀態。若輸出需要每次對整份資料計算非線性操作（例如精確 median），只有 running sum 不夠。
+
+### 同一個 ID 重送，但 payload 卻不同，怎麼辦？
+
+原本的去重示例把第一次收到的值保存下來，之後同一 ID 一律忽略。這只適合規格明確保證**重送內容不會變**的情況。若收到 `('A', 5)`，後來又收到 `('A', 9)`，後者究竟是衝突、改值還是版本更新？這不能由 `set` 自動決定。
+
+下例採**嚴格重送合約**：同 ID 同值可忽略；同 ID 不同值直接報錯。需要更正歷史資料的題目，應設計另一種補償或版本規則。
+
+```python
+def replay_safe_running_total(events):
+    seen = {}
+    total = 0
+    for event_id, amount in events:
+        if event_id in seen:
+            if seen[event_id] != amount:
+                raise ValueError(f'事件內容衝突: {event_id}')
+            yield total
+            continue
+        seen[event_id] = amount
+        total += amount
+        yield total
+
+if list(replay_safe_running_total([('A', 5), ('B', 2), ('A', 5)])) != [5, 7, 7]:
+    raise RuntimeError('同值重送沒有被忽略')
+try:
+    list(replay_safe_running_total([('A', 5), ('A', 9)]))
+except ValueError:
+    pass
+else:
+    raise RuntimeError('衝突的重送沒有被拒絕')
+print('replay conflict PASS')
+```
 
 ## 驗收與效能
 
@@ -68,7 +101,8 @@ def process(events):
         states.append(total)
     return states
 
-assert process([(1,5),(2,2),(1,5)]) == [5,7,7]
+if not (process([(1,5),(2,2),(1,5)]) == [5,7,7]):
+    raise RuntimeError("example check failed")
 rng=Random(2026)
 for _ in range(1000):
     events=[(rng.randrange(12),rng.randrange(-5,6)) for i in range(rng.randrange(50))]
@@ -76,7 +110,8 @@ for _ in range(1000):
     for k,v in events:
         first.setdefault(k,v)
         expected.append(sum(first.values()))
-    assert process(events)==expected
+    if not (process(events)==expected):
+        raise RuntimeError("example check failed")
 print('event duplicate semantics PASS')
 ```
 

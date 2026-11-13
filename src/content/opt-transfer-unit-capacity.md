@@ -40,6 +40,8 @@ int main(void) {
     uint32_t src[4] = {1u, 2u, 3u, 4u};
     uint32_t dst[4] = {0u, 0u, 0u, 0u};
     if (!valid_copy(4u, sizeof src[0], sizeof src, sizeof dst)) return 1;
+    if (!valid_copy(1u, sizeof src[0], sizeof src, sizeof dst)) return 4;
+    if (valid_copy(0u, sizeof src[0], sizeof src, sizeof dst)) return 5;
     if (valid_copy(16u, sizeof src[0], sizeof src, sizeof dst)) return 2;
     if (valid_copy(SIZE_MAX, 4u, sizeof src, sizeof dst)) return 3;
     printf("copy-count-check=ok\n");
@@ -63,7 +65,7 @@ Linux：`gcc -std=c11 -O2 -Wall -Wextra -Werror -pedantic transfer_check.c -o tr
 
 ## 可獨立執行的邊界測試
 
-下面是從頭到尾可執行的練習（`checked_transfer_bytes.c`），與官方 Demo 的程式分開；測的是本頁的資料與邊界規則。使用 `gcc -std=c11 -O2 -Wall -Wextra -Werror -pedantic -pthread` 編譯後執行。程式在 v10 的 Linux 本機驗證中通過，但這**不代表**已測 ROS 2 或 RP2350 開發板。
+下面是從頭到尾可執行的練習（`checked_transfer_bytes.c`）。**與上方範例使用同一個 `count > 0` 規則**，與官方 Demo 的程式分開；測的是本頁的資料與邊界規則。使用 `gcc -std=c11 -O2 -Wall -Wextra -Werror -pedantic -pthread` 編譯後執行。程式在 v10 的 Linux 本機驗證中通過，但這**不代表**已測 ROS 2 或 RP2350 開發板。
 
 ```c
 #include <stdbool.h>
@@ -71,18 +73,29 @@ Linux：`gcc -std=c11 -O2 -Wall -Wextra -Werror -pedantic transfer_check.c -o tr
 #include <stdint.h>
 #include <stdio.h>
 
-static bool enough_capacity(size_t count,size_t size,size_t src_len,size_t dst_len) {
-    if(size!=1 && size!=2 && size!=4)return false;
+static bool enough_capacity(size_t count,size_t size,
+                            bool src_increment,bool dst_increment,
+                            size_t src_len,size_t dst_len) {
+    /* 對齊 engine_configure：count 必須大於 0，size 僅為 1/2/4。 */
+    if(count==0 || (size!=1 && size!=2 && size!=4))return false;
     if(count>SIZE_MAX/size)return false;
     size_t bytes=count*size;
-    return bytes<=src_len && bytes<=dst_len;
+    size_t needed_src=src_increment?bytes:size;
+    size_t needed_dst=dst_increment?bytes:size;
+    return needed_src<=src_len && needed_dst<=dst_len;
 }
 int main(void) {
-    if(!enough_capacity(4096,4,16384,16384))return 1;
-    if(enough_capacity(4097,4,16384,16384))return 2;
-    if(enough_capacity(SIZE_MAX,4,SIZE_MAX,SIZE_MAX))return 3;
-    if(enough_capacity(1,3,10,10))return 4;
-    if(!enough_capacity(0,4,0,0))return 5;
+    /* Copy: 來源與目的都遞增，各需 16384 bytes。 */
+    if(!enough_capacity(4096,4,true,true,16384,16384))return 1;
+    if(enough_capacity(4097,4,true,true,16384,16384))return 2;
+    /* Fill: 同一筆 4-byte 來源反覆讀取，目的仍需 16384 bytes。 */
+    if(!enough_capacity(4096,4,false,true,4,16384))return 3;
+    if(enough_capacity(4096,4,false,true,3,16384))return 4;
+    if(enough_capacity(4096,4,false,true,4,16383))return 5;
+    if(!enough_capacity(1,1,true,true,1,1))return 6;
+    if(enough_capacity(SIZE_MAX,4,true,true,SIZE_MAX,SIZE_MAX))return 7;
+    if(enough_capacity(1,3,true,true,10,10))return 8;
+    if(enough_capacity(0,4,true,true,0,0))return 9;
     puts("transfer byte count and overflow checks PASS");return 0;
 }
 ```

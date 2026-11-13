@@ -79,6 +79,17 @@ difficulty: intermediate
 
 一個 `out x, 8` 只消耗 8 bits；對 OSR 的剩餘 24 bits 怎麼處理，要看後續指令、移位方向與 autopull threshold。不能把「四次取 8 bits」直接判成「一定還是同一個原樣回送的 32-bit word」；還要決定每次的拼接順序，以及 ISR／push 的時機。
 
+### 用 FIFO 容量追一個真正會堵住的流程
+
+官方 Pico SDK 說明：一般未 Join 的 PIO State Machine，TX FIFO 與 RX FIFO **各四個 32-bit word**；設定 `PIO_FIFO_JOIN_RX` 後，RX 變 8 筆但 TX 停用，因此不能直接拿「RX 變 8 筆」當成原本 Echo 程式更快的證據。以下假設未 Join、未由 CPU 讀走 RX，且 `push` 為阻塞式：
+
+| 步驟 | RX FIFO 目前有幾筆 | `push` 的結果 |
+|---|---:|---|
+| 送回第 1～4 筆 | 1、2、3、4 | 能放入 RX |
+| 再送第 5 筆 | 4 | RX 已滿，`push` 停住直到有人讀走 |
+
+此時 TX FIFO 可能還有資料，但 PIO 停在 `push` 無法繼續消耗 TX。你如果只看「TX 還有資料」就猜 PIO 缺資料，方向就錯了。**CPU 送 10 筆又完全不讀 RX** 的完整事件順序，會依 TX/FIFO 水位與 CPU 執行順序而不同；上表只說明 RX 被塞滿後的必然限制，不是硬體 Trace。<https://www.raspberrypi.com/documentation/pico-sdk/hardware.html> 有 FIFO Join 與 API 的正式定義。
+
 **練習：** 傳了三筆、卻只收到兩筆，最先查什麼？先查 CPU 是否真的送滿三筆、第三筆是否在 OSR／X／ISR、RX FIFO 有沒有被讀出，再查是否卡在 `push`。這是排查順序，不是說一定是 RX FIFO 出錯。
 
 

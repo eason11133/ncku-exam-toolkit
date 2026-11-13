@@ -30,9 +30,12 @@ for seq in range(4):
         accepted.append(seq)
     except Full:
         rejected.append(seq)
-assert accepted == [0, 1]
-assert rejected == [2, 3]
-assert [q.get_nowait(), q.get_nowait()] == [0, 1]
+if not (accepted == [0, 1]):
+    raise RuntimeError("example check failed")
+if not (rejected == [2, 3]):
+    raise RuntimeError("example check failed")
+if not ([q.get_nowait(), q.get_nowait()] == [0, 1]):
+    raise RuntimeError("example check failed")
 print("accepted=2 rejected=2")
 ```
 

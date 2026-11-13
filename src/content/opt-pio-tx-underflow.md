@@ -59,14 +59,20 @@ DMA 可以依 PIO 的 DREQ 節奏持續供料，減少 CPU 逐筆餵資料的工
 from collections import deque
 q = deque(maxlen=2)
 q.extend(['A', 'B'])
-assert len(q) == 2
+if not (len(q) == 2):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
 # 真正硬體 blocking write 此時會等待；deque 的 maxlen 會丟舊值，所以不要 q.append('C') 模擬阻塞。
-assert list(q) == ['A','B']
-assert q.popleft() == 'A'
+if not (list(q) == ['A','B']):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
+if not (q.popleft() == 'A'):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
 q.append('C')
-assert list(q) == ['B','C']
-assert q.popleft() == 'B' and q.popleft() == 'C'
-assert len(q) == 0
+if not (list(q) == ['B','C']):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
+if not (q.popleft() == 'B' and q.popleft() == 'C'):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
+if not (len(q) == 0):
+    raise RuntimeError("check failed: opt-pio-tx-underflow")
 print('full/empty are different conditions')
 ```
 

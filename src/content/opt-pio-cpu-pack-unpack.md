@@ -27,11 +27,15 @@ CPU 把多個 sensor 欄位合成 32-bit word 時，先決定每個欄位的位�
 # 高 8-bit 是 type，低 8-bit 是 reading；位寬從規格指定
 kind, reading = 0x12, 0xAB
 word = (kind << 8) | reading
-assert word == 0x12AB
-assert ((word >> 8) & 0xFF) == kind
-assert (word & 0xFF) == reading
+if not (word == 0x12AB):
+    raise RuntimeError("check failed: opt-pio-cpu-pack-unpack")
+if not (((word >> 8) & 0xFF) == kind):
+    raise RuntimeError("check failed: opt-pio-cpu-pack-unpack")
+if not ((word & 0xFF) == reading):
+    raise RuntimeError("check failed: opt-pio-cpu-pack-unpack")
 raw_be = word.to_bytes(2, byteorder='big')
-assert raw_be == bytes([0x12,0xAB])
+if not (raw_be == bytes([0x12,0xAB])):
+    raise RuntimeError("check failed: opt-pio-cpu-pack-unpack")
 print(raw_be.hex())
 ```
 
@@ -42,7 +46,7 @@ print(raw_be.hex())
 ## 來源與驗證界線
 
 - 參考：https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 
 ## 延伸推演｜遇到變形題怎麼判斷
 

@@ -26,8 +26,8 @@ related: ncku-v2-ros2-parameters-config
 # 放在 class Node 的 __init__，並確定已先 super().__init__(...)
 self.declare_parameter('batch_size', 16)
 value = self.get_parameter('batch_size').value
-if not isinstance(value, int) or value <= 0:
-    raise ValueError('batch_size must be > 0')
+if type(value) is not int or value <= 0:
+    raise ValueError('batch_size must be a positive integer')
 self.batch_size = value
 ```
 
@@ -41,12 +41,29 @@ ros2 param set /my_node batch_size 32
 
 注意這段只在 `__init__` 讀一次；後面 `param set` 雖可能回覆成功，`self.batch_size` **仍可能不更新**。動態參數需要 callback 或明確的重新讀取策略。
 
-**驗收**：測缺參數、負數、超大值、動態修改與重啟；記下每次運行的 commit、參數值與輸出，不要把異常的高 batch_size 當成正常效能改善。
+**為什麼不能用 `isinstance(value, int)`？** 在 Python 裡 `True` 也是 `int` 的子類型；`isinstance(True, int)` 會得到 `True`。如果題目要求的是「真正的整數」，`type(value) is int` 才會擋下布林值。ROS 2 本身另有 ParameterType 規則，這裡檢查的是 Node 從參數拿到值後，**自己的處理程式**有沒有遵守規格。這不表示 ROS 2 一定允許把已宣告整數型態的參數改成 Bool。
+
+```python
+# 可在一般 Python 3 直接執行，不需 ROS 2
+
+def valid_batch_size(value):
+    return type(value) is int and 1 <= value <= 4096
+
+for value in (1, 16, 4096):
+    if not valid_batch_size(value):
+        raise RuntimeError(f'應接受：{value!r}')
+for value in (True, False, 0, -1, 4097, 2.0, '32', None):
+    if valid_batch_size(value):
+        raise RuntimeError(f'應拒絕：{value!r}')
+print('batch_size type/bounds PASS')
+```
+
+**驗收**：測缺參數、布林、負數、超出上限、錯誤型別、動態修改與重啟；記下每次運行的 commit、參數值與輸出，不要把異常的高 batch_size 當成正常效能改善。
 
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 ## 深讀延伸｜把原理放進真實情境
 ## Parameter 改成功了，程式卻沒變？
 

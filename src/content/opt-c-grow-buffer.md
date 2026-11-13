@@ -93,7 +93,8 @@ for length in range(1, 12):
     if length > cap:
         cap = 4 if cap == 0 else cap * 2
         history.append((length, cap))
-assert history == [(1,4),(5,8),(9,16)]
+if not (history == [(1,4),(5,8),(9,16)]):
+    raise RuntimeError("check failed: opt-c-grow-buffer")
 print('growth points:',history)
 ```
 

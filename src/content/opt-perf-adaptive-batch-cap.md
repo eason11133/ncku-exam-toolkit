@@ -29,9 +29,12 @@ def choose_batch(backlog):
     if backlog <= 0: return MIN_SIZE
     target=backlog // 2 + 1
     return max(MIN_SIZE,min(MAX_SIZE,target))
-assert choose_batch(0)==1
-assert choose_batch(6)==4
-assert choose_batch(1000)==16
+if not (choose_batch(0)==1):
+    raise RuntimeError("check failed: opt-perf-adaptive-batch-cap")
+if not (choose_batch(6)==4):
+    raise RuntimeError("check failed: opt-perf-adaptive-batch-cap")
+if not (choose_batch(1000)==16):
+    raise RuntimeError("check failed: opt-perf-adaptive-batch-cap")
 print([choose_batch(x) for x in [0,2,6,32]])
 ```
 
@@ -44,7 +47,7 @@ print([choose_batch(x) for x in [0,2,6,32]])
 ## 來源與驗證界線
 
 - 參考：https://docs.python.org/3/library/time.html
-- 這是尚未匯入 Preview 的離線候選教材。完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
+- 完整 C／Python 範例必須通過本機測試；ROS 2、PIO、RP2350、效能或實際考場表現都需要目標環境另外驗證，不能以文字或模型試算代替。
 ## 深讀延伸｜把原理放進真實情境
 ## 自適應批次的陷阱：最後幾筆永遠湊不滿
 
@@ -85,11 +88,14 @@ def simulate(events, limit, max_wait):
     return flushed
 
 inp=[Event(0,1),Event(6,2),Event(9,3)]
-assert simulate(inp,8,10)==[(10,(1,2,3))]
-assert simulate([Event(i,i) for i in range(9)],4,100)==[(3,(0,1,2,3)),(7,(4,5,6,7)),(108,(8,))]
+if not (simulate(inp,8,10)==[(10,(1,2,3))]):
+    raise RuntimeError("example check failed")
+if not (simulate([Event(i,i) for i in range(9)],4,100)==[(3,(0,1,2,3)),(7,(4,5,6,7)),(108,(8,))]):
+    raise RuntimeError("example check failed")
 for count in range(20):
     out=simulate([Event(i*4,i) for i in range(count)],3,7)
-    assert [x for _,batch in out for x in batch]==list(range(count))
+    if not ([x for _,batch in out for x in batch]==list(range(count))):
+        raise RuntimeError("example check failed")
 print('batch order / last flush / max wait model PASS')
 ```
 

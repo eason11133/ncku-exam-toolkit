@@ -40,7 +40,7 @@ DMA 寫入時還要留意**快取行大小與範圍對齊**：某些平台的無
 ## 來源與驗證界線
 
 - 參考：https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 ## 看懂 CPU 和 DMA 為什麼可能「讀到不同版本」
 
 假設 CPU 有一層**非硬體一致性管理**的 Data Cache。CPU 修改了來源 Buffer，但新值還停在 CPU Cache，主記憶體裡可能仍是舊值。若 DMA 直接從主記憶體讀，就可能拿到舊資料。反過來，DMA 寫入目的 Buffer 後，CPU 如果沿用 Cache 中的舊內容，也可能看不到新結果。

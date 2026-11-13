@@ -63,8 +63,10 @@ old_high = 1 + (1 + 2)   # SET + NOP [2]
 old_low = 1 + (1 + 2)
 new_high = 1 + 3         # SET [3]
 new_low = 1 + 3
-assert (old_high, old_low) == (new_high, new_low) == (4, 4)
-assert old_high + old_low == new_high + new_low == 8
+if not ((old_high, old_low) == (new_high, new_low) == (4, 4)):
+    raise RuntimeError("check failed: opt-pio-reduce-instructions")
+if not (old_high + old_low == new_high + new_low == 8):
+    raise RuntimeError("check failed: opt-pio-reduce-instructions")
 print('same cycles; different instruction count')
 ```
 

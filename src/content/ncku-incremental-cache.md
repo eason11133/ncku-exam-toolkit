@@ -40,7 +40,8 @@ for x in [2, 4, -1, 5]:
     running += x
     fast_results.append(running)
 
-assert slow_results == fast_results == [2, 6, 5, 10]
+if not (slow_results == fast_results == [2, 6, 5, 10]):
+    raise RuntimeError("example check failed")
 ```
 
 重算歷史的總成本隨訊息數增加得很快；增量加總每筆只做一次加法，維持 O(1) 更新。但如果允許修改歷史元素、撤銷資料，簡單的 `running += x` 就不足以處理所有情況。
@@ -63,7 +64,8 @@ for x in [2, 4, 8, 10, 1]:
     window_sum += x
     out.append(window_sum / len(window))
 
-assert out == [2.0, 3.0, 14/3, 22/3, 19/3]
+if not (out == [2.0, 3.0, 14/3, 22/3, 19/3]):
+    raise RuntimeError("example check failed")
 ```
 
 `deque.popleft()` 適合從最前面移除一筆；Python list 的 `pop(0)` 會搬移後面元素。上面每筆維持固定大小視窗，但記憶體仍需 O(N)。
@@ -80,7 +82,8 @@ def heavy_lookup(key: int) -> int:
     # 這裡用簡單公式示範；真正值得快取的通常是昂貴且重複的工作
     return key * key + 1
 
-assert heavy_lookup(12) == heavy_lookup(12)
+if not (heavy_lookup(12) == heavy_lookup(12)):
+    raise RuntimeError("example check failed")
 print(heavy_lookup.cache_info())
 ```
 

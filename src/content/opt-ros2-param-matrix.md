@@ -27,7 +27,8 @@ related: ncku-v2-ros2-parameters-config
 from statistics import median
 runs = {8:[10,12,11], 16:[8,9,9], 32:[7,8,10]}
 for size, ms in sorted(runs.items()):
-    assert len(ms) == 3 and all(x > 0 for x in ms)
+    if not (len(ms) == 3 and all(x > 0 for x in ms)):
+        raise RuntimeError("check failed: opt-ros2-param-matrix")
     print(size, median(ms))
 ```
 
@@ -42,7 +43,7 @@ for size, ms in sorted(runs.items()):
 ## 來源與驗證界線
 
 - 參考：https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html
-- 本文為候選離線教材，`verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
+- `verified: false`；有完整測試標記的程式需通過本機腳本。其他平台／硬體／ROS 2 均不以純文字推理冒充實測。
 ## 深讀延伸｜把原理放進真實情境
 ## 參數測試不能只取「跑得最快的一次」
 

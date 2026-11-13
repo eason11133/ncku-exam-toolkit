@@ -60,7 +60,9 @@ int main(void) {
     int64_t total = 0;
     for (int i = 0; i < made; ++i) {
         void *status = NULL;
-        if (pthread_join(th[i], &status) != 0 || status != NULL) bad = 1;
+        int join_rc = pthread_join(th[i], &status);
+        if (join_rc != 0) { bad = 1; continue; }
+        if (status != NULL) { bad = 1; continue; }
         total += partial[i];
     }
     if (bad || total != 338350) return 1;
@@ -73,7 +75,9 @@ int main(void) {
 
 ## 正確性界線
 
-`next_task++` 由 mutex 保護；每個 worker 的 local 只由自己寫；主執行緒在所有 join 後才讀結果。建立部分失敗時，只 join 成功建立的 Thread。若共享工作還包括其他狀態，不能只保護 next index 就宣稱無 race。比較效能時固定工作量及 worker 數，別把初始化的時間偷藏到測量範圍之外。
+`next_task++` 由 mutex 保護；每個 worker 的 local 只由自己寫；主執行緒在所有 join 後才讀結果。建立部分失敗時，只 join 成功建立的 Thread。**join 成功，才是主執行緒可以讀取 worker 最終結果的前提。** 原稿在 join 失敗時仍讀 `partial[i]`，有機會在 worker 還在寫入時碰到資料競爭；改成 `continue` 跳過讀取。不過這只是示例的錯誤處理：完整服務若 join 失敗，還必須設計避免在 worker 仍活著時釋放其使用的資源。
+
+還要分清 `pthread_create` 失敗與工作本身失敗。前者代表那個 Thread **從未成立**，不能對未建立的 `pthread_t` 呼叫 join；後者則要由已成立 Thread 回傳狀態，join 之後檢查。若共享工作還包括其他狀態，不能只保護 next index 就宣稱無 race。比較效能時固定工作量及 worker 數，別把初始化的時間偷藏到測量範圍之外。
 
 ## 驗收範圍與限制
 
