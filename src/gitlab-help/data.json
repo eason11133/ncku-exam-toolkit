@@ -48,7 +48,7 @@
       "fix": [
         "複製 GitLab 的 Clone 網址，直接貼在 git clone 後面，不加 < >。"
       ],
-      "code": "git clone 實際的完整網址"
+      "code": ""
     },
     {
       "id": "http-unsafe",
@@ -71,7 +71,7 @@
       "fix": [
         "先和官方核對 fingerprint，一致才輸入 yes。"
       ],
-      "code": "ssh -T git@官方主機名稱"
+      "code": ""
     },
     {
       "id": "ssh-publickey",
@@ -82,7 +82,7 @@
       "fix": [
         "確認 GitLab 的 SSH Keys 與帳號權限；考場找管理員。"
       ],
-      "code": "ssh -T git@官方主機名稱"
+      "code": ""
     },
     {
       "id": "not-repo",
