@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen, Search } from 'lucide-react'
 import { articles } from './content'
 import { optimizations } from './optimizations'
-import { conceptById, type Concept } from './concepts'
+import { conceptById, conceptDisplayTitle, exactConceptDisplayTitle, getExactConcepts, type Concept } from './concepts'
 
 type Props = {
   selected?: Concept
@@ -15,17 +15,13 @@ type Props = {
   onNavigate: (view: 'knowledge' | 'performance', id: string) => void
 }
 
-function conceptLabel(item: Concept): string {
-  const abbreviation = item.aliases.find(alias => /^[A-Z][A-Z0-9-]{1,11}$/.test(alias))
-  return abbreviation && !item.title.includes(abbreviation) ? `${abbreviation}（${item.title}）` : item.title
-}
-
 export default function ConceptLibrary({ selected, concepts, query, onQuery, onSelect, onBack, backLabel, onNavigate }: Props) {
   const [showAll, setShowAll] = useState(false)
   const needle = query.trim().toLocaleLowerCase()
-  const exact = needle ? concepts.find(item => [item.title, item.english, ...item.aliases].some(value => value.trim().toLocaleLowerCase() === needle)) : undefined
-  const related = exact ? concepts.filter(item => item.id !== exact.id) : concepts
-  const limit = needle ? 10 : 30
+  const exact = needle ? getExactConcepts(query) : []
+  const exactIds = new Set(exact.map(item => item.id))
+  const related = concepts.filter(item => !exactIds.has(item.id))
+  const limit = needle ? 8 : 30
   const displayed = showAll ? related : related.slice(0, limit)
   if (selected) {
     const article = articles.find(item => item.id === selected.relatedArticle?.articleId)
@@ -34,7 +30,7 @@ export default function ConceptLibrary({ selected, concepts, query, onQuery, onS
     return <div className="concept-page">
       <button className="back-button" onClick={onBack}><ArrowLeft size={15}/> {backLabel}</button>
       <span className="eyebrow">技術觀念庫 / {selected.category}</span>
-      <h1>{selected.title}</h1>
+      <h1>{conceptDisplayTitle(selected)}</h1>
       {selected.english !== selected.title && <p className="concept-english">{selected.english}</p>}
       <div className="concept-detail">
         <section><h2>這是什麼</h2><p>{selected.plain}</p></section>
@@ -57,20 +53,21 @@ export default function ConceptLibrary({ selected, concepts, query, onQuery, onS
       <Search size={18}/>
       <input value={query} onChange={event => { setShowAll(false); onQuery(event.target.value) }} placeholder="搜尋 PIO FIFO、DMA、DREQ、臨界區…" aria-label="搜尋技術觀念"/>
     </label>
-    {exact && <section className="concept-definition">
-      <span className="eyebrow">最符合的名詞解釋</span>
-      <button onClick={() => onSelect(exact.id)}>
-        <strong>{conceptLabel(exact)}</strong>
-        <span>{exact.plain}</span>
+    {exact.length > 0 && <section className="concept-definition">
+      <span className="eyebrow">{exact.length > 1 ? '這個名稱有不同意思' : '最符合的名詞解釋'}</span>
+      {exact.length > 1 && <p className="concept-ambiguous">「{query.trim()}」有 {exact.length} 種意思，請依上下文選擇。</p>}
+      {exact.map(item => <button key={item.id} onClick={() => onSelect(item.id)}>
+        <strong>{exactConceptDisplayTitle(item, query)}</strong>
+        <span>{item.plain}</span>
         <small>查看完整解釋 <ArrowRight size={14}/></small>
-      </button>
+      </button>)}
     </section>}
     <p className="concept-count">{needle
-      ? (exact ? `另外找到 ${related.length} 個相關觀念` : `找到 ${related.length} 個觀念`)
+      ? (exact.length > 0 ? `其他相關觀念：${related.length} 筆（先顯示 ${Math.min(limit, related.length)} 筆）` : `找到 ${related.length} 個觀念`)
       : `收錄 ${concepts.length} 個觀念`}</p>
     <div className="concept-list">{displayed.map(item => <button key={item.id} onClick={() => onSelect(item.id)}>
       <span className="pill">{item.category}</span>
-      <strong>{conceptLabel(item)}</strong>
+      <strong>{conceptDisplayTitle(item)}</strong>
       <small>{item.explanation}</small>
       <ArrowRight size={16}/>
     </button>)}</div>
