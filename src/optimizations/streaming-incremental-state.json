@@ -79,7 +79,8 @@
       "code": {
         "language": "python",
         "snippet": "running = 0\nfor value in stream:\n    running += value\n    emit(running)"
-      }
+      },
+      "articleId": "opt-stream-running-sum"
     },
     {
       "id": "rolling-deque",
@@ -115,7 +116,8 @@
       "code": {
         "language": "python",
         "snippet": "from collections import deque\nwindow = deque()\nrunning = 0\nif len(window) == window_size: running -= window.popleft()\nwindow.append(value); running += value\navg = running / len(window)"
-      }
+      },
+      "articleId": "opt-stream-rolling-window"
     },
     {
       "id": "bounded-lru-cache",
@@ -152,7 +154,8 @@
       "code": {
         "language": "python",
         "snippet": "from functools import lru_cache\n@lru_cache(maxsize=128)\ndef compute(key):\n    return expensive_pure_function(key)"
-      }
+      },
+      "articleId": "opt-stream-lru-cache"
     }
   ]
 }

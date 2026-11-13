@@ -44,12 +44,13 @@ print(f'{dt_ms:.3f} ms')
 C/POSIX：
 
 ```c
+#define _POSIX_C_SOURCE 199309L /* glibc/POSIX 嚴格 C11：須在系統標頭之前 */
 #include <time.h>
 
 struct timespec t0, t1;
-clock_gettime(CLOCK_MONOTONIC, &t0);
+if (clock_gettime(CLOCK_MONOTONIC, &t0) != 0) { /* 處理計時失敗 */ }
 /* run_workload(); */
-clock_gettime(CLOCK_MONOTONIC, &t1);
+if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0) { /* 處理計時失敗 */ }
 double ms = (t1.tv_sec - t0.tv_sec) * 1000.0
           + (t1.tv_nsec - t0.tv_nsec) / 1000000.0;
 ```

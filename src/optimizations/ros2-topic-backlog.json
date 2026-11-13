@@ -60,7 +60,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-topic-last-state"
     },
     {
       "id": "option-2-method",
@@ -85,7 +86,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-topic-consumer-hotspot"
     },
     {
       "id": "option-3-method",
@@ -110,7 +112,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-topic-flow-control"
     }
   ]
 }

@@ -46,14 +46,14 @@ def main() -> int:
             c_file = temp / f"{article.stem}-{number}.c"
             executable = temp / f"{article.stem}-{number}.exe"
             c_file.write_text(source + "\n", encoding="utf-8")
-            run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(c_file), "-o", str(executable)])
+            run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(c_file), "-pthread", "-o", str(executable)])
             run([str(executable)], quiet=True)
             grade = "labeled complete" if labeled else "standalone main"
             print(f"PASS ({grade}): {article.relative_to(ROOT)} C block {number} compiled and ran")
 
         for example in sorted((ROOT / "examples").glob("*.c")):
             executable = temp / f"external-{example.stem}.exe"
-            run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(example), "-o", str(executable)])
+            run([compiler, "-std=c11", "-Wall", "-Wextra", "-Werror", "-pedantic", str(example), "-pthread", "-o", str(executable)])
             run([str(executable)], quiet=True)
             print(f"PASS (linked complete file): {example.relative_to(ROOT)} compiled and ran")
 

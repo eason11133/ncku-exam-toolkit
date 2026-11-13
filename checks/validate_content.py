@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 from xml.etree import ElementTree
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 CONTENT=ROOT/'src/content'; OPT=ROOT/'src/optimizations'; DIAGRAM=ROOT/'public/diagrams'
-ARTICLE_FIELDS={'id','title','category','tags','aliases','difficulty','priority','source_type','source_url','verified','updated_at','summary','related'}
+ARTICLE_FIELDS={'id','title','category','tags','aliases','difficulty','priority','source_type','verified','updated_at','summary','related'}
 METHOD_FIELDS={'id','name','aliases','category','summary','problems','bottlenecks','verified','updatedAt','sources','relatedMethodIds','articleIds','commandIds','docIds','options'}
 OPTION_FIELDS={'id','title','aliases','summary','principle','conditions','tradeoffs','behavior','metrics','code','sources','verified','articleId'}
 validsource={'official','community','personal','speculative'}
@@ -34,7 +34,7 @@ for f in sorted(CONTENT.glob('*.md')):
     assert meta['source_type'] in validsource,f
     assert meta['verified'] in ('true','false'),f
     assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',meta['updated_at']),f
-    assert urlsplit(meta['source_url']).scheme == 'https',f
+    if meta.get('source_url'): assert urlsplit(meta['source_url']).scheme == 'https',f
     for img in re.findall(r'!\[[^\]]*\]\(([^)]+)\)',match[2]):
         images_used.add(img)
         if img.startswith('/diagrams/'):

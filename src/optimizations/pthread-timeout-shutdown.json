@@ -59,7 +59,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-stop-broadcast"
     },
     {
       "id": "option-2-while-predicate",
@@ -83,7 +84,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-wait-loop"
     },
     {
       "id": "option-3-method",
@@ -107,7 +109,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_cond_timedwait.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-cond-timeout"
     }
   ]
 }

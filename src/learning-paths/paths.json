@@ -1,0 +1,29 @@
+[
+  {
+    "id": "path-ros2-flow-debug",
+    "title": "ROS 2：從找不到 Node 到 Callback 真的執行",
+    "guide": "quality_v11/teaching/01_先查資料流_再查ROS2通訊.md",
+    "articleIds": ["ops-ros2-environment", "opt-ros2-topic-domain-qos", "opt-ros2-topic-name-check", "opt-ros2-service-callback-groups", "opt-ros2-timer-split-groups"],
+    "conceptIds": ["ros2-topic", "qos", "callback-group", "mutex-callback-group", "reentrant-callback-group", "executor", "deadlock"],
+    "question": "收不到訊息時，先檢查 Topic/Type/QoS，還是改成多執行緒？為什麼？",
+    "status": "offline-candidate"
+  },
+  {
+    "id": "path-pthread-correctness",
+    "title": "pthread：資料競爭、Queue 等待與安全關閉",
+    "guide": "quality_v11/teaching/02_從資料競爭到正確關閉_pthread.md",
+    "articleIds": ["ops-pthread-create-join", "opt-pthread-wait-loop", "opt-pthread-lock-order", "opt-pthread-stop-broadcast", "opt-cond-bounded-ring"],
+    "conceptIds": ["data-race", "mutex", "condition-variable", "deadlock", "volatile"],
+    "question": "兩個 Consumer 為什麼需要 while 重查 Queue？關閉前先 join 誰？",
+    "status": "offline-candidate"
+  },
+  {
+    "id": "path-pio-transfer-ownership",
+    "title": "PIO／Transfer：追 word、追容量、追 Buffer 所有權",
+    "guide": "quality_v11/teaching/03_PIO與Transfer_把資料搬到對的位置.md",
+    "articleIds": ["opt-pio-echo-autopull", "opt-pio-rx-drain", "opt-transfer-channel-owner", "opt-transfer-last-chunk-split", "opt-c-checked-copy-bytes"],
+    "conceptIds": ["autopull", "osr", "isr", "pio-push", "dma", "dreq", "transfer-count", "transfer-size"],
+    "question": "count 是筆數還是 bytes？為什麼 start 後不能立刻重用 Buffer？",
+    "status": "offline-candidate"
+  }
+]

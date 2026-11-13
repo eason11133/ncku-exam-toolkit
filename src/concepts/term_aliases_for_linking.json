@@ -3486,5 +3486,505 @@
   {
     "text": ">>",
     "conceptId": "shift-right"
+  },
+  {
+    "text": "conditional variable",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "Condition Var",
+    "conceptId": "condition-variable"
+  },
+  {
+    "text": "side set",
+    "conceptId": "pio-side-set"
+  },
+  {
+    "text": "side-set",
+    "conceptId": "pio-side-set"
+  },
+  {
+    "text": "thread-sanitizer",
+    "conceptId": "thread-sanitizer"
+  },
+  {
+    "text": "TSan",
+    "conceptId": "thread-sanitizer"
+  },
+  {
+    "text": "fsanitize=thread",
+    "conceptId": "thread-sanitizer"
+  },
+  {
+    "text": "gdb",
+    "conceptId": "gdb"
+  },
+  {
+    "text": "GNU Debugger",
+    "conceptId": "gdb"
+  },
+  {
+    "text": "debugger",
+    "conceptId": "gdb"
+  },
+  {
+    "text": "cmake",
+    "conceptId": "cmake"
+  },
+  {
+    "text": "CMakeLists.txt",
+    "conceptId": "cmake"
+  },
+  {
+    "text": "cmake -S",
+    "conceptId": "cmake"
+  },
+  {
+    "text": "ctest",
+    "conceptId": "ctest"
+  },
+  {
+    "text": "ctest --test-dir",
+    "conceptId": "ctest"
+  },
+  {
+    "text": "enable_testing",
+    "conceptId": "ctest"
+  },
+  {
+    "text": "gitlab",
+    "conceptId": "gitlab"
+  },
+  {
+    "text": "gitlab repository",
+    "conceptId": "gitlab"
+  },
+  {
+    "text": "GitLab CI",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "cicd",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "CI/CD",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "CI",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "continuous integration",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "continuous deployment",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "pipeline",
+    "conceptId": "cicd"
+  },
+  {
+    "text": "git-diff",
+    "conceptId": "git-diff"
+  },
+  {
+    "text": "diff",
+    "conceptId": "git-diff"
+  },
+  {
+    "text": "patch",
+    "conceptId": "git-diff"
+  },
+  {
+    "text": "byte-offset",
+    "conceptId": "byte-offset"
+  },
+  {
+    "text": "Offset",
+    "conceptId": "byte-offset"
+  },
+  {
+    "text": "偏移量",
+    "conceptId": "byte-offset"
+  },
+  {
+    "text": "offsetof",
+    "conceptId": "offsetof"
+  },
+  {
+    "text": "stddef offsetof",
+    "conceptId": "offsetof"
+  },
+  {
+    "text": "欄位偏移",
+    "conceptId": "offsetof"
+  },
+  {
+    "text": "alignof",
+    "conceptId": "alignof"
+  },
+  {
+    "text": "_Alignof／alignof",
+    "conceptId": "alignof"
+  },
+  {
+    "text": "對齊要求",
+    "conceptId": "alignof"
+  },
+  {
+    "text": "abi",
+    "conceptId": "abi"
+  },
+  {
+    "text": "application binary interface",
+    "conceptId": "abi"
+  },
+  {
+    "text": "呼叫慣例",
+    "conceptId": "abi"
+  },
+  {
+    "text": "padding",
+    "conceptId": "padding"
+  },
+  {
+    "text": "struct padding",
+    "conceptId": "padding"
+  },
+  {
+    "text": "填充位元組",
+    "conceptId": "padding"
+  },
+  {
+    "text": "bisect",
+    "conceptId": "bisect"
+  },
+  {
+    "text": "binary insertion",
+    "conceptId": "bisect"
+  },
+  {
+    "text": "binary search python",
+    "conceptId": "bisect"
+  },
+  {
+    "text": "bisect-left",
+    "conceptId": "bisect-left"
+  },
+  {
+    "text": "lower_bound",
+    "conceptId": "bisect-left"
+  },
+  {
+    "text": "bisect-right",
+    "conceptId": "bisect-right"
+  },
+  {
+    "text": "upper_bound",
+    "conceptId": "bisect-right"
+  },
+  {
+    "text": "prefix-sum",
+    "conceptId": "prefix-sum"
+  },
+  {
+    "text": "prefix array",
+    "conceptId": "prefix-sum"
+  },
+  {
+    "text": "累積和",
+    "conceptId": "prefix-sum"
+  },
+  {
+    "text": "lru",
+    "conceptId": "lru"
+  },
+  {
+    "text": "least recently used",
+    "conceptId": "lru"
+  },
+  {
+    "text": "lru_cache",
+    "conceptId": "lru"
+  },
+  {
+    "text": "heapq",
+    "conceptId": "heapq"
+  },
+  {
+    "text": "heapq.nlargest",
+    "conceptId": "heapq"
+  },
+  {
+    "text": "heapq.nsmallest",
+    "conceptId": "heapq"
+  },
+  {
+    "text": "heap-data-structure",
+    "conceptId": "heap-data-structure"
+  },
+  {
+    "text": "Heap",
+    "conceptId": "heap-data-structure"
+  },
+  {
+    "text": "min-heap",
+    "conceptId": "heap-data-structure"
+  },
+  {
+    "text": "max-heap",
+    "conceptId": "heap-data-structure"
+  },
+  {
+    "text": "priority queue",
+    "conceptId": "heap-data-structure"
+  },
+  {
+    "text": "top-k",
+    "conceptId": "top-k"
+  },
+  {
+    "text": "nsmallest",
+    "conceptId": "top-k"
+  },
+  {
+    "text": "nlargest",
+    "conceptId": "top-k"
+  },
+  {
+    "text": "hash",
+    "conceptId": "hash"
+  },
+  {
+    "text": "hashing",
+    "conceptId": "hash"
+  },
+  {
+    "text": "hash table",
+    "conceptId": "hash"
+  },
+  {
+    "text": "dict lookup",
+    "conceptId": "hash"
+  },
+  {
+    "text": "deque",
+    "conceptId": "deque"
+  },
+  {
+    "text": "collections.deque",
+    "conceptId": "deque"
+  },
+  {
+    "text": "double-ended queue",
+    "conceptId": "deque"
+  },
+  {
+    "text": "malloc",
+    "conceptId": "malloc"
+  },
+  {
+    "text": "malloc()",
+    "conceptId": "malloc"
+  },
+  {
+    "text": "C malloc",
+    "conceptId": "malloc"
+  },
+  {
+    "text": "realloc",
+    "conceptId": "realloc"
+  },
+  {
+    "text": "realloc()",
+    "conceptId": "realloc"
+  },
+  {
+    "text": "C realloc",
+    "conceptId": "realloc"
+  },
+  {
+    "text": "free",
+    "conceptId": "free"
+  },
+  {
+    "text": "free()",
+    "conceptId": "free"
+  },
+  {
+    "text": "C free",
+    "conceptId": "free"
+  },
+  {
+    "text": "memory-pool",
+    "conceptId": "memory-pool"
+  },
+  {
+    "text": "arena allocator",
+    "conceptId": "memory-pool"
+  },
+  {
+    "text": "stdin",
+    "conceptId": "stdin"
+  },
+  {
+    "text": "standard input",
+    "conceptId": "stdin"
+  },
+  {
+    "text": "輸入重導向",
+    "conceptId": "stdin"
+  },
+  {
+    "text": "stderr",
+    "conceptId": "stderr"
+  },
+  {
+    "text": "standard error",
+    "conceptId": "stderr"
+  },
+  {
+    "text": "錯誤重導向",
+    "conceptId": "stderr"
+  },
+  {
+    "text": "argv",
+    "conceptId": "argv"
+  },
+  {
+    "text": "argv[]",
+    "conceptId": "argv"
+  },
+  {
+    "text": "command-line arguments",
+    "conceptId": "argv"
+  },
+  {
+    "text": "argc",
+    "conceptId": "argc"
+  },
+  {
+    "text": "argument count",
+    "conceptId": "argc"
+  },
+  {
+    "text": "timeout",
+    "conceptId": "timeout"
+  },
+  {
+    "text": "逾時",
+    "conceptId": "timeout"
+  },
+  {
+    "text": "deadline",
+    "conceptId": "timeout"
+  },
+  {
+    "text": "posix",
+    "conceptId": "posix"
+  },
+  {
+    "text": "POSIX.1",
+    "conceptId": "posix"
+  },
+  {
+    "text": "pthread POSIX",
+    "conceptId": "posix"
+  },
+  {
+    "text": "pico-sdk",
+    "conceptId": "pico-sdk"
+  },
+  {
+    "text": "Raspberry Pi Pico SDK",
+    "conceptId": "pico-sdk"
+  },
+  {
+    "text": "rp2350 sdk",
+    "conceptId": "pico-sdk"
+  },
+  {
+    "text": "pioasm",
+    "conceptId": "pioasm"
+  },
+  {
+    "text": ".pio assembler",
+    "conceptId": "pioasm"
+  },
+  {
+    "text": "pioasm tool",
+    "conceptId": "pioasm"
+  },
+  {
+    "text": "logic-analyzer",
+    "conceptId": "logic-analyzer"
+  },
+  {
+    "text": "數位波形分析儀",
+    "conceptId": "logic-analyzer"
+  },
+  {
+    "text": "rss",
+    "conceptId": "rss"
+  },
+  {
+    "text": "resident set size",
+    "conceptId": "rss"
+  },
+  {
+    "text": "peak RSS",
+    "conceptId": "rss"
+  },
+  {
+    "text": "perf",
+    "conceptId": "perf"
+  },
+  {
+    "text": "perf stat",
+    "conceptId": "perf"
+  },
+  {
+    "text": "perf record",
+    "conceptId": "perf"
+  },
+  {
+    "text": "CPU counters",
+    "conceptId": "perf"
+  },
+  {
+    "text": "cpu-bound",
+    "conceptId": "cpu-bound"
+  },
+  {
+    "text": "計算密集",
+    "conceptId": "cpu-bound"
+  },
+  {
+    "text": "io-bound",
+    "conceptId": "io-bound"
+  },
+  {
+    "text": "I/O-bound",
+    "conceptId": "io-bound"
+  },
+  {
+    "text": "輸入輸出瓶頸",
+    "conceptId": "io-bound"
+  },
+  {
+    "text": "spurious-wakeup",
+    "conceptId": "spurious-wakeup"
+  },
+  {
+    "text": "虛假喚醒",
+    "conceptId": "spurious-wakeup"
+  },
+  {
+    "text": "pio-side-set",
+    "conceptId": "pio-side-set"
   }
 ]

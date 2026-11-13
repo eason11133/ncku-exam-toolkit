@@ -61,7 +61,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-count-cycles"
     },
     {
       "id": "option-2-state-machine-clock-divider",
@@ -85,7 +86,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-config-clock-divider"
     },
     {
       "id": "option-3-method",
@@ -109,7 +111,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-reduce-instructions"
     }
   ]
 }

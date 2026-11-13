@@ -45,7 +45,7 @@ flags &= (uint8_t)~(1u << 1); // 清 bit 1
 
 ## 什麼情況才適合
 
-- b < 32 且為 unsigned
+- b < 8（本例的 `flags` 是 `uint8_t`，只有 bit0～bit7） 且為 unsigned
 - 該欄位不影響保留位元
 
 ## 常見錯誤與代價

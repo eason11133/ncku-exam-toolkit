@@ -61,7 +61,8 @@
           "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-topic-name-check"
     },
     {
       "id": "option-2-remap",
@@ -85,7 +86,8 @@
           "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-remap-cli"
     },
     {
       "id": "option-3-qos",
@@ -109,7 +111,8 @@
           "url": "https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-type-qos-diagnose"
     }
   ]
 }

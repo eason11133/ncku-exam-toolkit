@@ -63,7 +63,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-osr-isr-direction"
     },
     {
       "id": "option-2-autopull-autopush-threshold",
@@ -88,7 +89,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-auto-thresholds"
     },
     {
       "id": "option-3-cpu",
@@ -113,7 +115,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-cpu-pack-unpack"
     }
   ]
 }

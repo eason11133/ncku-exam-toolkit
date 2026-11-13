@@ -82,3 +82,7 @@ def callback(self, msg):
 
 - [Python perf_counter](https://docs.python.org/3/library/time.html)
 - [ROS 2 Jazzy Executors](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Executors.html)
+
+## 量測擾動
+
+範例逐筆呼叫 `get_logger().info()` 是方便看單筆數值的教學片段；正式量延遲時，格式化與大量 logging 本身會占用 CPU／I/O。改採低頻抽樣或累積統計，並在相同輸入負載下比較有 log 與無 log 的結果，避免把記錄成本當成 Callback 計算成本。

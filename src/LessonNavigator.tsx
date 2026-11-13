@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, BookOpen, Check, Copy, Search } from 'lucide-react'
 import { findNavigationNode, navigationCandidates, navigationCount, navigationPrompt, navigationReading, relatedNavigationNodes, taxonomy, type TaxonomyNode } from './navigation-core'
 import './navigation.css'
+import LearningPaths from './LearningPaths'
 
 type Props = {
   pathIds: string[]
@@ -26,6 +27,7 @@ export default function LessonNavigator(props: Props) {
 
   return <div className="lesson-nav">
     <div className="lesson-nav-intro"><span className="eyebrow">教材查找 / LLM 分層導航</span><h1>我不知道該看哪篇</h1></div>
+    <LearningPaths onOpenArticle={id => onOpenItem('knowledge', id)} />
     <nav className="lesson-path" aria-label="目前分類路徑"><button onClick={() => { setPathIds([]); setShowCandidates(false) }}>全部分類</button>{path.map((node, index) => <span key={node.id}><ArrowRight size={14}/><button aria-current={index === path.length - 1 ? 'step' : undefined} onClick={() => { setPathIds(pathIds.slice(0, index + 1)); setShowCandidates(false) }}>{node.label}</button></span>)}</nav>
     <div className="lesson-stage-head"><div>{current && <button className="lesson-back" onClick={goBack}><ArrowLeft size={16}/> 返回上一層</button>}<span className="eyebrow">{!current ? '第 1 層 / 大分類' : atCandidates ? '教材文章' : '下一層 / 細分類'}</span><h2>{atCandidates ? `${current?.label}的教材文章` : current ? current.label : '先選最接近的領域'}</h2>{current && !atCandidates && <p>{current.question}</p>}</div><button className="lesson-copy" onClick={() => onCopy(prompt, copyId)}>{copied === copyId ? <Check size={17}/> : <Copy size={17}/>} {copied === copyId ? '已複製' : '複製給 LLM'}</button></div>
     {copied === 'error' && <p className="lesson-copy-error" role="alert">複製失敗。請展開下方 Prompt，手動選取文字複製。</p>}

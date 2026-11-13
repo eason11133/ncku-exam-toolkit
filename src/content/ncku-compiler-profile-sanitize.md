@@ -23,7 +23,7 @@ difficulty: intermediate
 在 Linux 上先用簡單、可用的工具收集 Baseline：
 
 ```bash
-/usr/bin/time -v ./program input.txt
+/usr/bin/time -v ./program < input.txt
 ```
 
 如果 `/usr/bin/time` 未安裝，可先用 shell 的 `time`，但兩者輸出與指標不同。
@@ -31,7 +31,7 @@ difficulty: intermediate
 若考場允許且系統有安裝 `perf`：
 
 ```bash
-perf stat -- ./program input.txt
+perf stat -- ./program < input.txt
 ```
 
 `perf` 可收集 CPU cycles、instructions 等事件，但能否使用取決於 kernel、權限、硬體。出現 `Permission denied` 或沒有事件時，**不要擅自改考場系統設定**；退回 `/usr/bin/time`、程式內分段計時。
@@ -73,12 +73,13 @@ TSan 的支援和實際執行狀況依平台而異；它也不是所有競爭條
 C 的簡易例子：
 
 ```c
+#define _POSIX_C_SOURCE 199309L /* glibc/POSIX 嚴格 C11：須在系統標頭之前 */
 #include <time.h>
 
 struct timespec start, end;
-clock_gettime(CLOCK_MONOTONIC, &start);
+if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) { /* 處理計時失敗 */ }
 /* 呼叫想量的函式 */
-clock_gettime(CLOCK_MONOTONIC, &end);
+if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) { /* 處理計時失敗 */ }
 double ms = (end.tv_sec - start.tv_sec) * 1000.0 +
             (end.tv_nsec - start.tv_nsec) / 1e6;
 ```

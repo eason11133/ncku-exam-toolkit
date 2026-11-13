@@ -1,6 +1,8 @@
 import Fuse from 'fuse.js'
 import rawConcepts from './concepts/concepts.json'
 import rawAliases from './concepts/term_aliases_for_linking.json'
+import aliasPolicy from './concepts/alias_policy.json'
+import newAliasContext from './concepts/new_alias_context.json'
 
 export type Concept = (typeof rawConcepts)[number]
 export const concepts: Concept[] = rawConcepts
@@ -8,6 +10,8 @@ export const conceptById = new Map(concepts.map(concept => [concept.id, concept]
 
 const aliases = rawAliases.filter(alias => conceptById.has(alias.conceptId))
   .sort((a, b) => b.text.length - a.text.length)
+// These words remain searchable, but ordinary prose does not establish their technical meaning.
+const contextRequired = new Set([...aliasPolicy.prohibitedAutoLinksInOrdinaryProse, ...newAliasContext.filter(item => item.linkPolicy === 'explicit-technical-context').map(item => item.text)].map(text => text.toLocaleLowerCase()))
 const aliasesByFirst = new Map<string, typeof aliases>()
 for (const alias of aliases) {
   const first = alias.text[0].toLocaleLowerCase()
@@ -37,6 +41,7 @@ export function linkConcepts(text: string, used = new Set<string>()): ConceptSpa
   let cursor = 0
   while (cursor < text.length) {
     const match = (aliasesByFirst.get(text[cursor].toLocaleLowerCase()) || []).find(alias => {
+      if (contextRequired.has(alias.text.toLocaleLowerCase())) return false
       if (used.has(alias.conceptId)) return false
       if (text.slice(cursor, cursor + alias.text.length).toLocaleLowerCase() !== normalize(alias.text)) return false
       const first = alias.text[0]

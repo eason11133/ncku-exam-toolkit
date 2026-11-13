@@ -60,7 +60,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-double-buffer-sequence"
     },
     {
       "id": "option-2-chunk",
@@ -85,7 +86,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-last-chunk-split"
     },
     {
       "id": "option-3-buffer",
@@ -110,7 +112,8 @@
           "url": "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-transfer-single-buffer-fallback"
     }
   ]
 }

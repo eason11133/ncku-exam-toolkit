@@ -59,7 +59,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-tx-underflow"
     },
     {
       "id": "option-2-rx-fifo",
@@ -83,7 +84,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-rx-drain"
     },
     {
       "id": "option-3-method",
@@ -107,7 +109,8 @@
           "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pio-wait-strategy"
     }
   ]
 }

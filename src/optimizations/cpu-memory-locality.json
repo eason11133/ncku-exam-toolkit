@@ -83,7 +83,8 @@
       "code": {
         "language": "c",
         "snippet": "struct Point { int x, y, z; };\n/* AoS: struct Point points[N]; */\n/* SoA: int xs[N], ys[N], zs[N]; */"
-      }
+      },
+      "articleId": "opt-c-aos-to-soa"
     },
     {
       "id": "contiguous-storage",
@@ -118,7 +119,8 @@
           "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-contiguous-array-vs-nodes"
     },
     {
       "id": "avoid-false-sharing",
@@ -149,7 +151,8 @@
           "url": "https://man7.org/linux/man-pages/man1/perf-stat.1.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-false-sharing-bench-safe"
     }
   ]
 }

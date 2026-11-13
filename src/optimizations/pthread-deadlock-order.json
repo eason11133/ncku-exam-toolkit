@@ -57,7 +57,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-lock-order"
     },
     {
       "id": "option-2-method",
@@ -81,7 +82,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-single-lock-redesign"
     },
     {
       "id": "option-3-trylock",
@@ -106,7 +108,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-trylock-policy"
     }
   ]
 }

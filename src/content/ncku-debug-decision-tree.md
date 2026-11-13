@@ -63,3 +63,7 @@ QoS 相容 → ros2 topic echo 原始／輸出 Topic，定位哪一段沒資料
 ## 每次更改都要確認
 
 先輸出正確，再多次量測完成時間、CPU 與記憶體。假如改完結果變成 0、遺失訊息或跳過計算，速度再快都不算有效優化。
+
+## ROS 2 Node 看不到時
+
+先確認程式有啟動、兩端使用相同的 `ROS_DOMAIN_ID`、已 source 正確環境，再查容器網路與 DDS Discovery。Bash 可執行 `printenv ROS_DOMAIN_ID`；不同 Domain 不能互相發現，單改 Topic remap 無效。參考：[ROS 2 Domain ID](https://github.com/ros2/ros2_documentation/blob/rolling/source/Get-Started/Configuring-ROS2-Environment.rst)。

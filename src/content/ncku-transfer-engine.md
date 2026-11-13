@@ -70,3 +70,7 @@ make mistake
 真正的 DMA 用專用硬體搬資料，能讓 CPU 去做其他工作，但搬運仍占匯流排、記憶體頻寬，配置／啟動也有成本；小量資料可能不如 `memcpy`。要量測 CPU 可用時間、整體延遲、吞吐量、正確性；不能拿官方軟體引擎的單次速度代表硬體 DMA。
 
 來源：[Pico SDK DMA](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_dma)、[Pico SDK dma.h](https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/hardware_dma/include/hardware/dma.h)。
+
+## 官方練習程式的同步限制
+
+使用者提供的 `demo/section2-3/transfer-engine/engine.c` 以 `volatile bool busy` 表示通道工作中；worker 寫入，主執行緒在 `engine_busy()` 等處讀取。C 的 `volatile` 不提供跨執行緒同步，這個示範不能當成無 data race 的生產用引擎。正式程式需依完整生命週期採用 C atomic 或 mutex／condition variable，並檢查 `pthread_create` 失敗、`wait`／`release` 順序；本篇不宣稱已用 TSan 驗證 Demo。參考：[C 記憶體模型](https://en.cppreference.com/w/c/language/memory_model)。

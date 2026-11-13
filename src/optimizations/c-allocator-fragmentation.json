@@ -60,7 +60,8 @@
           "url": "https://en.cppreference.com/w/c/memory/realloc"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-grow-buffer"
     },
     {
       "id": "option-2-buffer",
@@ -84,7 +85,8 @@
           "url": "https://en.cppreference.com/w/c/memory/realloc"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-reuse-scratch"
     },
     {
       "id": "option-3-memory-pool",
@@ -108,7 +110,8 @@
           "url": "https://en.cppreference.com/w/c/memory/realloc"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-c-memory-pool-boundaries"
     }
   ]
 }

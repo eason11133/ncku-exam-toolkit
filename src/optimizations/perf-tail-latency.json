@@ -58,7 +58,8 @@
           "url": "https://docs.python.org/3/library/statistics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-nearest-rank-and-max"
     },
     {
       "id": "option-2-p95",
@@ -82,7 +83,8 @@
           "url": "https://docs.python.org/3/library/statistics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-link-slow-events"
     },
     {
       "id": "option-3-a-b",
@@ -107,7 +109,8 @@
           "url": "https://docs.python.org/3/library/statistics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-perf-fair-ab-matching"
     }
   ]
 }

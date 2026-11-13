@@ -60,7 +60,8 @@
           "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-atomic-counter"
     },
     {
       "id": "option-2-thread",
@@ -85,7 +86,8 @@
           "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-local-count-merge"
     },
     {
       "id": "option-3-mutex",
@@ -110,7 +112,8 @@
           "url": "https://en.cppreference.com/w/c/atomic/atomic_fetch_add"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-mutex-multifield"
     }
   ]
 }

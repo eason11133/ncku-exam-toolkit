@@ -78,3 +78,7 @@ ros2 topic info -v 的選項依環境版本確認；名稱修正不能代替資�
 ## 參考與查證狀態
 
 - 參考：[ROS 2 Jazzy remapping](https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html)
+
+## Node 完全看不到時先檢查 Domain
+
+若 `ros2 node list` 看不到預期節點，先確認節點真的啟動、兩端 shell／容器的 `ROS_DOMAIN_ID` 是否一致，以及是否 source 相同 ROS 2 環境。Bash 可用 `printenv ROS_DOMAIN_ID`；未設定時通常使用預設 Domain 0。不同 Domain 的節點不會互相發現，這時改 Topic remap 或 QoS depth 都不能解決。若 Domain 相同仍看不到，再檢查容器網路與 DDS Discovery。來源：[ROS 2 Domain ID](https://github.com/ros2/ros2_documentation/blob/rolling/source/Get-Started/Configuring-ROS2-Environment.rst)。

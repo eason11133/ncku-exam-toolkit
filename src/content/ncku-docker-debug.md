@@ -28,7 +28,7 @@ docker build -t srecruit-demo .
 docker run --rm -it --name srecruit-demo -v "$PWD:/demo" srecruit-demo
 ```
 
-`-v "$PWD:/demo"` 把現在的資料夾掛到容器 `/demo`。確定所在資料夾就是 `demo/`；若路徑錯了，可能遮住容器本來的示範檔案。
+上方是 Bash 語法。Windows CMD 改用 `-v "%cd%:/demo"`；PowerShell 改用 `-v "${PWD}:/demo"`。這些語法把現在的資料夾掛到容器 `/demo`，實際掛載仍需依 Docker Desktop 的路徑設定確認。確定所在資料夾就是 `demo/`；若路徑錯了，可能遮住容器本來的示範檔案。
 
 第二個終端機要進入**同一個已啟動容器**：
 

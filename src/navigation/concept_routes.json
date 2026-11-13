@@ -1365,5 +1365,210 @@
       "thread-start"
     ],
     "coverage": "extension"
+  },
+  {
+    "conceptId": "thread-sanitizer",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "gdb",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "cmake",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "ctest",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "gitlab",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "cicd",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "git-diff",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "byte-offset",
+    "primaryLeafId": "c-packets",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "offsetof",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "alignof",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "abi",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "padding",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "bisect",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "bisect-left",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "bisect-right",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "prefix-sum",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "lru",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "heapq",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "heap-data-structure",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "top-k",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "hash",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "deque",
+    "primaryLeafId": "perf-algorithms",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "malloc",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "realloc",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "free",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "memory-pool",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "stdin",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "stderr",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "argv",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "argc",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "timeout",
+    "primaryLeafId": "thread-stall",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "posix",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "pico-sdk",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "pioasm",
+    "primaryLeafId": "pio-intro",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "logic-analyzer",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "rss",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "perf",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "cpu-bound",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "io-bound",
+    "primaryLeafId": "perf-measure",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "spurious-wakeup",
+    "primaryLeafId": "thread-queue",
+    "secondaryLeafIds": []
+  },
+  {
+    "conceptId": "pio-side-set",
+    "primaryLeafId": "pio-timing",
+    "secondaryLeafIds": []
   }
 ]

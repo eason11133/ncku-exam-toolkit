@@ -58,7 +58,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-fixed-worker-pool"
     },
     {
       "id": "option-2-thread",
@@ -83,7 +84,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-worker-count"
     },
     {
       "id": "option-3-join-detach",
@@ -108,7 +110,8 @@
           "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_create.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-pthread-join-vs-detach"
     }
   ]
 }

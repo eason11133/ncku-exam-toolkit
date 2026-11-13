@@ -77,3 +77,7 @@ engine_release(ch);    // 必須在工作完成後釋放
 ## 參考與查證狀態
 
 - 參考：[Raspberry Pi Pico SDK DMA](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
+
+## 官方練習程式的同步限制
+
+使用者提供的 `demo/section2-3/transfer-engine/engine.c` 以 `volatile bool busy` 表示通道工作中；worker 寫入，主執行緒在 `engine_busy()` 等處讀取。C 的 `volatile` 不提供跨執行緒同步，這個示範不能當成無 data race 的生產用引擎。正式程式需依完整生命週期採用 C atomic 或 mutex／condition variable，並檢查 `pthread_create` 失敗、`wait`／`release` 順序；本篇不宣稱已用 TSan 驗證 Demo。參考：[C 記憶體模型](https://en.cppreference.com/w/c/language/memory_model)。

@@ -1,0 +1,464 @@
+[
+  {
+    "id": "thread",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "pthread",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "pthread-create",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "pthread-join",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": "pthread-thread-lifecycle/option-3-join-detach",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "thread-schedule",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "cpu-affinity",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "lesson-pthread-work-partition-thread-count",
+    "solution": "pthread-work-partition/thread-count",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "clock-monotonic",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-performance-benchmark",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "bool",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-c-language-bridge",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "uintptr",
+    "reason": "pthread／語言基礎術語不應推薦修正 DMA count × size",
+    "article": "ncku-v2-c-struct-packing",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "alignment",
+    "reason": "對齊不等於少複製",
+    "article": "ncku-v2-c-struct-packing",
+    "solution": "c-struct-packing/option-3-alignment",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "buffer",
+    "reason": "Buffer 基礎應先教容量及生命週期；重用僅在特定瓶頸下",
+    "article": "ncku-c-memory",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "ros2-remap",
+    "reason": "應連到名稱／Remapping 專文",
+    "article": "ncku-v2-ros2-remap-diagnostics",
+    "solution": "ros2-remap-diagnostics/option-2-remap",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "ros-domain-id",
+    "reason": "不同 ROS_DOMAIN_ID 不一定靠改 topic 名解決",
+    "article": "ncku-v2-ros2-remap-diagnostics",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "ros-namespace",
+    "reason": "namespace 用專門排錯頁",
+    "article": "ncku-v2-ros2-remap-diagnostics",
+    "solution": "ros2-remap-diagnostics/option-1-topic",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "ros-parameter",
+    "reason": "有專門參數設定文章",
+    "article": "ncku-v2-ros2-parameters-config",
+    "solution": "ros2-parameters-config/option-1-method",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "serialization",
+    "reason": "有專門序列化文章",
+    "article": "ncku-v2-ros2-message-serialization",
+    "solution": "ros2-message-serialization/option-1-method",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "message-backlog",
+    "reason": "堆積要先查消費能力和允許遺失；depth 有前提",
+    "article": "ncku-v2-ros2-topic-backlog",
+    "solution": "ros2-topic-backlog/option-1-depth",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "service-client",
+    "reason": "有專門 service client 文章；async 要有前提",
+    "article": "ncku-v2-ros2-service-client-deadlock",
+    "solution": "ros2-service-client-deadlock/option-1-call-async",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "service-server",
+    "reason": "Service Server 的基礎定義不宜一律推薦 async client",
+    "article": "ncku-v2-ros2-service-client-deadlock",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "call-async",
+    "reason": "應連到具體 API 場景",
+    "article": "ncku-v2-ros2-service-client-deadlock",
+    "solution": "ros2-service-client-deadlock/option-1-call-async",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "future",
+    "reason": "Future 概念不等於所有服務都需要改 async",
+    "article": "ncku-v2-ros2-service-client-deadlock",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "publisher-rate",
+    "reason": "發布頻率可用 ros2 topic hz 查",
+    "article": "ncku-ros2-cli-workflow",
+    "solution": "ros2-topic-pipeline/check-cli",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "false-sharing",
+    "reason": "已有專門 False Sharing 文章",
+    "article": "ncku-memory-locality",
+    "solution": "cpu-memory-locality/avoid-false-sharing",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "cache",
+    "reason": "CPU Cache 概念不等於自動要換連續陣列",
+    "article": "ncku-memory-locality",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "cache-miss",
+    "reason": "應先解釋記憶體局部性及量測",
+    "article": "ncku-memory-locality",
+    "solution": "cpu-memory-locality/contiguous-storage",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "memory-locality",
+    "reason": "已有對應教材",
+    "article": "ncku-memory-locality",
+    "solution": "cpu-memory-locality/contiguous-storage",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "profiling",
+    "reason": "Profiler 不是同步工具",
+    "article": "ncku-compiler-profile-sanitize",
+    "solution": "benchmark-correctness/profile-hotspot",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "sanitizer",
+    "reason": "Sanitizer 的工具說明不該跳到同步工具",
+    "article": "ncku-compiler-profile-sanitize",
+    "solution": "compiler-profile-guided/sanitize-before-speed",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "complexity",
+    "reason": "時間複雜度不等於自動要用 dict/set",
+    "article": "ncku-algorithm-query-patterns",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "space-complexity",
+    "reason": "空間複雜度不是記憶體資料布局最佳化指令",
+    "article": "ncku-algorithm-query-patterns",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "copy-vs-zero-copy",
+    "reason": "所有權／生命週期比一般 concurrency 文章更直接",
+    "article": "ncku-c-memory",
+    "solution": "memory-buffer-copy/avoid-extra-copy",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "dma-vs-thread",
+    "reason": "需要明確區分軟體模擬和硬體 DMA",
+    "article": "ncku-transfer-engine",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "latency",
+    "reason": "Latency 是泛用效能指標，不該只連 PIO",
+    "article": "ncku-performance-benchmark",
+    "solution": "perf-tail-latency/option-1-method",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "irq",
+    "reason": "原 option-1 是阻塞等待，不是中斷通知",
+    "article": "ncku-v2-transfer-interrupt-or-poll",
+    "solution": "transfer-interrupt-or-poll/option-2-method",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "polling",
+    "reason": "Polling 定義不代表該改 DMA",
+    "article": "ncku-v2-transfer-interrupt-or-poll",
+    "solution": "transfer-interrupt-or-poll/option-3-method",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "peripheral",
+    "reason": "周邊定義不應預設 DMA",
+    "article": "ncku-embedded-riscv-io",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "register",
+    "reason": "暫存器定義不應預設 DMA",
+    "article": "ncku-systems-foundations",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "mmio",
+    "reason": "MMIO 概念和 DMA 最佳化是不同問題",
+    "article": "ncku-embedded-riscv-io",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "pio-stall",
+    "reason": "PIO stall 可能是 TX 空或 RX 滿，不能一律補 TX",
+    "article": "ncku-v2-pio-fifo-stall",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "dma",
+    "reason": "DMA 是硬體概念，不宜主要連到軟體模擬引擎",
+    "article": "lesson-rp2350-pio-fifo-pio-with-dma",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "ros2-action",
+    "reason": "文章主要說 Topic/Node，沒有 Action goal、feedback、cancel 的完整介紹；新增基礎 Actions 教學或改連真正內容。",
+    "article": null,
+    "solution": null,
+    "status": "no-direct-teaching-article"
+  },
+  {
+    "id": "ros2-service",
+    "reason": "現有文章重點是服務 callback 死鎖，不能用來代替 service 的基本教學。",
+    "article": null,
+    "solution": null,
+    "status": "no-direct-teaching-article"
+  },
+  {
+    "id": "stdio",
+    "reason": "stdio.h 是輸入輸出，不應導向 Shift+Mask 取位元欄位。",
+    "article": "ncku-v2-c-io-buffering",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "gpio",
+    "reason": "GPIO 不等於 PIO 資源配置；一般 GPIO 名詞不應推薦 SM 資源重配。",
+    "article": "ncku-embedded-riscv-io",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "fifo",
+    "reason": "一般 FIFO 可指軟體 queue 或 PIO FIFO；不可直接把泛用概念等同 PIO 速度優化。",
+    "article": null,
+    "solution": null,
+    "status": "no-direct-teaching-article"
+  },
+  {
+    "id": "shared-variable",
+    "reason": "共享變數不是一定能換成 thread-local counter；取決於共享資料語意。",
+    "article": "ncku-pthread-critical-section",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "lock",
+    "reason": "泛用 Lock 定義與「把工作移出鎖」效能方案不同，不應直接推薦後者。",
+    "article": "ncku-pthread-critical-section",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "no-lock",
+    "reason": "No lock 可涉及各種共享狀態；thread-local count 只適用計數，並非通用正確性修法。",
+    "article": "ncku-pthread-critical-section",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "memcmp",
+    "reason": "現有記憶體章未實際講 memcmp 的 API、比較規則或範例；需要補具體函式說明。",
+    "article": "ncku-c-memory",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "sizeof",
+    "reason": "sizeof 的一般規則（含陣列退化）不應預設導向 DMA count×size 錯誤。",
+    "article": "ncku-c-language-bridge",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "enum",
+    "reason": "一般 enum 型別不是 Transfer Engine count 單位最佳化方案。",
+    "article": "ncku-c-language-bridge",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "producer-consumer",
+    "reason": "現有 Queue 專文比同步工具綜述更直接符合 producer-consumer。",
+    "article": "ncku-pthread-condvar-queue",
+    "solution": "pthread-condition-queue/bounded-ring-buffer",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "thread-pool",
+    "reason": "應連到 Thread 建立/回收及 Worker Pool 的對題文章。",
+    "article": "ncku-v2-pthread-thread-lifecycle",
+    "solution": "pthread-thread-lifecycle/option-1-worker-pool",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "thread-shutdown",
+    "reason": "應連到關閉流程/condvar 的專文，泛用同步綜述不夠直接。",
+    "article": "ncku-v2-pthread-timeout-shutdown",
+    "solution": "pthread-timeout-shutdown/option-1-broadcast",
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "undefined-behavior",
+    "reason": "UB 範圍涵蓋 signed overflow、shift、越界與 data race；一篇並行綜述不足以代表全部。",
+    "article": null,
+    "solution": null,
+    "status": "no-direct-teaching-article"
+  },
+  {
+    "id": "ros2-spin",
+    "reason": "spin 是 rclpy Executor 事件循環，CLI 排查不是 spin 本身的最貼切示範解法。",
+    "article": "ncku-ros2-cli-workflow",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "bit-xor",
+    "reason": "set-clear 教材只示範 OR 與 AND+NOT，沒有 XOR 翻轉範例；連至該方案會帶錯重點。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "byte",
+    "reason": "Byte 的定義不需要預設 Shift+Mask 的最佳化方案。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "word",
+    "reason": "Word 資料寬度的定義與位元欄位提取解法不同。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "binary",
+    "reason": "二進位進制定義不等同 Shift+Mask 解法。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "hex",
+    "reason": "十六進位表示法不等同 Shift+Mask 解法。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "uint32",
+    "reason": "uint32_t 型別定義不等同欄位擷取。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "stdint",
+    "reason": "stdint.h 是型別標頭，不應自動推薦特定的 bitmask 最佳化。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "unsigned-suffix",
+    "reason": "u/U 型別後綴解釋與 Shift+Mask 擷取方案不是同個問題。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "bit-position",
+    "reason": "位元位置標示的基礎概念不必預設導向最佳化解法。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  },
+  {
+    "id": "bit-width",
+    "reason": "型別位寬/移位界線與單一 Shift+Mask 方法不同，應先教型別提升及超界。",
+    "article": "ncku-bitwise-c",
+    "solution": null,
+    "status": "mapped-to-existing-content"
+  }
+]

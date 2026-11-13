@@ -60,7 +60,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-avoid-reencoding"
     },
     {
       "id": "option-2-method",
@@ -85,7 +86,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-payload-contract"
     },
     {
       "id": "option-3-method",
@@ -110,7 +112,8 @@
           "url": "https://docs.ros.org/en/jazzy/Concepts/Basic/About-Topics.html"
         }
       ],
-      "verified": false
+      "verified": false,
+      "articleId": "opt-ros2-large-data-path"
     }
   ]
 }
