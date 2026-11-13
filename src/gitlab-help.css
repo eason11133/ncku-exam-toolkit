@@ -1,0 +1,52 @@
+.gitlab-help { max-width: 1080px; margin: 0 auto; padding-bottom: 42px; }
+.gitlab-help-hero { margin-bottom: 20px; }
+.gitlab-help-hero h1 { font-size: clamp(25px, 3.2vw, 36px); margin: 10px 0; }
+.gitlab-help-hero > p { color: var(--muted); line-height: 1.75; max-width: 780px; }
+.gitlab-help-switch, .gitlab-issue-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.gitlab-help-switch { margin-top: 20px; }
+.gitlab-help-switch button, .gitlab-issue-filters button { background: var(--surface); border: 1px solid var(--line); color: inherit; border-radius: 10px; padding: 9px 13px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; font: inherit; }
+.gitlab-help-switch button.active, .gitlab-issue-filters button.active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); font-weight: 650; }
+.gitlab-flow { display: flex; gap: 12px; align-items: center; margin: 20px 0; padding: 16px; background: var(--surface2); border-radius: 12px; }
+.gitlab-flow > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.gitlab-flow strong { font-size: 15px; }
+.gitlab-flow small { color: var(--muted); font-size: 12px; }
+.gitlab-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.gitlab-panel, .gitlab-issue, .gitlab-notice, .gitlab-help-sources { border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+.gitlab-panel { padding: 20px; min-width: 0; }
+.gitlab-step { font-size: 12px; color: var(--muted); font-weight: 650; }
+.gitlab-panel h2 { font-size: 19px; margin: 9px 0; }
+.gitlab-panel p, .gitlab-panel li, .gitlab-issue-detail li, .gitlab-notice p { line-height: 1.7; }
+.gitlab-panel p { margin-bottom: 13px; }
+.gitlab-panel ul { margin: 15px 0 0; padding-left: 19px; }
+.gitlab-panel li + li, .gitlab-issue-detail li + li { margin-top: 6px; }
+.gitlab-code { min-width: 0; overflow: hidden; border-radius: 10px; background: #121b2a; color: #f0f4fb; margin: 12px 0; }
+.gitlab-code-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; gap: 6px; border-bottom: 1px solid #334052; font-size: 12px; color: #c6d0df; }
+.gitlab-code-head button { display: inline-flex; gap: 5px; align-items: center; border: 1px solid #516073; background: #27364a; color: #f0f4fb; border-radius: 7px; padding: 5px 9px; cursor: pointer; flex-shrink: 0; }
+.gitlab-code pre { padding: 12px 14px 15px; margin: 0; overflow-x: auto; white-space: pre; font: 13px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.gitlab-notice { margin: 16px 0; padding: 16px 20px; }
+.gitlab-notice p { margin-bottom: 0; }
+.gitlab-issue-controls { margin-top: 22px; display: grid; gap: 12px; }
+.gitlab-issue-search { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); padding: 12px 14px; }
+.gitlab-issue-search input { border: 0; outline: 0; background: transparent; color: inherit; font: inherit; flex: 1; min-width: 0; }
+.gitlab-results { color: var(--muted); font-size: 13px; margin: 14px 0; }
+.gitlab-issue-list { display: grid; gap: 10px; }
+.gitlab-issue-toggle { background: transparent; color: inherit; border: 0; text-align: left; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; font: inherit; }
+.gitlab-issue-toggle > span { display: grid; gap: 5px; min-width: 0; }
+.gitlab-issue-toggle small { font-size: 12px; color: var(--muted); }
+.gitlab-issue-toggle strong { font-size: 16px; }
+.gitlab-issue-toggle span span { color: var(--muted); line-height: 1.5; font-size: 13px; }
+.gitlab-issue-toggle > svg { flex-shrink: 0; transition: transform 160ms ease; }
+.gitlab-issue-toggle > svg.open { transform: rotate(90deg); }
+.gitlab-issue-detail { padding: 0 18px 18px; border-top: 1px solid var(--line); line-height: 1.7; }
+.gitlab-issue-detail > p { margin-top: 16px; }
+.gitlab-issue-detail ol { padding-left: 23px; }
+.gitlab-warning { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; }
+.gitlab-warning svg { flex-shrink: 0; margin-top: 5px; }
+.gitlab-empty { padding: 28px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 11px; }
+.gitlab-copy-error { font-size: 13px; }
+.gitlab-help-sources { margin-top: 22px; padding: 20px; }
+.gitlab-help-sources h2 { margin: 0 0 8px; font-size: 18px; }
+.gitlab-help-sources p { line-height: 1.7; }
+.gitlab-help-sources > div { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 15px; }
+.gitlab-help-sources a { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; }
+@media (max-width: 760px) { .gitlab-guide-grid { grid-template-columns: 1fr; } .gitlab-flow { gap: 6px; padding: 11px; } .gitlab-flow > div strong { font-size: 13px; } .gitlab-flow > div small { font-size: 11px; } .gitlab-panel { padding: 16px; } .gitlab-code-head span { max-width: 200px; } }
