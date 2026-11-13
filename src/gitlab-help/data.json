@@ -156,8 +156,8 @@
         "確認是否有未提交改動，再看 git fetch 後的遠端差異。",
         "不要直接 git push --force；先取得現場指示，再選擇 pull --rebase 或其他合併策略。"
       ],
-      "code": "git status -sb\ngit fetch origin\ngit log --oneline --left-right HEAD...@{upstream}",
-      "warning": "最後一行必須已有上游分支；沒有時先查 git branch -vv。"
+      "code": "git status -sb\ngit fetch origin\ngit branch -vv\ngit log -5 --oneline",
+      "warning": "如果上游分支尚未設定，先核對遠端分支；不要直接 --force。"
     },
     {
       "id": "nothing-commit",
