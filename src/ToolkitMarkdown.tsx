@@ -59,7 +59,7 @@ export default function ToolkitMarkdown({ body, onConcept, onCopy, copied }: { b
   return <div className="markdown"><ReactMarkdown remarkPlugins={[remarkGfm, remarkToolkit]} components={{
     a: ({ href, children }) => href?.startsWith('#concept/')
       ? <button type="button" className="concept-link" onClick={() => onConcept(decodeURIComponent(href.slice(9)))}>{children}</button>
-      : <a href={href} target="_blank" rel="noreferrer">{children}</a>,
+      : <a href={href} target={href?.startsWith('#') ? undefined : '_blank'} rel={href?.startsWith('#') ? undefined : 'noreferrer'}>{children}</a>,
     pre: ({ children }) => {
       const code = String((children as { props?: { children?: string } })?.props?.children || '')
       return <div className="code-block">{onCopy && <button onClick={() => onCopy(code, code)}>{copied === code ? <Check size={14}/> : <Copy size={14}/>} 複製</button>}<pre>{children}</pre></div>

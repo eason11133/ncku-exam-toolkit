@@ -18,6 +18,16 @@ related: ncku-bitwise-c, ncku-transfer-engine
 RP2350 有專用的 PIO 硬體，每個 PIO block 裡有 state machine（狀態機），可執行短小指令來操控資料及 GPIO 時序。PIO 不是一般 C/Python 執行緒，也不是把所有工作都搬到硬體就會變快。
 
 
+### PIO 不是另一顆小 CPU
+
+可以把 PIO 想成專門處理接腳時序與位元移動的小幫手。CPU 先把工作規則設定好，PIO 就依短指令反覆執行，但它**不能直接拿一般 C 程式或 Python 程式進去跑**。
+
+RP2350 的每個 PIO block 有 **32 條指令的程式記憶體**，同一個 block 裡的狀態機共用這塊空間。狀態機有 X、Y 兩個暫存器，可暫存處理中的數值；OSR 用來提供輸出資料，ISR 用來收集輸入資料。要和 CPU 交換資料，就經過 TX/RX FIFO。這些不是一般 RAM，所以不要把 PIO 想成能任意建立陣列、配置記憶體的處理器。
+
+如果需求是複雜計算，通常由 CPU 先算好；如果需求是精準重複的腳位操作或位元資料流，才評估交給 PIO。
+
+來源：<https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf>。
+
 ## 官方最小範例
 
 ```asm

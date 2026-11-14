@@ -34,7 +34,7 @@ export default function ConceptLibrary({ selected, concepts, query, onQuery, onS
       {selected.english !== selected.title && <p className="concept-english">{selected.english}</p>}
       <div className="concept-detail">
         <section><h2>這是什麼</h2><p>{selected.plain}</p></section>
-        <section><h2>逐步理解</h2><p>{selected.walkthrough}</p></section>
+        {selected.walkthrough.trim() && <section><h2>怎麼運作</h2><p>{selected.walkthrough}</p></section>}
         <section><h2>常見誤解</h2><p>{selected.commonMistake}</p></section>
         <section><h2>具體例子</h2><p>{selected.example}</p></section>
         <section><h2>何時會用到</h2><p>{selected.whenToUse}</p></section>

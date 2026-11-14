@@ -462,7 +462,7 @@
       "runtime": "not-tested",
       "evidence": [],
       "sourceVerification": "not-individually-certified",
-      "codeBlocks": 4
+      "codeBlocks": 5
     },
     {
       "kind": "article",
@@ -627,7 +627,7 @@
       "runtime": "not-tested",
       "evidence": [],
       "sourceVerification": "not-individually-certified",
-      "codeBlocks": 2
+      "codeBlocks": 4
     },
     {
       "kind": "article",
@@ -6126,6 +6126,222 @@
       "evidence": [
         "tests/concepts.test.mjs: rendered ISR link and search"
       ]
+    },
+    {
+      "kind": "concept",
+      "id": "cpu",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "ram",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "c-language",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "powershell",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "assembly-language",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "inline-assembly",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "asm-volatile",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "pointer",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "memory-address",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "c-array",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "signed-integer",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "unsigned-integer",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "linker",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "preprocessor",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "printf",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "git",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "git-clone",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "git-commit",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "git-push",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "git-branch",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "gitlab-pipeline",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "call-stack",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "heap-memory",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
+    },
+    {
+      "kind": "concept",
+      "id": "race-condition",
+      "articleId": null,
+      "static": "linked",
+      "semantic": "manual-review-needed",
+      "runtime": "not-applicable",
+      "evidence": []
     }
   ]
 }

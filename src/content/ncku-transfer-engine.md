@@ -46,6 +46,18 @@ engine_release(ch);                  // 歸還通道
 
 上面是**概念片段**，要搭配官方的 `engine.h` 和錯誤處理。若 claim 失敗不能繼續 configure；若 configure 失敗要依 API 的行為清理。
 
+### Channel 都用完時，先處理失敗，不能硬啟動
+
+Channel 像借來的工作位置，數量有限。假設引擎只有 4 個通道，前 4 個都還沒歸還，第 5 次呼叫 `engine_claim()` 就可能拿不到通道。在這份練習使用的軟體 Engine 裡，**拿不到會回傳 `-1`**。
+
+這時不能接著呼叫 `engine_configure(-1, ...)` 或 `engine_start(-1)`。應該先決定工作是否可以等待空位、能不能用**語意相同且安全**的 CPU 方法備援，或必須回報資源不足。拿到通道後也一定要在工作完成、相關資料不再使用時歸還；錯誤路徑也不能漏掉清理。
+
+另外，不要假設開更多 Channel 就一定更快。多個工作可能共用記憶體頻寬，還可能有資料相依或重疊寫入的問題。
+
+延伸閱讀：`opt-transfer-no-channel-fallback`（拿不到通道時的處理）；`ncku-v2-transfer-channel-scheduling`（資源回收與排程）。
+
+**主來源**：本練習的 `engine.h` / `engine.c`，`ENGINE_CHANNELS` 為 4，`engine_claim()` 找不到空位時回傳 -1；此處不是在敘述所有真實 DMA 硬體都只有四個通道。
+
 ## Copy 和 Fill 的差別
 
 ```text

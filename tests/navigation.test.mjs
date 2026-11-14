@@ -9,7 +9,7 @@ test('attachment taxonomy and all current content routes validate', () => {
   assert.deepEqual(result.errors, [])
   assert.equal(result.roots, 7)
   assert.equal(result.leaves, 29)
-  assert.equal(result.concepts, 259)
+  assert.equal(result.concepts, 283)
   assert.equal(result.articles, 216)
   assert.equal(result.methods, 47)
 })

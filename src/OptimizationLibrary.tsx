@@ -5,6 +5,7 @@ import { articles, commands, docs } from './content'
 import { optimizations } from './optimizations'
 import { llmSuggestion, rankOptions, searchOptimizationMethods, technicalBackground } from './optimization-core'
 import type { OptimizationMethod, OptimizationOption } from './optimization-core'
+import { articleMarkdown } from './articleCopy'
 import './optimization.css'
 
 type Props = {
@@ -60,7 +61,7 @@ function OptionDetail({ method, option, onCopy, copied, onConcept }: { method: O
     <div className="opt-detail-grid"><div><h3>原理</h3><p>{option.principle}</p><h3>適用條件</h3><ul>{option.conditions.map(item => <li key={item}>{item}</li>)}</ul></div><div><h3>限制與代價</h3><ul>{option.tradeoffs.map(item => <li key={item}>{item}</li>)}</ul><h3>行為與正確性</h3><p>{option.behavior}</p></div></div>
     <p className="opt-metrics"><strong>觀察指標：</strong>{option.metrics.join('、')}</p>
     {option.code && <div className="opt-code"><div><span>範例 · {option.code.language}</span><button onClick={() => onCopy(option.code!.snippet, `code-${id}`)}>{copied === `code-${id}` ? <Check size={14}/> : <Copy size={14}/>} 複製程式碼</button></div><pre><code>{option.code.snippet}</code></pre></div>}
-    {detailArticle && <article className="opt-long-form" aria-label={`${option.title}完整說明`}><ToolkitMarkdown body={detailArticle.body} onConcept={conceptId => onConcept(conceptId, id)} onCopy={onCopy} copied={copied}/></article>}
+    {detailArticle && <article className="opt-long-form" aria-label={`${option.title}完整說明`}><div className="article-copy-row"><button onClick={() => onCopy(articleMarkdown(detailArticle), `full-${detailArticle.id}`)}><Copy size={15}/> {copied === `full-${detailArticle.id}` ? '已複製' : '複製全文給 LLM'}</button></div><ToolkitMarkdown body={detailArticle.body} onConcept={conceptId => onConcept(conceptId, id)} onCopy={onCopy} copied={copied}/></article>}
     <div className="opt-source"><BookOpen size={15}/><span>參考來源：</span>{option.sources.map(source => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.title} <ExternalLink size={12}/></a>)}</div>
     <div className="opt-detail-actions"><button onClick={() => onCopy(technicalBackground(method, option), `background-${id}`)}>{copied === `background-${id}` ? <Check size={15}/> : <Copy size={15}/>} 複製技術背景</button><button className="opt-copy-primary" onClick={() => onCopy(llmSuggestion(method, option), `llm-${id}`)}>{copied === `llm-${id}` ? <Check size={15}/> : <Copy size={15}/>} 複製給 LLM</button></div>
   </div>

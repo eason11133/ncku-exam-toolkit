@@ -28,3 +28,6 @@
 .search-exact-note{font-size:11px;color:var(--muted);padding:12px 17px 0;line-height:1.6}
 .concept-ambiguous{margin:9px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
 .concept-definition>button:not(:first-of-type){margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.concept-detail{display:block;border-top:1px solid var(--line)}
+.concept-detail section{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:1.15rem 0}
+.concept-detail section:first-child{padding-top:.7rem}

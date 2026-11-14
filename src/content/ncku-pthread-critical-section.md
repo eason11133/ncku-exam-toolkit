@@ -24,6 +24,40 @@ related: ncku-performance-benchmark, ncku-transfer-engine
 
 官方示範刻意把操作拆開，方便看 race；**`volatile` 不能代替同步**。
 
+### 我只把讀取鎖住，不就安全了？
+
+不行。假設有兩條 Thread 共用 `counter`，程式把讀取放進鎖裡，讀完就解鎖，最後才寫回：
+
+```c
+pthread_spin_lock(&lock);
+long old = counter;
+pthread_spin_unlock(&lock);
+
+counter = old + 1;  // 寫回沒有受到鎖保護：錯誤示範
+```
+
+A、B 仍可能都讀到 `counter = 10`，最後各自寫回 11，造成更新遺失。更重要的是，在 C 裡，這種沒有正確同步的共享變數存取可能構成 Data Race，屬於未定義行為，不能只用少算幾次來描述所有後果。
+
+**必須保護整個「讀取 → 修改 → 寫回」流程**；只鎖讀取、只鎖寫回，或分成兩次不同的鎖，都不能自然保證整次更新具有原子性。
+
+```c
+pthread_spin_lock(&lock);
+counter++;
+pthread_spin_unlock(&lock);
+```
+
+這裡的 `counter++` 是示意：所有會接觸相同共享狀態的程式路徑，都要遵守一致的同步規則。
+
+來源：<https://en.cppreference.com/c/language/memory_model>。
+
+### 某次剛好算對，不代表沒有資料競爭
+
+如果系統只有一個 CPU 核心，兩條 Thread 通常輪流獲得執行時間，某次執行可能剛好沒有在 `counter++` 中途切換，所以最後得到預期結果。
+
+但這**不代表沒有鎖就安全**。同一核心也會發生執行緒切換；下一次、不同最佳化設定或不同執行時間，都可能讓原本的問題出現。C 對未同步的衝突存取有 Data Race 規則，結果碰巧正確也不能證明程式符合規則。
+
+所以要先確認每條存取路徑都有正確同步，然後才比較執行時間。這是「結果正確」和「程式本身正確」的差別。
+
 ## 短鎖與長鎖
 
 ```c

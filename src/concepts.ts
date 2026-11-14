@@ -19,7 +19,7 @@ for (const alias of aliases) {
 }
 const fuse = new Fuse(concepts, {
   includeScore: true, threshold: 0.38, ignoreLocation: true,
-  keys: [{ name: 'title', weight: 5 }, { name: 'english', weight: 4 }, { name: 'aliases', weight: 4 }, { name: 'explanation', weight: 1 }, 'category'],
+  keys: [{ name: 'title', weight: 5 }, { name: 'english', weight: 4 }, { name: 'aliases', weight: 4 }, { name: 'explanation', weight: 1 }, { name: 'whenToUse', weight: 1 }, { name: 'commonMistake', weight: 1 }, { name: 'example', weight: 0.5 }, 'category'],
 })
 const normalize = (value: string) => value.trim().toLocaleLowerCase()
 
