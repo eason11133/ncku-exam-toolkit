@@ -51,7 +51,7 @@
 .opt-long-form h2{font-size:18px;line-height:1.5;color:var(--text)}
 .opt-long-form h3{font-size:15px;line-height:1.5;color:var(--text)}
 .opt-long-form p,.opt-long-form li{font-size:13px;line-height:1.85}
-.opt-long-form pre{max-width:100%;overflow-x:auto;padding:14px;background:#0e120f;border-radius:5px;color:#d5e3d4}
+.opt-long-form pre{max-width:100%;overflow-x:auto;padding:14px;background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;color:var(--code-text)}
 .opt-long-form img{display:block;max-width:100%;height:auto;margin:16px auto}
 .markdown img{max-width:100%;height:auto}
 .opt-source{display:flex;flex-wrap:wrap;align-items:center;gap:7px;color:var(--muted);font-size:10px;margin:18px 0}

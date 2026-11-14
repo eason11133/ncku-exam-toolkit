@@ -532,10 +532,6 @@
     "conceptId": "pthread-create"
   },
   {
-    "text": "race condition",
-    "conceptId": "data-race"
-  },
-  {
     "text": "read_increment",
     "conceptId": "dma-read-increment"
   },
@@ -1880,10 +1876,6 @@
     "conceptId": "pio-fifo"
   },
   {
-    "text": "printf",
-    "conceptId": "stdio"
-  },
-  {
     "text": "ROS 參數",
     "conceptId": "ros-parameter"
   },
@@ -2944,10 +2936,6 @@
     "conceptId": "test-bit"
   },
   {
-    "text": "無號整數",
-    "conceptId": "uint32"
-  },
-  {
     "text": "無鎖保護",
     "conceptId": "no-lock"
   },
@@ -3998,5 +3986,313 @@
   {
     "text": "PIO ISR",
     "conceptId": "isr"
+  },
+  {
+    "text": "C 語言",
+    "conceptId": "c-language"
+  },
+  {
+    "text": "C programming language",
+    "conceptId": "c-language"
+  },
+  {
+    "text": "C language",
+    "conceptId": "c-language"
+  },
+  {
+    "text": "主記憶體",
+    "conceptId": "ram"
+  },
+  {
+    "text": "Random Access Memory",
+    "conceptId": "ram"
+  },
+  {
+    "text": "RAM",
+    "conceptId": "ram"
+  },
+  {
+    "text": "記憶體 RAM",
+    "conceptId": "ram"
+  },
+  {
+    "text": "記錄一次修改",
+    "conceptId": "git-commit"
+  },
+  {
+    "text": "git commit",
+    "conceptId": "git-commit"
+  },
+  {
+    "text": "提交紀錄",
+    "conceptId": "git-commit"
+  },
+  {
+    "text": "Git 版本控制",
+    "conceptId": "git"
+  },
+  {
+    "text": "Git",
+    "conceptId": "git"
+  },
+  {
+    "text": "版本控制工具",
+    "conceptId": "git"
+  },
+  {
+    "text": "行內組合語言",
+    "conceptId": "inline-assembly"
+  },
+  {
+    "text": "Inline Assembly",
+    "conceptId": "inline-assembly"
+  },
+  {
+    "text": "GCC inline asm",
+    "conceptId": "inline-assembly"
+  },
+  {
+    "text": "行內組語",
+    "conceptId": "inline-assembly"
+  },
+  {
+    "text": "把版本推送到遠端",
+    "conceptId": "git-push"
+  },
+  {
+    "text": "git push",
+    "conceptId": "git-push"
+  },
+  {
+    "text": "推送版本",
+    "conceptId": "git-push"
+  },
+  {
+    "text": "連結器",
+    "conceptId": "linker"
+  },
+  {
+    "text": "Linker",
+    "conceptId": "linker"
+  },
+  {
+    "text": "asm volatile",
+    "conceptId": "asm-volatile"
+  },
+  {
+    "text": "GCC volatile assembly",
+    "conceptId": "asm-volatile"
+  },
+  {
+    "text": "__asm__ volatile",
+    "conceptId": "asm-volatile"
+  },
+  {
+    "text": "Git 分支",
+    "conceptId": "git-branch"
+  },
+  {
+    "text": "Git branch",
+    "conceptId": "git-branch"
+  },
+  {
+    "text": "版本分支",
+    "conceptId": "git-branch"
+  },
+  {
+    "text": "組合語言",
+    "conceptId": "assembly-language"
+  },
+  {
+    "text": "Assembly language",
+    "conceptId": "assembly-language"
+  },
+  {
+    "text": "指標",
+    "conceptId": "pointer"
+  },
+  {
+    "text": "C pointer",
+    "conceptId": "pointer"
+  },
+  {
+    "text": "指標變數",
+    "conceptId": "pointer"
+  },
+  {
+    "text": "PowerShell 命令列",
+    "conceptId": "powershell"
+  },
+  {
+    "text": "PowerShell",
+    "conceptId": "powershell"
+  },
+  {
+    "text": "pwsh",
+    "conceptId": "powershell"
+  },
+  {
+    "text": "函式呼叫堆疊",
+    "conceptId": "call-stack"
+  },
+  {
+    "text": "Call stack",
+    "conceptId": "call-stack"
+  },
+  {
+    "text": "函式堆疊",
+    "conceptId": "call-stack"
+  },
+  {
+    "text": "呼叫堆疊",
+    "conceptId": "call-stack"
+  },
+  {
+    "text": "printf 輸出函式",
+    "conceptId": "printf"
+  },
+  {
+    "text": "printf",
+    "conceptId": "printf"
+  },
+  {
+    "text": "printf()",
+    "conceptId": "printf"
+  },
+  {
+    "text": "格式化輸出函式",
+    "conceptId": "printf"
+  },
+  {
+    "text": "有號整數",
+    "conceptId": "signed-integer"
+  },
+  {
+    "text": "Signed integer",
+    "conceptId": "signed-integer"
+  },
+  {
+    "text": "有號",
+    "conceptId": "signed-integer"
+  },
+  {
+    "text": "C 前處理器",
+    "conceptId": "preprocessor"
+  },
+  {
+    "text": "C preprocessor",
+    "conceptId": "preprocessor"
+  },
+  {
+    "text": "preprocessor",
+    "conceptId": "preprocessor"
+  },
+  {
+    "text": "前處理器",
+    "conceptId": "preprocessor"
+  },
+  {
+    "text": "C preprocessing",
+    "conceptId": "preprocessor"
+  },
+  {
+    "text": "GitLab Pipeline",
+    "conceptId": "gitlab-pipeline"
+  },
+  {
+    "text": "GitLab CI/CD Pipeline",
+    "conceptId": "gitlab-pipeline"
+  },
+  {
+    "text": "CI pipeline",
+    "conceptId": "gitlab-pipeline"
+  },
+  {
+    "text": "GitLab 流水線",
+    "conceptId": "gitlab-pipeline"
+  },
+  {
+    "text": "動態配置記憶體區域",
+    "conceptId": "heap-memory"
+  },
+  {
+    "text": "Heap memory",
+    "conceptId": "heap-memory"
+  },
+  {
+    "text": "dynamic memory heap",
+    "conceptId": "heap-memory"
+  },
+  {
+    "text": "動態記憶體堆積",
+    "conceptId": "heap-memory"
+  },
+  {
+    "text": "陣列",
+    "conceptId": "c-array"
+  },
+  {
+    "text": "C array",
+    "conceptId": "c-array"
+  },
+  {
+    "text": "無號整數",
+    "conceptId": "unsigned-integer"
+  },
+  {
+    "text": "Unsigned integer",
+    "conceptId": "unsigned-integer"
+  },
+  {
+    "text": "無號",
+    "conceptId": "unsigned-integer"
+  },
+  {
+    "text": "複製版本庫",
+    "conceptId": "git-clone"
+  },
+  {
+    "text": "git clone",
+    "conceptId": "git-clone"
+  },
+  {
+    "text": "記憶體位址",
+    "conceptId": "memory-address"
+  },
+  {
+    "text": "Memory address",
+    "conceptId": "memory-address"
+  },
+  {
+    "text": "位址",
+    "conceptId": "memory-address"
+  },
+  {
+    "text": "中央處理器",
+    "conceptId": "cpu"
+  },
+  {
+    "text": "Central Processing Unit",
+    "conceptId": "cpu"
+  },
+  {
+    "text": "CPU",
+    "conceptId": "cpu"
+  },
+  {
+    "text": "處理器",
+    "conceptId": "cpu"
+  },
+  {
+    "text": "競爭條件",
+    "conceptId": "race-condition"
+  },
+  {
+    "text": "Race condition",
+    "conceptId": "race-condition"
+  },
+  {
+    "text": "競態條件",
+    "conceptId": "race-condition"
   }
 ]

@@ -15,6 +15,12 @@ export function compare(baselineMs: number, candidateMs: number, workPerRun = 1)
   if (!(baselineMs > 0) || !(candidateMs > 0)) return null
   return { speedup: baselineMs / candidateMs, improvement: (baselineMs - candidateMs) / baselineMs * 100, throughput: workPerRun * 1000 / candidateMs }
 }
+export function correctnessPassed(value: string) { return /^(通過|已通過|正確|pass|passed|ok)$/i.test(value.trim()) }
+export function comparableTrials(baseline: Trial | undefined, candidate: Trial, sameConditions: boolean) {
+  if (!baseline || !sameConditions || !correctnessPassed(baseline.correctness) || !correctnessPassed(candidate.correctness)) return false
+  if (!(Number.isFinite(baseline.workPerRun ?? 1) && Number.isFinite(candidate.workPerRun ?? 1))) return false
+  return (baseline.workPerRun ?? 1) === (candidate.workPerRun ?? 1) && (baseline.workUnit || '次執行') === (candidate.workUnit || '次執行')
+}
 export function parseTimes(input: string) {
   const parts = input.split(/[\s,;]+/).filter(Boolean)
   if (!parts.length) return []

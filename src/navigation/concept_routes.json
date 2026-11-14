@@ -1576,5 +1576,149 @@
     "primaryLeafId": "transfer-completion",
     "secondaryLeafIds": [],
     "coverage": "demo"
+  },
+  {
+    "conceptId": "cpu",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "ram",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "c-language",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "powershell",
+    "primaryLeafId": "tools-terminal",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "assembly-language",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "inline-assembly",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "asm-volatile",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "pointer",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "memory-address",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "c-array",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "signed-integer",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "unsigned-integer",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "linker",
+    "primaryLeafId": "tools-build",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "preprocessor",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "printf",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "git",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "git-clone",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "git-commit",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "git-push",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "git-branch",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "gitlab-pipeline",
+    "primaryLeafId": "tools-gitlab",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "call-stack",
+    "primaryLeafId": "c-foundation",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "heap-memory",
+    "primaryLeafId": "c-memory",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
+  },
+  {
+    "conceptId": "race-condition",
+    "primaryLeafId": "thread-lock",
+    "secondaryLeafIds": [],
+    "coverage": "extension"
   }
 ]

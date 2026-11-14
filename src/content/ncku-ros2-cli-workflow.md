@@ -79,6 +79,22 @@ ros2 topic pub --once /number std_msgs/msg/Int32 '{data: 21}'
 
 如果 publisher 正常但手動發布能觸發 processor，表示 processor 的輸入路徑可能沒問題，應回頭檢查原 publisher 的內容、型別或 QoS；這是縮小範圍，不是直接證明根因。
 
+### Topic 還在，為什麼卻沒有資料？
+
+在 ROS 2 裡，`ros2 topic list` 看得到某個 Topic，只代表目前的通訊圖裡有人使用或宣告這個名稱，**不代表一定有 Publisher 正在傳資料**。
+
+例如原本有一個 Publisher 負責送資料，另一個 Node 正在訂閱。Publisher 停止後，訂閱者還在，Topic 名稱仍可能留在清單裡。這時 `ros2 topic info /number` 的 Publisher count 可以是 0；Subscriber count 則可能不是 0。`ros2 topic echo /number` 也可能一直等，因為根本沒有人送新資料。
+
+另外，`ros2 topic echo` 自己就是一個 Subscriber，所以執行它之後，訂閱端數量可能增加。要判斷系統是否正常，應該同時看 **Publisher 是否存在、Topic 名稱與型別是否正確，以及有沒有真的收到訊息**。ROS 2 的節點發現也需要一點時間，瞬間的數量變動不必立刻當成程式錯誤。
+
+### 同一個 Topic 可以有兩個 Publisher 嗎？
+
+可以。假設兩個程式都向 `/number` 發送相同訊息型別，`ros2 topic info /number` 在兩個 Publisher 都被發現、仍在執行時，通常會顯示 **Publisher count: 2**。
+
+訂閱 `/number` 的 Node 可以收到兩邊送來的資料，並分別執行自己的 Callback。例如 A 送 10、B 送 21，一個把輸入乘 2 的訂閱端可能分別處理成 20、42。
+
+但**不能保證兩個不同 Publisher 的訊息一定照你想像的先後順序到達**，也不能只看 Publisher count 就保證每筆資料都收到了。還要確認兩邊的 Topic 名稱、Message Type、QoS 能互相配對，並用 `ros2 topic echo` 或應用程式的接收紀錄驗證。
+
 ## 對效能問題的第一輪檢查
 
 區分三個時間：訊息產生到接收的**傳輸時間**、Callback 等待被執行的**排隊時間**、Callback 自己花的**執行時間**。`ros2 topic hz` 只能提供觀察到的發布頻率，不能單靠它判斷是哪一段慢。
